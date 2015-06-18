@@ -1,0 +1,221 @@
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="qa.dcsdr.diplomaticclub.Activities.ArticleReader">
+
+        <include
+            android:id="@+id/app_bar"
+            layout="@layout/app_bar" />
+
+        <LinearLayout
+            android:id="@+id/readerProgressBar"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <fr.castorflex.android.circularprogressbar.CircularProgressBar xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/pbHeaderProgressHomePage"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+
+                android:indeterminate="true"
+                app:cpb_color="#FFee44"
+                app:cpb_colors="@array/colors"
+                app:cpb_max_sweep_angle="300"
+                app:cpb_min_sweep_angle="10"
+                app:cpb_rotation_speed="1.0"
+                app:cpb_stroke_width="3dp"
+                app:cpb_sweep_speed="1.0" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/errorLayoutR"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/volleyErrorR"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="sans-serif-light"
+                android:gravity="center"
+                android:text="VOLLEY ERROR"
+                android:textAllCaps="true"
+                android:textColor="#000000"
+                android:textSize="20dp"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/retryButtonR"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="RETRY"
+                android:visibility="gone" />
+
+
+        </LinearLayout>
+
+
+        <ScrollView
+            android:id="@+id/articleScroll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:fillViewport="true"
+            android:keepScreenOn="true"
+            android:scrollbarSize="22.5sp"
+            android:scrollbars="vertical">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+                    <ImageView
+                        android:id="@+id/articleImage"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:background="@color/colorPrimaryDark"
+                        android:paddingTop="-2dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/default_art_image" />
+
+                    <TextView
+                        android:id="@+id/category"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:background="#99000000"
+                        android:fontFamily="sans-serif-light"
+                        android:gravity="bottom"
+                        android:padding="10dp"
+                        android:paddingLeft="10dp"
+                        android:text="Sample Category"
+                        android:textColor="#FFFFFF"
+                        android:textSize="26sp" />
+
+                </RelativeLayout>
+
+
+                <TextView
+                    android:id="@+id/articleTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:padding="10dp"
+                    android:text="Sample Title"
+                    android:textColor="#000000"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/articleAuthor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:paddingLeft="10dp"
+                    android:text="Author"
+                    android:textColor="#ff2b2b2b"
+                    android:textSize="16sp"
+                    android:textStyle="italic">
+
+                </TextView>
+
+                <TextView
+
+                    android:id="@+id/articleDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="5dp"
+                    android:text="2015-02-10"
+                    android:textColor="@color/colorPrimaryLight"
+                    android:textSize="14sp"
+                    android:textStyle="italic">
+
+                </TextView>
+
+                <TextView
+                    android:id="@+id/articleContents"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif"
+                    android:padding="10dp"
+                    android:text="Loading content..."
+                    android:textSize="15sp" />
+
+                <RelativeLayout
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:layout_width="wrap_content">
+
+                    <Button
+                        android:id="@+id/prev"
+                        style="android:attr/borderlessButtonStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="PREVIOUS ARTICLE"
+                        android:background="@drawable/custom_bg"
+                        android:layout_marginLeft="12dp"
+                        android:textColor="@color/colorPrimaryDark" />
+
+                    <Button
+                        android:id="@+id/next" style="android:attr/borderlessButtonStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="12dp"
+                        android:layout_height="wrap_content"
+                        android:text="NEXT ARTICLE"
+                        android:background="@drawable/custom_bg"
+                        android:textColor="@color/colorPrimaryDark" />
+                </RelativeLayout>
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
+    <fragment
+        android:id="@+id/fragment_navigation_drawer"
+        android:name="qa.dcsdr.diplomaticclub.Fragments.NavigationDrawerFragment"
+        android:layout_width="@dimen/nav_drawer_width"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:layout="@layout/fragment_navigation_drawer"
+        tools:layout="@layout/fragment_navigation_drawer">
+
+    </fragment>
+
+</android.support.v4.widget.DrawerLayout>
+

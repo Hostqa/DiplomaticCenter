@@ -1,0 +1,44 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="qa.dcsdr.diplomaticclub.Activities.ArticleReader">
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        android:title="@string/action_settings"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/top"
+        android:orderInCategory="100"
+        android:title="Jump to Top"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/bottom"
+        android:orderInCategory="100"
+        android:title="Jump to Bottom"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/increase"
+        android:icon="@android:drawable/btn_plus"
+        android:orderInCategory="100"
+        android:title="Larger Text"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/decrease"
+        android:icon="@android:drawable/btn_minus"
+        android:orderInCategory="100"
+        android:title="Smaller Text"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/night_mode"
+        android:icon="@android:drawable/btn_minus"
+        android:orderInCategory="100"
+        android:title="Night Mode"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/default_size"
+        android:orderInCategory="100"
+        android:title="Reset Size"
+        app:showAsAction="never" />
+
+</menu>

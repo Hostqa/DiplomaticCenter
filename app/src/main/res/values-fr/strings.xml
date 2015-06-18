@@ -1,0 +1,156 @@
+<resources>
+
+    <string name="app_name">DCSDR</string>
+    <string name="title_activity_main">Diplomatic Center</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
+
+    <string name="title_activity_publications">PublicationsActivity</string>
+    <string name="title_activity_display_articles">DisplayArticlesActivity</string>
+    <string name="error_timeout">No connection to server.</string>
+    <string name="auth_failure">Authorization failed.</string>
+    <string name="server_error">Server error.</string>
+    <string name="network_error">Network error.</string>
+    <string name="parse_error">Parse error.</string>
+    <string name="title_activity_article_reader">ArticleReader</string>
+    <string name="title_activity_about_us">Diplomatic Center</string>
+    <string name="about_us_p1"> Un centre de réflexion et de recherche stratégique, fondé à Doha en Novembre 2014.</string>
+    <string name="about_us_p2">
+Ayant pour activité la surveillance et l’analyse des affaires du Golfe et ses interactions internationales et régionales associés où dans le cœur de ceux les questions des conflits et l’analyse des disputes.
+Le Centre est spécialisé dans la gestion et le règlement des litiges à travers:
+L’analyse des pistes et les mécanismes de règlement (Négociations - Diplomatie - Arbitrage – médiation).
+L’analyse des conflits existants et escomptés (ethnique – religieuse – politique – économique).
+La création de registre de risques du Golfe et régionaux (Risques de sécurité, environnementaux, politiques, économique).
+L’analyse du maintien et consolidation de la paix (les chartes, organisations, et les expériences).
+Le centre représente un lien entre les chercheurs, intellectuels, experts, responsables et décideurs.
+Le centre offre les recherches, études, évaluations et les conseils spécialisés.
+ Le centre représente le guide pour les chercheurs et les personnes intéressées dans les règles de données précises et des fichiers intégrés.</string>
+    <string name="PARENT_CLASS_TAG">ParentClassName</string>
+    <string name="DISPLAY_FRAGMENT_TAG">DisplayArticleListFragment</string>
+    <string name="DISPLAY_FRAGMENT_PARENT_TAG">CategoryListFragment</string>
+    <string name="title_activity_category_list">CategoryListActivity</string>
+
+    <array name="categories">
+        <item>Recherches Et Études</item>
+        <item>Publications</item>
+        <item>Résolution Des Conflits</item>
+        <item>Programmes Et Projets</item>
+        <item>Événements</item>
+    </array>
+
+    <array name="drawer_items">
+        <item>Accueil</item>
+        <item>A propos</item>
+        <item>Auteurs</item>
+        <item>Catégories</item>
+        <item>Recherches Et Études</item>
+        <item>Publications</item>
+        <item>Résolution Des Conflits</item>
+        <item>Programmes Et Projets</item>
+        <item>Événements</item>
+        <item>Signets</item>
+        <item>Contact</item>
+        <item>Paramètres</item>
+    </array>
+
+
+    <array name="colors">
+        <item>#094b7c</item>
+        <item>#000000</item>
+
+    </array>
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">
+        AIzaSyB1a4pBKDY7g4-jIm5_JDz1vLbxhwh8Kro
+    </string>
+
+    <string name="RESEARCH_AND_STUDIES"><![CDATA[Recherches Et Études]]></string>
+
+    <string name="EXPAND">EXPAND</string>
+    <string name="COLLAPSE">COLLAPSE</string>
+    <string name="title_activity_contact_us">Diplomatic Center</string>
+    <string name="title_activity_home_page">DCSDR</string>
+    <string name="title_activity_authors">Authors</string>
+
+    <string name="ALL_RESEARCH_AND_STUDIES"><![CDATA[All Research & Studies]]></string>
+    <string name="STUDIES">Studies</string>
+    <string name="POLITICAL_STUDIES">Political Studies</string>
+    <string name="STRATEGIC_STUDIES">Strategic Studies</string>
+    <string name="ECONOMIC_STUDIES">Economic Studies</string>
+    <string name="ENERGY_STUDIES">Energy Studies</string>
+    <string name="POLICIES_ANALYSIS">Policies Analysis</string>
+    <string name="INTERNAL_POLICY">Internal Policy</string>
+    <string name="FOREIGN_POLICY">Foreign Policy</string>
+    <string name="ECONOMIC_POLICY">Economic Policy</string>
+    <string name="POSITION_PAPERS">Position Papers</string>
+    <string name="POLITICAL_ESTIMATES">Political Estimates</string>
+    <string name="STRATEGIC_ESTIMATES">Strategy Estimates</string>
+    <string name="ECONOMIC_ESTIMATES">Economic Estimates</string>
+    <string name="PUBLICATIONS">Publications</string>
+    <string name="ALL_PUBLICATIONS">All Publications</string>
+    <string name="RESEARCH_AND_STUDIES_PUBLICATIONS"><![CDATA[Recherches Et Études]]></string>
+    <string name="ARBITRATION_STUDIES">Arbitration Studies</string>
+    <string name="POLICY_ANALYSIS">Policy Analysis</string>
+    <string name="POSITION_ESTIMATES">Position Estimates</string>
+    <string name="BOOKS">Books</string>
+    <string name="LITERATURE_BOOKS">Literature Books</string>
+    <string name="TRANSLATED_BOOKS">Translated Books</string>
+    <string name="EDITOR_BOOKS">Editor Books</string>
+    <string name="REPORTS_AND_PERIODICALS"><![CDATA[Reports & Periodicals]]></string>
+    <string name="MEDIA_REPORTS">Media Reports</string>
+    <string name="TREND_ANALYSIS_REPORTS">Trend Analysis Reports</string>
+    <string name="STRATEGIC_REPORTS">Strategic Reports</string>
+    <string name="DISPUTES_RESOLUTION">Résolution Des Conflits</string>
+    <string name="ALL_DISPUTES_RESOLUTION">All Disputes Resolution</string>
+    <string name="INTERNATIONAL_NEGOTIATIONS">International Negotiations</string>
+    <string name="PRINCIPLES_OF_NEGOTIATIONS">Principles of Negotiations</string>
+    <string name="ART_OF_DIPLOMACY">Art of Diplomacy</string>
+    <string name="INTERNATIONAL_ARBITRATION">International Arbitration</string>
+    <string name="MEDIATION">Mediation</string>
+    <string name="CONFLICT_ANALYSIS">Conflict Analysis</string>
+    <string name="ETHNIC_CONFLICTS">Ethnic Conflicts</string>
+    <string name="RELIGIOUS_CONFLICTS">Religious Conflicts</string>
+    <string name="POLITICAL_CONFLICTS">Political Conflicts</string>
+    <string name="ECONOMIC_CONFLICTS">Economic Conflicts</string>
+    <string name="RISK_REGISTER">Risk Register</string>
+    <string name="SECURITY_RISKS">Security Risks</string>
+    <string name="ENVIRONMENTAL_RISKS">Environmental Risks</string>
+    <string name="POLITICAL_RISKS">Political Risks</string>
+    <string name="ECONOMIC_RISKS">Economic Risks</string>
+    <string name="PEACE_BUILDING_AND_KEEPING"><![CDATA[Peace Keeping & Building]]></string>
+    <string name="PEACE_KEEPING_CHARTERS">Peace Keeping Charters</string>
+    <string name="PEACE_KEEPING">Peace Keeping</string>
+    <string name="EXPERIENCES_OF_PEACE_KEEPING">Experiences of Peace Keeping</string>
+    <string name="EXPERIENCES_OF_PEACE_BUILDING">Experiences of Peace-Building</string>
+    <string name="ALL_PROGRAMS_AND_PROJECTS"><![CDATA[All Programs & Projects]]></string>
+    <string name="PROGRAMS_AND_PROJECTS"><![CDATA[Programmes Et Projets]]></string>
+    <string name="RESEARCH_PROJECTS">Research Projects</string>
+    <string name="ALL_RESEARCH_PROJECTS">All Research Projects</string>
+    <string name="RESEARCH_FILES">Research Files</string>
+    <string name="ALL_RESEARCH_FILES">All Research Files</string>
+    <string name="LEADERSHIP_BUILDING_PROJECTS">Leadership Building Projects</string>
+    <string name="ALL_LEADERSHIP_BUILDING_PROJECTS">All Leadership Building</string>
+    <string name="EVENTS">Événements</string>
+    <string name="FEASABILITY_STUDIES_PROJECTS">Feasibility Studies Projects</string>
+    <string name="ALL_FEASABILITY_STUDIES">All Feasibility Studies</string>
+    <string name="ALL_EVENTS">All Events</string>
+    <string name="THE_CULTURAL_SALON">The Cultural Salon</string>
+    <string name="ALL_CULTURAL_SALON">All Cultural Salon</string>
+    <string name="DCSS_NEWS">DCSS Nouvelles</string>
+    <string name="ALL_DCSS_NEWS">Tous DCSS Nouvelles</string>
+    <string name="SYMPOSIUMS">Symposiums</string>
+    <string name="ALL_SYMPOSIUMS">Tous les Symposiums</string>
+    <string name="CONFERENCES">Conférences</string>
+    <string name="ALL_CONFERENCES">Toutes les Conférences</string>
+    <string name="ID_LEVEL_URL">http://www.dcsdr.qa/api/xml_en_show_post_by_category_id.php?id=</string>
+    <string name="CAT_TITLE_TAG">CAT_TITLE</string>
+    <string name="NIGHT_MODE">Mode Nuit</string>
+    <string name="DAY_MODE">Mode jour</string>
+    <string name="ABOUT_US">A propos</string>
+
+    <string name="DRAWER_DIRECTION">start</string>
+
+</resources>

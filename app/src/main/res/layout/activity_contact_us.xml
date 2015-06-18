@@ -1,0 +1,183 @@
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <RelativeLayout
+        android:id="@+id/contact_us_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorAccent"
+        tools:context="qa.dcsdr.diplomaticclub.Activities.ContactUsActivity">
+
+
+        <include
+            android:id="@+id/app_bar"
+            layout="@layout/app_bar" />
+
+
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/app_bar">
+
+            <RelativeLayout
+                android:id="@+id/contactUsImageLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <ImageView
+                    android:id="@+id/contactUsImage"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:background="@color/colorPrimaryDark"
+                    android:paddingTop="-2dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/research_studies_cat_compressed" />
+
+                <TextView
+                    android:id="@+id/contactUs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/contactUsImage"
+                    android:background="#99000000"
+                    android:fontFamily="sans-serif-light"
+                    android:gravity="bottom"
+                    android:padding="10dp"
+                    android:paddingLeft="10dp"
+                    android:text="Contact Us"
+                    android:textColor="#FFFFFF"
+                    android:textSize="26sp" />
+
+                <TextView
+                    android:layout_below="@+id/contactUs"
+                    android:layout_width="wrap_content"
+                    android:id="@+id/findUs"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginRight="30dp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="Find us here."
+                    android:textSize="24sp" />
+
+
+                <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:tools="http://schemas.android.com/tools"
+                    android:id="@+id/map"
+                    android:name="com.google.android.gms.maps.SupportMapFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:layout_below="@+id/findUs"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginTop="10dp"
+                    tools:context=".MapsActivity" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/map"
+                    android:layout_margin="30dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:fontFamily="sans-serif-light"
+                        android:text="Any questions or comments? Contact us below."
+                        android:textSize="24sp" />
+
+                    <EditText
+                        android:id="@+id/name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/custom_edittext"
+                        android:textCursorDrawable="@null"
+                        android:ems="20"
+                        android:hint="Your Name"
+                        android:padding="12dp" />
+
+                    <EditText
+                        android:id="@+id/email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/custom_edittext"
+                        android:ems="20"
+                        android:textCursorDrawable="@null"
+                        android:hint="Your E-mail"
+                        android:padding="12dp" />
+
+
+                    <EditText
+                        android:id="@+id/subject"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/custom_edittext"
+                        android:ems="20"
+                        android:hint="Message Subject"
+                        android:textCursorDrawable="@null"
+                        android:inputType="textEmailAddress"
+                        android:padding="12dp" />
+
+                    <EditText
+                        android:id="@+id/message"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/custom_edittext"
+                        android:ems="20"
+                        android:hint="Your message."
+                        android:inputType="textMultiLine"
+                        android:minLines="3"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textCursorDrawable="@null"
+                        android:padding="12dp" />
+
+                    <Button
+                        android:id="@+id/submitForm"
+                        style="android:attr/borderlessButtonStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_margin="12dp"
+                        android:background="@drawable/custom_bg"
+                        android:gravity="center"
+                        android:textSize="16sp"
+                        android:text="Submit"
+
+                        android:textColor="@color/colorPrimaryDark" />
+
+                </LinearLayout>
+
+
+
+            </RelativeLayout>
+
+        </ScrollView>
+
+
+    </RelativeLayout>
+
+
+    <fragment
+        android:id="@+id/fragment_navigation_drawer"
+        android:name="qa.dcsdr.diplomaticclub.Fragments.NavigationDrawerFragment"
+        android:layout_width="@dimen/nav_drawer_width"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:layout="@layout/fragment_navigation_drawer"
+        tools:layout="@layout/fragment_navigation_drawer">
+
+    </fragment>
+
+</android.support.v4.widget.DrawerLayout>
