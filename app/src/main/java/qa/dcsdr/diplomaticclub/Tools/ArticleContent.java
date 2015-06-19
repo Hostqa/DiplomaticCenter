@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
@@ -85,6 +86,8 @@ public class ArticleContent {
 
     public void sendXmlRequest(final View view) {
         final LinearLayout readerProgressBar = (LinearLayout) view.findViewById(R.id.readerProgressBar);
+        final ScrollView articleScroll = (ScrollView) view.findViewById(R.id.articleScroll);
+        articleScroll.setVisibility(View.GONE);
         final LinearLayout errorLayoutR = (LinearLayout) view.findViewById(R.id.errorLayoutR);
         final TextView volleyError = (TextView) view.findViewById(R.id.volleyErrorR);
         final Button retryButton = (Button) view.findViewById(R.id.retryButtonR);
@@ -99,6 +102,7 @@ public class ArticleContent {
                     Log.d("response", response);
                     tv.setText(Html.fromHtml(new ContentDecrypter().decrypt((content))));
                     readerProgressBar.setVisibility(View.GONE);
+                    articleScroll.setVisibility(View.VISIBLE);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

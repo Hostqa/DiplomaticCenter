@@ -40,6 +40,7 @@ import qa.dcsdr.diplomaticclub.Activities.ArticleReader;
 import qa.dcsdr.diplomaticclub.Adapters.ArticleAdapter;
 import qa.dcsdr.diplomaticclub.Items.Article;
 import qa.dcsdr.diplomaticclub.Items.ClickListener;
+import qa.dcsdr.diplomaticclub.Items.HidingScrollListener;
 import qa.dcsdr.diplomaticclub.Items.VolleySingleton;
 import qa.dcsdr.diplomaticclub.R;
 import qa.dcsdr.diplomaticclub.Tools.ParseArticle;
@@ -151,16 +152,16 @@ public class DisplayArticleListFragment extends Fragment implements ClickListene
 
 
 
-//        articlesRV.addOnScrollListener(new HidingScrollListener() {
-//            @Override
-//            public void onHide() {
-//                hideViews();
-//            }
-//            @Override
-//            public void onShow() {
-//                showViews();
-//            }
-//        });
+        articlesRV.addOnScrollListener(new HidingScrollListener() {
+            @Override
+            public void onHide() {
+                hideViews();
+            }
+            @Override
+            public void onShow() {
+                showViews();
+            }
+        });
         articlesRV.setLayoutManager(layoutManager);
         articlesRV.setAdapter(rPubAdapter);
         linlaHeaderProgress.setVisibility(View.VISIBLE);
@@ -219,7 +220,6 @@ public class DisplayArticleListFragment extends Fragment implements ClickListene
     private void showViews() {
         toolbar.animate().translationY(0).setInterpolator(new DecelerateInterpolator(2));
         toolbar.animate().translationY(0).setInterpolator(new DecelerateInterpolator(2)).start();
-//        toolbar.setBackgroundColor(Color.);
     }
 
     private void sendXmlRequest(final View view) {

@@ -6,16 +6,14 @@
     android:layout_height="match_parent">
 
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:id="@+id/fl"
         tools:context="qa.dcsdr.diplomaticclub.Activities.ArticleReader">
 
-        <include
-            android:id="@+id/app_bar"
-            layout="@layout/app_bar" />
 
         <LinearLayout
             android:id="@+id/readerProgressBar"
@@ -91,6 +89,7 @@
             android:scrollbars="vertical">
 
             <LinearLayout
+                android:paddingTop="@dimen/abc_action_bar_default_height_material"
                 android:layout_width="fill_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
@@ -204,7 +203,13 @@
             </LinearLayout>
         </ScrollView>
 
-    </LinearLayout>
+        <include
+              android:layout_width="match_parent"
+            android:layout_height="@dimen/abc_action_bar_default_height_material"
+            android:id="@+id/app_bar"
+            layout="@layout/app_bar" />
+    </FrameLayout>
+
 
     <fragment
         android:id="@+id/fragment_navigation_drawer"

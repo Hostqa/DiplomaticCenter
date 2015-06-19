@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Rect;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -16,6 +17,9 @@ import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -58,7 +62,6 @@ public class ArticleReader extends ActionBarActivity {
     private Menu menu;
     private float defaultSize;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,6 +69,7 @@ public class ArticleReader extends ActionBarActivity {
             getWindow().setNavigationBarColor(getResources().getColor(R.color.colorPrimary));
         }
         a = this;
+
         setContentView(R.layout.activity_article_reader);
         setTitle(getResources().getString(R.string.APP_TITLE));
         toolbar = (Toolbar) findViewById(R.id.app_bar);
@@ -152,6 +156,78 @@ public class ArticleReader extends ActionBarActivity {
         } else if (position == 0) {
             prevArticle.setVisibility(View.GONE);
         }
+
+        scrollView.getViewTreeObserver().addOnScrollChangedListener(new ViewTreeObserver.OnScrollChangedListener() {
+
+            public boolean goingUp = false;
+            private static final int HIDE_THRESHOLD = 20;
+            private int scrolledDistance = 0;
+            private boolean controlsVisible = true;
+            private float current;
+
+            private void onHide() {
+                toolbar.animate().translationY(-toolbar.getHeight()).setInterpolator(new AccelerateInterpolator(2));
+            }
+
+            private void onShow() {
+                toolbar.animate().translationY(0).setInterpolator(new DecelerateInterpolator(2));
+                toolbar.animate().translationY(0).setInterpolator(new DecelerateInterpolator(2)).start();
+            }
+
+            @Override
+            public void onScrollChanged() {
+                float old = current;
+                float y = scrollView.getScrollY();
+                current = y;
+                Rect scrollBounds = new Rect();
+                scrollView.getHitRect(scrollBounds);
+                boolean next = nextArticle.getLocalVisibleRect(scrollBounds);
+                boolean prev = prevArticle.getLocalVisibleRect(scrollBounds);
+                if (goingUp && (y < old)) {
+                    if (articleImage.getLocalVisibleRect(scrollBounds) || next || prev) {
+                        if (!controlsVisible) {
+                            onShow();
+                            toolbar.setAlpha(1);
+                            controlsVisible = true;
+                        } else {
+                            if (y != 0 && !next && !prev && !goingUp)
+                                toolbar.setAlpha((articleImage.getHeight() - y) / articleImage.getHeight());
+                            else
+                                toolbar.setAlpha(1);
+                        }
+                    }
+                } else {
+                    goingUp = false;
+                    if (articleImage.getLocalVisibleRect(scrollBounds) || next || prev) {
+                        if (!controlsVisible) {
+                            onShow();
+                            toolbar.setAlpha(1);
+                            controlsVisible = true;
+                        } else {
+                            if (y != 0 && !next && !prev && !goingUp)
+                                toolbar.setAlpha((articleImage.getHeight() - y) / articleImage.getHeight());
+                            else
+                                toolbar.setAlpha(1);
+                        }
+                    } else {
+                        if (scrolledDistance > HIDE_THRESHOLD && controlsVisible) {
+                            onHide();
+                            controlsVisible = false;
+                            scrolledDistance = 0;
+                        } else if ((y < old) && !controlsVisible) {
+                            goingUp = true;
+                            toolbar.setAlpha(1);
+                            onShow();
+                            controlsVisible = true;
+                            scrolledDistance = 0;
+                        }
+                    }
+                    if ((controlsVisible && y > 0) || (!controlsVisible && y < 0)) {
+                        scrolledDistance += y;
+                    }
+                }
+            }
+        });
     }
 
     @Override
@@ -176,7 +252,7 @@ public class ArticleReader extends ActionBarActivity {
 
     /*
            Allowing the user to change text size and adding Night Mode.
-     */
+    */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will

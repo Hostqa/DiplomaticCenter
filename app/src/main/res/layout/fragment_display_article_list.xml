@@ -5,23 +5,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
         android:background="@color/colorAccent"
         android:tag="DisplayCategoriesFragment" >
 
-
-        <LinearLayout
+        <FrameLayout
+            android:id="@+id/dal_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-
-
-            <include
-                android:id="@+id/app_bar"
-                layout="@layout/app_bar" />
 
             <LinearLayout
                 android:id="@+id/linlaHeaderProgress"
@@ -107,11 +105,14 @@
 
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
+                     <include
 
+                android:id="@+id/app_bar"
+                layout="@layout/app_bar" />
 
-        </LinearLayout>
+        </FrameLayout>
 
-    </FrameLayout>
+    </LinearLayout>
 
     <fragment
         android:id="@+id/fragment_navigation_drawer_dal"
