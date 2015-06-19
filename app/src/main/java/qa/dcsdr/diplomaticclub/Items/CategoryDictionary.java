@@ -169,7 +169,7 @@ public class CategoryDictionary {
 
             CategoryEntry all = new CategoryEntry();
             all.setCategoryImageId(R.drawable.programs_projects_cat_compressed);
-            all.setCategoryTitle(s(R.string.PROGRAMS_AND_PROJECTS));
+            all.setCategoryTitle(s(R.string.ALL_PROGRAMS_AND_PROJECTS));
             List list0 = new ArrayList<String>();
             list0.add(s(R.string.ALL_PROGRAMS_AND_PROJECTS));
             all.setSubCategories(list0);
@@ -216,7 +216,7 @@ public class CategoryDictionary {
 
             CategoryEntry all = new CategoryEntry();
             all.setCategoryImageId(R.drawable.events_cat_compressed);
-            all.setCategoryTitle(s(R.string.EVENTS));
+            all.setCategoryTitle(s(R.string.ALL_EVENTS));
             List list0 = new ArrayList<String>();
             list0.add(s(R.string.ALL_EVENTS));
             all.setSubCategories(list0);

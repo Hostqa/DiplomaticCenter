@@ -76,7 +76,7 @@ public class HomePageFragment extends Fragment {
                 Intent intent = new Intent(getActivity(), ArticleReader.class);
                 intent.putExtra("CAT_TITLE", category);
                 intent.putExtra("ARTICLE_LIST", articleList);
-                intent.putExtra("POSITION", 0);
+                intent.putExtra("POSITION", position);
                 intent.putExtra("IS_HOME",1);
                 intent.putExtra(getString(R.string.PARENT_CLASS_TAG), getString(R.string.DISPLAY_FRAGMENT_TAG));
                 startActivity(intent);
