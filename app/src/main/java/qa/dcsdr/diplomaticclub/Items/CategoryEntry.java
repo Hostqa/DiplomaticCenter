@@ -12,8 +12,6 @@ public class CategoryEntry {
     private int categoryImageId;
     private String categoryTitle;
 
-//    private String categoryDescription;
-
     public int getCategoryImageId() {
         return categoryImageId;
     }
@@ -37,6 +35,5 @@ public class CategoryEntry {
     public void setSubCategories(List<String> subCategories) {
         this.subCategories = subCategories;
     }
-
 
 }

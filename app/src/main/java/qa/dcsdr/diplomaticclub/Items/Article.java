@@ -36,15 +36,6 @@ public class Article implements Parcelable {
         author = in.readString();
     }
 
-    public Article() {
-        this.title = "N/A";
-        this.link = "N/A";
-        this.photo = "N/A";
-        this.description = "N/A";
-        this.date = "N/A";
-        this.author = "N/A";
-    }
-
     public Article(int id) {
         this.id = id;
         this.title = "N/A";
@@ -136,6 +127,5 @@ public class Article implements Parcelable {
             return new Article[size];
         }
     };
-
 
 }

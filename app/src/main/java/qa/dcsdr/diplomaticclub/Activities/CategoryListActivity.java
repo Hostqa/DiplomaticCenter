@@ -20,11 +20,8 @@ public class CategoryListActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_disputes_resolution);
         Intent myIntent = getIntent();
         String title = ((String)myIntent.getExtras().get("CAT_TITLE"));
-        String back_to_cat = ((String)myIntent.getExtras().get("BACK_TO_CAT"));
-
         setTitle(title);
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setNavigationBarColor(getResources().getColor(R.color.colorPrimary));
@@ -42,7 +39,7 @@ public class CategoryListActivity extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_disputes_resolution, menu);
+        getMenuInflater().inflate(R.menu.menu_category_list, menu);
         return true;
     }
 
@@ -52,13 +49,11 @@ public class CategoryListActivity extends ActionBarActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
-
 
 }

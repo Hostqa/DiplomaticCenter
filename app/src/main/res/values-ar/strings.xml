@@ -141,4 +141,13 @@
     <string name="NIGHT_MODE">Night Mode</string>
     <string name="DAY_MODE">Day Mode</string>
     <string name="ABOUT_US">About Us</string>
+    <string name="ALL_FEATURED">All Featured</string>
+    <string name="FEATURED_RESEARCH_AND_STUDIES"><![CDATA[Featured Research & Studies]]></string>
+    <string name="FEATURED_PUBLICATIONS">Featured Publications</string>
+    <string name="FEATURED_PROGRAMS_AND_PROJECTS"><![CDATA[Featured Programs & Projects]]></string>
+    <string name="FEATURED_EVENTS">Featured Events</string>
+    <string name="APP_TITLE" translatable="false"></string>
+    <string name="READ_MORE">READ MORE</string>
+    <string name="READ_LESS">READ LESS</string>
+    <string name="SINGLE_ARTICLE_ID">http://www.dcsdr.qa/english/xml.php?id=</string>
 </resources>

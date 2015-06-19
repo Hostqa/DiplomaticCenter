@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
@@ -71,7 +70,6 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
         try {
             context.openFileInput(currentArticle.getTitle());
         } catch (FileNotFoundException e) {
-            Toast.makeText(context,"FileNotFoundException",Toast.LENGTH_SHORT);
             loadImage(urlTN, holder, currentArticle.getTitle());
         }
         holder.share.setOnClickListener(new View.OnClickListener() {
@@ -84,7 +82,6 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
                 context.startActivity(sendIntent);
             }
         });
-
     }
 
     private void loadImage(String url, final ArticleViewHolder viewHolderPublication, final String title) {
@@ -104,9 +101,9 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
                         fileName = null;
                     }
                 }
+
                 @Override
-                public void onErrorResponse(VolleyError error) {
-                }
+                public void onErrorResponse(VolleyError error) {}
 
             });
         }

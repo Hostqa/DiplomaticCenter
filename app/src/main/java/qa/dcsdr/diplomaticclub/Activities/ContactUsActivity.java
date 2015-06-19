@@ -46,7 +46,6 @@ public class ContactUsActivity extends ActionBarActivity  {
 
     private Toolbar toolbar;
     private GoogleMap mMap; // Might be null if Google Play services APK is not available.
-
     private EditText name;
     private EditText email;
     private EditText subject;
@@ -80,7 +79,6 @@ public class ContactUsActivity extends ActionBarActivity  {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 if (name.getText().length()==0)
                     Toast.makeText(a, "Please enter your name.", Toast.LENGTH_SHORT).show();
                 else if (email.getText().length()==0)
@@ -100,27 +98,24 @@ public class ContactUsActivity extends ActionBarActivity  {
                     formParam.put("Message", message.getText().toString());
                     String result = performPostCall(postUrl, formParam);
                     Toast.makeText(a, "Request result: " + result, Toast.LENGTH_SHORT).show();
-
                 }
             }
         });
-
     }
 
+    // TODO: Get correct URL and test functionality
     public String performPostCall(String requestURL,
                                    HashMap<String, String> postDataParams) {
         URL url;
         String response = "";
         try {
             url = new URL(requestURL);
-
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setReadTimeout(15000);
             conn.setConnectTimeout(15000);
             conn.setRequestMethod("POST");
             conn.setDoInput(true);
             conn.setDoOutput(true);
-
 
             OutputStream os = conn.getOutputStream();
             BufferedWriter writer = new BufferedWriter(
@@ -147,7 +142,6 @@ public class ContactUsActivity extends ActionBarActivity  {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return response;
     }
 
@@ -159,12 +153,10 @@ public class ContactUsActivity extends ActionBarActivity  {
                 first = false;
             else
                 result.append("&");
-
             result.append(URLEncoder.encode(entry.getKey(), "UTF-8"));
             result.append("=");
             result.append(URLEncoder.encode(entry.getValue(), "UTF-8"));
         }
-
         return result.toString();
     }
 
@@ -173,6 +165,7 @@ public class ContactUsActivity extends ActionBarActivity  {
         super.onResume();
         setUpMapIfNeeded();
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -217,6 +210,6 @@ public class ContactUsActivity extends ActionBarActivity  {
         CameraPosition cameraPosition = new CameraPosition.Builder().target(latLng).zoom(14.0f).build();
         CameraUpdate cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition);
         mMap.moveCamera(cameraUpdate);
-
     }
+
 }

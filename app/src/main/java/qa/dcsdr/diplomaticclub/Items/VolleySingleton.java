@@ -14,14 +14,15 @@ import qa.dcsdr.diplomaticclub.Tools.MyApplication;
  */
 public class VolleySingleton {
 
-    private static VolleySingleton sInstance=null;
+    private static VolleySingleton sInstance = null;
     private ImageLoader imageLoader;
     private RequestQueue mRequestQueue;
 
     private VolleySingleton() {
-        mRequestQueue= Volley.newRequestQueue(MyApplication.getAppContext());
-        imageLoader=new ImageLoader(mRequestQueue, new ImageLoader.ImageCache() {
-            private LruCache<String, Bitmap> cache = new LruCache<>((int) ((Runtime.getRuntime().maxMemory()/1024)/8));
+        mRequestQueue = Volley.newRequestQueue(MyApplication.getAppContext());
+        imageLoader = new ImageLoader(mRequestQueue, new ImageLoader.ImageCache() {
+            private LruCache<String, Bitmap> cache = new LruCache<>((int) ((Runtime.getRuntime().maxMemory() / 1024) / 8));
+
             @Override
             public Bitmap getBitmap(String url) {
                 return cache.get(url);
@@ -29,25 +30,24 @@ public class VolleySingleton {
 
             @Override
             public void putBitmap(String url, Bitmap bitmap) {
-                cache.put(url,bitmap);
+                cache.put(url, bitmap);
             }
         });
 
     }
 
-    public static VolleySingleton getsInstance()
-    {
-        if (sInstance==null){
-            sInstance=new VolleySingleton();
+    public static VolleySingleton getsInstance() {
+        if (sInstance == null) {
+            sInstance = new VolleySingleton();
         }
         return sInstance;
     }
 
-    public RequestQueue getRequestQueue(){
+    public RequestQueue getRequestQueue() {
         return this.mRequestQueue;
     }
 
-    public ImageLoader getImageLoader(){
+    public ImageLoader getImageLoader() {
         return this.imageLoader;
     }
 

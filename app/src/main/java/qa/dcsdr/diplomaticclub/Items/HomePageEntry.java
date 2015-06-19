@@ -17,17 +17,8 @@ public class HomePageEntry {
         return imageId;
     }
 
-    public void setImageId(int imageId) {
-        this.imageId = imageId;
-    }
-
     public String getCategoryTitle() {
         return categoryTitle;
     }
-
-    public void setCategoryTitle(String categoryTitle) {
-        this.categoryTitle = categoryTitle;
-    }
-
 
 }

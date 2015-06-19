@@ -1,4 +1,4 @@
-package qa.dcsdr.diplomaticclub.Activities;
+package qa.dcsdr.diplomaticclub.Tools;
 
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;

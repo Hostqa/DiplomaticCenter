@@ -11,7 +11,7 @@
 
     <string name="title_activity_publications">PublicationsActivity</string>
     <string name="title_activity_display_articles">DisplayArticlesActivity</string>
-    <string name="error_timeout">No connection to server.</string>
+    <string name="error_timeout">No Internet Connection.</string>
     <string name="auth_failure">Authorization failed.</string>
     <string name="server_error">Server error.</string>
     <string name="network_error">Network error.</string>
@@ -65,6 +65,8 @@
     <string name="title_activity_contact_us">Diplomatic Center</string>
     <string name="title_activity_home_page">DCSDR</string>
     <string name="title_activity_authors">Authors</string>
+
+    <string name="APP_TITLE">Diplomatic Center</string>
 
     <string name="ALL_RESEARCH_AND_STUDIES"><![CDATA[All Research & Studies]]></string>
     <string name="STUDIES">Studies</string>
@@ -141,4 +143,16 @@
     <string name="NIGHT_MODE">Night Mode</string>
     <string name="DAY_MODE">Day Mode</string>
     <string name="ABOUT_US">About Us</string>
+    <string name="FRAGMENTS_ADDRESS">qa.dcsdr.diplomaticclub.Fragments.</string>
+    <string name="ALL_FEATURED">All Featured</string>
+    <string name="FEATURED_RESEARCH_AND_STUDIES"><![CDATA[Featured Research & Studies]]></string>
+    <string name="FEATURED_PUBLICATIONS">Featured Publications</string>
+    <string name="FEATURED_DISPUTES_RESOLUTION">Featured Disputes Resolution</string>
+    <string name="FEATURED_PROGRAMS_AND_PROJECTS"><![CDATA[Featured Programs & Projects]]></string>
+    <string name="FEATURED_EVENTS">Featured Events</string>
+    <string name="READ_MORE">READ MORE</string>
+    <string name="READ_LESS">READ LESS</string>
+    <string name="SHOW_AUTHOR_ARTICLES_URL">http://www.dcsdr.qa/api/xml_en_show_post_by_writer_id.php?id=</string>
+    <string name="AUTHOR_LIST_URL">http://www.dcsdr.qa/api/xml_en_show_writer.php</string>
+    <string name="SINGLE_ARTICLE_ID">http://www.dcsdr.qa/english/xml.php?id=</string>
 </resources>

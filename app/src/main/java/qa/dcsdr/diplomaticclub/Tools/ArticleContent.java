@@ -21,12 +21,7 @@ import com.android.volley.toolbox.StringRequest;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.io.StringReader;
-import java.util.zip.GZIPInputStream;
-import java.util.zip.GZIPOutputStream;
 
 import qa.dcsdr.diplomaticclub.Items.VolleySingleton;
 import qa.dcsdr.diplomaticclub.R;
@@ -39,55 +34,25 @@ public class ArticleContent {
     private final RequestQueue requestQueue;
     private final VolleySingleton volleySingleton;
     private int id;
-    private String content;
+    private String url;
 
-    private String url = "http://www.dcsdr.qa/english/xml.php?id=";
-
-    public ArticleContent(int id) {
+    public ArticleContent(int id, String url) {
         this.id = id;
-        this.url += id;
+        this.url = url+id;
         volleySingleton = VolleySingleton.getsInstance();
         requestQueue = volleySingleton.getRequestQueue();
     }
 
-    public static byte[] compress(String string) throws IOException {
-        ByteArrayOutputStream os = new ByteArrayOutputStream(string.length());
-        GZIPOutputStream gos = new GZIPOutputStream(os);
-        gos.write(string.getBytes());
-        gos.close();
-        byte[] compressed = os.toByteArray();
-        os.close();
-        return compressed;
-    }
-
-    public static String decompress(byte[] compressed) throws IOException {
-        final int BUFFER_SIZE = 32;
-        ByteArrayInputStream is = new ByteArrayInputStream(compressed);
-        GZIPInputStream gis = new GZIPInputStream(is, BUFFER_SIZE);
-        StringBuilder string = new StringBuilder();
-        byte[] data = new byte[BUFFER_SIZE];
-        int bytesRead;
-        while ((bytesRead = gis.read(data)) != -1) {
-            string.append(new String(data, 0, bytesRead));
-        }
-        gis.close();
-        is.close();
-        return string.toString();
-    }
-
     public String processXml(String data) {
-        boolean status = true;
-        String content ="";
+        String content = "";
         boolean inEntry = false;
         String textValue = "";
         try {
             XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
             factory.setNamespaceAware(true);
             XmlPullParser xpp = factory.newPullParser();
-
             xpp.setInput(new StringReader(data));
             int eventType = xpp.getEventType();
-
             String item = "item";
             while (eventType != XmlPullParser.END_DOCUMENT) {
                 String tag = xpp.getName();

@@ -116,14 +116,11 @@ public class HomePageActivity extends ActionBarActivity {
         return stringRequest;
     }
 
-
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     private void forceRTLIfSupported() {
-
         if (Locale.getDefault().getISO3Language().equals("ara"))
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1)
                 getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
-            }
     }
 
     @Override
@@ -135,7 +132,6 @@ public class HomePageActivity extends ActionBarActivity {
             getWindow().setNavigationBarColor(getResources().getColor(R.color.colorPrimary));
         }
         activity = this;
-
 
         toolbar = (Toolbar) findViewById(R.id.app_bar);
         progressBar = (LinearLayout) findViewById(R.id.progressBarLayout);
@@ -177,32 +173,32 @@ public class HomePageActivity extends ActionBarActivity {
     private void initializeAdapters() {
         featured = (HomePageViewPager) findViewById(R.id.pager1);
         featuredA = new HomePagePagerAdapter(getSupportFragmentManager(), articleList);
-        featuredA.setCategory("All Featured");
+        featuredA.setCategory(getString(R.string.ALL_FEATURED));
         featured.setAdapter(featuredA);
 
         researchAndStudies = (HomePageViewPager) findViewById(R.id.pager2);
         researchAndStudiesA = new HomePagePagerAdapter(getSupportFragmentManager(), articleList);
-        researchAndStudiesA.setCategory("Featured Research & Studies");
+        researchAndStudiesA.setCategory(getString(R.string.FEATURED_RESEARCH_AND_STUDIES));
         researchAndStudies.setAdapter(researchAndStudiesA);
 
         publications = (HomePageViewPager) findViewById(R.id.pager3);
         publicationsA = new HomePagePagerAdapter(getSupportFragmentManager(), articleList);
-        publicationsA.setCategory("Featured Publications");
+        publicationsA.setCategory(getString(R.string.FEATURED_PUBLICATIONS));
         publications.setAdapter(publicationsA);
 
         disputes_resolution = (HomePageViewPager) findViewById(R.id.pager4);
         disputes_resolutionA = new HomePagePagerAdapter(getSupportFragmentManager(), articleList);
-        disputes_resolutionA.setCategory("Featured Disputes Resolution");
+        disputes_resolutionA.setCategory(getString(R.string.FEATURED_DISPUTES_RESOLUTION));
         disputes_resolution.setAdapter(disputes_resolutionA);
 
         programsAndProjects = (HomePageViewPager) findViewById(R.id.pager5);
         programsAndProjectsA = new HomePagePagerAdapter(getSupportFragmentManager(), articleList);
-        programsAndProjectsA.setCategory("Featured Programs & Projects");
+        programsAndProjectsA.setCategory(getString(R.string.FEATURED_PROGRAMS_AND_PROJECTS));
         programsAndProjects.setAdapter(programsAndProjectsA);
 
         events = (HomePageViewPager) findViewById(R.id.pager6);
         eventsA = new HomePagePagerAdapter(getSupportFragmentManager(), articleList);
-        eventsA.setCategory("Featured Events");
+        eventsA.setCategory(getString(R.string.FEATURED_EVENTS));
         events.setAdapter(eventsA);
     }
 
@@ -219,14 +215,12 @@ public class HomePageActivity extends ActionBarActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
-
 
     @Override
     public void onBackPressed() {
@@ -241,4 +235,5 @@ public class HomePageActivity extends ActionBarActivity {
                 })
                 .show();
     }
+
 }

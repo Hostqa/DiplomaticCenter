@@ -3,7 +3,6 @@ package qa.dcsdr.diplomaticclub.Adapters;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
-import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -36,7 +35,6 @@ public class HomePagePagerAdapter extends FragmentStatePagerAdapter  {
         HomePageFragment fragment = new HomePageFragment();
         fragment.setArticleList(articleList);
         fragment.setPosition(position);
-//        fragment.setArticle(articleList.get(position));
         fragment.setCategory(category);
         return fragment;
     }
@@ -44,10 +42,8 @@ public class HomePagePagerAdapter extends FragmentStatePagerAdapter  {
     @Override
     public int getCount() {
         // TODO Auto-generated method stub
-        Log.d("COUNT", articleList.size() + "");
         return articleList.size();
     }
-
 
     public void setCategory(String category) {
         this.category = category;

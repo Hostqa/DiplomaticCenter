@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:theme="@style/CustomToolbar"
+    app:theme="@style/CustomToolbar" android:windowActionBarOverlay="true"
     android:background="@color/colorPrimary">
 
 </android.support.v7.widget.Toolbar>

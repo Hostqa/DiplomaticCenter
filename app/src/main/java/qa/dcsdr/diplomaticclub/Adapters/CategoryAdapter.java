@@ -21,7 +21,6 @@ import java.util.List;
 import qa.dcsdr.diplomaticclub.Activities.DisplayArticleListActivity;
 import qa.dcsdr.diplomaticclub.Items.CategoryDictionary;
 import qa.dcsdr.diplomaticclub.Items.CategoryEntry;
-import qa.dcsdr.diplomaticclub.Items.ClickListener;
 import qa.dcsdr.diplomaticclub.R;
 
 /**
@@ -33,7 +32,6 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
     private LayoutInflater inflater;
     private List<CategoryEntry> data = Collections.emptyList();
     private Context context;
-    private ClickListener clickListener;
     final CategoryDictionary categoryDictionary;
 
     public CategoryAdapter(Context context, List<CategoryEntry> data) {
@@ -50,19 +48,14 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
         return holder;
     }
 
-
     public static int calculateInSampleSize(
             BitmapFactory.Options options, int reqWidth, int reqHeight) {
-        // Raw height and width of image
         final int height = options.outHeight;
         final int width = options.outWidth;
         int inSampleSize = 1;
-
         if (height > reqHeight || width > reqWidth) {
-
             final int halfHeight = height / 2;
             final int halfWidth = width / 2;
-
             // Calculate the largest inSampleSize value that is a power of 2 and keeps both
             // height and width larger than the requested height and width.
             while ((halfHeight / inSampleSize) > reqHeight
@@ -70,36 +63,29 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
                 inSampleSize *= 2;
             }
         }
-
         return inSampleSize;
     }
 
     public static Bitmap decodeSampledBitmapFromResource(Resources res, int resId,
                                                          int reqWidth, int reqHeight) {
-
         // First decode with inJustDecodeBounds=true to check dimensions
         final BitmapFactory.Options options = new BitmapFactory.Options();
         options.inJustDecodeBounds = true;
         BitmapFactory.decodeResource(res, resId, options);
-
         // Calculate inSampleSize
         options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
-
         // Decode bitmap with inSampleSize set
         options.inJustDecodeBounds = false;
         return BitmapFactory.decodeResource(res, resId, options);
     }
 
-
     @Override
     public void onBindViewHolder(ViewHolderCategories holder, final int position) {
         final CategoryEntry current = data.get(position);
-//        holder.getCategoryImage().setImageResource(current.getCategoryImageId());
         holder.getCategoryImage().setImageBitmap(
                 decodeSampledBitmapFromResource(context.getResources(),
                         current.getCategoryImageId(), 300, 120));
         holder.getCategoryTitle().setText(current.getCategoryTitle());
-//        holder.getCategoryDescription().setText(current.getCategoryDescription());
         LinearLayout ln = holder.getSubCategoryList();
         for (int i = 0; i < current.getSubCategories().size(); i++) {
             TextView textView = new TextView(context);
@@ -156,7 +142,6 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
             super(itemView);
             categoryImage = (ImageView) itemView.findViewById(R.id.categoryImage);
             categoryTitle = (TextView) itemView.findViewById(R.id.categoryTitle);
-//            categoryDescription = (TextView) itemView.findViewById(R.id.categoryDescription);
             subCategoryList = (LinearLayout) itemView.findViewById(R.id.subCategoryList);
             openSubCategories = (Button) itemView.findViewById(R.id.rollDownSubCategories);
             openSubCategories.setOnClickListener(this);

@@ -7,12 +7,12 @@ import android.util.Base64;
  */
 public class ContentDecrypter {
 
-    public ContentDecrypter() {
-    }
+    public ContentDecrypter() {}
 
     public String decrypt(String encrypted) {
         byte[] d = Base64.decode(encrypted, Base64.DEFAULT);
         return new String(d);
     }
+
 }
 

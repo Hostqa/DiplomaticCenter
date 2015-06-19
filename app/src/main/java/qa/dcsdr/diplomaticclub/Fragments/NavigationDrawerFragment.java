@@ -49,13 +49,10 @@ import static qa.dcsdr.diplomaticclub.Tools.DrawerItemNumbers.DrawerItems.SETTIN
  */
 public class NavigationDrawerFragment extends Fragment implements ClickListener {
 
-
     private RecyclerView recyclerView;
-
     private ActionBarDrawerToggle mDrawerToggle;
     private DrawerLayout mDrawerLayout;
     private Handler mHandler = new Handler();
-
     private MyAdapter adapter;
 
     // The following is for showing the drawer when the user opens the app for the very first time
@@ -84,15 +81,12 @@ public class NavigationDrawerFragment extends Fragment implements ClickListener 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         View layout = inflater.inflate(R.layout.fragment_navigation_drawer, container, false);
         recyclerView = (RecyclerView) layout.findViewById(R.id.drawerList);
-
         adapter = new MyAdapter(getActivity(), getData());
         adapter.setClickListener(this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-
         // Inflate the layout for this fragment
         return layout;
     }
@@ -133,12 +127,13 @@ public class NavigationDrawerFragment extends Fragment implements ClickListener 
                 if (mPendingRunnable != null) {
                     mHandler.post(mPendingRunnable);
                     mPendingRunnable = null;
-                    }
+                }
 
             }
         };
         if (!mUserLearnedDrawer && !mFromSavedInstanceState) {
             mDrawerLayout.openDrawer(containerView);
+            drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
         }
 
         mDrawerLayout.setDrawerListener(mDrawerToggle);
@@ -172,8 +167,6 @@ public class NavigationDrawerFragment extends Fragment implements ClickListener 
         mPendingRunnable = new Runnable() {
             @Override
             public void run() {
-                // update the main content by replacing fragments
-                //
                 Intent intent=null;
                 switch (position) {
                     case HOME:
@@ -223,28 +216,10 @@ public class NavigationDrawerFragment extends Fragment implements ClickListener 
                         intent = new Intent(getActivity(), HomePageActivity.class);
                         break;
                 }
-
-//        mHandler.postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-////                mDrawerLayout.closeDrawer(Gravity.START);
-//                Toast.makeText(getActivity(), mDrawerLayout.isDrawerOpen(Gravity.START) + "", Toast.LENGTH_SHORT).show();
-//            }
-//        }, 200);
-
                 startActivity(intent);
-
-
-
-
-
-
             }
         };
-
         mDrawerLayout.closeDrawer(Gravity.START);
-
-
     }
 
 }

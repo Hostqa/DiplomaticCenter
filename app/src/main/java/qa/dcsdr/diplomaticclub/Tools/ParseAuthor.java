@@ -18,8 +18,7 @@ public class ParseAuthor {
         this.authors = new ArrayList<Author>();
     }
 
-
-    public ArrayList<Author> getAuthors () {
+    public ArrayList<Author> getAuthors() {
         return authors;
     }
 
@@ -28,17 +27,13 @@ public class ParseAuthor {
         Author currentAuthor = null;
         boolean inEntry = false;
         String textValue = "";
-
         try {
-
             XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
             factory.setNamespaceAware(true);
             XmlPullParser xpp = factory.newPullParser();
-
             xpp.setInput(new StringReader(this.data));
             int eventType = xpp.getEventType();
-
-            String item="item";
+            String item = "item";
             while (eventType != XmlPullParser.END_DOCUMENT) {
                 String tag = xpp.getName();
                 if (eventType == XmlPullParser.START_TAG) {
@@ -73,4 +68,5 @@ public class ParseAuthor {
         }
         return status;
     }
+
 }

@@ -115,7 +115,7 @@ public class DrawerLayout extends ViewGroup {
     /**
      * Minimum velocity that will be detected as a fling
      */
-    private static final int MIN_FLING_VELOCITY = 400; // dips per second
+    private static final int MIN_FLING_VELOCITY = 350; // dips per second
 
     /**
      * Experimental feature.

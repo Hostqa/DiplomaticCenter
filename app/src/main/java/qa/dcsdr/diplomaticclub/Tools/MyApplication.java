@@ -7,6 +7,7 @@ import android.content.Context;
  * Created by Tamim on 6/10/2015.
  */
 public class MyApplication extends Application{
+
     private static MyApplication sInstance;
 
     @Override

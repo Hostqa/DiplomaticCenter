@@ -33,17 +33,6 @@
 
 
         <activity
-            android:name=".Activities.MainActivity"
-            android:label="@string/title_activity_main"></activity>
-        <activity
-            android:name=".Activities.PublicationsActivity"
-            android:label="@string/title_activity_publications"
-            android:parentActivityName=".Activities.MainActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Activities.MainActivity" />
-        </activity>
-        <activity
             android:name=".Activities.DisplayArticleListActivity"
             android:configChanges="orientation"
             android:label="@string/title_activity_display_articles"

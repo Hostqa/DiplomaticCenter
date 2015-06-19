@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
 
@@ -24,16 +23,9 @@ import qa.dcsdr.diplomaticclub.Items.Article;
 import qa.dcsdr.diplomaticclub.Items.VolleySingleton;
 import qa.dcsdr.diplomaticclub.R;
 import qa.dcsdr.diplomaticclub.Tools.Ellipsizer;
-import qa.dcsdr.diplomaticclub.Tools.ParseArticle;
 
 
 public class HomePageFragment extends Fragment {
-
-    private TextView volleyError;
-    private ParseArticle parseApp;
-    private VolleySingleton volleySingleton;
-    private ImageLoader imageLoader;
-    private RequestQueue requestQueue;
 
     Article article;
     TextView featuredCategory;
@@ -46,10 +38,6 @@ public class HomePageFragment extends Fragment {
     private ArrayList<Article> articleList;
     private int position;
 
-    public void setArticle (Article article) {
-        this.article=article;
-    }
-
     public void setCategory(String category) {
         this.category = category;
     }
@@ -58,7 +46,6 @@ public class HomePageFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // TODO Auto-generated method stub
-
         VolleySingleton volleySingleton;
         ImageLoader imageLoader;
         volleySingleton=VolleySingleton.getsInstance();

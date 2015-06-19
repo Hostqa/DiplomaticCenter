@@ -47,10 +47,8 @@ import qa.dcsdr.diplomaticclub.Tools.ParseAuthor;
  */
 public class AuthorListFragment extends Fragment implements ClickListener {
 
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
     private static final String STATE_ARTICLES = "state_articles";
+
     private VolleySingleton volleySingleton;
     private ImageLoader imageLoader;
     private RequestQueue requestQueue;
@@ -70,15 +68,11 @@ public class AuthorListFragment extends Fragment implements ClickListener {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
      * @return A new instance of fragment CategoryTest.
      */
     public static AuthorListFragment newInstance(String param1, String param2) {
         AuthorListFragment fragment = new AuthorListFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -90,8 +84,7 @@ public class AuthorListFragment extends Fragment implements ClickListener {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-        }
+        if (getArguments() != null) {}
         volleySingleton = VolleySingleton.getsInstance();
         requestQueue = volleySingleton.getRequestQueue();
     }
@@ -101,31 +94,24 @@ public class AuthorListFragment extends Fragment implements ClickListener {
                              final Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.activity_authors, container, false);
-
         noArticles = (TextView) view.findViewById(R.id.noArticles);
         progressHeader = (LinearLayout) view.findViewById(R.id.progressHeader);
-//      progressHeader.setVisibility(View.GONE);
         retryButton=(Button)view.findViewById(R.id.retryButton);
-
         final LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         authorsAdapter= new AuthorAdapter(getActivity());
         authorsRV = (RecyclerView) view.findViewById(R.id.authorList);
         authorsRV.setLayoutManager(layoutManager);
         authorsRV.setAdapter(authorsAdapter);
         volleyError = (TextView) view.findViewById(R.id.volleyError);
-
-        url = "http://www.dcsdr.qa/api/xml_en_show_writer.php";
-
+        url = getResources().getString(R.string.AUTHOR_LIST_URL);
         toolbar = (Toolbar) view.findViewById(R.id.app_bar);
         ActionBarActivity activity = (ActionBarActivity) getActivity();
         activity.setSupportActionBar(toolbar);
         activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         activity.setProgressBarIndeterminateVisibility(true);
         DrawerLayout dl = (DrawerLayout) view.findViewById(R.id.drawer_layout_aa);
-
         NavigationDrawerFragment drawerFragment = (NavigationDrawerFragment)
                 getChildFragmentManager().findFragmentById(R.id.fragment_navigation_drawer_aa);
-
         drawerFragment.setUp(R.id.fragment_navigation_drawer_aa, dl, toolbar, true);
 
         progressHeader.setVisibility(View.VISIBLE);
@@ -141,8 +127,8 @@ public class AuthorListFragment extends Fragment implements ClickListener {
                 sendXmlRequest(url);
             }
         });
+
         if (savedInstanceState != null) {
-//            Toast.makeText(getActivity(),"LOADED",Toast.LENGTH_SHORT).show();
             authorList = savedInstanceState.getParcelableArrayList(STATE_ARTICLES);
             authorsAdapter.setAuthorList(authorList);
         } else {
@@ -199,13 +185,9 @@ public class AuthorListFragment extends Fragment implements ClickListener {
         outState.putParcelableArrayList(STATE_ARTICLES, authorList);
     }
 
-
     @Override
     public void itemClicked(View view, int position) {
         final Intent intent;
-
     }
-
-
 
 }

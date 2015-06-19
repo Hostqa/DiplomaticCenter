@@ -44,10 +44,6 @@ public class AuthorAdapter  extends RecyclerView.Adapter<AuthorAdapter.ArticleVi
         notifyItemRangeChanged(0, authorList.size());
     }
 
-    public void setClickListener (ClickListener clickListener) {
-        this.clickListener=clickListener;
-    }
-
     public AuthorAdapter(Context context) {
         layoutInflater = layoutInflater.from(context);
         volleySingleton=VolleySingleton.getsInstance();
@@ -80,16 +76,14 @@ public class AuthorAdapter  extends RecyclerView.Adapter<AuthorAdapter.ArticleVi
         holder.readMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (holder.readMore.getText().equals("READ MORE")) {
+                if (holder.readMore.getText().equals(context.getString(R.string.READ_MORE))) {
                     holder.authorDescription.setText(currentAuthor.getDescription());
-                    holder.readMore.setText("READ LESS");
+                    holder.readMore.setText(context.getString(R.string.READ_LESS));
                 }
                 else {
                     holder.authorDescription.setText(Ellipsizer.ellipsize(currentAuthor.getDescription(), 100));
-                    holder.readMore.setText("READ MORE");
-
+                    holder.readMore.setText(context.getString(R.string.READ_MORE));
                 }
-
             }
         });
 
@@ -98,16 +92,13 @@ public class AuthorAdapter  extends RecyclerView.Adapter<AuthorAdapter.ArticleVi
             public void onClick(View v) {
                 Intent intent = new Intent(context, DisplayArticleListActivity.class);
                 intent.putExtra(context.getString(R.string.PARENT_CLASS_TAG), context.getString(R.string.DISPLAY_FRAGMENT_PARENT_TAG));
-                String url = "http://www.dcsdr.qa/api/xml_en_show_post_by_writer_id.php?id="+currentAuthor.getId();
+                intent.putExtra("CAT_TITLE", currentAuthor.getTitle());
+                String url = context.getString(R.string.SHOW_AUTHOR_ARTICLES_URL)+currentAuthor.getId();
                 intent.putExtra("URL", url);
                 context.startActivity(intent);
-
             }
 
         });
-
-
-
     }
 
     private void loadImage(String url, final ArticleViewHolder viewHolderPublication, final String title) {
@@ -116,24 +107,22 @@ public class AuthorAdapter  extends RecyclerView.Adapter<AuthorAdapter.ArticleVi
             imageLoader.get(url, new ImageLoader.ImageListener() {
                 @Override
                 public void onResponse(ImageLoader.ImageContainer response, boolean isImmediate) {
-                    String fileName = title;//no .png or .jpg needed
+                    String fileName = title; //no .png or .jpg needed
                     try {
                         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
                         response.getBitmap().compress(Bitmap.CompressFormat.JPEG, 100, bytes);
                         FileOutputStream fo = context.openFileOutput(fileName, Context.MODE_PRIVATE);
                         fo.write(bytes.toByteArray());
                         fo.close();
-                    } catch (Exception e) {
-                        fileName = null;
-                    }
+                    } catch (Exception e) {}
                 }
                 @Override
                 public void onErrorResponse(VolleyError error) {
                 }
-
             });
         }
     }
+
     @Override
     public int getItemCount() {
         return authorList.size();
@@ -153,16 +142,13 @@ public class AuthorAdapter  extends RecyclerView.Adapter<AuthorAdapter.ArticleVi
             authorDescription = (TextView) itemView.findViewById(R.id.authorDescription);
             readMore = (Button) itemView.findViewById(R.id.readMoreAuthor);
             showPapers = (Button) itemView.findViewById(R.id.showPapersAuthor);
-//            readMore.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View v) {
-            Toast.makeText(context,"Loading...",Toast.LENGTH_SHORT).show();
             if (clickListener!=null)
                 clickListener.itemClicked(v,getPosition());
         }
     }
-
 
 }

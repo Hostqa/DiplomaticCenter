@@ -10,7 +10,6 @@ import android.view.View;
  */
 public class HomePageViewPager extends ViewPager {
 
-
     public HomePageViewPager(Context context) {
         super(context);
     }
@@ -21,7 +20,6 @@ public class HomePageViewPager extends ViewPager {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-
         int height = 0;
         for(int i = 0; i < getChildCount(); i++) {
             View child = getChildAt(i);
@@ -35,7 +33,5 @@ public class HomePageViewPager extends ViewPager {
 
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
-
-
 
 }

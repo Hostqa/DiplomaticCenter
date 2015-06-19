@@ -26,6 +26,7 @@ public class CategoryDictionary {
         return context.getString(id);
     }
 
+    @SuppressWarnings("unchecked")
     public List<CategoryEntry> getList(String category) {
         List<CategoryEntry> data = new ArrayList(5);
 
@@ -264,6 +265,7 @@ public class CategoryDictionary {
         return s(R.string.ID_LEVEL_URL) + id + "&level=" + level;
     }
 
+    @SuppressWarnings("unchecked")
     private void initializeData() {
         // Research & Studies
         // s(R.string.)

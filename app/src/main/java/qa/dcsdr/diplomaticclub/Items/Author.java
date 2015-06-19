@@ -3,8 +3,6 @@ package qa.dcsdr.diplomaticclub.Items;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.util.ArrayList;
-
 /**
  * Created by Tamim on 6/17/2015.
  */
@@ -12,18 +10,8 @@ public class Author implements Parcelable {
     private String title;
     private int id;
     private String photo;
-    private ArrayList<Article> articleList = new ArrayList<>();
 
-    public Author(){
-
-    }
-    public ArrayList<Article> getArticleList() {
-        return articleList;
-    }
-
-    public void setArticleList(ArrayList<Article> articleList) {
-        this.articleList = articleList;
-    }
+    public Author(){}
 
     public String getTitle() {
         return title;
@@ -71,6 +59,14 @@ public class Author implements Parcelable {
         description = in.readString();
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public static final Parcelable.Creator<Author> CREATOR
             = new Parcelable.Creator<Author>() {
         public Author createFromParcel(Parcel in) {
@@ -81,11 +77,4 @@ public class Author implements Parcelable {
         }
     };
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 }

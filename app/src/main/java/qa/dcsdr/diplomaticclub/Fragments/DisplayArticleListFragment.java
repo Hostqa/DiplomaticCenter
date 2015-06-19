@@ -6,7 +6,6 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -51,15 +50,10 @@ import qa.dcsdr.diplomaticclub.Tools.ParseArticle;
  * create an instance of this fragment.
  */
 public class DisplayArticleListFragment extends Fragment implements ClickListener {
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+
     private static final String STATE_ARTICLES = "state_articles";
     private String category;
     private ArticleAdapter rPubAdapter;
-    private SwipeRefreshLayout mSwipeRefreshLayout;
-    private String mParam1;
-    private String mParam2;
     private VolleySingleton volleySingleton;
     private ImageLoader imageLoader;
     private RequestQueue requestQueue;
@@ -71,6 +65,8 @@ public class DisplayArticleListFragment extends Fragment implements ClickListene
     private TextView noArticles;
     private Button retryButton;
     private LinearLayout linearLayout;
+    private ActionBarActivity activity;
+    boolean scroll_down;
 
     public String getRequestUrl() {
         return (String) this.getActivity().getIntent().getExtras().get("URL");
@@ -120,17 +116,15 @@ public class DisplayArticleListFragment extends Fragment implements ClickListene
         retryButton=(Button)view.findViewById(R.id.retryButton);
         final LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         toolbar = (Toolbar) view.findViewById(R.id.app_bar);
-        ActionBarActivity activity = (ActionBarActivity) getActivity();
+        activity = (ActionBarActivity) getActivity();
         activity.setSupportActionBar(toolbar);
         activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         activity.setProgressBarIndeterminateVisibility(true);
         DrawerLayout dl = (DrawerLayout) view.findViewById(R.id.drawer_layout_dal);
-
         NavigationDrawerFragment drawerFragment = (NavigationDrawerFragment)
                 getChildFragmentManager().findFragmentById(R.id.fragment_navigation_drawer_dal);
         if (drawerFragment==null ){
             Toast.makeText(getActivity(),"dl null", Toast.LENGTH_SHORT).show();
-
         }
         if (drawerFragment == null) {
             drawerFragment = (NavigationDrawerFragment)
@@ -143,6 +137,20 @@ public class DisplayArticleListFragment extends Fragment implements ClickListene
         rPubAdapter.setClickListener(this);
         articlesRV = (RecyclerView) view.findViewById(R.id.articleList);
         volleyError = (TextView) view.findViewById(R.id.volleyError);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //        articlesRV.addOnScrollListener(new HidingScrollListener() {
 //            @Override
 //            public void onHide() {
@@ -156,6 +164,32 @@ public class DisplayArticleListFragment extends Fragment implements ClickListene
         articlesRV.setLayoutManager(layoutManager);
         articlesRV.setAdapter(rPubAdapter);
         linlaHeaderProgress.setVisibility(View.VISIBLE);
+
+
+//
+//        articlesRV.setOnScrollListener(new RecyclerView.OnScrollListener() {
+//            @Override
+//            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+//                super.onScrollStateChanged(recyclerView, newState);
+//                if (scroll_down) {
+//                    activity.getSupportActionBar().hide();
+//                } else {
+//                    activity.getSupportActionBar().show();
+//                }
+//            }
+//            @Override
+//            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+//                super.onScrolled(recyclerView, dx, dy);
+//                if (dy > 40) {
+//                    //scroll down
+//                    scroll_down = true;
+//                } else if (dy < -5) {
+//                    //scroll up
+//                    scroll_down = false;
+//                }
+//            }
+//        });
+
         linearLayout = (LinearLayout) view.findViewById(R.id.errorLayout);
         linearLayout.setVisibility(View.GONE);
         retryButton.setOnClickListener(new View.OnClickListener() {

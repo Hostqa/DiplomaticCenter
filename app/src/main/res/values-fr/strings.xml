@@ -152,5 +152,13 @@ Le centre offre les recherches, études, évaluations et les conseils spécialis
     <string name="ABOUT_US">A propos</string>
 
     <string name="DRAWER_DIRECTION">start</string>
+    <string name="ALL_FEATURED">All Featured</string>
+    <string name="FEATURED_RESEARCH_AND_STUDIES"><![CDATA[Featured Research & Studies]]></string>
+    <string name="FEATURED_PUBLICATIONS">Featured Publications</string>
+    <string name="FEATURED_PROGRAMS_AND_PROJECTS"><![CDATA[Featured Programs & Projects]]></string>
+    <string name="FEATURED_EVENTS">Featured Events</string>
+    <string name="READ_MORE">READ MORE</string>
+    <string name="READ_LESS">READ LESS</string>
+    <string name="SINGLE_ARTICLE_ID">http://www.dcsdr.qa/english/xml.php?id=</string>
 
 </resources>

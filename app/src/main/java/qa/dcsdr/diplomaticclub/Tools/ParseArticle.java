@@ -27,8 +27,6 @@ public class ParseArticle {
         this.fa=activity;
     }
 
-
-
     public ArrayList<Article> getArticles() {
         return articles;
     }
@@ -38,27 +36,20 @@ public class ParseArticle {
         Article currentArticle = null;
         boolean inEntry = false;
         String textValue = "";
-
         try {
-
             XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
             factory.setNamespaceAware(true);
             XmlPullParser xpp = factory.newPullParser();
-
             xpp.setInput(new StringReader(this.data));
             int eventType = xpp.getEventType();
-
             String item="item";
             while (eventType != XmlPullParser.END_DOCUMENT) {
                 String tag = xpp.getName();
                 if (eventType == XmlPullParser.START_TAG) {
                     if (tag.toLowerCase().contains(item.toLowerCase())) {
                         inEntry = true;
-//                        Log.d("SPLIT", tag);
                         String[] s = tag.toLowerCase().split("-");
-//                        Log.d("SPLIT", s.length+"");
                         int id = Integer.parseInt(s[1]);
-//                        Log.d("SPLIT: ID", id+"");
                         currentArticle = new Article(Integer.parseInt(s[1]));
                         currentArticle.setId(id);
                     }
@@ -93,7 +84,7 @@ public class ParseArticle {
             e.printStackTrace();
             status = false;
         }
-
         return status;
     }
+
 }
