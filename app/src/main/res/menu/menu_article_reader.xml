@@ -10,35 +10,35 @@
     <item
         android:id="@+id/top"
         android:orderInCategory="100"
-        android:title="Jump to Top"
+        android:title="@string/JUMP_TO_TOP"
         app:showAsAction="never" />
     <item
         android:id="@+id/bottom"
         android:orderInCategory="100"
-        android:title="Jump to Bottom"
+        android:title="@string/JUMP_TO_BOTTOM"
         app:showAsAction="never" />
     <item
         android:id="@+id/increase"
         android:icon="@android:drawable/btn_plus"
         android:orderInCategory="100"
-        android:title="Larger Text"
+        android:title="@string/LARGER_TEXT"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/decrease"
         android:icon="@android:drawable/btn_minus"
         android:orderInCategory="100"
-        android:title="Smaller Text"
+        android:title="@string/SMALLER_TEXT"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/night_mode"
         android:icon="@android:drawable/btn_minus"
         android:orderInCategory="100"
-        android:title="Night Mode"
+        android:title="@string/NIGHT_MODE"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/default_size"
         android:orderInCategory="100"
-        android:title="Reset Size"
+        android:title="@string/RESET_SIZE"
         app:showAsAction="never" />
 
 </menu>

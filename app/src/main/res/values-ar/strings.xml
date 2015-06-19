@@ -3,13 +3,11 @@
     <string name="app_name">DCSDR</string>
     <string name="title_activity_main">Diplomatic Center</string>
 
-    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>
 
-    <string name="title_activity_publications">PublicationsActivity</string>
     <string name="title_activity_display_articles">DisplayArticlesActivity</string>
     <string name="error_timeout">No connection to server.</string>
     <string name="auth_failure">Authorization failed.</string>
@@ -54,9 +52,6 @@
         <item>#000000</item>
 
     </array>
-    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">
-        AIzaSyB1a4pBKDY7g4-jIm5_JDz1vLbxhwh8Kro
-    </string>
 
     <string name="RESEARCH_AND_STUDIES">بحوث ودراسات</string>
 
@@ -140,14 +135,43 @@
     <string name="CAT_TITLE_TAG">CAT_TITLE</string>
     <string name="NIGHT_MODE">Night Mode</string>
     <string name="DAY_MODE">Day Mode</string>
-    <string name="ABOUT_US">About Us</string>
+    <string name="ABOUT_US">من نحن</string>
     <string name="ALL_FEATURED">All Featured</string>
     <string name="FEATURED_RESEARCH_AND_STUDIES"><![CDATA[Featured Research & Studies]]></string>
     <string name="FEATURED_PUBLICATIONS">Featured Publications</string>
     <string name="FEATURED_PROGRAMS_AND_PROJECTS"><![CDATA[Featured Programs & Projects]]></string>
     <string name="FEATURED_EVENTS">Featured Events</string>
-    <string name="APP_TITLE" translatable="false"></string>
+    <string name="APP_TITLE">المركز الدبلوماسي</string>
     <string name="READ_MORE">READ MORE</string>
     <string name="READ_LESS">READ LESS</string>
     <string name="SINGLE_ARTICLE_ID">http://www.dcsdr.qa/english/xml.php?id=</string>
+    <string name="FEATURED_DISPUTES_RESOLUTION">المنازعات المعروضة القرار</string>
+    <string name="FRAGMENTS_ADDRESS">qa.dcsdr.diplomaticclub.Fragments.</string>
+    <string name="SHOW_AUTHOR_ARTICLES_URL">http://www.dcsdr.qa/api/xml_en_show_post_by_writer_id.php?id=</string>
+    <string name="AUTHOR_LIST_URL">http://www.dcsdr.qa/api/xml_en_show_writer.php</string>
+    <string name="SHOW_PAPERS">SHOW PAPERS</string>
+    <string name="DRAWER_DIRECTION">start</string>
+    <string name="SHARE">SHARE</string>
+    <string name="NEXT_ARTICLE">NEXT ARTICLE</string>
+    <string name="PREVIOUS_ARTICLE">PREVIOUS ARTICLE</string>
+    <string name="LARGER_TEXT">Larger Text</string>
+    <string name="SMALLER_TEXT">Smaller Text</string>
+    <string name="RESET_SIZE">Reset Size</string>
+    <string name="CONTACT_US">Contact Us</string>
+    <string name="FIND_US">Find us here.</string>
+    <string name="QUESTIONS_COMMENTS">Any questions or comments? Contact us below.</string>
+    <string name="FORM_NAME">Your Name</string>
+    <string name="FORM_EMAIL">Your E-mail</string>
+    <string name="YOUR_MESSAGE">Your message.</string>
+    <string name="FORM_MESSAGE">Message Subject</string>
+    <string name="FORM_SUBMIT">Submit</string>
+    <string name="PLEASE_ENTER_NAME">Please enter your name.</string>
+    <string name="PLEASE_ENTER_EMAIL">Please enter your E-mail.</string>
+    <string name="PLEASE_ENTER_EMAIL_CORRECT">Please enter a correct E-mail.</string>
+    <string name="PLEASE_ENTER_SUBJECT">Please enter a subject.</string>
+    <string name="PLEASE_ENTER_MESSAGE">Please enter a message.</string>
+    <string name="EXIT_MESSAGE">Are you sure you want to exit DCSDR?</string>
+    <string name="YES">Yes</string>
+    <string name="NO">No</string>
+
 </resources>

@@ -50,7 +50,7 @@
                     android:gravity="bottom"
                     android:padding="10dp"
                     android:paddingLeft="10dp"
-                    android:text="Contact Us"
+                    android:text="@string/CONTACT_US"
                     android:textColor="#FFFFFF"
                     android:textSize="26sp" />
 
@@ -63,7 +63,7 @@
                     android:layout_marginTop="30dp"
                     android:layout_marginRight="30dp"
                     android:fontFamily="sans-serif-light"
-                    android:text="Find us here."
+                    android:text="@string/FIND_US"
                     android:textSize="24sp" />
 
 
@@ -91,7 +91,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
                         android:fontFamily="sans-serif-light"
-                        android:text="Any questions or comments? Contact us below."
+                        android:text="@string/QUESTIONS_COMMENTS"
                         android:textSize="24sp" />
 
                     <EditText
@@ -102,7 +102,7 @@
                         android:background="@drawable/custom_edittext"
                         android:textCursorDrawable="@null"
                         android:ems="20"
-                        android:hint="Your Name"
+                        android:hint="@string/FORM_NAME"
                         android:padding="12dp" />
 
                     <EditText
@@ -113,7 +113,7 @@
                         android:background="@drawable/custom_edittext"
                         android:ems="20"
                         android:textCursorDrawable="@null"
-                        android:hint="Your E-mail"
+                        android:hint="@string/FORM_EMAIL"
                         android:padding="12dp" />
 
 
@@ -124,7 +124,7 @@
                         android:layout_marginTop="10dp"
                         android:background="@drawable/custom_edittext"
                         android:ems="20"
-                        android:hint="Message Subject"
+                        android:hint="@string/FORM_MESSAGE"
                         android:textCursorDrawable="@null"
                         android:inputType="textEmailAddress"
                         android:padding="12dp" />
@@ -135,7 +135,7 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/custom_edittext"
                         android:ems="20"
-                        android:hint="Your message."
+                        android:hint="@string/YOUR_MESSAGE"
                         android:inputType="textMultiLine"
                         android:minLines="3"
                         android:textColor="@color/colorPrimaryDark"
@@ -153,7 +153,7 @@
                         android:background="@drawable/custom_bg"
                         android:gravity="center"
                         android:textSize="16sp"
-                        android:text="Submit"
+                        android:text="@string/FORM_SUBMIT"
 
                         android:textColor="@color/colorPrimaryDark" />
 

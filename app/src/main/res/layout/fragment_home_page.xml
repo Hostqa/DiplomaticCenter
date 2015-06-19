@@ -29,7 +29,7 @@
             android:background="@color/colorPrimary"
             android:text="Featured Category"
             android:textColor="@color/colorWhite"
-            android:textSize="21sp"></TextView>
+            android:textSize="21sp"/>
 
         <View
             android:layout_width="match_parent" android:background="@color/colorWhite"
@@ -90,7 +90,7 @@
                 android:layout_centerVertical="true"
                 android:background="@drawable/custom_bg"
                 android:gravity="center"
-                android:text="READ MORE"
+                android:text="@string/READ_MORE"
                 android:textColor="@color/colorPrimaryDark" />
 
             <Button
@@ -100,7 +100,7 @@
                 android:layout_height="match_parent"
                 android:background="@drawable/custom_bg"
                 android:gravity="center"
-                android:text="SHARE"
+                android:text="@string/SHARE"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_centerVertical="true"
                 android:layout_centerHorizontal="true" />

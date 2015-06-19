@@ -80,15 +80,15 @@ public class ContactUsActivity extends ActionBarActivity  {
             @Override
             public void onClick(View v) {
                 if (name.getText().length()==0)
-                    Toast.makeText(a, "Please enter your name.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(a, getString(R.string.PLEASE_ENTER_NAME), Toast.LENGTH_SHORT).show();
                 else if (email.getText().length()==0)
-                    Toast.makeText(a, "Please enter your E-mail.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(a, getString(R.string.PLEASE_ENTER_EMAIL), Toast.LENGTH_SHORT).show();
                 else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email.getText()).matches())
-                    Toast.makeText(a, "Please enter a correct E-mail.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(a, getString(R.string.PLEASE_ENTER_EMAIL_CORRECT), Toast.LENGTH_SHORT).show();
                 else if (subject.getText().length()==0)
-                    Toast.makeText(a, "Please enter a subject.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(a, getString(R.string.PLEASE_ENTER_SUBJECT), Toast.LENGTH_SHORT).show();
                 else if (message.getText().length()==0)
-                    Toast.makeText(a, "Please enter a message.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(a, getString(R.string.PLEASE_ENTER_MESSAGE), Toast.LENGTH_SHORT).show();
                 else {
                     String postUrl = "";
                     HashMap<String,String> formParam = new HashMap<String, String>();

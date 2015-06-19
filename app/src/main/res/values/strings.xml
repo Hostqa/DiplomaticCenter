@@ -121,10 +121,10 @@
     <string name="ALL_RESEARCH_PROJECTS">All Research Projects</string>
     <string name="RESEARCH_FILES">Research Files</string>
     <string name="ALL_RESEARCH_FILES">All Research Files</string>
-    <string name="LEADERSHIP_BUILDING_PROJECTS">Leadership Building Projects</string>
+    <string name="LEADERSHIP_BUILDING_PROJECTS">Leadership Building</string>
     <string name="ALL_LEADERSHIP_BUILDING_PROJECTS">All Leadership Building</string>
     <string name="EVENTS">Events</string>
-    <string name="FEASABILITY_STUDIES_PROJECTS">Feasibility Studies Projects</string>
+    <string name="FEASABILITY_STUDIES_PROJECTS">Feasibility Studies</string>
     <string name="ALL_FEASABILITY_STUDIES">All Feasibility Studies</string>
     <string name="ALL_EVENTS">All Events</string>
     <string name="THE_CULTURAL_SALON">The Cultural Salon</string>
@@ -152,5 +152,31 @@
     <string name="SHOW_AUTHOR_ARTICLES_URL">http://www.dcsdr.qa/api/xml_en_show_post_by_writer_id.php?id=</string>
     <string name="AUTHOR_LIST_URL">http://www.dcsdr.qa/api/xml_en_show_writer.php</string>
     <string name="SINGLE_ARTICLE_ID">http://www.dcsdr.qa/english/xml.php?id=</string>
+    <string name="SHOW_PAPERS">SHOW PAPERS</string>
+    <string name="DRAWER_DIRECTION">start</string>
+    <string name="SHARE">SHARE</string>
+    <string name="NEXT_ARTICLE">NEXT ARTICLE</string>
+    <string name="PREVIOUS_ARTICLE">PREVIOUS ARTICLE</string>
+    <string name="LARGER_TEXT">Larger Text</string>
+    <string name="SMALLER_TEXT">Smaller Text</string>
+    <string name="RESET_SIZE">Reset Size</string>
+    <string name="JUMP_TO_BOTTOM">Jump to Bottom</string>
+    <string name="JUMP_TO_TOP">Jump to Top</string>
+    <string name="CONTACT_US">Contact Us</string>
+    <string name="FIND_US">Find us here.</string>
+    <string name="QUESTIONS_COMMENTS">Any questions or comments? Contact us below.</string>
+    <string name="FORM_NAME">Your Name</string>
+    <string name="FORM_EMAIL">Your E-mail</string>
+    <string name="YOUR_MESSAGE">Your message</string>
+    <string name="FORM_MESSAGE">Message Subject</string>
+    <string name="FORM_SUBMIT">Submit</string>
+    <string name="PLEASE_ENTER_NAME">Please enter your name.</string>
+    <string name="PLEASE_ENTER_EMAIL">Please enter your E-mail.</string>
+    <string name="PLEASE_ENTER_EMAIL_CORRECT">Please enter a correct E-mail.</string>
+    <string name="PLEASE_ENTER_SUBJECT">Please enter a subject.</string>
+    <string name="PLEASE_ENTER_MESSAGE">Please enter a message.</string>
+    <string name="EXIT_MESSAGE">Are you sure you want to exit DCSDR?</string>
+    <string name="YES">Yes</string>
+    <string name="NO">No</string>
 
 </resources>

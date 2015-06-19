@@ -225,14 +225,14 @@ public class HomePageActivity extends ActionBarActivity {
     @Override
     public void onBackPressed() {
         new AlertDialog.Builder(this)
-                .setMessage("Are you sure you want to exit DCSDR?")
+                .setMessage(getString(R.string.EXIT_MESSAGE))
                 .setCancelable(false)
-                .setNegativeButton("No", null)
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                .setPositiveButton(getString(R.string.YES), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         activity.finish();
                     }
                 })
+                .setNegativeButton(getString(R.string.NO), null)
                 .show();
     }
 
