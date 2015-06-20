@@ -16,6 +16,7 @@ public class ParseArticle {
     private FragmentActivity fa;
     private ArrayList<Article> articles;
 
+    
     public ParseArticle(String xmlData) {
         this.data = xmlData;
         this.articles = new ArrayList<Article>();
