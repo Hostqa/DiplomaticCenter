@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:key="CATEGORY_PREFERENCES"
+        android:layout="@layout/category_preference_layout"
+        android:summary="@string/CATEGORY_MESSAGE"
+        android:title="@string/CATEGORY">
+
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="RESEARCH_AND_STUDIES_SELECTED"
+            android:title="@string/RESEARCH_AND_STUDIES"
+            android:widgetLayout="@layout/custom_preference_layout" />
+
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="PUBLICATIONS_SELECTED"
+            android:title="@string/PUBLICATIONS"
+            android:widgetLayout="@layout/custom_preference_layout" />
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="DISPUTES_RESOLUTION_SELECTED"
+            android:title="@string/DISPUTES_RESOLUTION"
+            android:widgetLayout="@layout/custom_preference_layout" />
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="PROGRAMS_AND_PROJECTS_SELECTED"
+            android:title="@string/PROGRAMS_AND_PROJECTS"
+            android:widgetLayout="@layout/custom_preference_layout" />
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="EVENTS_SELECTED"
+            android:title="@string/EVENTS"
+            android:widgetLayout="@layout/custom_preference_layout" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="CATEGORY_PREFERENCES"
+        android:layout="@layout/language_layout_settings"
+        android:summary="@string/CHANGE_LANG_SUMMARY"
+        android:title="@string/LANGUAGE_SETTINGS">
+
+        <ListPreference
+            android:key="LANGUAGE_KEY"
+            android:title="@string/LANGUAGE"
+            android:dialogTitle="@string/LANGUAGE_DIALOG"
+            android:entries="@array/languages"
+            android:entryValues="@array/language_codes"
+            android:defaultValue="@string/ENGLISH" />
+
+
+    </PreferenceCategory>
+
+
+</PreferenceScreen>
+

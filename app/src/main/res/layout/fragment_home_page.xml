@@ -33,7 +33,7 @@
 
         <View
             android:layout_width="match_parent" android:background="@color/colorWhite"
-            android:layout_height="6dp"></View>
+            android:layout_height="6dp"/>
 
         <com.android.volley.toolbox.NetworkImageView
             android:id="@+id/featuredImage"

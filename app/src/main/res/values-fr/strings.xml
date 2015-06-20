@@ -42,7 +42,7 @@ Le centre offre les recherches, études, évaluations et les conseils spécialis
 
     <array name="drawer_items">
         <item>Accueil</item>
-        <item>A propos</item>
+        <item>A Propos</item>
         <item>Auteurs</item>
         <item>Catégories</item>
         <item>Recherches Et Études</item>
@@ -186,7 +186,25 @@ Le centre offre les recherches, études, évaluations et les conseils spécialis
     <string name="YES">Oui</string>
     <string name="NO">Non</string>
     <string name="DIRECTION">0</string>
-    <string name="RETRY">RETRY</string>
-    <string name="NO_ARTICLES_FOUND">NO ARTICLES FOUND.</string>
+    <string name="RETRY">REPR</string>
+    <string name="NO_ARTICLES_FOUND">Pas d\'article trouvé.</string>
+    <string name="title_settings">Paramètres</string>
+    <string name="CATEGORY">CATÉGORIES</string>
+    <string name="HOME">Accueil</string>
+    <string name="AUTHORS">Auteurs</string>
+    <string name="CATEGORIES">Catégories</string>
+    <string name="BOOKMARKS">Signets</string>
+    <string name="SETTINGS">Paramètres</string>
+    <string name="NO_CATEGORIES">Pas de catégories sélectionnées</string>
+   <string name="LANGUAGE">Langue</string>
+    <string name="LANGUAGE_DIALOG">Changer la langue de l\'application.</string>
+    <string name="ENGLISH">Anglais</string>
+    <string name="LANGUAGE_SETTINGS">App Langue</string>
+    <string name="CHANGE_LANG_SUMMARY">Changer la langue de l\'application ici.</string>
+    <string name="CATEGORY_MESSAGE">Sélectionnez les catégories que vous verrez dans le tiroir de navigation.</string>
+    <string name="DCSDR">DCSDR</string>
+    <string name="VERSION_SUMMARY">Centre Diplomatique Des Etudes Et La Résolution Des Disputes, Version 0.5</string>
+    <string name="NO_ARTICLES">Pas d\'article trouvé.</string>
+
 
 </resources>

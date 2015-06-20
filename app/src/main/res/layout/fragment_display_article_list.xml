@@ -15,11 +15,34 @@
         android:background="@color/colorAccent"
         android:tag="DisplayCategoriesFragment" >
 
+
+
         <FrameLayout
             android:id="@+id/dal_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
+
+
+
+
+            <!--<android.support.v4.widget.SwipeRefreshLayout-->
+            <!--android:id="@+id/swipeArticles"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent">-->
+            <!--</android.support.v4.widget.SwipeRefreshLayout>-->
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/articleList"
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+                     <include
+
+                android:id="@+id/app_bar"
+                layout="@layout/app_bar" />
+
 
             <LinearLayout
                 android:id="@+id/linlaHeaderProgress"
@@ -76,7 +99,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:fontFamily="sans-serif-light"
-                    android:text="NO ARTICLES FOUND."
+                    android:text="@string/NO_ARTICLES"
                     android:textAllCaps="true"
                     android:textColor="#000000"
                     android:textSize="20dp"
@@ -88,27 +111,12 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:text="RETRY"
+                    android:text="@string/RETRY"
                     android:visibility="gone" />
 
 
             </LinearLayout>
 
-            <!--<android.support.v4.widget.SwipeRefreshLayout-->
-            <!--android:id="@+id/swipeArticles"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent">-->
-            <!--</android.support.v4.widget.SwipeRefreshLayout>-->
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/articleList"
-
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-                     <include
-
-                android:id="@+id/app_bar"
-                layout="@layout/app_bar" />
 
         </FrameLayout>
 

@@ -3,12 +3,16 @@ package qa.dcsdr.diplomaticclub.Activities;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -36,9 +40,10 @@ import qa.dcsdr.diplomaticclub.Items.Article;
 import qa.dcsdr.diplomaticclub.Items.VolleySingleton;
 import qa.dcsdr.diplomaticclub.R;
 import qa.dcsdr.diplomaticclub.Tools.HomePageViewPager;
+import qa.dcsdr.diplomaticclub.Tools.MyApplication;
 import qa.dcsdr.diplomaticclub.Tools.ParseArticle;
 
-public class HomePageActivity extends ActionBarActivity {
+public class HomePageActivity extends ActionBarActivity implements SharedPreferences.OnSharedPreferenceChangeListener {
 
     private Toolbar toolbar;
 
@@ -117,9 +122,8 @@ public class HomePageActivity extends ActionBarActivity {
     }
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
-    private void forceRTLIfSupported()
-    {
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1){
+    private void forceRTLIfSupported() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
             getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
         }
     }
@@ -133,6 +137,9 @@ public class HomePageActivity extends ActionBarActivity {
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setNavigationBarColor(getResources().getColor(R.color.colorPrimary));
         }
+
+        PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
+        getSharedPreferences("LANGUAGE_CHANGE",MODE_PRIVATE).registerOnSharedPreferenceChangeListener(this);
 
         activity = this;
         toolbar = (Toolbar) findViewById(R.id.app_bar);
@@ -219,6 +226,8 @@ public class HomePageActivity extends ActionBarActivity {
         int id = item.getItemId();
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Intent intent = new Intent(this, SettingsActivity.class);
+            startActivity(intent);
             return true;
         }
         DrawerLayout dl = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -248,5 +257,21 @@ public class HomePageActivity extends ActionBarActivity {
                 .setNegativeButton(getString(R.string.NO), null)
                 .show();
     }
+
+    private void restartActivity() {
+        Intent intent = getIntent();
+        finish();
+        startActivity(intent);
+    }
+
+    @Override
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        Log.d("HERE","ON LANG CHANGE"+key);
+        if (key.equals("LANGUAGE_KEY")) {
+            ((MyApplication) getApplication()).setLocale();
+            restartActivity();
+        }
+    }
+
 
 }

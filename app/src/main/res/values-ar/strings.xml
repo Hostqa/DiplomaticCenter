@@ -178,5 +178,23 @@
     <string name="DIRECTION">0</string>
     <string name="RETRY">إعادة المحاولة</string>
     <string name="NO_ARTICLES_FOUND">لا توجد مقالات تم العثور عليها.</string>
+    <string name="title_settings">الإعدادات</string>
+    <string name="CATEGORY">الفئات</string>
+    <string name="HOME">الرئيسية</string>
+    <string name="AUTHORS">الكتاب</string>
+    <string name="CATEGORIES">الفئات</string>
+    <string name="BOOKMARKS">العناوين</string>
+    <string name="SETTINGS">الإعدادات</string>
+    <string name="NO_CATEGORIES">لا يوجد فئات محددة</string>
+    <string name="LANGUAGE">لغة</string>
+    <string name="LANGUAGE_DIALOG">تغيير لغة البرنامج.</string>
+    <string name="ENGLISH">الإنجليزية</string>
+    <string name="LANGUAGE_SETTINGS">لغة البرنامج</string>
+    <string name="CHANGE_LANG_SUMMARY">غير لغة التطبيق هنا.</string>
+    <string name="CATEGORY_MESSAGE">حدد الفئات سترون في درج التصفح.</string>
+    <string name="DCSDR">DCSDR</string>
+    <string name="VERSION_SUMMARY">المركز الدبلوماسي للدراسات المنازعات القرار، الإصدار: 0.5</string>
+    <string name="NO_ARTICLES">لا توجد مقالات تم العثور عليها.</string>
+
 
 </resources>

@@ -8,6 +8,19 @@
         <item>Events</item>
     </array>
 
+    <array name="languages">
+        <item>English</item>
+        <item>Arabic</item>
+        <item>French</item>
+    </array>
+
+    <array name="language_codes">
+        <item>en</item>
+        <item>ar</item>
+        <item>fr</item>
+    </array>
+
+
     <array name="drawer_items">
         <item>Home</item>
         <item>About Us</item>
@@ -181,5 +194,22 @@
     <string name="DIRECTION">0</string>
     <string name="RETRY">RETRY</string>
     <string name="NO_ARTICLES_FOUND">NO ARTICLES FOUND.</string>
+    <string name="title_settings">Settings</string>
+    <string name="CATEGORY">CATEGORIES</string>
+    <string name="HOME">Home</string>
+    <string name="AUTHORS">Authors</string>
+    <string name="CATEGORIES">Categories</string>
+    <string name="BOOKMARKS">Bookmarks</string>
+    <string name="SETTINGS">Settings</string>
+    <string name="NO_CATEGORIES">No categories selected</string>
+    <string name="LANGUAGE">Language</string>
+    <string name="LANGUAGE_DIALOG">Change the language of the app.</string>
+    <string name="ENGLISH">en</string>
+    <string name="LANGUAGE_SETTINGS">APP LANGUAGE</string>
+    <string name="CHANGE_LANG_SUMMARY">Change the language of the app here.</string>
+    <string name="CATEGORY_MESSAGE">Select the Categories you will see in the navigation drawer.</string>
+    <string name="DCSDR">DCSDR</string>
+    <string name="VERSION_SUMMARY">Diplomatic Center for Studies of Disputes Resolution, Version: 0.5</string>
+    <string name="NO_ARTICLES">NO ARTICLES FOUND.</string>
 
 </resources>

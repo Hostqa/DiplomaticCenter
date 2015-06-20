@@ -107,7 +107,7 @@ public class DisplayArticleListFragment extends Fragment implements ClickListene
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(LayoutInflater inflater, final ViewGroup container,
                              final Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.fragment_display_article_list, container, false);
@@ -224,6 +224,16 @@ public class DisplayArticleListFragment extends Fragment implements ClickListene
 
     private void sendXmlRequest(final View view) {
         final LinearLayout linlaHeaderProgress = (LinearLayout) view.findViewById(R.id.linlaHeaderProgress);
+        retryButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                retryButton.setVisibility(View.GONE);
+                volleyError.setVisibility(View.GONE);
+                linlaHeaderProgress.setVisibility(View.VISIBLE);
+                linearLayout.setVisibility(View.GONE);
+                sendXmlRequest(view);
+            }
+        });
         StringRequest stringRequest = new StringRequest(getRequestUrl(), new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {

@@ -14,4 +14,9 @@ public class DrawerEntry {
         this.title = title;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        DrawerEntry de = (DrawerEntry) o;
+        return de.title.equals(this.title);
+    }
 }

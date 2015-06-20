@@ -134,7 +134,7 @@
 
         <activity
             android:name=".Activities.HomePageActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:configChanges="keyboardHidden|locale|orientation|screenSize"
             android:label="@string/title_activity_home_page"
             android:launchMode="singleTask">
             <intent-filter>
@@ -147,6 +147,17 @@
             android:name=".Activities.AuthorsActivity"
             android:label="@string/title_activity_authors"
             android:launchMode="singleTask"></activity>
+
+        <activity
+            android:name=".Activities.SettingsActivity"
+            android:label="@string/title_settings"
+            android:configChanges="locale|orientation"
+            android:launchMode="standard"
+            android:parentActivityName=".Activities.HomePageActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.HomePageActivity" />
+        </activity>
 
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
