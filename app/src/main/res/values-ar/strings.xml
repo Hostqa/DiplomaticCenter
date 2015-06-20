@@ -1,23 +1,23 @@
 <resources>
 
     <string name="app_name">DCSDR</string>
-    <string name="title_activity_main">Diplomatic Center</string>
+    <string name="title_activity_main">المركز الدبلوماسي</string>
 
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">الإعدادات</string>
 
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>
 
     <string name="title_activity_display_articles">DisplayArticlesActivity</string>
-    <string name="error_timeout">No connection to server.</string>
-    <string name="auth_failure">Authorization failed.</string>
-    <string name="server_error">Server error.</string>
-    <string name="network_error">Network error.</string>
-    <string name="parse_error">Parse error.</string>
+    <string name="error_timeout">اتصال إنترنت غير متوفر.</string>
+    <string name="auth_failure">فشل التفويض.</string>
+    <string name="server_error">خطأ في الخادم.</string>
+    <string name="network_error">خطأ في الشبكة.</string>
+    <string name="parse_error">تحليل خطأ.</string>
     <string name="title_activity_article_reader">ArticleReader</string>
-    <string name="title_activity_about_us">Diplomatic Center</string>
-    <string name="about_us_p1">We are a thinking and strategic research center established in Doha in 2014. We are concerned with monitoring, analyzing, assessing, and studying the political, strategic, and economic transformation in the Gulf region, in addition to the international and regional interactions affecting the region. All these process are conducted with regard to the level of internal developments, regional relations, and international trends by means of scientific activities that are concerned with the interactions with the decision-making circles and influential institutions in the region’s countries by providing analyses, assessments, and consultations and establishing an effective communication channels among experts, intellectuals, and officials.</string>
-    <string name="about_us_p2">Among its services, the center is concerned with providing consultations to researchers and officials in the decision-making institutions at the various national, regional, and international levels. Moreover, we offer our services to international organizations and major companies operating in the region in addition to opinion leaderships in the various countries and those interested in the general developments in the Gulf region as well as the different media agencies.</string>
+    <string name="title_activity_about_us">المركز الدبلوماسي</string>
+    <string name="about_us_p1">(1) مركز بحث وتفكير استراتيجي، تأسس في الدوحة، نوفمبر2014  (2) يهتم المركز برصد وتحليل الشؤون الخليجية، وما يرتبط بها من تفاعلات إقليمية ودولية.  (3) المركز متخصص في إدارة وفض المنازعات وتسويتها من خلال:  أ - تحليل مسارات وآليات التسوية (المفاوضات، الدبلوماسية، التحكيم، الوساطة، ..)  ب - تحليل الصراعات القائمة والمتوقعة (العرقية، الدينية، السياسية، الاقتصادية)  ج - بناء سجل المخاطر الخليجية والإقليمية (الأمنية، البيئية، السياسية، الاقتصادية)</string>
+    <string name="about_us_p2">د - تحليل حفظ وبناء السلام (المواثيق، المنظمات، التجارب والخبرات)  (4) يشكل المركز حلقة وصل بين الباحثين والمفكرين والخبراء، والمسؤولين وصانعي القرار.  (5) يقوم المركز على تقديم البحوث والدراسات والتقديرات والاستشارات المتخصصة.  (6) يعتبر المركز دليلاً للباحثين والمهتمين لقواعد البيانات الدقيقة والملفات المتكاملة.</string>
     <string name="PARENT_CLASS_TAG">ParentClassName</string>
     <string name="DISPLAY_FRAGMENT_TAG">DisplayArticleListFragment</string>
     <string name="DISPLAY_FRAGMENT_PARENT_TAG">CategoryListFragment</string>
@@ -25,10 +25,10 @@
 
     <array name="categories">
         <item>بحوث ودراسات</item>
-        <item>Publications</item>
-        <item>Disputes Resolution</item>
-        <item>Programs &amp; Projects</item>
-        <item>Events</item>
+        <item>الإصدارا</item>
+        <item>فض المنازعات</item>
+        <item>برامج ومشاريع</item>
+        <item>الفعاليات</item>
     </array>
 
     <array name="drawer_items">
@@ -37,9 +37,9 @@
         <item>الكتاب</item>
         <item>الفئات</item>
         <item>بحوث ودراسات</item>
-        <item>لإصدارات</item>
+        <item>الإصدارا</item>
         <item>فض المنازعات</item>
-        <item>البرامج والمشروعات</item>
+        <item>برامج ومشاريع</item>
         <item>الفعاليات</item>
         <item>العناوين</item>
         <item>اتصل بنا</item>
@@ -55,123 +55,128 @@
 
     <string name="RESEARCH_AND_STUDIES">بحوث ودراسات</string>
 
-    <string name="EXPAND">EXPAND</string>
-    <string name="COLLAPSE">COLLAPSE</string>
-    <string name="title_activity_contact_us">Diplomatic Center</string>
+    <string name="EXPAND">مشاهدة الكل</string>
+    <string name="COLLAPSE">إخفاء كل</string>
+    <string name="title_activity_contact_us">المركز الدبلوماسي</string>
     <string name="title_activity_home_page">DCSDR</string>
-    <string name="title_activity_authors">Authors</string>
+    <string name="title_activity_authors">المؤلفين</string>
 
-    <string name="ALL_RESEARCH_AND_STUDIES"><![CDATA[All Research & Studies]]></string>
-    <string name="STUDIES">Studies</string>
-    <string name="POLITICAL_STUDIES">Political Studies</string>
-    <string name="STRATEGIC_STUDIES">Strategic Studies</string>
-    <string name="ECONOMIC_STUDIES">Economic Studies</string>
-    <string name="ENERGY_STUDIES">Energy Studies</string>
-    <string name="POLICIES_ANALYSIS">Policies Analysis</string>
-    <string name="INTERNAL_POLICY">Internal Policy</string>
-    <string name="FOREIGN_POLICY">Foreign Policy</string>
-    <string name="ECONOMIC_POLICY">Economic Policy</string>
-    <string name="POSITION_PAPERS">Position Papers</string>
-    <string name="POLITICAL_ESTIMATES">Political Estimates</string>
-    <string name="STRATEGIC_ESTIMATES">Strategy Estimates</string>
-    <string name="ECONOMIC_ESTIMATES">Economic Estimates</string>
-    <string name="PUBLICATIONS">Publications</string>
-    <string name="ALL_PUBLICATIONS">All Publications</string>
-    <string name="RESEARCH_AND_STUDIES_PUBLICATIONS"><![CDATA[Research & Studies]]></string>
-    <string name="ARBITRATION_STUDIES">Arbitration Studies</string>
-    <string name="POLICY_ANALYSIS">Policy Analysis</string>
-    <string name="POSITION_ESTIMATES">Position Estimates</string>
-    <string name="BOOKS">Books</string>
-    <string name="LITERATURE_BOOKS">Literature Books</string>
-    <string name="TRANSLATED_BOOKS">Translated Books</string>
-    <string name="EDITOR_BOOKS">Editor Books</string>
-    <string name="REPORTS_AND_PERIODICALS"><![CDATA[Reports & Periodicals]]></string>
-    <string name="MEDIA_REPORTS">Media Reports</string>
-    <string name="TREND_ANALYSIS_REPORTS">Trend Analysis Reports</string>
-    <string name="STRATEGIC_REPORTS">Strategic Reports</string>
-    <string name="DISPUTES_RESOLUTION">Disputes Resolution</string>
-    <string name="ALL_DISPUTES_RESOLUTION">All Disputes Resolution</string>
-    <string name="INTERNATIONAL_NEGOTIATIONS">International Negotiations</string>
-    <string name="PRINCIPLES_OF_NEGOTIATIONS">Principles of Negotiations</string>
-    <string name="ART_OF_DIPLOMACY">Art of Diplomacy</string>
-    <string name="INTERNATIONAL_ARBITRATION">International Arbitration</string>
-    <string name="MEDIATION">Mediation</string>
-    <string name="CONFLICT_ANALYSIS">Conflict Analysis</string>
-    <string name="ETHNIC_CONFLICTS">Ethnic Conflicts</string>
-    <string name="RELIGIOUS_CONFLICTS">Religious Conflicts</string>
-    <string name="POLITICAL_CONFLICTS">Political Conflicts</string>
-    <string name="ECONOMIC_CONFLICTS">Economic Conflicts</string>
-    <string name="RISK_REGISTER">Risk Register</string>
-    <string name="SECURITY_RISKS">Security Risks</string>
-    <string name="ENVIRONMENTAL_RISKS">Environmental Risks</string>
-    <string name="POLITICAL_RISKS">Political Risks</string>
-    <string name="ECONOMIC_RISKS">Economic Risks</string>
-    <string name="PEACE_BUILDING_AND_KEEPING"><![CDATA[Peace Keeping & Building]]></string>
-    <string name="PEACE_KEEPING_CHARTERS">Peace Keeping Charters</string>
-    <string name="PEACE_KEEPING">Peace Keeping</string>
-    <string name="EXPERIENCES_OF_PEACE_KEEPING">Experiences of Peace Keeping</string>
-    <string name="EXPERIENCES_OF_PEACE_BUILDING">Experiences of Peace-Building</string>
-    <string name="ALL_PROGRAMS_AND_PROJECTS"><![CDATA[All Programs & Projects]]></string>
-    <string name="PROGRAMS_AND_PROJECTS"><![CDATA[Programs & Projects]]></string>
-    <string name="RESEARCH_PROJECTS">Research Projects</string>
-    <string name="ALL_RESEARCH_PROJECTS">All Research Projects</string>
-    <string name="RESEARCH_FILES">Research Files</string>
-    <string name="ALL_RESEARCH_FILES">All Research Files</string>
-    <string name="LEADERSHIP_BUILDING_PROJECTS">Leadership Building Projects</string>
-    <string name="ALL_LEADERSHIP_BUILDING_PROJECTS">All Leadership Building</string>
-    <string name="EVENTS">Events</string>
-    <string name="FEASABILITY_STUDIES_PROJECTS">Feasibility Studies Projects</string>
-    <string name="ALL_FEASABILITY_STUDIES">All Feasibility Studies</string>
-    <string name="ALL_EVENTS">All Events</string>
-    <string name="THE_CULTURAL_SALON">The Cultural Salon</string>
-    <string name="ALL_CULTURAL_SALON">All Cultural Salon</string>
-    <string name="DCSS_NEWS">Dcss News</string>
-    <string name="ALL_DCSS_NEWS">All Dcss News</string>
-    <string name="SYMPOSIUMS">Symposiums</string>
-    <string name="ALL_SYMPOSIUMS">All Symposiums</string>
-    <string name="CONFERENCES">Conferences</string>
-    <string name="ALL_CONFERENCES">All Conferences</string>
+    <string name="ALL_RESEARCH_AND_STUDIES">جميع البحوث والدراسات</string>
+    <string name="STUDIES">دراسات</string>
+    <string name="POLITICAL_STUDIES">دراسات سياسية</string>
+    <string name="STRATEGIC_STUDIES">دراسات استراتيجية</string>
+    <string name="ECONOMIC_STUDIES">دراسات اقتصادية</string>
+    <string name="ENERGY_STUDIES">دراسات الطاقة</string>
+    <string name="POLICIES_ANALYSIS">تحليل سياسات</string>
+    <string name="INTERNAL_POLICY">السياسات الداخلية</string>
+    <string name="FOREIGN_POLICY">السياسات الخارجية</string>
+    <string name="ECONOMIC_POLICY">السياسات الاقتصادية</string>
+    <string name="POSITION_PAPERS">تقديرات موقف</string>
+    <string name="POLITICAL_ESTIMATES">تقديرات سياسية</string>
+    <string name="STRATEGIC_ESTIMATES">تقديرات إستراتجية</string>
+    <string name="ECONOMIC_ESTIMATES">تقديرات اقتصادية</string>
+    <string name="PUBLICATIONS">الإصدارا</string>
+    <string name="ALL_PUBLICATIONS">جميع المطبوعات</string>
+    <string name="RESEARCH_AND_STUDIES_PUBLICATIONS">البحوث والدراسات</string>
+    <string name="ARBITRATION_STUDIES">الدراسات المحكمة</string>
+    <string name="POLICY_ANALYSIS">تحليل سياسات</string>
+    <string name="POSITION_ESTIMATES">تقديرات موقف</string>
+    <string name="BOOKS">الكتب</string>
+    <string name="LITERATURE_BOOKS">الكتب المؤلفة</string>
+    <string name="TRANSLATED_BOOKS">الكتب المترجمة</string>
+    <string name="EDITOR_BOOKS">الكتب المحررة</string>
+    <string name="REPORTS_AND_PERIODICALS">التقارير والدوريات</string>
+    <string name="MEDIA_REPORTS">التقارير الاعلامية</string>
+    <string name="TREND_ANALYSIS_REPORTS">تقارير تحليل الاتجاهات</string>
+    <string name="STRATEGIC_REPORTS">التقارير الإستراتجية</string>
+    <string name="DISPUTES_RESOLUTION">فض المنازعات</string>
+    <string name="ALL_DISPUTES_RESOLUTION">جميع المنازعات القرار</string>
+    <string name="INTERNATIONAL_NEGOTIATIONS">تسوية الصراعات</string>
+    <string name="PRINCIPLES_OF_NEGOTIATIONS">المفاوضات</string>
+    <string name="ART_OF_DIPLOMACY">الدبلوماسية</string>
+    <string name="INTERNATIONAL_ARBITRATION">التحكيم</string>
+    <string name="MEDIATION">الوساطة</string>
+    <string name="CONFLICT_ANALYSIS">تحليل الصراعات</string>
+    <string name="ETHNIC_CONFLICTS">الصراعات العرقية</string>
+    <string name="RELIGIOUS_CONFLICTS">الصراعات الدينية</string>
+    <string name="POLITICAL_CONFLICTS">الصراعات السياسية</string>
+    <string name="ECONOMIC_CONFLICTS">الصراعات الاقتصادية</string>
+    <string name="RISK_REGISTER">سجل المخاطر</string>
+    <string name="SECURITY_RISKS">المخاطر الأمنية</string>
+    <string name="ENVIRONMENTAL_RISKS">المخاطر البيئية</string>
+    <string name="POLITICAL_RISKS">المخاطر السياسية</string>
+    <string name="ECONOMIC_RISKS">المخاطر الاقتصادية</string>
+    <string name="PEACE_BUILDING_AND_KEEPING">بناء وحفظ السلام</string>
+    <string name="PEACE_KEEPING_CHARTERS">مواثيق حفظ السلام</string>
+    <string name="PEACE_KEEPING">حفظ وبناء السلام</string>
+    <string name="EXPERIENCES_OF_PEACE_KEEPING">تجارب حفظ السلام</string>
+    <string name="EXPERIENCES_OF_PEACE_BUILDING">تجارب بناء السلام</string>
+    <string name="ALL_PROGRAMS_AND_PROJECTS">جميع البرامج والمشاريع</string>
+    <string name="PROGRAMS_AND_PROJECTS">برامج ومشاريع</string>
+    <string name="RESEARCH_PROJECTS">المشروعات البحثية</string>
+    <string name="ALL_RESEARCH_PROJECTS">جميع المشاريع البحثية</string>
+    <string name="RESEARCH_FILES">الملفات البحثية</string>
+    <string name="ALL_RESEARCH_FILES">جميع الملفات البحوث</string>
+    <string name="LEADERSHIP_BUILDING_PROJECTS">بناء القيادات</string>
+    <string name="ALL_LEADERSHIP_BUILDING_PROJECTS">جميع مبنى القيادة</string>
+    <string name="EVENTS">الفعاليات</string>
+    <string name="FEASABILITY_STUDIES_PROJECTS">دراسات الجدوى</string>
+    <string name="ALL_FEASABILITY_STUDIES">جميع دراسات الجدوى</string>
+    <string name="ALL_EVENTS">جميع أحداث</string>
+    <string name="THE_CULTURAL_SALON">الصالون الثقافي</string>
+    <string name="ALL_CULTURAL_SALON">جميع الصالون الثقافي</string>
+    <string name="DCSS_NEWS">أخبار المركز</string>
+    <string name="ALL_DCSS_NEWS">جميع أخبار المركز </string>
+    <string name="SYMPOSIUMS">الندوات</string>
+    <string name="ALL_SYMPOSIUMS">جميع الندوات</string>
+    <string name="CONFERENCES">المؤتمرات</string>
+    <string name="ALL_CONFERENCES">جميع المؤتمرات</string>
     <string name="ID_LEVEL_URL">http://www.dcsdr.qa/api/xml_en_show_post_by_category_id.php?id=</string>
     <string name="CAT_TITLE_TAG">CAT_TITLE</string>
-    <string name="NIGHT_MODE">Night Mode</string>
-    <string name="DAY_MODE">Day Mode</string>
+    <string name="NIGHT_MODE">الوضع الليلي</string>
+    <string name="DAY_MODE">الوضع النهار </string>
     <string name="ABOUT_US">من نحن</string>
-    <string name="ALL_FEATURED">All Featured</string>
-    <string name="FEATURED_RESEARCH_AND_STUDIES"><![CDATA[Featured Research & Studies]]></string>
-    <string name="FEATURED_PUBLICATIONS">Featured Publications</string>
-    <string name="FEATURED_PROGRAMS_AND_PROJECTS"><![CDATA[Featured Programs & Projects]]></string>
-    <string name="FEATURED_EVENTS">Featured Events</string>
+    <string name="ALL_FEATURED">جميع المميز</string>
+    <string name="FEATURED_RESEARCH_AND_STUDIES">البحوث والدراسات المميزة</string>
+    <string name="FEATURED_PUBLICATIONS">منشورات المميزة</string>
+    <string name="FEATURED_PROGRAMS_AND_PROJECTS">برامج ومشاريع المميزة</string>
+    <string name="FEATURED_EVENTS">أحداث المميزة</string>
     <string name="APP_TITLE">المركز الدبلوماسي</string>
-    <string name="READ_MORE">READ MORE</string>
-    <string name="READ_LESS">READ LESS</string>
-    <string name="SINGLE_ARTICLE_ID">http://www.dcsdr.qa/english/xml.php?id=</string>
+    <string name="READ_MORE">اقرأ المزيد</string>
+    <string name="READ_LESS">اقرأ أقل</string>
+    <string name="SINGLE_ARTICLE_ID">http://www.dcsdr.qa/arabic/xml.php?id=</string>
     <string name="FEATURED_DISPUTES_RESOLUTION">المنازعات المعروضة القرار</string>
     <string name="FRAGMENTS_ADDRESS">qa.dcsdr.diplomaticclub.Fragments.</string>
     <string name="SHOW_AUTHOR_ARTICLES_URL">http://www.dcsdr.qa/api/xml_en_show_post_by_writer_id.php?id=</string>
     <string name="AUTHOR_LIST_URL">http://www.dcsdr.qa/api/xml_en_show_writer.php</string>
-    <string name="SHOW_PAPERS">SHOW PAPERS</string>
+    <string name="SHOW_PAPERS">عرض  المقالات</string>
     <string name="DRAWER_DIRECTION">start</string>
-    <string name="SHARE">SHARE</string>
-    <string name="NEXT_ARTICLE">NEXT ARTICLE</string>
-    <string name="PREVIOUS_ARTICLE">PREVIOUS ARTICLE</string>
-    <string name="LARGER_TEXT">Larger Text</string>
-    <string name="SMALLER_TEXT">Smaller Text</string>
-    <string name="RESET_SIZE">Reset Size</string>
-    <string name="CONTACT_US">Contact Us</string>
-    <string name="FIND_US">Find us here.</string>
-    <string name="QUESTIONS_COMMENTS">Any questions or comments? Contact us below.</string>
-    <string name="FORM_NAME">Your Name</string>
-    <string name="FORM_EMAIL">Your E-mail</string>
-    <string name="YOUR_MESSAGE">Your message.</string>
-    <string name="FORM_MESSAGE">Message Subject</string>
-    <string name="FORM_SUBMIT">Submit</string>
-    <string name="PLEASE_ENTER_NAME">Please enter your name.</string>
-    <string name="PLEASE_ENTER_EMAIL">Please enter your E-mail.</string>
-    <string name="PLEASE_ENTER_EMAIL_CORRECT">Please enter a correct E-mail.</string>
-    <string name="PLEASE_ENTER_SUBJECT">Please enter a subject.</string>
-    <string name="PLEASE_ENTER_MESSAGE">Please enter a message.</string>
-    <string name="EXIT_MESSAGE">Are you sure you want to exit DCSDR?</string>
-    <string name="YES">Yes</string>
-    <string name="NO">No</string>
+    <string name="SHARE">مشاركة</string>
+    <string name="NEXT_ARTICLE">المقال التالي</string>
+    <string name="PREVIOUS_ARTICLE">المقال السابق</string>
+    <string name="LARGER_TEXT">تكبير الخط</string>
+    <string name="SMALLER_TEXT">تصغير الخط</string>
+    <string name="RESET_SIZE">إعادة تعيين الحجم</string>
+    <string name="CONTACT_US">اتصل بنا</string>
+    <string name="FIND_US">تجدنا هنا.</string>
+    <string name="QUESTIONS_COMMENTS">أي أسئلة أو تعليقات؟ الاتصال بنا باستخدام النموذج التالي.</string>
+    <string name="FORM_NAME">اسمك</string>
+    <string name="FORM_EMAIL">بريدك الإلكتروني</string>
+    <string name="YOUR_MESSAGE">رسالتك</string>
+    <string name="FORM_MESSAGE">موضوع الرسالة</string>
+    <string name="FORM_SUBMIT">إرسال</string>
+    <string name="PLEASE_ENTER_NAME">الرجاء إدخال اسمك.</string>
+    <string name="PLEASE_ENTER_EMAIL">يرجى إدخال البريد الإلكتروني الخاص بك.</string>
+    <string name="PLEASE_ENTER_EMAIL_CORRECT">يرجى إدخال البريد الإلكتروني الصحيح.</string>
+    <string name="PLEASE_ENTER_SUBJECT">يرجى إدخال موضوع.</string>
+    <string name="PLEASE_ENTER_MESSAGE">الرجاء إدخال رسالة.</string>
+    <string name="EXIT_MESSAGE">هل أنت متأكد أنك تريد الخروج DCSDR؟</string>
+    <string name="YES">نعم</string>
+    <string name="NO">كلا </string>
+    <string name="JUMP_TO_BOTTOM">الانتقال إلى الأسفل</string>
+    <string name="JUMP_TO_TOP">انتقال إلى الأعلى</string>
+    <string name="DIRECTION">0</string>
+    <string name="RETRY">إعادة المحاولة</string>
+    <string name="NO_ARTICLES_FOUND">لا توجد مقالات تم العثور عليها.</string>
 
 </resources>

@@ -185,5 +185,8 @@ Le centre offre les recherches, études, évaluations et les conseils spécialis
     <string name="EXIT_MESSAGE">Êtes-vous sûr de vouloir quitter DCSDR?</string>
     <string name="YES">Oui</string>
     <string name="NO">Non</string>
+    <string name="DIRECTION">0</string>
+    <string name="RETRY">RETRY</string>
+    <string name="NO_ARTICLES_FOUND">NO ARTICLES FOUND.</string>
 
 </resources>

@@ -19,13 +19,13 @@
         app:showAsAction="never" />
     <item
         android:id="@+id/increase"
-        android:icon="@android:drawable/btn_plus"
+        android:icon="@drawable/zoom_in"
         android:orderInCategory="100"
         android:title="@string/LARGER_TEXT"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/decrease"
-        android:icon="@android:drawable/btn_minus"
+        android:icon="@drawable/zoom_out"
         android:orderInCategory="100"
         android:title="@string/SMALLER_TEXT"
         app:showAsAction="ifRoom" />

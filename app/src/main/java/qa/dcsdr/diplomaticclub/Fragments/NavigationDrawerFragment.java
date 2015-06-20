@@ -106,6 +106,7 @@ public class NavigationDrawerFragment extends Fragment implements ClickListener 
     public void setUp(int fragmentId, final DrawerLayout drawerLayout, Toolbar toolbar, boolean hb) {
         containerView = getActivity().findViewById(fragmentId);
         mDrawerLayout = drawerLayout;
+
         drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
         mDrawerToggle = new ActionBarDrawerToggle(getActivity(), drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close) {
             @Override
@@ -130,6 +131,21 @@ public class NavigationDrawerFragment extends Fragment implements ClickListener 
                 }
 
             }
+
+
+
+//            @Override
+//            public boolean onOptionsItemSelected(MenuItem item) {
+//                if (item != null && item.getItemId() == android.R.id.home) {
+//                    if (mDrawerLayout.isDrawerOpen(Gravity.RIGHT)) {
+//                        mDrawerLayout.closeDrawer(Gravity.RIGHT);
+//                    } else {
+//                        mDrawerLayout.openDrawer(Gravity.RIGHT);
+//                    }
+//                }
+//                return false;
+//            }
+
         };
         if (!mUserLearnedDrawer && !mFromSavedInstanceState) {
             mDrawerLayout.openDrawer(containerView);

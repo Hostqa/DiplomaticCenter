@@ -45,7 +45,7 @@
                 android:textSize="20sp"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"></TextView>
+                android:layout_alignParentStart="true"/>
 
         </RelativeLayout>
 
@@ -61,14 +61,16 @@
             android:paddingTop="6dp"
             android:text="This is a sample abstract that is full of randomness and ..."
             android:textColor="#ff000000"
-            android:textSize="14sp"></TextView>
+            android:textSize="14sp"/>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:paddingBottom="6dp"
             android:paddingLeft="14dp"
-            android:paddingRight="20dp">
+            android:paddingStart="14dp"
+            android:paddingRight="20dp"
+            android:paddingEnd="20dp">
 
             <Button
                 android:id="@+id/readMoreAuthor"

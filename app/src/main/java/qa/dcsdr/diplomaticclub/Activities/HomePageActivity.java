@@ -9,6 +9,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -28,7 +29,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 
 import java.util.ArrayList;
-import java.util.Locale;
 
 import qa.dcsdr.diplomaticclub.Adapters.HomePagePagerAdapter;
 import qa.dcsdr.diplomaticclub.Fragments.NavigationDrawerFragment;
@@ -117,11 +117,13 @@ public class HomePageActivity extends ActionBarActivity {
     }
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
-    private void forceRTLIfSupported() {
-        if (Locale.getDefault().getISO3Language().equals("ara"))
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1)
-                getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
+    private void forceRTLIfSupported()
+    {
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1){
+            getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
+        }
     }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -131,8 +133,8 @@ public class HomePageActivity extends ActionBarActivity {
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setNavigationBarColor(getResources().getColor(R.color.colorPrimary));
         }
-        activity = this;
 
+        activity = this;
         toolbar = (Toolbar) findViewById(R.id.app_bar);
         progressBar = (LinearLayout) findViewById(R.id.progressBarLayout);
         errorLayout = (LinearLayout) findViewById(R.id.errorLayoutHomePage);
@@ -217,6 +219,17 @@ public class HomePageActivity extends ActionBarActivity {
         int id = item.getItemId();
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            return true;
+        }
+        DrawerLayout dl = (DrawerLayout) findViewById(R.id.drawer_layout);
+
+
+        if (item != null && id == android.R.id.home) {
+            if (dl.isDrawerOpen(Gravity.RIGHT)) {
+                dl.closeDrawer(Gravity.RIGHT);
+            } else {
+                dl.openDrawer(Gravity.RIGHT);
+            }
             return true;
         }
         return super.onOptionsItemSelected(item);

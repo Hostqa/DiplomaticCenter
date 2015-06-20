@@ -178,5 +178,8 @@
     <string name="EXIT_MESSAGE">Are you sure you want to exit DCSDR?</string>
     <string name="YES">Yes</string>
     <string name="NO">No</string>
+    <string name="DIRECTION">0</string>
+    <string name="RETRY">RETRY</string>
+    <string name="NO_ARTICLES_FOUND">NO ARTICLES FOUND.</string>
 
 </resources>
