@@ -200,15 +200,15 @@ Le centre offre les recherches, études, évaluations et les conseils spécialis
     <string name="LANGUAGE_DIALOG">Changer la langue de l\'application.</string>
     <string name="ENGLISH">Anglais</string>
     <string name="LANGUAGE_SETTINGS">App Langue</string>
-    <string name="CHANGE_LANG_SUMMARY">Changer la langue de l\'application ici.</string>
+    <string name="CHANGE_LANG_SUMMARY">Changer la langue de l\'application ci-dessous.</string>
     <string name="CATEGORY_MESSAGE">Sélectionnez les catégories que vous verrez dans le tiroir de navigation.</string>
     <string name="DCSDR">DCSDR</string>
     <string name="VERSION_SUMMARY">Centre Diplomatique Des Etudes Et La Résolution Des Disputes, Version 0.5</string>
     <string name="NO_ARTICLES">Pas d\'article trouvé.</string>
     <string name="ARABIC_SUPPORT">Sauf la langue de votre téléphone est l\'arabe, nous ne soutenons pas entièrement cette option. Etes-vous sûr que vous voulez faire ce changement?</string>
     <string name="CANCEL">Annuler</string>
-    <string name="FEATURED_MESSAGE">Select the Featured category articles you want on your Homepage.</string>
-    <string name="HOMEPAGE">HOME PAGE</string>
+    <string name="FEATURED_MESSAGE">Sélectionnez la catégorie des articles en vedette que vous voulez sur votre page d\'accueil.</string>
+    <string name="HOMEPAGE">PAGE D\'ACCUEIL</string>
 
 
 </resources>

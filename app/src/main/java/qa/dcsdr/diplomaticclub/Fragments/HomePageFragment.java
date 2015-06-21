@@ -4,7 +4,9 @@ package qa.dcsdr.diplomaticclub.Fragments;
  * Created by Tamim on 6/16/2015.
  */
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -13,9 +15,13 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
 
+import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 
 import qa.dcsdr.diplomaticclub.Activities.ArticleReader;
@@ -37,6 +43,7 @@ public class HomePageFragment extends Fragment {
     Button featuredShare;
     private ArrayList<Article> articleList;
     private int position;
+    private ImageLoader imageLoader;
 
     public void setCategory(String category) {
         this.category = category;
@@ -47,7 +54,6 @@ public class HomePageFragment extends Fragment {
                              Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         VolleySingleton volleySingleton;
-        ImageLoader imageLoader;
         volleySingleton=VolleySingleton.getsInstance();
         imageLoader=volleySingleton.getImageLoader();
 
@@ -69,6 +75,11 @@ public class HomePageFragment extends Fragment {
         featuredTitle.setText(Ellipsizer.ellipsize(article.getTitle(), 60));
 
         featuredImage.setImageUrl(article.getPhoto(), imageLoader);
+        try {
+            getActivity().openFileInput(article.getTitle());
+        } catch (FileNotFoundException e) {
+            loadImage(article.getPhoto(), article.getTitle());
+        }
 
         readMore.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,6 +107,33 @@ public class HomePageFragment extends Fragment {
 
         return view;
     }
+
+
+    private void loadImage(String url, final String title) {
+        if (url!=null && url!="N/A")
+        {
+            imageLoader.get(url, new ImageLoader.ImageListener() {
+                @Override
+                public void onResponse(ImageLoader.ImageContainer response, boolean isImmediate) {
+                    String fileName = title;//no .png or .jpg needed
+                    try {
+                        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+                        response.getBitmap().compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+                        FileOutputStream fo = getActivity().openFileOutput(fileName, Context.MODE_PRIVATE);
+                        fo.write(bytes.toByteArray());
+                        fo.close();
+                    } catch (Exception e) {
+                        fileName = null;
+                    }
+                }
+
+                @Override
+                public void onErrorResponse(VolleyError error) {}
+
+            });
+        }
+    }
+
 
     public void setArticleList(ArrayList<Article> articleList) {
         this.articleList = articleList;

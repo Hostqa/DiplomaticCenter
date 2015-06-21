@@ -70,7 +70,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
         try {
             context.openFileInput(currentArticle.getTitle());
         } catch (FileNotFoundException e) {
-            loadImage(urlTN, holder, currentArticle.getTitle());
+            loadImage(urlTN, currentArticle.getTitle());
         }
         holder.share.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,7 +84,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
         });
     }
 
-    private void loadImage(String url, final ArticleViewHolder viewHolderPublication, final String title) {
+    private void loadImage(String url, final String title) {
         if (url!=null && url!="N/A")
         {
             imageLoader.get(url, new ImageLoader.ImageListener() {

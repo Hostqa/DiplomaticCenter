@@ -5,26 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
-
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:background="@color/colorAccent"
-        android:tag="DisplayCategoriesFragment" >
-
-
+        android:orientation="vertical"
+        android:tag="DisplayCategoriesFragment">
 
         <FrameLayout
             android:id="@+id/dal_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-
-
-
 
 
             <!--<android.support.v4.widget.SwipeRefreshLayout-->
@@ -35,11 +28,12 @@
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/articleList"
-
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
-                     <include
 
+
+
+            <include
                 android:id="@+id/app_bar"
                 layout="@layout/app_bar" />
 
@@ -118,8 +112,11 @@
             </LinearLayout>
 
 
-        </FrameLayout>
 
+        </FrameLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/abc_action_bar_default_height_material"/>
     </LinearLayout>
 
     <fragment

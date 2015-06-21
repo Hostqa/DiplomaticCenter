@@ -31,10 +31,9 @@
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/night_mode"
-        android:icon="@android:drawable/btn_minus"
         android:orderInCategory="100"
         android:title="@string/NIGHT_MODE"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="never" />
     <item
         android:id="@+id/default_size"
         android:orderInCategory="100"

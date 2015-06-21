@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -85,7 +84,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                 if (data.get(4).getTitle().equals(context.getString(R.string.NO_CATEGORIES)))
                     data.remove(4);
             }
-            Toast.makeText(context, "NO: " + de.getTitle(), Toast.LENGTH_SHORT).show();
             int index = 4 + (categories.indexOf(categories.get(position)));
             int p;
             if (index > data.size() || index > (data.size() - 3)) {

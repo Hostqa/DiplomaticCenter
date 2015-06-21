@@ -190,15 +190,15 @@
     <string name="LANGUAGE_DIALOG">تغيير لغة البرنامج.</string>
     <string name="ENGLISH">الإنجليزية</string>
     <string name="LANGUAGE_SETTINGS">لغة البرنامج</string>
-    <string name="CHANGE_LANG_SUMMARY">غير لغة التطبيق هنا.</string>
+    <string name="CHANGE_LANG_SUMMARY">تغيير لغة البرنامج من خلال التالي.</string>
     <string name="CATEGORY_MESSAGE">حدد الفئات سترون في درج التصفح.</string>
     <string name="DCSDR">DCSDR</string>
     <string name="VERSION_SUMMARY">المركز الدبلوماسي للدراسات المنازعات القرار، الإصدار: 0.5</string>
     <string name="NO_ARTICLES">لا توجد مقالات تم العثور عليها.</string>
     <string name="ARABIC_SUPPORT">إلا إذا لغة الهاتف الخاص بك هي اللغة العربية، نحن لا نؤيد تماما هذا الخيار. هل أنت متأكد أنك تريد أن تجعل هذا التغيير؟</string>
     <string name="CANCEL">إلغاء</string>
-    <string name="FEATURED_MESSAGE">Select the Featured category articles you want on your Homepage.</string>
-    <string name="HOMEPAGE">HOME PAGE</string>
+    <string name="FEATURED_MESSAGE">حدد فئات المميزة التي تريدها على الصفحة الرئيسية الخاصة بك.</string>
+    <string name="HOMEPAGE">الصفحة الرئيسية</string>
 
 
 </resources>

@@ -14,7 +14,6 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -85,7 +84,7 @@ public class HomePageActivity extends ActionBarActivity implements SharedPrefere
     private void sendXmlRequest(HomePagePagerAdapter[] hppa) {
 
         SharedPreferences sp = getSharedPreferences("HOMEPAGE_CHANGES", MODE_PRIVATE);
-        String[] keys = {"FEATURED_ALL","FEATURED_RESEARCH_AND_STUDIES_SELECTED",
+        String[] keys = {"FEATURED_ALL", "FEATURED_RESEARCH_AND_STUDIES_SELECTED",
                 "FEATURED_PUBLICATIONS_SELECTED",
                 "FEATURED_DISPUTES_RESOLUTION_SELECTED",
                 "FEATURED_PROGRAMS_AND_PROJECTS_SELECTED",
@@ -95,7 +94,7 @@ public class HomePageActivity extends ActionBarActivity implements SharedPrefere
         String url1 = "http://www.dcsdr.qa/api/xml_en_show_post_by_category_id.php?id=2&level=3";
 
         for (int i = 0; i < hppa.length; i++) {
-            Log.d("HERE",hppa[i].getCategory());
+            Log.d("HERE", hppa[i].getCategory());
             if (!sp.getBoolean(keys[i], true)) {
                 hpvpM[i].setVisibility(View.GONE);
                 continue;
@@ -230,8 +229,7 @@ public class HomePageActivity extends ActionBarActivity implements SharedPrefere
 
                     hpvp[i].setVisibility(View.VISIBLE);
 
-                }
-                else
+                } else
                     hpvp[i].setVisibility(View.GONE);
 
             }
@@ -288,20 +286,9 @@ public class HomePageActivity extends ActionBarActivity implements SharedPrefere
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            Intent intent = new Intent(this, SettingsActivity.class);
-            startActivity(intent);
-            return true;
-        }
-        DrawerLayout dl = (DrawerLayout) findViewById(R.id.drawer_layout);
-
-
-        if (item != null && id == android.R.id.home) {
-            if (dl.isDrawerOpen(Gravity.RIGHT)) {
-                dl.closeDrawer(Gravity.RIGHT);
-            } else {
-                dl.openDrawer(Gravity.RIGHT);
-            }
+        if (id == R.id.search_button) {
+//            Intent intent = new Intent(this, SettingsActivity.class);
+//            startActivity(intent);
             return true;
         }
         return super.onOptionsItemSelected(item);

@@ -138,18 +138,6 @@ public class DisplayArticleListFragment extends Fragment implements ClickListene
         volleyError = (TextView) view.findViewById(R.id.volleyError);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
         articlesRV.addOnScrollListener(new HidingScrollListener() {
             @Override
             public void onHide() {
@@ -163,31 +151,6 @@ public class DisplayArticleListFragment extends Fragment implements ClickListene
         articlesRV.setLayoutManager(layoutManager);
         articlesRV.setAdapter(rPubAdapter);
         linlaHeaderProgress.setVisibility(View.VISIBLE);
-
-
-//
-//        articlesRV.setOnScrollListener(new RecyclerView.OnScrollListener() {
-//            @Override
-//            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-//                super.onScrollStateChanged(recyclerView, newState);
-//                if (scroll_down) {
-//                    activity.getSupportActionBar().hide();
-//                } else {
-//                    activity.getSupportActionBar().show();
-//                }
-//            }
-//            @Override
-//            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-//                super.onScrolled(recyclerView, dx, dy);
-//                if (dy > 40) {
-//                    //scroll down
-//                    scroll_down = true;
-//                } else if (dy < -5) {
-//                    //scroll up
-//                    scroll_down = false;
-//                }
-//            }
-//        });
 
         linearLayout = (LinearLayout) view.findViewById(R.id.errorLayout);
         linearLayout.setVisibility(View.GONE);
@@ -282,8 +245,6 @@ public class DisplayArticleListFragment extends Fragment implements ClickListene
     @Override
     public void itemClicked(View view, int position) {
         final Intent intent;
-//        LinearLayout linlaHeaderProgress = (LinearLayout) getActivity().findViewById(R.id.linlaHeaderProgress);
-//        linlaHeaderProgress.setVisibility(View.VISIBLE);
         intent = new Intent(getActivity(), ArticleReader.class);
         intent.putExtra("ARTICLE_LIST", articleList);
         intent.putExtra("POSITION", position);

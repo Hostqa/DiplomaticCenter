@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
@@ -70,7 +69,7 @@ public class AuthorAdapter  extends RecyclerView.Adapter<AuthorAdapter.ArticleVi
         try {
             context.openFileInput(currentAuthor.getTitle());
         } catch (FileNotFoundException e) {
-            Toast.makeText(context,"FileNotFoundException",Toast.LENGTH_SHORT);
+//            Toast.makeText(context,"FileNotFoundException",Toast.LENGTH_SHORT);
             loadImage(urlTN, holder, currentAuthor.getTitle());
         }
         holder.readMore.setOnClickListener(new View.OnClickListener() {
