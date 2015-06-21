@@ -10,7 +10,6 @@
         android:name="android.permission.READ_EXTERNAL_STORAGE"
         android:maxSdkVersion="18" />
     <uses-permission android:name="android.permission.INTERNET" />
-
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <uses-feature
@@ -25,11 +24,9 @@
         android:largeHeap="true"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
-
 
         <activity
             android:name=".Activities.DisplayArticleListActivity"
@@ -42,8 +39,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activities.CategoryListActivity" />
         </activity>
-
-
         <activity
             android:name=".Activities.ArticleReader"
             android:configChanges="keyboardHidden|orientation|screenSize"
@@ -53,7 +48,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activities.DisplayArticleListActivity" />
         </activity>
-
         <activity
             android:name=".Activities.AboutUsActivity"
             android:label="@string/title_activity_about_us"
@@ -117,9 +111,18 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activities.HomePageActivity" />
+
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+            </intent-filter>
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+
         </activity>
-
-
         <activity
             android:name=".Activities.ContactUsActivity"
             android:label="@string/title_activity_contact_us"
@@ -130,8 +133,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activities.HomePageActivity" />
         </activity>
-
-
         <activity
             android:name=".Activities.HomePageActivity"
             android:configChanges="keyboardHidden|locale|orientation|screenSize"
@@ -146,12 +147,11 @@
         <activity
             android:name=".Activities.AuthorsActivity"
             android:label="@string/title_activity_authors"
-            android:launchMode="singleTask"></activity>
-
+            android:launchMode="singleTask" />
         <activity
             android:name=".Activities.SettingsActivity"
-            android:label="@string/title_settings"
             android:configChanges="locale|orientation"
+            android:label="@string/title_settings"
             android:launchMode="standard"
             android:parentActivityName=".Activities.HomePageActivity">
             <meta-data
@@ -163,7 +163,20 @@
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="@string/google_maps_key" />
 
-
+        <activity
+            android:name=".Activities.SearchActivity"
+            android:label="@string/title_activity_search"
+            android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+            </intent-filter>
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+        </activity>
     </application>
 
 </manifest>

@@ -214,5 +214,9 @@
     <string name="CANCEL">Cancel</string>
     <string name="FEATURED_MESSAGE">Select the Featured category articles you want on your Homepage.</string>
     <string name="HOMEPAGE">HOME PAGE</string>
+    <string name="search_hint">Search all articles</string>
+    <string name="title_activity_search">SearchActivity</string>
+
+    <string name="hello_world">Hello world!</string>
 
 </resources>

@@ -2,6 +2,7 @@ package qa.dcsdr.diplomaticclub.Activities;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.app.SearchManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -12,6 +13,7 @@ import android.preference.PreferenceManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -71,7 +73,8 @@ public class HomePageActivity extends ActionBarActivity implements SharedPrefere
     private VolleySingleton volleySingleton;
     private RequestQueue requestQueue;
     private ParseArticle parseApp;
-
+    private int total = 0;
+    private int totalPrime = 0;
     HomePageViewPager[] hpvp;
     private HomePageViewPager[] hpvpM;
 
@@ -99,6 +102,7 @@ public class HomePageActivity extends ActionBarActivity implements SharedPrefere
                 hpvpM[i].setVisibility(View.GONE);
                 continue;
             }
+            total+=1;
             if (i % 2 == 0)
                 requestQueue.add(getStringRequest(url, i, hppa));
             else
@@ -113,8 +117,11 @@ public class HomePageActivity extends ActionBarActivity implements SharedPrefere
                 parseApp = new ParseArticle(response);
                 parseApp.processXml();
                 articleList = parseApp.getArticles();
-                progressBar.setVisibility(View.GONE);
-                volleyErrorHomePage.setVisibility(View.GONE);
+                totalPrime+=1;
+                if (totalPrime==total) {
+                    progressBar.setVisibility(View.GONE);
+                    volleyErrorHomePage.setVisibility(View.GONE);
+                }
                 hppa[p].setArticleList(articleList);
                 hppa[p].notifyDataSetChanged();
             }
@@ -276,7 +283,20 @@ public class HomePageActivity extends ActionBarActivity implements SharedPrefere
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_home_page, menu);
-        return true;
+
+        MenuItem searchItem = menu.findItem(R.id.search_button);
+
+        SearchManager searchManager = (SearchManager) this.getSystemService(Context.SEARCH_SERVICE);
+
+        SearchView searchView = null;
+        if (searchItem != null) {
+            searchView = (SearchView) searchItem.getActionView();
+        }
+        if (searchView != null) {
+            searchView.setSearchableInfo(searchManager.getSearchableInfo(this.getComponentName()));
+        }
+        return super.onCreateOptionsMenu(menu);
+
     }
 
     @Override
@@ -291,6 +311,11 @@ public class HomePageActivity extends ActionBarActivity implements SharedPrefere
 //            startActivity(intent);
             return true;
         }
+        else if (id == R.id.search_button) {
+            onSearchRequested();
+        }
+
+
         return super.onOptionsItemSelected(item);
     }
 
