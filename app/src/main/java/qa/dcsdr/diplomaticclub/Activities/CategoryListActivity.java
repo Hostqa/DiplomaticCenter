@@ -24,7 +24,7 @@ public class CategoryListActivity extends ActionBarActivity {
         String title = ((String)myIntent.getExtras().get("CAT_TITLE"));
         setTitle(title);
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            getWindow().setNavigationBarColor(getResources().getColor(R.color.colorPrimary));
+            getWindow().setNavigationBarColor(getResources().getColor(R.color.colorPrimaryDark));
         }
         FragmentManager fm = getSupportFragmentManager();
         fragment = fm.findFragmentByTag("CategoryList");

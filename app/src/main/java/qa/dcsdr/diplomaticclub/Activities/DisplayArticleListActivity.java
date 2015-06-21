@@ -25,7 +25,7 @@ public class DisplayArticleListActivity extends ActionBarActivity {
         String title = (String) myIntent.getExtras().get("CAT_TITLE");
         setTitle(title);
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            getWindow().setNavigationBarColor(getResources().getColor(R.color.colorPrimary));
+            getWindow().setNavigationBarColor(getResources().getColor(R.color.colorPrimaryDark));
         }
         requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         super.onCreate(savedInstanceState);

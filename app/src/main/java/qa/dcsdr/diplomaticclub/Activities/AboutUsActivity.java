@@ -21,7 +21,7 @@ public class AboutUsActivity extends ActionBarActivity   {
         setContentView(R.layout.activity_about_us);
         toolbar = (Toolbar) findViewById(R.id.app_bar);
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            getWindow().setNavigationBarColor(getResources().getColor(R.color.colorPrimary));
+            getWindow().setNavigationBarColor(getResources().getColor(R.color.colorPrimaryDark));
         }
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
