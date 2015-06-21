@@ -18,7 +18,6 @@ import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkError;
@@ -125,7 +124,6 @@ public class DisplayArticleListFragment extends Fragment implements ClickListene
         NavigationDrawerFragment drawerFragment = (NavigationDrawerFragment)
                 getChildFragmentManager().findFragmentById(R.id.fragment_navigation_drawer_dal);
         if (drawerFragment==null ){
-            Toast.makeText(getActivity(),"dl null", Toast.LENGTH_SHORT).show();
         }
         if (drawerFragment == null) {
             drawerFragment = (NavigationDrawerFragment)
@@ -204,7 +202,6 @@ public class DisplayArticleListFragment extends Fragment implements ClickListene
             }
         });
         if (savedInstanceState != null) {
-//            Toast.makeText(getActivity(),"LOADED",Toast.LENGTH_SHORT).show();
             articleList = savedInstanceState.getParcelableArrayList(STATE_ARTICLES);
             rPubAdapter.setArticleList(articleList);
         } else {

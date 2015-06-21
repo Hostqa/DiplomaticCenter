@@ -2,6 +2,7 @@ package qa.dcsdr.diplomaticclub.Activities;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -33,6 +34,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import qa.dcsdr.diplomaticclub.Adapters.HomePagePagerAdapter;
 import qa.dcsdr.diplomaticclub.Fragments.NavigationDrawerFragment;
@@ -70,18 +73,38 @@ public class HomePageActivity extends ActionBarActivity implements SharedPrefere
     private RequestQueue requestQueue;
     private ParseArticle parseApp;
 
+    HomePageViewPager[] hpvp;
+    private HomePageViewPager[] hpvpM;
+
     private Activity activity;
 
     private ArrayList<Article> articleList = new ArrayList<>();
 
+    private SharedPreferences.OnSharedPreferenceChangeListener homepageListener;
+
     private void sendXmlRequest(HomePagePagerAdapter[] hppa) {
+
+        SharedPreferences sp = getSharedPreferences("HOMEPAGE_CHANGES", MODE_PRIVATE);
+        String[] keys = {"FEATURED_ALL","FEATURED_RESEARCH_AND_STUDIES_SELECTED",
+                "FEATURED_PUBLICATIONS_SELECTED",
+                "FEATURED_DISPUTES_RESOLUTION_SELECTED",
+                "FEATURED_PROGRAMS_AND_PROJECTS_SELECTED",
+                "FEATURED_EVENTS_SELECTED"};
+
         String url = "http://www.dcsdr.qa/api/xml_en_show_post_by_category_id.php?id=4&level=2";
         String url1 = "http://www.dcsdr.qa/api/xml_en_show_post_by_category_id.php?id=2&level=3";
-        for (int i = 0; i < hppa.length; i++)
+
+        for (int i = 0; i < hppa.length; i++) {
+            Log.d("HERE",hppa[i].getCategory());
+            if (!sp.getBoolean(keys[i], true)) {
+                hpvpM[i].setVisibility(View.GONE);
+                continue;
+            }
             if (i % 2 == 0)
                 requestQueue.add(getStringRequest(url, i, hppa));
             else
                 requestQueue.add(getStringRequest(url1, i, hppa));
+        }
     }
 
     public StringRequest getStringRequest(String url, final int p, final HomePagePagerAdapter[] hppa) {
@@ -135,11 +158,11 @@ public class HomePageActivity extends ActionBarActivity implements SharedPrefere
         setContentView(R.layout.activity_home_page);
         setTitle(R.string.title_activity_main);
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            getWindow().setNavigationBarColor(getResources().getColor(R.color.colorPrimary));
+            getWindow().setNavigationBarColor(getResources().getColor(R.color.colorPrimaryDark));
         }
 
         PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
-        getSharedPreferences("LANGUAGE_CHANGE",MODE_PRIVATE).registerOnSharedPreferenceChangeListener(this);
+        getSharedPreferences("LANGUAGE_CHANGE", MODE_PRIVATE).registerOnSharedPreferenceChangeListener(this);
 
         activity = this;
         toolbar = (Toolbar) findViewById(R.id.app_bar);
@@ -162,6 +185,16 @@ public class HomePageActivity extends ActionBarActivity implements SharedPrefere
         final HomePagePagerAdapter[] hppa = {featuredA, researchAndStudiesA, publicationsA,
                 disputes_resolutionA, programsAndProjectsA, eventsA};
 
+        final List<HomePagePagerAdapter> hppaCopy = new ArrayList<HomePagePagerAdapter>();
+//        {featuredA, researchAndStudiesA, publicationsA,
+//                disputes_resolutionA, programsAndProjectsA, eventsA};
+
+        hpvp = new HomePageViewPager[]{researchAndStudies, publications,
+                disputes_resolution, programsAndProjects, events};
+
+        hpvpM = new HomePageViewPager[]{featured, researchAndStudies, publications,
+                disputes_resolution, programsAndProjects, events};
+
         progressBar.setVisibility(View.VISIBLE);
         errorLayout.setVisibility(View.GONE);
 
@@ -177,6 +210,36 @@ public class HomePageActivity extends ActionBarActivity implements SharedPrefere
                 sendXmlRequest(hppa);
             }
         });
+
+
+        homepageListener = new SharedPreferences.OnSharedPreferenceChangeListener() {
+            @Override
+            public void onSharedPreferenceChanged(SharedPreferences prefs, String key) {
+                String[] keys = {"FEATURED_RESEARCH_AND_STUDIES_SELECTED",
+                        "FEATURED_PUBLICATIONS_SELECTED",
+                        "FEATURED_DISPUTES_RESOLUTION_SELECTED",
+                        "FEATURED_PROGRAMS_AND_PROJECTS_SELECTED",
+                        "FEATURED_EVENTS_SELECTED"};
+                List<String> list = Arrays.asList(keys);
+                int i = list.indexOf(key);
+                Log.d("INDEX!~", "INDEX: " + i);
+
+                int v = hpvp[i].getVisibility();
+                if (v == View.GONE) {
+                    sendXmlRequest(hppa);
+
+                    hpvp[i].setVisibility(View.VISIBLE);
+
+                }
+                else
+                    hpvp[i].setVisibility(View.GONE);
+
+            }
+        };
+
+        getSharedPreferences("HOMEPAGE_CHANGES", Context.MODE_PRIVATE).registerOnSharedPreferenceChangeListener(homepageListener);
+
+
     }
 
     private void initializeAdapters() {
@@ -266,7 +329,6 @@ public class HomePageActivity extends ActionBarActivity implements SharedPrefere
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-        Log.d("HERE","ON LANG CHANGE"+key);
         if (key.equals("LANGUAGE_KEY")) {
             ((MyApplication) getApplication()).setLocale();
             restartActivity();

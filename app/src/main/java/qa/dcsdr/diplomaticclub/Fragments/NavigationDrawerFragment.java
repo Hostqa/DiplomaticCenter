@@ -82,7 +82,8 @@ public class NavigationDrawerFragment extends Fragment implements ClickListener 
     String BOOKMARKS;
     String CONTACT_US;
     String SETTINGS;
-    private SharedPreferences.OnSharedPreferenceChangeListener listner;
+
+    private SharedPreferences.OnSharedPreferenceChangeListener drawerListener;
 
     public NavigationDrawerFragment() {
         // Required empty public constructor
@@ -108,27 +109,25 @@ public class NavigationDrawerFragment extends Fragment implements ClickListener 
         CONTACT_US = getActivity().getResources().getString(R.string.CONTACT_US);
         SETTINGS = getActivity().getResources().getString(R.string.SETTINGS);
 
-        listner = new SharedPreferences.OnSharedPreferenceChangeListener() {
+        drawerListener = new SharedPreferences.OnSharedPreferenceChangeListener() {
             @Override
             public void onSharedPreferenceChanged(SharedPreferences prefs, String key) {
-                Log.d("SharedPreferences", key);
                 String[] keys = {"RESEARCH_AND_STUDIES_SELECTED",
                         "PUBLICATIONS_SELECTED",
                         "DISPUTES_RESOLUTION_SELECTED",
                         "PROGRAMS_AND_PROJECTS_SELECTED",
                         "EVENTS_SELECTED"};
                 List<String> list = Arrays.asList(keys);
-                Log.d("TEST", "KEYKEYKEYKEYKEY: "+key);
                     int i = list.indexOf(key);
                 if (i != -1) {
-                    Log.d("INDEX", i+"");
                     adapter.delete(i);
                 }
                 adapter.notifyDataSetChanged();
 
             }
         };
-        getActivity().getSharedPreferences("DRAWER_CHANGES", Context.MODE_PRIVATE).registerOnSharedPreferenceChangeListener(listner);
+
+        getActivity().getSharedPreferences("DRAWER_CHANGES", Context.MODE_PRIVATE).registerOnSharedPreferenceChangeListener(drawerListener);
 
     }
 

@@ -33,8 +33,8 @@
 
     <array name="drawer_items">
         <item>الرئيسية</item>
-        <item>عنا</item>
-        <item>الكتاب</item>
+        <item>من نحن</item>
+        <item>المؤلفين</item>
         <item>الفئات</item>
         <item>بحوث ودراسات</item>
         <item>الإصدارا</item>
@@ -181,7 +181,7 @@
     <string name="title_settings">الإعدادات</string>
     <string name="CATEGORY">الفئات</string>
     <string name="HOME">الرئيسية</string>
-    <string name="AUTHORS">الكتاب</string>
+    <string name="AUTHORS">المؤلفين</string>
     <string name="CATEGORIES">الفئات</string>
     <string name="BOOKMARKS">العناوين</string>
     <string name="SETTINGS">الإعدادات</string>
@@ -195,6 +195,10 @@
     <string name="DCSDR">DCSDR</string>
     <string name="VERSION_SUMMARY">المركز الدبلوماسي للدراسات المنازعات القرار، الإصدار: 0.5</string>
     <string name="NO_ARTICLES">لا توجد مقالات تم العثور عليها.</string>
+    <string name="ARABIC_SUPPORT">إلا إذا لغة الهاتف الخاص بك هي اللغة العربية، نحن لا نؤيد تماما هذا الخيار. هل أنت متأكد أنك تريد أن تجعل هذا التغيير؟</string>
+    <string name="CANCEL">إلغاء</string>
+    <string name="FEATURED_MESSAGE">Select the Featured category articles you want on your Homepage.</string>
+    <string name="HOMEPAGE">HOME PAGE</string>
 
 
 </resources>

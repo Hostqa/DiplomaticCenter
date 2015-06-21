@@ -17,6 +17,11 @@ import qa.dcsdr.diplomaticclub.Items.Article;
 public class HomePagePagerAdapter extends FragmentStatePagerAdapter  {
 
     private ArrayList<Article> articleList = new ArrayList<>();
+
+    public String getCategory() {
+        return category;
+    }
+
     private String category;
 
     public HomePagePagerAdapter(FragmentManager fm, ArrayList<Article> articleList) {

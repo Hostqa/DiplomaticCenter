@@ -20,7 +20,6 @@
         <item>fr</item>
     </array>
 
-
     <array name="drawer_items">
         <item>Home</item>
         <item>About Us</item>
@@ -206,10 +205,14 @@
     <string name="LANGUAGE_DIALOG">Change the language of the app.</string>
     <string name="ENGLISH">en</string>
     <string name="LANGUAGE_SETTINGS">APP LANGUAGE</string>
-    <string name="CHANGE_LANG_SUMMARY">Change the language of the app here.</string>
+    <string name="CHANGE_LANG_SUMMARY">Change the language of the app below.</string>
     <string name="CATEGORY_MESSAGE">Select the Categories you will see in the navigation drawer.</string>
     <string name="DCSDR">DCSDR</string>
     <string name="VERSION_SUMMARY">Diplomatic Center for Studies of Disputes Resolution, Version: 0.5</string>
     <string name="NO_ARTICLES">NO ARTICLES FOUND.</string>
+    <string name="ARABIC_SUPPORT">Unless your phone\'s language is Arabic, we do not fully support this option. Are you sure you want to make this change?</string>
+    <string name="CANCEL">Cancel</string>
+    <string name="FEATURED_MESSAGE">Select the Featured category articles you want on your Homepage.</string>
+    <string name="HOMEPAGE">HOME PAGE</string>
 
 </resources>
