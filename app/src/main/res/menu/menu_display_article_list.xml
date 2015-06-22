@@ -2,6 +2,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="qa.dcsdr.diplomaticclub.Activities.DisplayArticleListActivity">
-    <item android:id="@+id/search_button" android:title="Search" android:icon="@android:drawable/ic_menu_search"
-        android:orderInCategory="100" app:showAsAction="always" />
+    <item
+        android:id="@+id/search_button"
+        android:icon="@android:drawable/ic_menu_search"
+        android:orderInCategory="100"
+        android:title="Search"
+        app:actionViewClass="android.support.v7.widget.SearchView"
+        app:showAsAction="always" />
 </menu>

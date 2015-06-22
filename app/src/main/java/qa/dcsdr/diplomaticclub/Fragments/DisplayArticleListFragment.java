@@ -67,9 +67,14 @@ public class DisplayArticleListFragment extends Fragment implements ClickListene
     private LinearLayout linearLayout;
     private ActionBarActivity activity;
     boolean scroll_down;
+    private String url;
+    private String title;
 
     public String getRequestUrl() {
-        return (String) this.getActivity().getIntent().getExtras().get("URL");
+        if (url!=null)
+            return url;
+        else
+            return (String) this.getActivity().getIntent().getExtras().get("URL");
     }
 
     public String getTitle() {
@@ -100,6 +105,8 @@ public class DisplayArticleListFragment extends Fragment implements ClickListene
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             category = getArguments().getString("CAT_TITLE");
+            title = getArguments().getString("CAT_TITLE");
+            url = getArguments().getString("URL");
         }
         volleySingleton = VolleySingleton.getsInstance();
         requestQueue = volleySingleton.getRequestQueue();
@@ -241,14 +248,16 @@ public class DisplayArticleListFragment extends Fragment implements ClickListene
         outState.putParcelableArrayList(STATE_ARTICLES, articleList);
     }
 
-
     @Override
     public void itemClicked(View view, int position) {
         final Intent intent;
         intent = new Intent(getActivity(), ArticleReader.class);
         intent.putExtra("ARTICLE_LIST", articleList);
         intent.putExtra("POSITION", position);
-        intent.putExtra("CAT_TITLE", getTitle());
+        if (title!=null)
+            intent.putExtra("CAT_TITLE", title);
+        else
+            intent.putExtra("CAT_TITLE", getTitle());
         intent.putExtra(getString(R.string.PARENT_CLASS_TAG), getString(R.string.DISPLAY_FRAGMENT_TAG));
         intent.putExtra("URL",getRequestUrl());
         startActivity(intent);

@@ -200,6 +200,7 @@
     <string name="FEATURED_MESSAGE">حدد فئات المميزة التي تريدها على الصفحة الرئيسية الخاصة بك.</string>
     <string name="HOMEPAGE">الصفحة الرئيسية</string>
     <string name="search_hint">Search all articles</string>
+    <string name="SEARCH_RESULT_TITLE">Search Results</string>
 
 
 </resources>

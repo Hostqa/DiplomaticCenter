@@ -16,6 +16,7 @@
         android:glEsVersion="0x00020000"
         android:required="true" />
 
+
     <application
         android:name=".Tools.MyApplication"
         android:allowBackup="true"
@@ -24,9 +25,14 @@
         android:largeHeap="true"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
+
+        <meta-data
+            android:name="android.app.default_searchable"
+            android:value=".Activities.SearchActivity" />
 
         <activity
             android:name=".Activities.DisplayArticleListActivity"
@@ -38,6 +44,12 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activities.CategoryListActivity" />
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
         </activity>
         <activity
             android:name=".Activities.ArticleReader"
@@ -58,6 +70,8 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activities.HomePageActivity" />
+
+
         </activity>
         <activity
             android:name=".Activities.CategoryListActivity"
@@ -118,9 +132,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
-            <meta-data
-                android:name="android.app.searchable"
-                android:resource="@xml/searchable" />
+
 
         </activity>
         <activity
@@ -132,6 +144,7 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activities.HomePageActivity" />
+
         </activity>
         <activity
             android:name=".Activities.HomePageActivity"
@@ -140,9 +153,10 @@
             android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+
         </activity>
         <activity
             android:name=".Activities.AuthorsActivity"
@@ -166,17 +180,18 @@
         <activity
             android:name=".Activities.SearchActivity"
             android:label="@string/title_activity_search"
+            android:noHistory="true"
             android:launchMode="singleTop">
+
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
-            </intent-filter>
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
             </intent-filter>
             <meta-data
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
         </activity>
+
+
     </application>
 
 </manifest>

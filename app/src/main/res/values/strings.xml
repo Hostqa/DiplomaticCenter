@@ -213,10 +213,11 @@
     <string name="ARABIC_SUPPORT">Unless your phone\'s language is Arabic, we do not fully support this option. Are you sure you want to make this change?</string>
     <string name="CANCEL">Cancel</string>
     <string name="FEATURED_MESSAGE">Select the Featured category articles you want on your Homepage.</string>
-    <string name="HOMEPAGE">HOME PAGE</string>
-    <string name="search_hint">Search all articles</string>
-    <string name="title_activity_search">SearchActivity</string>
+    <string name="HOMEPAGE">HOMEPAGE</string>
+    <string name="search_hint">Search DCSDR</string>
+    <string name="title_activity_search">Search Results</string>
 
     <string name="hello_world">Hello world!</string>
+    <string name="SEARCH_RESULT_TITLE">Search Results</string>
 
 </resources>

@@ -284,20 +284,20 @@ public class HomePageActivity extends ActionBarActivity implements SharedPrefere
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_home_page, menu);
 
-        MenuItem searchItem = menu.findItem(R.id.search_button);
+        // Associate searchable configuration with the SearchView
+        SearchManager searchManager =
+                (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        SearchView searchView =
+                (SearchView) menu.findItem(R.id.search_button).getActionView();
+        searchView.setSearchableInfo(
+                searchManager.getSearchableInfo(getComponentName()));
 
-        SearchManager searchManager = (SearchManager) this.getSystemService(Context.SEARCH_SERVICE);
-
-        SearchView searchView = null;
-        if (searchItem != null) {
-            searchView = (SearchView) searchItem.getActionView();
-        }
-        if (searchView != null) {
-            searchView.setSearchableInfo(searchManager.getSearchableInfo(this.getComponentName()));
-        }
-        return super.onCreateOptionsMenu(menu);
+        return true;
 
     }
+
+
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -306,18 +306,15 @@ public class HomePageActivity extends ActionBarActivity implements SharedPrefere
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         //noinspection SimplifiableIfStatement
+
         if (id == R.id.search_button) {
-//            Intent intent = new Intent(this, SettingsActivity.class);
-//            startActivity(intent);
-            return true;
-        }
-        else if (id == R.id.search_button) {
             onSearchRequested();
         }
 
 
         return super.onOptionsItemSelected(item);
     }
+
 
     @Override
     public void onBackPressed() {
