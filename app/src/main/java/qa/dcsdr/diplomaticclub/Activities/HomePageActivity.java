@@ -21,7 +21,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkError;
@@ -120,9 +119,7 @@ public class HomePageActivity extends ActionBarActivity implements SharedPrefere
                 parseApp.processXml();
                 articleList = parseApp.getArticles();
                 totalPrime += 1;
-                Toast.makeText(activity, "TOTAL LOADED: " + totalPrime + "FROM " + total, Toast.LENGTH_SHORT).show();
                 if (totalPrime == total) {
-                    Toast.makeText(activity, "WELLLLLL", Toast.LENGTH_SHORT).show();
                     progressBar.setVisibility(View.GONE);
                     volleyErrorHomePage.setVisibility(View.GONE);
                 }
