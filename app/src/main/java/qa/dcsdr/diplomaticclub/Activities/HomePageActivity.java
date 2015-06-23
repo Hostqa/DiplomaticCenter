@@ -21,6 +21,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkError;
@@ -93,6 +94,8 @@ public class HomePageActivity extends ActionBarActivity implements SharedPrefere
                 "FEATURED_PROGRAMS_AND_PROJECTS_SELECTED",
                 "FEATURED_EVENTS_SELECTED"};
 
+        total = 0;
+
         String url = "http://www.dcsdr.qa/api/xml_en_show_post_by_category_id.php?id=4&level=2";
         String url1 = "http://www.dcsdr.qa/api/xml_en_show_post_by_category_id.php?id=2&level=3";
 
@@ -117,7 +120,9 @@ public class HomePageActivity extends ActionBarActivity implements SharedPrefere
                 parseApp.processXml();
                 articleList = parseApp.getArticles();
                 totalPrime += 1;
+                Toast.makeText(activity, "TOTAL LOADED: " + totalPrime + "FROM " + total, Toast.LENGTH_SHORT).show();
                 if (totalPrime == total) {
+                    Toast.makeText(activity, "WELLLLLL", Toast.LENGTH_SHORT).show();
                     progressBar.setVisibility(View.GONE);
                     volleyErrorHomePage.setVisibility(View.GONE);
                 }
