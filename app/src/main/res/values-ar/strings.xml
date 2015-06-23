@@ -192,7 +192,7 @@
     <string name="LANGUAGE_SETTINGS">لغة البرنامج</string>
     <string name="CHANGE_LANG_SUMMARY">تغيير لغة البرنامج من خلال التالي.</string>
     <string name="CATEGORY_MESSAGE">حدد الفئات سترون في درج التصفح.</string>
-    <string name="DCSDR">DCSDR - المركز الدبلوماسي </string>
+    <string name="DCSDR">المركز الدبلوماسي </string>
     <string name="VERSION_SUMMARY">المركز الدبلوماسي للدراسات المنازعات القرار، الإصدار: 0.9</string>
     <string name="NO_ARTICLES">لا توجد مقالات تم العثور عليها.</string>
     <string name="ARABIC_SUPPORT">إلا إذا لغة الهاتف الخاص بك هي اللغة العربية، نحن لا نؤيد تماما هذا الخيار. هل أنت متأكد أنك تريد أن تجعل هذا التغيير؟</string>

@@ -31,7 +31,7 @@ public class SettingsActivity extends ActionBarActivity implements SharedPrefere
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
         Toolbar toolbar = (Toolbar) findViewById(R.id.app_bar);
-        toolbar.setTitle("Settings");
+        toolbar.setTitle(getString(R.string.SETTINGS));
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
