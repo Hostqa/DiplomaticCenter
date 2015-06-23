@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="qa.dcsdr.diplomaticclub">
+    package="qa.dcsdr.diplomaticclub" >
 
     <uses-sdk android:minSdkVersion="11" />
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission
         android:name="android.permission.READ_EXTERNAL_STORAGE"
@@ -16,7 +17,6 @@
         android:glEsVersion="0x00020000"
         android:required="true" />
 
-
     <application
         android:name=".Tools.MyApplication"
         android:allowBackup="true"
@@ -24,12 +24,10 @@
         android:label="@string/app_name"
         android:largeHeap="true"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-
+        android:theme="@style/AppTheme" >
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
-
         <meta-data
             android:name="android.app.default_searchable"
             android:value=".Activities.SearchActivity" />
@@ -40,13 +38,15 @@
             android:label="@string/title_activity_display_articles"
             android:launchMode="singleTop"
             android:noHistory="true"
-            android:parentActivityName=".Activities.CategoryListActivity">
+            android:parentActivityName=".Activities.CategoryListActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activities.CategoryListActivity" />
+
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
+
             <meta-data
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
@@ -55,7 +55,7 @@
             android:name=".Activities.ArticleReader"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/title_activity_article_reader"
-            android:parentActivityName=".Activities.DisplayArticleListActivity">
+            android:parentActivityName=".Activities.DisplayArticleListActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activities.DisplayArticleListActivity" />
@@ -66,17 +66,15 @@
             android:launchMode="singleTask"
             android:noHistory="true"
             android:parentActivityName=".Activities.HomePageActivity"
-            android:windowSoftInputMode="adjustPan">
+            android:windowSoftInputMode="adjustPan" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activities.HomePageActivity" />
-
-
         </activity>
         <activity
             android:name=".Activities.CategoryListActivity"
             android:label="@string/title_activity_category_list"
-            android:parentActivityName=".Activities.HomePageActivity">
+            android:parentActivityName=".Activities.HomePageActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activities.HomePageActivity" />
@@ -85,7 +83,7 @@
             android:name=".Activities.Category$ResearchAndStudies"
             android:label="@string/title_activity_category_list"
             android:launchMode="singleTask"
-            android:parentActivityName=".Activities.HomePageActivity">
+            android:parentActivityName=".Activities.HomePageActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activities.HomePageActivity" />
@@ -94,7 +92,7 @@
             android:name=".Activities.Category$Publications"
             android:label="@string/title_activity_category_list"
             android:launchMode="singleTask"
-            android:parentActivityName=".Activities.HomePageActivity">
+            android:parentActivityName=".Activities.HomePageActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activities.HomePageActivity" />
@@ -103,7 +101,7 @@
             android:name=".Activities.Category$DisputesResolution"
             android:label="@string/title_activity_category_list"
             android:launchMode="singleTask"
-            android:parentActivityName=".Activities.HomePageActivity">
+            android:parentActivityName=".Activities.HomePageActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activities.HomePageActivity" />
@@ -112,7 +110,7 @@
             android:name=".Activities.Category$ProgramsAndProjects"
             android:label="@string/title_activity_category_list"
             android:launchMode="singleTask"
-            android:parentActivityName=".Activities.HomePageActivity">
+            android:parentActivityName=".Activities.HomePageActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activities.HomePageActivity" />
@@ -121,7 +119,7 @@
             android:name=".Activities.Category$Events"
             android:label="@string/title_activity_category_list"
             android:launchMode="singleTask"
-            android:parentActivityName=".Activities.HomePageActivity">
+            android:parentActivityName=".Activities.HomePageActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activities.HomePageActivity" />
@@ -132,31 +130,27 @@
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
-
-
         </activity>
         <activity
             android:name=".Activities.ContactUsActivity"
             android:label="@string/title_activity_contact_us"
             android:launchMode="singleTask"
             android:noHistory="true"
-            android:parentActivityName=".Activities.HomePageActivity">
+            android:parentActivityName=".Activities.HomePageActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activities.HomePageActivity" />
-
         </activity>
         <activity
             android:name=".Activities.HomePageActivity"
             android:configChanges="keyboardHidden|locale|orientation|screenSize"
             android:label="@string/title_activity_home_page"
-            android:launchMode="singleTask">
+            android:launchMode="singleTask" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
-
         </activity>
         <activity
             android:name=".Activities.AuthorsActivity"
@@ -167,7 +161,7 @@
             android:configChanges="locale|orientation"
             android:label="@string/title_settings"
             android:launchMode="standard"
-            android:parentActivityName=".Activities.HomePageActivity">
+            android:parentActivityName=".Activities.HomePageActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activities.HomePageActivity" />
@@ -180,17 +174,16 @@
         <activity
             android:name=".Activities.SearchActivity"
             android:label="@string/title_activity_search"
-            android:noHistory="true"
-            android:launchMode="singleTop">
-
+            android:launchMode="singleTop"
+            android:noHistory="true" >
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
+
             <meta-data
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
         </activity>
-
 
     </application>
 

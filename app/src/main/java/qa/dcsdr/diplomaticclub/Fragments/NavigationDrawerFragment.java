@@ -29,6 +29,7 @@ import qa.dcsdr.diplomaticclub.Activities.AboutUsActivity;
 import qa.dcsdr.diplomaticclub.Activities.AuthorsActivity;
 import qa.dcsdr.diplomaticclub.Activities.Category;
 import qa.dcsdr.diplomaticclub.Activities.ContactUsActivity;
+import qa.dcsdr.diplomaticclub.Activities.DisplayArticleListActivity;
 import qa.dcsdr.diplomaticclub.Activities.HomePageActivity;
 import qa.dcsdr.diplomaticclub.Activities.SettingsActivity;
 import qa.dcsdr.diplomaticclub.Adapters.MyAdapter;
@@ -323,7 +324,11 @@ public class NavigationDrawerFragment extends Fragment implements ClickListener 
 
                 }
                 else if (title.equals(BOOKMARKS)){
-                    intent = new Intent(getActivity(), HomePageActivity.class);
+                    intent = new Intent(getActivity(), DisplayArticleListActivity.class);
+                    intent.putExtra("CAT_TITLE","Bookmarks");
+                    intent.putExtra(getActivity().getString(R.string.PARENT_CLASS_TAG), getActivity().getString(R.string.DISPLAY_FRAGMENT_PARENT_TAG));
+                    String url = "LOCAL";
+                    intent.putExtra("URL", url);
 
                 }
                 else if (title.equals(CONTACT_US)){

@@ -1,6 +1,7 @@
 package qa.dcsdr.diplomaticclub.Activities;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -8,10 +9,10 @@ import android.graphics.Rect;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v4.app.NavUtils;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.Menu;
@@ -25,14 +26,20 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 import qa.dcsdr.diplomaticclub.Fragments.NavigationDrawerFragment;
 import qa.dcsdr.diplomaticclub.Items.Article;
 import qa.dcsdr.diplomaticclub.R;
 import qa.dcsdr.diplomaticclub.Tools.ArticleContent;
+import qa.dcsdr.diplomaticclub.Tools.ContentDecrypter;
 
 
 public class ArticleReader extends ActionBarActivity {
@@ -71,7 +78,7 @@ public class ArticleReader extends ActionBarActivity {
         a = this;
 
         setContentView(R.layout.activity_article_reader);
-        setTitle(getResources().getString(R.string.APP_TITLE));
+        setTitle(getResources().getString(R.string.title_activity_article_reader));
         toolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -116,12 +123,27 @@ public class ArticleReader extends ActionBarActivity {
                 ac.sendXmlRequest(c);
             }
         });
-        try {
-            ac.sendXmlRequest(c);
-        } catch (Exception e) {
-            e.printStackTrace();
-            articleContents.setText("Error.");
+        if (url.equals("LOCAL")) {
+//            Toast.makeText(this, "LOCAL", Toast.LENGTH_SHORT).show();
+            retryButton.setVisibility(View.GONE);
+            volleyError.setVisibility(View.GONE);
+            readerProgressBar.setVisibility(View.GONE);
+            errorLayoutR.setVisibility(View.GONE);
+            scrollView.setVisibility(View.VISIBLE);
+            articleContents.setText(Html.fromHtml(new ContentDecrypter().decrypt
+                    ((getSavedBookmark(articleList.get(position).getId())))));
+            Log.d("ARTICLE CONTENTS", articleContents.getText() + "");
+        } else {
+
+            try {
+                ac.sendXmlRequest(c);
+            } catch (Exception e) {
+                e.printStackTrace();
+                articleContents.setText("Error.");
+            }
         }
+
+
         try {
             Bitmap bitmap = BitmapFactory.decodeStream(openFileInput(current.getTitle()));
             articleImage.setImageBitmap(bitmap);
@@ -140,7 +162,6 @@ public class ArticleReader extends ActionBarActivity {
         nextArticle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("NAVIGATION!!!!!", "TEST");
                 if (position < (articleList.size() - 1)) {
                     navigate(true);
                 } else {
@@ -247,6 +268,26 @@ public class ArticleReader extends ActionBarActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_article_reader, menu);
         this.menu = menu;
+        if (getIntent().getExtras().get("URL").equals("LOCAL")) {
+            menu.findItem(R.id.bookmark).setIcon(R.drawable.ic_bookmark);
+            menu.findItem(R.id.bookmark).setTitle(R.string.NO_BOOKMARK);
+            MenuItem mi = this.menu.add(Menu.NONE, R.string.DELETE_BOOKMARK,
+                    200, R.string.REMOVE_BOOKMARK);
+            mi.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
+        }
+        else {
+
+            File f = getDir("BOOKMARKS", Context.MODE_PRIVATE);
+            File nf = new File(f, articleList.get(position).getId() + "");
+            if(nf.exists()) {
+                menu.findItem(R.id.bookmark).setIcon(R.drawable.ic_bookmark);
+                menu.findItem(R.id.bookmark).setTitle(R.string.NO_BOOKMARK);
+                MenuItem mi = this.menu.add(Menu.NONE, R.string.DELETE_BOOKMARK,
+                        200, R.string.REMOVE_BOOKMARK);
+                mi.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
+            }
+
+        }
         return true;
     }
 
@@ -294,12 +335,56 @@ public class ArticleReader extends ActionBarActivity {
             }
         } else if (id == R.id.default_size) {
             articleContents.setTextSize(TypedValue.COMPLEX_UNIT_PX, defaultSize);
-        }
-        if (id == android.R.id.home) {
-            NavUtils.navigateUpFromSameTask(this);
+        } else if (id == R.id.bookmark) {
+
+            if (url.equals("LOCAL"))
+                Toast.makeText(this, getString(R.string.ALREADY_BOOKMARKED), Toast.LENGTH_SHORT).show();
+            else if (menu.findItem(R.id.bookmark).getTitle().equals(getResources().getString(R.string.NO_BOOKMARK)))
+                Toast.makeText(this, getString(R.string.ALREADY_BOOKMARKED), Toast.LENGTH_SHORT).show();
+
+            else {
+                // TODO: The below keeps on getting called; will be fixed when the one above is fixed
+                menu.findItem(R.id.bookmark).setIcon(R.drawable.ic_bookmark);
+                menu.findItem(R.id.bookmark).setTitle(R.string.NO_BOOKMARK);
+                Toast.makeText(this, getString(R.string.BOOKMARK_ADDED), Toast.LENGTH_SHORT).show();
+                bookmarkArticle();
+                menu.findItem(R.id.bookmark).setIcon(R.drawable.ic_bookmark);
+                MenuItem mi = this.menu.add(Menu.NONE, R.string.DELETE_BOOKMARK,
+                        200, R.string.REMOVE_BOOKMARK);
+                mi.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
+            }
             return true;
+        } else if (id == R.string.DELETE_BOOKMARK) {
+            removeBookmark();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void removeBookmark() {
+        File bmDir = getDir("BOOKMARKS", Context.MODE_PRIVATE);
+        File[] f = bmDir.listFiles();
+        for (int i = 0; i < f.length; i++) {
+            if (f[i].getName().equals(articleList.get(position).getId() + "")) {
+                boolean b = f[i].delete();
+                if (b)
+                    Toast.makeText(this, getString(R.string.BOOKMARK_REMOVED), Toast.LENGTH_SHORT).show();
+
+            }
+            else if (f[i].getName().equals(articleList.get(position).getId() + "_content"))
+            {
+                boolean b = f[i].delete();
+                if (b)
+                    Toast.makeText(this, "Bookmark removed.", Toast.LENGTH_SHORT).show();
+            }
+        }
+        finish();
+
+    }
+
+    private void bookmarkArticle() {
+        ArticleContent toBookmark = new ArticleContent(articleList.get(position).getId(),
+                getResources().getString(R.string.SINGLE_ARTICLE_ID), a);
+        toBookmark.bookmarkArticle();
     }
 
     /*
@@ -327,11 +412,21 @@ public class ArticleReader extends ActionBarActivity {
         articleTitle.setText(current.getTitle());
         articleAuthor.setText(current.getAuthor());
         articleDate.setText(current.getDate());
-        try {
-            ac.sendXmlRequest(c);
-        } catch (Exception e) {
-            e.printStackTrace();
-            articleContents.setText("Error.");
+        if (url.equals("LOCAL")) {
+//            Toast.makeText(this, "LOCAL", Toast.LENGTH_SHORT).show();
+            retryButton.setVisibility(View.GONE);
+            volleyError.setVisibility(View.GONE);
+            readerProgressBar.setVisibility(View.GONE);
+            errorLayoutR.setVisibility(View.GONE);
+            articleContents.setText(Html.fromHtml(new ContentDecrypter().decrypt
+                    ((getSavedBookmark(articleList.get(position).getId())))));
+        } else {
+            try {
+                ac.sendXmlRequest(c);
+            } catch (Exception e) {
+                e.printStackTrace();
+                articleContents.setText("Error.");
+            }
         }
         try {
             Bitmap bitmap = BitmapFactory.decodeStream(openFileInput(current.getTitle()));
@@ -344,6 +439,31 @@ public class ArticleReader extends ActionBarActivity {
                 scrollView.smoothScrollTo(0, 0);
             }
         }, 200);
+    }
+
+    private String getSavedBookmark(int id) {
+        File bmDir = getDir("BOOKMARKS", Context.MODE_PRIVATE);
+        File[] f = bmDir.listFiles();
+        try {
+            for (int i = 0; i < f.length; i++) {
+                if (f[i].getName().equals(id + "_content")) {
+                    FileInputStream fis = new FileInputStream(f[i]);
+                    BufferedReader br = new BufferedReader(new InputStreamReader(fis));
+                    char[] b = new char[articleList.get(position).getLength()];
+                    br.read(b, 0, articleList.get(position).getLength());
+                    Log.d("BOOOFASASADDAS", "" + articleList.get(position).getLength());
+                    Log.d("BOOOFASASADDAS", b.toString());
+                    String c = new String(b);
+                    Log.d("BOOOFASASADDAS", c);
+                    return c;
+                }
+
+            }
+
+        } catch (java.io.IOException e) {
+            e.printStackTrace();
+        }
+        return "";
     }
 
     @Override

@@ -14,9 +14,37 @@ public class Article implements Parcelable {
     String title;
     String link;
     String photo;
+
+
     String description;
     String date;
     String author;
+    String content;
+
+    public int getLength() {
+        return length;
+    }
+
+    public void setLength(int length) {
+        this.length = length;
+    }
+
+    int length;
+
+
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
 
     public int getId() {
         return id;
@@ -34,6 +62,7 @@ public class Article implements Parcelable {
         description = in.readString();
         date = in.readString();
         author = in.readString();
+        length = in.readInt();
     }
 
     public Article(int id) {
@@ -44,6 +73,7 @@ public class Article implements Parcelable {
         this.description = "N/A";
         this.date = "N/A";
         this.author = "N/A";
+        this.length=0;
     }
 
     public String getTitle() {
@@ -115,6 +145,7 @@ public class Article implements Parcelable {
         dest.writeString(description);
         dest.writeString(date);
         dest.writeString(author);
+        dest.writeInt(length);
     }
 
     public static final Parcelable.Creator<Article> CREATOR
@@ -128,4 +159,13 @@ public class Article implements Parcelable {
         }
     };
 
+    public String toStringWithoutContent() {
+        return  getTitle() + "\n" +
+                getLink() + "\n" +
+                getPhoto() + "\n" +
+                getDescription() + "\n" +
+                getDate() + "\n" +
+                getAuthor()  + "\n"+
+                getLength()  + "\n";
+    }
 }

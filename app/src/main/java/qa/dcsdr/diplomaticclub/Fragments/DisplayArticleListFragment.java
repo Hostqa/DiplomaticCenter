@@ -31,8 +31,13 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.StringRequest;
 
+import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 import qa.dcsdr.diplomaticclub.Activities.ArticleReader;
@@ -71,7 +76,7 @@ public class DisplayArticleListFragment extends Fragment implements ClickListene
     private String title;
 
     public String getRequestUrl() {
-        if (url!=null)
+        if (url != null)
             return url;
         else
             return (String) this.getActivity().getIntent().getExtras().get("URL");
@@ -80,6 +85,7 @@ public class DisplayArticleListFragment extends Fragment implements ClickListene
     public String getTitle() {
         return (String) this.getActivity().getIntent().getExtras().get("CAT_TITLE");
     }
+
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
@@ -90,7 +96,7 @@ public class DisplayArticleListFragment extends Fragment implements ClickListene
     public static DisplayArticleListFragment newInstance(String category) {
         DisplayArticleListFragment fragment = new DisplayArticleListFragment();
         Bundle args = new Bundle();
-        args.putString("CAT_ARGS",category);
+        args.putString("CAT_ARGS", category);
         fragment.setArguments(args);
         return fragment;
     }
@@ -120,7 +126,7 @@ public class DisplayArticleListFragment extends Fragment implements ClickListene
         noArticles = (TextView) view.findViewById(R.id.noArticles);
         final LinearLayout linlaHeaderProgress = (LinearLayout) view.findViewById(R.id.linlaHeaderProgress);
         linlaHeaderProgress.setVisibility(View.GONE);
-        retryButton=(Button)view.findViewById(R.id.retryButton);
+        retryButton = (Button) view.findViewById(R.id.retryButton);
         final LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         toolbar = (Toolbar) view.findViewById(R.id.app_bar);
         activity = (ActionBarActivity) getActivity();
@@ -130,13 +136,13 @@ public class DisplayArticleListFragment extends Fragment implements ClickListene
         DrawerLayout dl = (DrawerLayout) view.findViewById(R.id.drawer_layout_dal);
         NavigationDrawerFragment drawerFragment = (NavigationDrawerFragment)
                 getChildFragmentManager().findFragmentById(R.id.fragment_navigation_drawer_dal);
-        if (drawerFragment==null ){
+        if (drawerFragment == null) {
         }
         if (drawerFragment == null) {
             drawerFragment = (NavigationDrawerFragment)
                     getChildFragmentManager().findFragmentById(R.id.fragment_navigation_drawer);
         }
-        if (drawerFragment != null && dl !=null) {
+        if (drawerFragment != null && dl != null) {
             drawerFragment.setUp(R.id.fragment_navigation_drawer_dal, dl, toolbar, true);
         }
         rPubAdapter = new ArticleAdapter(getActivity());
@@ -150,6 +156,7 @@ public class DisplayArticleListFragment extends Fragment implements ClickListene
             public void onHide() {
                 hideViews();
             }
+
             @Override
             public void onShow() {
                 showViews();
@@ -174,11 +181,60 @@ public class DisplayArticleListFragment extends Fragment implements ClickListene
         if (savedInstanceState != null) {
             articleList = savedInstanceState.getParcelableArrayList(STATE_ARTICLES);
             rPubAdapter.setArticleList(articleList);
+        } else if (getRequestUrl().equals("LOCAL")) {
+            linlaHeaderProgress.setVisibility(View.GONE);
+            articleList = getSavedBookmarks();
+//            Toast.makeText(getActivity(),"HELLO",Toast.LENGTH_SHORT).show();
+            rPubAdapter.setArticleList(articleList);
         } else {
             sendXmlRequest(view);
         }
         return view;
     }
+
+
+    public ArrayList<Article> getSavedBookmarks() {
+        ArrayList<Article> articleList = new ArrayList<>();
+        File bmDir = getActivity().getDir("BOOKMARKS", Context.MODE_PRIVATE);
+        File[] f = bmDir.listFiles();
+        for (int i =0;i<f.length;i++){
+            try {
+                if (f[i].getName().indexOf("content")!=-1)
+                    continue;
+                FileInputStream fis = new FileInputStream(f[i]);
+                BufferedReader br = new BufferedReader(new InputStreamReader(fis));
+                int id = Integer.parseInt(f[i].getName());
+                Article newArticle = new Article(id);
+                newArticle.setTitle(br.readLine());
+                newArticle.setLink(br.readLine());
+                newArticle.setPhoto(br.readLine());
+                newArticle.setDescription(br.readLine());
+                newArticle.setDate(br.readLine());
+                newArticle.setAuthor(br.readLine());
+                String length = br.readLine();
+                newArticle.setLength(Integer.parseInt(length));
+//                Toast.makeText(getActivity(), "LENGTH: " + newArticle.getLength(),Toast.LENGTH_SHORT).show();
+//                char[] b = new char[newArticle.getLength()];
+//                br.read(b, 0, newArticle.getLength());
+//                String c = new String(b);
+//                newArticle.setContent(c);
+                articleList.add(newArticle);
+                br.close();
+                fis.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return articleList;
+    }
+
+
+
+
+
+
+
+
 
     private void hideViews() {
         toolbar.animate().translationY(-toolbar.getHeight()).setInterpolator(new AccelerateInterpolator(2));
@@ -253,13 +309,14 @@ public class DisplayArticleListFragment extends Fragment implements ClickListene
         final Intent intent;
         intent = new Intent(getActivity(), ArticleReader.class);
         intent.putExtra("ARTICLE_LIST", articleList);
+//        Toast.makeText(getActivity(), "ITEM CLICKED" + articleList.get(position).getLength(),Toast.LENGTH_SHORT).show();
         intent.putExtra("POSITION", position);
-        if (title!=null)
+        if (title != null)
             intent.putExtra("CAT_TITLE", title);
         else
             intent.putExtra("CAT_TITLE", getTitle());
         intent.putExtra(getString(R.string.PARENT_CLASS_TAG), getString(R.string.DISPLAY_FRAGMENT_TAG));
-        intent.putExtra("URL",getRequestUrl());
+        intent.putExtra("URL", getRequestUrl());
         startActivity(intent);
 
     }

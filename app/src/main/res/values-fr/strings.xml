@@ -209,8 +209,15 @@ Le centre offre les recherches, études, évaluations et les conseils spécialis
     <string name="CANCEL">Annuler</string>
     <string name="FEATURED_MESSAGE">Sélectionnez la catégorie des articles en vedette que vous voulez sur votre page d\'accueil.</string>
     <string name="HOMEPAGE">PAGE D\'ACCUEIL</string>
-    <string name="search_hint">Search all articles</string>
-    <string name="SEARCH_RESULT_TITLE">Search Results</string>
+    <string name="search_hint">Recherche DCSDR</string>
+    <string name="SEARCH_RESULT_TITLE">Résultats de la Recherche</string>
+    <string name="BOOKMARK">BOOKMARK</string>
+    <string name="ALREADY_BOOKMARKED">Article already bookmarked.</string>
+    <string name="DELETE_BOOKMARK">deleteBookmark</string>
+    <string name="REMOVE_BOOKMARK">Remove Bookmark</string>
+    <string name="BOOKMARK_ADDED">Bookmark added.</string>
+    <string name="BOOKMARK_REMOVED">Bookmark removed.</string>
+    <string name="NO_BOOKMARK">NO_BOOKMARK</string>
 
 
 </resources>

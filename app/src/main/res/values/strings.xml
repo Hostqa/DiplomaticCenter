@@ -53,7 +53,7 @@
     <string name="server_error">Server error.</string>
     <string name="network_error">Network error.</string>
     <string name="parse_error">Parse error.</string>
-    <string name="title_activity_article_reader">ArticleReader</string>
+    <string name="title_activity_article_reader">Reader</string>
     <string name="title_activity_about_us">Diplomatic Center</string>
     <string name="about_us_p1">We are a thinking and strategic research center established in Doha in 2014. We are concerned with monitoring, analyzing, assessing, and studying the political, strategic, and economic transformation in the Gulf region, in addition to the international and regional interactions affecting the region. All these process are conducted with regard to the level of internal developments, regional relations, and international trends by means of scientific activities that are concerned with the interactions with the decision-making circles and influential institutions in the region’s countries by providing analyses, assessments, and consultations and establishing an effective communication channels among experts, intellectuals, and officials.</string>
     <string name="about_us_p2">Among its services, the center is concerned with providing consultations to researchers and officials in the decision-making institutions at the various national, regional, and international levels. Moreover, we offer our services to international organizations and major companies operating in the region in addition to opinion leaderships in the various countries and those interested in the general developments in the Gulf region as well as the different media agencies.</string>
@@ -219,5 +219,13 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="SEARCH_RESULT_TITLE">Search Results</string>
+    <string name="BOOKMARK">BOOKMARK</string>
+    <string name="title_activity_bookmarks">BookmarksActivity</string>
+    <string name="ALREADY_BOOKMARKED">Article already bookmarked.</string>
+    <string name="DELETE_BOOKMARK">deleteBookmark</string>
+    <string name="REMOVE_BOOKMARK">Remove Bookmark</string>
+    <string name="BOOKMARK_ADDED">Bookmark added.</string>
+    <string name="BOOKMARK_REMOVED">Bookmark removed.</string>
+    <string name="NO_BOOKMARK">NO_BOOKMARK</string>
 
 </resources>

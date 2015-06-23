@@ -89,6 +89,7 @@ public class HomePageFragment extends Fragment {
                 intent.putExtra("ARTICLE_LIST", articleList);
                 intent.putExtra("POSITION", position);
                 intent.putExtra("IS_HOME",1);
+                intent.putExtra("URL","HOME");
                 intent.putExtra(getString(R.string.PARENT_CLASS_TAG), getString(R.string.DISPLAY_FRAGMENT_TAG));
                 startActivity(intent);
             }
