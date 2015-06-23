@@ -15,7 +15,6 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -69,6 +68,7 @@ public class HomePageActivity extends ActionBarActivity implements SharedPrefere
     private LinearLayout errorLayout;
     private TextView volleyErrorHomePage;
     private Button retryButtonHomePage;
+    private Button openBookmarks;
 
     private VolleySingleton volleySingleton;
     private RequestQueue requestQueue;
@@ -97,12 +97,11 @@ public class HomePageActivity extends ActionBarActivity implements SharedPrefere
         String url1 = "http://www.dcsdr.qa/api/xml_en_show_post_by_category_id.php?id=2&level=3";
 
         for (int i = 0; i < hppa.length; i++) {
-            Log.d("HERE", hppa[i].getCategory());
             if (!sp.getBoolean(keys[i], true)) {
                 hpvpM[i].setVisibility(View.GONE);
                 continue;
             }
-            total+=1;
+            total += 1;
             if (i % 2 == 0)
                 requestQueue.add(getStringRequest(url, i, hppa));
             else
@@ -117,8 +116,8 @@ public class HomePageActivity extends ActionBarActivity implements SharedPrefere
                 parseApp = new ParseArticle(response);
                 parseApp.processXml();
                 articleList = parseApp.getArticles();
-                totalPrime+=1;
-                if (totalPrime==total) {
+                totalPrime += 1;
+                if (totalPrime == total) {
                     progressBar.setVisibility(View.GONE);
                     volleyErrorHomePage.setVisibility(View.GONE);
                 }
@@ -145,6 +144,7 @@ public class HomePageActivity extends ActionBarActivity implements SharedPrefere
                     volleyErrorHomePage.setText(error.toString());
                 }
                 retryButtonHomePage.setVisibility(View.VISIBLE);
+                openBookmarks.setVisibility(View.VISIBLE);
             }
         });
         return stringRequest;
@@ -176,6 +176,7 @@ public class HomePageActivity extends ActionBarActivity implements SharedPrefere
         errorLayout = (LinearLayout) findViewById(R.id.errorLayoutHomePage);
         volleyErrorHomePage = (TextView) findViewById(R.id.volleyErrorHomePage);
         retryButtonHomePage = (Button) findViewById(R.id.retryButtonHomePage);
+        openBookmarks = (Button) findViewById(R.id.openBookmarks);
 
         volleySingleton = VolleySingleton.getsInstance();
         requestQueue = volleySingleton.getRequestQueue();
@@ -206,10 +207,24 @@ public class HomePageActivity extends ActionBarActivity implements SharedPrefere
 
         sendXmlRequest(hppa);
 
+        openBookmarks.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent;
+                intent = new Intent(activity, BookmarksActivity.class);
+                intent.putExtra("CAT_TITLE", getResources().getString(R.string.BOOKMARKS));
+                intent.putExtra(getString(R.string.PARENT_CLASS_TAG), getString(R.string.DISPLAY_FRAGMENT_PARENT_TAG));
+                String url = "LOCAL";
+                intent.putExtra("URL", url);
+                startActivity(intent);
+            }
+        });
+
         retryButtonHomePage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 retryButtonHomePage.setVisibility(View.GONE);
+                openBookmarks.setVisibility(View.GONE);
                 volleyErrorHomePage.setVisibility(View.GONE);
                 progressBar.setVisibility(View.VISIBLE);
                 errorLayout.setVisibility(View.GONE);
@@ -228,8 +243,6 @@ public class HomePageActivity extends ActionBarActivity implements SharedPrefere
                         "FEATURED_EVENTS_SELECTED"};
                 List<String> list = Arrays.asList(keys);
                 int i = list.indexOf(key);
-                Log.d("INDEX!~", "INDEX: " + i);
-
                 int v = hpvp[i].getVisibility();
                 if (v == View.GONE) {
                     sendXmlRequest(hppa);
@@ -297,8 +310,6 @@ public class HomePageActivity extends ActionBarActivity implements SharedPrefere
     }
 
 
-
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -306,12 +317,9 @@ public class HomePageActivity extends ActionBarActivity implements SharedPrefere
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         //noinspection SimplifiableIfStatement
-
         if (id == R.id.search_button) {
             onSearchRequested();
         }
-
-
         return super.onOptionsItemSelected(item);
     }
 

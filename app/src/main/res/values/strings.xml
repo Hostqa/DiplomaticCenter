@@ -208,7 +208,7 @@
     <string name="CHANGE_LANG_SUMMARY">Change the language of the app below.</string>
     <string name="CATEGORY_MESSAGE">Select the Categories you will see in the navigation drawer.</string>
     <string name="DCSDR">DCSDR</string>
-    <string name="VERSION_SUMMARY">Diplomatic Center for Studies of Disputes Resolution, Version: 0.5</string>
+    <string name="VERSION_SUMMARY">Diplomatic Center for Studies of Disputes Resolution, Version: 0.9</string>
     <string name="NO_ARTICLES">NO ARTICLES FOUND.</string>
     <string name="ARABIC_SUPPORT">Unless your phone\'s language is Arabic, we do not fully support this option. Are you sure you want to make this change?</string>
     <string name="CANCEL">Cancel</string>
@@ -217,15 +217,34 @@
     <string name="search_hint">Search DCSDR</string>
     <string name="title_activity_search">Search Results</string>
 
-    <string name="hello_world">Hello world!</string>
+    <string name="hello_world" translatable="false">Hello world!</string>
     <string name="SEARCH_RESULT_TITLE">Search Results</string>
-    <string name="BOOKMARK">BOOKMARK</string>
-    <string name="title_activity_bookmarks">BookmarksActivity</string>
+    <string name="BOOKMARK">Bookmark</string>
+    <string name="title_activity_bookmarks" translatable="false">BookmarksActivity</string>
     <string name="ALREADY_BOOKMARKED">Article already bookmarked.</string>
     <string name="DELETE_BOOKMARK">deleteBookmark</string>
     <string name="REMOVE_BOOKMARK">Remove Bookmark</string>
     <string name="BOOKMARK_ADDED">Bookmark added.</string>
     <string name="BOOKMARK_REMOVED">Bookmark removed.</string>
-    <string name="NO_BOOKMARK">NO_BOOKMARK</string>
+    <string name="NO_BOOKMARK">Bookmarked</string>
+    <string name="BAD_CONTENT">DCSDR IS EXPERIENCING SOME PROBLEMS WITH THIS ARTICLE, PLEASE COME BACK LATER.</string>
+    <string name="OPEN_BOOKMARKS">Open Bookmarks</string>
+    <string name="NO_BOOKMARKS_SAVED">No Bookmarks Found.</string>
+    <string name="DELETE_BOOKMARK_BUTTON">REMOVE</string>
+    <string name="CONTACT_DETAILS">Contact Details</string>
+    <string name="FAX_TITLE">Fax Number</string>
+    <string name="FAX_NUMBER">00974&#8211;4488&#8211;5571</string>
+    <string name="PHONE_NUMBER_TITLE">Phone</string>
+    <string name="PHONE_NUMBER_1">00974&#8211;4447&#8211;5572</string>
+    <string name="PHONE_NUMBER_2">00974&#8211;4444&#8211;8606</string>
+    <string name="PO_BOX">P.O. Box</string>
+    <string name="LOCATION">Location</string>
+    <string name="LOCATION_DETAILS">Diplomatic Club</string>
+    <string name="PO_BOX_NUMBER">11882</string>
+    <string name="LOCATION_DETAILS_2">Doha, Qatar</string>
+    <string name="E_MAIL">E-Mail</string>
+    <string name="E_MAIL_ADDRESS" translatable="false">office@dcsdr.qa</string>
+    <string name="SEARCH">Search</string>
+    <string name="BOOKMARK_DIRECTORY">BOOKMARKS_EN</string>
 
 </resources>

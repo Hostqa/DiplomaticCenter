@@ -1,37 +1,38 @@
 package qa.dcsdr.diplomaticclub.Activities;
 
-import android.app.SearchManager;
-import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
-import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
+import android.widget.Toast;
+
+import java.util.Locale;
 
 import qa.dcsdr.diplomaticclub.Fragments.AuthorListFragment;
 import qa.dcsdr.diplomaticclub.R;
 
 public class AuthorsActivity extends ActionBarActivity {
 
-    Fragment fragment ;
+    Fragment fragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setNavigationBarColor(getResources().getColor(R.color.colorPrimaryDark));
         }
+        Toast.makeText(this, Locale.getDefault().getDisplayLanguage(), Toast.LENGTH_SHORT).show();
         requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         super.onCreate(savedInstanceState);
         FragmentManager fm = getSupportFragmentManager();
         fragment = fm.findFragmentByTag("DisplayCategoriesFragment");
         if (fragment == null) {
             FragmentTransaction ft = fm.beginTransaction();
-            fragment =new AuthorListFragment();
+            fragment = new AuthorListFragment();
             ft.replace(android.R.id.content, fragment, "myFragmentTag");
             ft.commit();
         }
@@ -41,13 +42,6 @@ public class AuthorsActivity extends ActionBarActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_authors, menu);
-        // Associate searchable configuration with the SearchView
-        SearchManager searchManager =
-                (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-        SearchView searchView =
-                (SearchView) menu.findItem(R.id.search_button).getActionView();
-        searchView.setSearchableInfo(
-                searchManager.getSearchableInfo(getComponentName()));
 
         return true;
     }
@@ -59,9 +53,7 @@ public class AuthorsActivity extends ActionBarActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+
         return super.onOptionsItemSelected(item);
     }
 }

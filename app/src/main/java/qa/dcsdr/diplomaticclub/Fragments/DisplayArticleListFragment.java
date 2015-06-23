@@ -11,6 +11,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AccelerateInterpolator;
@@ -70,6 +72,7 @@ public class DisplayArticleListFragment extends Fragment implements ClickListene
     private TextView noArticles;
     private Button retryButton;
     private LinearLayout linearLayout;
+    private LinearLayout noBookmarksFound;
     private ActionBarActivity activity;
     boolean scroll_down;
     private String url;
@@ -105,10 +108,11 @@ public class DisplayArticleListFragment extends Fragment implements ClickListene
         // Required empty public constructor
     }
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
         if (getArguments() != null) {
             category = getArguments().getString("CAT_TITLE");
             title = getArguments().getString("CAT_TITLE");
@@ -145,7 +149,11 @@ public class DisplayArticleListFragment extends Fragment implements ClickListene
         if (drawerFragment != null && dl != null) {
             drawerFragment.setUp(R.id.fragment_navigation_drawer_dal, dl, toolbar, true);
         }
-        rPubAdapter = new ArticleAdapter(getActivity());
+        if (getActivity().getIntent().getExtras().getString("URL", "").equals("LOCAL")) {
+            rPubAdapter = new ArticleAdapter(getActivity(), true);
+        } else {
+            rPubAdapter = new ArticleAdapter(getActivity(), false);
+        }
         rPubAdapter.setClickListener(this);
         articlesRV = (RecyclerView) view.findViewById(R.id.articleList);
         volleyError = (TextView) view.findViewById(R.id.volleyError);
@@ -166,6 +174,8 @@ public class DisplayArticleListFragment extends Fragment implements ClickListene
         articlesRV.setAdapter(rPubAdapter);
         linlaHeaderProgress.setVisibility(View.VISIBLE);
 
+        noBookmarksFound = (LinearLayout) view.findViewById(R.id.noBookmarksLayout);
+
         linearLayout = (LinearLayout) view.findViewById(R.id.errorLayout);
         linearLayout.setVisibility(View.GONE);
         retryButton.setOnClickListener(new View.OnClickListener() {
@@ -184,22 +194,32 @@ public class DisplayArticleListFragment extends Fragment implements ClickListene
         } else if (getRequestUrl().equals("LOCAL")) {
             linlaHeaderProgress.setVisibility(View.GONE);
             articleList = getSavedBookmarks();
-//            Toast.makeText(getActivity(),"HELLO",Toast.LENGTH_SHORT).show();
             rPubAdapter.setArticleList(articleList);
+            if (articleList.size() == 0) {
+                noBookmarksFound.setVisibility(View.VISIBLE);
+            }
         } else {
             sendXmlRequest(view);
         }
         return view;
     }
 
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+
+        // Inflate the menu; this adds items to the action bar if it is present.
+        inflater.inflate(R.menu.menu_display_article_list, menu);
+
+        super.onCreateOptionsMenu(menu, inflater);
+    }
 
     public ArrayList<Article> getSavedBookmarks() {
         ArrayList<Article> articleList = new ArrayList<>();
-        File bmDir = getActivity().getDir("BOOKMARKS", Context.MODE_PRIVATE);
+        File bmDir = getActivity().getDir(getString(R.string.BOOKMARK_DIRECTORY), Context.MODE_PRIVATE);
         File[] f = bmDir.listFiles();
-        for (int i =0;i<f.length;i++){
+        for (int i = 0; i < f.length; i++) {
             try {
-                if (f[i].getName().indexOf("content")!=-1)
+                if (f[i].getName().indexOf("content") != -1)
                     continue;
                 FileInputStream fis = new FileInputStream(f[i]);
                 BufferedReader br = new BufferedReader(new InputStreamReader(fis));
@@ -227,13 +247,6 @@ public class DisplayArticleListFragment extends Fragment implements ClickListene
         }
         return articleList;
     }
-
-
-
-
-
-
-
 
 
     private void hideViews() {

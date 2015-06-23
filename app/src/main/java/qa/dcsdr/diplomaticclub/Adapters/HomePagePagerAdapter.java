@@ -3,7 +3,6 @@ package qa.dcsdr.diplomaticclub.Adapters;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
-import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -41,8 +40,6 @@ public class HomePagePagerAdapter extends FragmentStatePagerAdapter  {
         HomePageFragment fragment = new HomePageFragment();
         fragment.setArticleList(articleList);
         fragment.setPosition(position);
-        Log.d("GET ITEM", position+"");
-        Log.d("GET ITEM", articleList.get(position).toString());
         fragment.setCategory(category);
         return fragment;
     }

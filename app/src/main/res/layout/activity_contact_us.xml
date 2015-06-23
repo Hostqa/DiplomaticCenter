@@ -55,18 +55,17 @@
                     android:textSize="26sp" />
 
                 <TextView
-                    android:layout_below="@+id/contactUs"
-                    android:layout_width="wrap_content"
                     android:id="@+id/findUs"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_below="@+id/contactUs"
                     android:layout_gravity="start"
                     android:layout_marginLeft="30dp"
-                    android:layout_marginTop="30dp"
                     android:layout_marginRight="30dp"
+                    android:layout_marginTop="30dp"
                     android:fontFamily="sans-serif-light"
                     android:text="@string/FIND_US"
                     android:textSize="24sp" />
-
 
                 <fragment xmlns:android="http://schemas.android.com/apk/res/android"
                     xmlns:tools="http://schemas.android.com/tools"
@@ -80,10 +79,231 @@
                     android:layout_marginTop="10dp"
                     tools:context=".MapsActivity" />
 
+
+
+
+                <TextView
+                    android:id="@+id/details"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/map"
+                    android:layout_gravity="start"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginTop="30dp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="@string/CONTACT_DETAILS"
+                    android:textSize="24sp" />
+
+
+                <LinearLayout
+                    android:id="@+id/all_details"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/details"
+                    android:layout_gravity="start"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginTop="30dp"
+                    android:orientation="horizontal"
+                    android:weightSum="8">
+
+
+                    <LinearLayout
+                        android:id="@+id/titles"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginEnd="15dp"
+                            android:layout_marginStart="15dp"
+                            android:fontFamily="sans-serif"
+                            android:text="@string/FAX_TITLE"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginEnd="15dp"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="sans-serif"
+                            android:text="@string/PHONE_NUMBER_TITLE"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginEnd="15dp"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="sans-serif"
+                            android:textColor="#00000000"
+                            android:text="@string/PHONE_NUMBER_TITLE"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginEnd="15dp"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="sans-serif"
+                            android:textColor="@color/colorPrimary"
+                            android:text="@string/LOCATION"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginEnd="15dp"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="sans-serif"
+                            android:textColor="#00000000"
+                            android:text="@string/LOCATION"
+                            android:textSize="15sp" />
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginEnd="15dp"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="sans-serif"
+                            android:textColor="@color/colorPrimary"
+                            android:text="@string/PO_BOX"
+                            android:textSize="15sp" />
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginEnd="15dp"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="sans-serif"
+                            android:textColor="@color/colorPrimary"
+                            android:text="@string/E_MAIL"
+                            android:textSize="15sp" />
+
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/title_details"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="6"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginEnd="15dp"
+                            android:layout_marginStart="15dp"
+                            android:fontFamily="sans-serif-light"
+                            android:text="@string/FAX_NUMBER"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginEnd="15dp"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="sans-serif-light"
+                            android:text="@string/PHONE_NUMBER_1"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginEnd="15dp"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="sans-serif-light"
+                            android:text="@string/PHONE_NUMBER_2"
+                            android:textSize="15sp" />
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginEnd="15dp"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="sans-serif-light"
+                            android:text="@string/LOCATION_DETAILS"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginEnd="15dp"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="sans-serif-light"
+                            android:text="@string/LOCATION_DETAILS_2"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginEnd="15dp"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="sans-serif-light"
+                            android:text="@string/PO_BOX_NUMBER"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginEnd="15dp"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="sans-serif-light"
+                            android:text="@string/E_MAIL_ADDRESS"
+                            android:linksClickable="true"
+                            android:textSize="15sp" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+
+
+
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/map"
+                    android:layout_below="@+id/all_details"
                     android:layout_margin="30dp"
                     android:orientation="vertical">
 
@@ -101,10 +321,10 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:background="@drawable/custom_edittext"
-                        android:textCursorDrawable="@null"
                         android:ems="20"
                         android:hint="@string/FORM_NAME"
-                        android:padding="12dp" />
+                        android:padding="12dp"
+                        android:textCursorDrawable="@null" />
 
                     <EditText
                         android:id="@+id/email"
@@ -113,9 +333,9 @@
                         android:layout_marginTop="10dp"
                         android:background="@drawable/custom_edittext"
                         android:ems="20"
-                        android:textCursorDrawable="@null"
                         android:hint="@string/FORM_EMAIL"
-                        android:padding="12dp" />
+                        android:padding="12dp"
+                        android:textCursorDrawable="@null" />
 
 
                     <EditText
@@ -126,9 +346,9 @@
                         android:background="@drawable/custom_edittext"
                         android:ems="20"
                         android:hint="@string/FORM_MESSAGE"
-                        android:textCursorDrawable="@null"
                         android:inputType="textEmailAddress"
-                        android:padding="12dp" />
+                        android:padding="12dp"
+                        android:textCursorDrawable="@null" />
 
                     <EditText
                         android:id="@+id/message"
@@ -139,9 +359,9 @@
                         android:hint="@string/YOUR_MESSAGE"
                         android:inputType="textMultiLine"
                         android:minLines="3"
+                        android:padding="12dp"
                         android:textColor="@color/colorPrimaryDark"
-                        android:textCursorDrawable="@null"
-                        android:padding="12dp" />
+                        android:textCursorDrawable="@null" />
 
                     <Button
                         android:id="@+id/submitForm"
@@ -153,13 +373,12 @@
                         android:layout_margin="12dp"
                         android:background="@drawable/custom_bg"
                         android:gravity="center"
-                        android:textSize="16sp"
                         android:text="@string/FORM_SUBMIT"
+                        android:textColor="@color/colorPrimaryDark"
 
-                        android:textColor="@color/colorPrimaryDark" />
+                        android:textSize="16sp" />
 
                 </LinearLayout>
-
 
 
             </RelativeLayout>

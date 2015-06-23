@@ -3,8 +3,6 @@ package qa.dcsdr.diplomaticclub.Activities;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Rect;
 import android.os.Build;
 import android.os.Bundle;
@@ -13,7 +11,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,21 +19,23 @@ import android.view.ViewTreeObserver;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.NetworkImageView;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 import qa.dcsdr.diplomaticclub.Fragments.NavigationDrawerFragment;
 import qa.dcsdr.diplomaticclub.Items.Article;
+import qa.dcsdr.diplomaticclub.Items.VolleySingleton;
 import qa.dcsdr.diplomaticclub.R;
 import qa.dcsdr.diplomaticclub.Tools.ArticleContent;
 import qa.dcsdr.diplomaticclub.Tools.ContentDecrypter;
@@ -48,7 +47,7 @@ public class ArticleReader extends ActionBarActivity {
     private TextView articleTitle;
     private TextView articleContents;
     private TextView articleCategory;
-    private ImageView articleImage;
+    private NetworkImageView articleImage;
     private TextView articleAuthor;
     private TextView articleDate;
     private Button nextArticle;
@@ -68,6 +67,8 @@ public class ArticleReader extends ActionBarActivity {
     private String url;
     private Menu menu;
     private float defaultSize;
+    private ImageLoader imageLoader;
+    private VolleySingleton volleySingleton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,13 +94,13 @@ public class ArticleReader extends ActionBarActivity {
         position = (int) extras.get("POSITION");
         url = (String) extras.get("URL");
         Article current = articleList.get(position);
-        ac = new ArticleContent(current.getId(), getResources().getString(R.string.SINGLE_ARTICLE_ID));
+        ac = new ArticleContent(current.getId(), getResources().getString(R.string.SINGLE_ARTICLE_ID), this);
         articleTitle = (TextView) findViewById(R.id.articleTitle);
         articleContents = (TextView) findViewById(R.id.articleContents);
         articleCategory = (TextView) findViewById(R.id.category);
         articleAuthor = (TextView) findViewById(R.id.articleAuthor);
         articleDate = (TextView) findViewById(R.id.articleDate);
-        articleImage = (ImageView) findViewById(R.id.articleImage);
+        articleImage = (NetworkImageView) findViewById(R.id.articleImage);
         c = getWindow().getDecorView().findViewById(android.R.id.content);
         scrollView = (ScrollView) findViewById(R.id.articleScroll);
         errorLayoutR = (LinearLayout) findViewById(R.id.errorLayoutR);
@@ -113,6 +114,10 @@ public class ArticleReader extends ActionBarActivity {
         articleAuthor.setText(current.getAuthor());
         articleDate.setText(current.getDate());
         defaultSize = articleContents.getTextSize();
+
+        volleySingleton = VolleySingleton.getsInstance();
+        imageLoader = volleySingleton.getImageLoader();
+
         retryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -124,7 +129,6 @@ public class ArticleReader extends ActionBarActivity {
             }
         });
         if (url.equals("LOCAL")) {
-//            Toast.makeText(this, "LOCAL", Toast.LENGTH_SHORT).show();
             retryButton.setVisibility(View.GONE);
             volleyError.setVisibility(View.GONE);
             readerProgressBar.setVisibility(View.GONE);
@@ -132,23 +136,45 @@ public class ArticleReader extends ActionBarActivity {
             scrollView.setVisibility(View.VISIBLE);
             articleContents.setText(Html.fromHtml(new ContentDecrypter().decrypt
                     ((getSavedBookmark(articleList.get(position).getId())))));
-            Log.d("ARTICLE CONTENTS", articleContents.getText() + "");
         } else {
 
             try {
-                ac.sendXmlRequest(c);
+
+                File f = getDir(getString(R.string.BOOKMARK_DIRECTORY), Context.MODE_PRIVATE);
+                File nf = new File(f, articleList.get(position).getId() + "");
+                if (nf.exists()) {
+                    String content = getSavedBookmark(articleList.get(position).getId());
+                    articleContents.setText(Html.fromHtml(new ContentDecrypter().decrypt((content))));
+                    retryButton.setVisibility(View.GONE);
+                    volleyError.setVisibility(View.GONE);
+                    readerProgressBar.setVisibility(View.GONE);
+                    errorLayoutR.setVisibility(View.GONE);
+                    scrollView.setVisibility(View.VISIBLE);
+                } else {
+                    ac.setIdAndUrl(getResources().getString(R.string.SINGLE_ARTICLE_ID), articleList.get(position).getId());
+                    ac.sendXmlRequest(c);
+                    menu.findItem(R.id.bookmark).setIcon(R.drawable.ic_bookmark_border);
+                    menu.findItem(R.id.bookmark).setTitle(R.string.BOOKMARK);
+                    if (this.menu.findItem(R.string.DELETE_BOOKMARK) != null)
+                        this.menu.removeItem(R.string.DELETE_BOOKMARK);
+                }
+
+
+//                ac.sendXmlRequest(c);
             } catch (Exception e) {
                 e.printStackTrace();
                 articleContents.setText("Error.");
             }
         }
+        // TODO: make sure image is always there
+        articleImage.setImageUrl(current.getPhoto(), imageLoader);
 
-
-        try {
-            Bitmap bitmap = BitmapFactory.decodeStream(openFileInput(current.getTitle()));
-            articleImage.setImageBitmap(bitmap);
-        } catch (FileNotFoundException e) {
-        }
+//        try {
+//            Bitmap bitmap = BitmapFactory.decodeStream(openFileInput(current.getTitle()));
+//            articleImage.setImageBitmap(bitmap);
+//        } catch (FileNotFoundException e) {
+//            articleImage.setImageUrl(current.getPhoto(), imageLoader);
+//        }
         prevArticle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -274,12 +300,11 @@ public class ArticleReader extends ActionBarActivity {
             MenuItem mi = this.menu.add(Menu.NONE, R.string.DELETE_BOOKMARK,
                     200, R.string.REMOVE_BOOKMARK);
             mi.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
-        }
-        else {
+        } else {
 
-            File f = getDir("BOOKMARKS", Context.MODE_PRIVATE);
+            File f = getDir(getString(R.string.BOOKMARK_DIRECTORY), Context.MODE_PRIVATE);
             File nf = new File(f, articleList.get(position).getId() + "");
-            if(nf.exists()) {
+            if (nf.exists()) {
                 menu.findItem(R.id.bookmark).setIcon(R.drawable.ic_bookmark);
                 menu.findItem(R.id.bookmark).setTitle(R.string.NO_BOOKMARK);
                 MenuItem mi = this.menu.add(Menu.NONE, R.string.DELETE_BOOKMARK,
@@ -343,7 +368,6 @@ public class ArticleReader extends ActionBarActivity {
                 Toast.makeText(this, getString(R.string.ALREADY_BOOKMARKED), Toast.LENGTH_SHORT).show();
 
             else {
-                // TODO: The below keeps on getting called; will be fixed when the one above is fixed
                 menu.findItem(R.id.bookmark).setIcon(R.drawable.ic_bookmark);
                 menu.findItem(R.id.bookmark).setTitle(R.string.NO_BOOKMARK);
                 Toast.makeText(this, getString(R.string.BOOKMARK_ADDED), Toast.LENGTH_SHORT).show();
@@ -361,7 +385,7 @@ public class ArticleReader extends ActionBarActivity {
     }
 
     private void removeBookmark() {
-        File bmDir = getDir("BOOKMARKS", Context.MODE_PRIVATE);
+        File bmDir = getDir(getString(R.string.BOOKMARK_DIRECTORY), Context.MODE_PRIVATE);
         File[] f = bmDir.listFiles();
         for (int i = 0; i < f.length; i++) {
             if (f[i].getName().equals(articleList.get(position).getId() + "")) {
@@ -369,15 +393,13 @@ public class ArticleReader extends ActionBarActivity {
                 if (b)
                     Toast.makeText(this, getString(R.string.BOOKMARK_REMOVED), Toast.LENGTH_SHORT).show();
 
-            }
-            else if (f[i].getName().equals(articleList.get(position).getId() + "_content"))
-            {
+            } else if (f[i].getName().equals(articleList.get(position).getId() + "_content")) {
                 boolean b = f[i].delete();
                 if (b)
-                    Toast.makeText(this, "Bookmark removed.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, getString(R.string.BOOKMARK_REMOVED), Toast.LENGTH_SHORT).show();
             }
         }
-        finish();
+        onBackPressed();
 
     }
 
@@ -413,7 +435,6 @@ public class ArticleReader extends ActionBarActivity {
         articleAuthor.setText(current.getAuthor());
         articleDate.setText(current.getDate());
         if (url.equals("LOCAL")) {
-//            Toast.makeText(this, "LOCAL", Toast.LENGTH_SHORT).show();
             retryButton.setVisibility(View.GONE);
             volleyError.setVisibility(View.GONE);
             readerProgressBar.setVisibility(View.GONE);
@@ -422,17 +443,43 @@ public class ArticleReader extends ActionBarActivity {
                     ((getSavedBookmark(articleList.get(position).getId())))));
         } else {
             try {
-                ac.sendXmlRequest(c);
+                File f = getDir(getString(R.string.BOOKMARK_DIRECTORY), Context.MODE_PRIVATE);
+                File nf = new File(f, articleList.get(position).getId() + "");
+                if (nf.exists()) {
+                    String content = getSavedBookmark(articleList.get(position).getId());
+                    articleContents.setText(Html.fromHtml(new ContentDecrypter().decrypt((content))));
+                    retryButton.setVisibility(View.GONE);
+                    volleyError.setVisibility(View.GONE);
+                    readerProgressBar.setVisibility(View.GONE);
+                    errorLayoutR.setVisibility(View.GONE);
+                    scrollView.setVisibility(View.VISIBLE);
+                    menu.findItem(R.id.bookmark).setIcon(R.drawable.ic_bookmark);
+                    menu.findItem(R.id.bookmark).setTitle(R.string.NO_BOOKMARK);
+                    if (this.menu.findItem(R.string.DELETE_BOOKMARK) == null) {
+                        MenuItem mi = this.menu.add(Menu.NONE, R.string.DELETE_BOOKMARK,
+                                200, R.string.REMOVE_BOOKMARK);
+                        mi.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
+                    }
+                } else {
+                    ac.setIdAndUrl(getResources().getString(R.string.SINGLE_ARTICLE_ID), articleList.get(position).getId());
+                    ac.sendXmlRequest(c);
+                    menu.findItem(R.id.bookmark).setIcon(R.drawable.ic_bookmark_border);
+                    menu.findItem(R.id.bookmark).setTitle(R.string.BOOKMARK);
+                    if (this.menu.findItem(R.string.DELETE_BOOKMARK) != null)
+                        this.menu.removeItem(R.string.DELETE_BOOKMARK);
+                }
             } catch (Exception e) {
                 e.printStackTrace();
                 articleContents.setText("Error.");
             }
         }
-        try {
-            Bitmap bitmap = BitmapFactory.decodeStream(openFileInput(current.getTitle()));
-            articleImage.setImageBitmap(bitmap);
-        } catch (FileNotFoundException e) {
-        }
+
+        articleImage.setImageUrl(current.getPhoto(), imageLoader);
+//        try {
+//            Bitmap bitmap = BitmapFactory.decodeStream(openFileInput(current.getTitle()));
+//            articleImage.setImageBitmap(bitmap);
+//        } catch (FileNotFoundException e) {
+//        }
         mHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -442,19 +489,17 @@ public class ArticleReader extends ActionBarActivity {
     }
 
     private String getSavedBookmark(int id) {
-        File bmDir = getDir("BOOKMARKS", Context.MODE_PRIVATE);
+        File bmDir = getDir(getString(R.string.BOOKMARK_DIRECTORY), Context.MODE_PRIVATE);
         File[] f = bmDir.listFiles();
+        // TODO: GET SPECIFIC FILE
         try {
             for (int i = 0; i < f.length; i++) {
                 if (f[i].getName().equals(id + "_content")) {
                     FileInputStream fis = new FileInputStream(f[i]);
                     BufferedReader br = new BufferedReader(new InputStreamReader(fis));
-                    char[] b = new char[articleList.get(position).getLength()];
-                    br.read(b, 0, articleList.get(position).getLength());
-                    Log.d("BOOOFASASADDAS", "" + articleList.get(position).getLength());
-                    Log.d("BOOOFASASADDAS", b.toString());
+                    char[] b = new char[(int) f[i].length()];
+                    br.read(b, 0, (int) f[i].length());
                     String c = new String(b);
-                    Log.d("BOOOFASASADDAS", c);
                     return c;
                 }
 
@@ -469,17 +514,21 @@ public class ArticleReader extends ActionBarActivity {
     @Override
     public void onBackPressed() {
         Intent intent;
-        if (this.getIntent().hasExtra("IS_HOME")) {
-            finish();
-            return;
+        if (this.getIntent().hasExtra("URL")) {
+            if (this.getIntent().getExtras().get("URL").equals("LOCAL")) {
+                intent = new Intent(a, DisplayArticleListActivity.class);
+                intent.putExtra("CAT_TITLE", category);
+                intent.putExtra(getString(R.string.PARENT_CLASS_TAG), getString(R.string.DISPLAY_FRAGMENT_PARENT_TAG));
+                intent.putExtra("URL", url);
+                startActivity(intent);
+                finish();
+            } else {
+                super.onBackPressed();
+            }
         } else {
-            intent = new Intent(a, DisplayArticleListActivity.class);
-            intent.putExtra("CAT_TITLE", category);
-            intent.putExtra(getString(R.string.PARENT_CLASS_TAG), getString(R.string.DISPLAY_FRAGMENT_PARENT_TAG));
-            intent.putExtra("URL", url);
+            super.onBackPressed();
         }
-        startActivity(intent);
-        finish();
+
     }
 
 }

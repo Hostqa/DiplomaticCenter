@@ -20,7 +20,6 @@ import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
 
 import java.io.ByteArrayOutputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 
@@ -75,11 +74,11 @@ public class HomePageFragment extends Fragment {
         featuredTitle.setText(Ellipsizer.ellipsize(article.getTitle(), 60));
 
         featuredImage.setImageUrl(article.getPhoto(), imageLoader);
-        try {
-            getActivity().openFileInput(article.getTitle());
-        } catch (FileNotFoundException e) {
-            loadImage(article.getPhoto(), article.getTitle());
-        }
+//        try {
+//            getActivity().openFileInput(article.getTitle());
+//        } catch (FileNotFoundException e) {
+//            loadImage(article.getPhoto(), article.getTitle());
+//        }
 
         readMore.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -134,7 +133,6 @@ public class HomePageFragment extends Fragment {
             });
         }
     }
-
 
     public void setArticleList(ArrayList<Article> articleList) {
         this.articleList = articleList;

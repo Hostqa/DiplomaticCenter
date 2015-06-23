@@ -41,8 +41,23 @@ public class ArticleContent {
     private final VolleySingleton volleySingleton;
     private final Context context;
     private Article current;
-    private int id;
     private String url;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setIdAndUrl(String url, int id) {
+        this.id = id;
+        this.url = url + id;
+    }
+
+    private int id;
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
 
     public ArticleContent(int id, String url) {
         this.id = id;
@@ -95,7 +110,7 @@ public class ArticleContent {
             return content;
 
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.d("NO CONTENT", e.toString());
             return "error";
         }
     }
@@ -130,9 +145,8 @@ public class ArticleContent {
                         if (tag.equalsIgnoreCase("content")) {
                             currentArticle.setContent(textValue);
                             currentArticle.setLength(textValue.length());
-                            Log.d("LENGTH:", currentArticle.getLength()+"");
-                        }
-                        else if (tag.equalsIgnoreCase("title"))
+                            Log.d("LENGTH:", currentArticle.getLength() + "");
+                        } else if (tag.equalsIgnoreCase("title"))
                             currentArticle.setTitle(textValue);
                         else if (tag.equalsIgnoreCase("link"))
                             currentArticle.setLink(textValue);
@@ -172,11 +186,24 @@ public class ArticleContent {
                 String content = processXml(response);
                 TextView tv = (TextView) view.findViewById(R.id.articleContents);
                 try {
+//                    Toast.makeText(context,"CONTENT:" + content,Toast.LENGTH_SHORT).show();
 //                    Log.d("CONTENT", content);
 //                    Log.d("response", response);
-                    tv.setText(Html.fromHtml(new ContentDecrypter().decrypt((content))));
-                    readerProgressBar.setVisibility(View.GONE);
-                    articleScroll.setVisibility(View.VISIBLE);
+                    if (content == "error") {
+                        // TODO: error not getting caught!!!
+//                        Toast.makeText(context, "PROBLEM KHERE", Toast.LENGTH_SHORT).show();
+                        readerProgressBar.setVisibility(View.GONE);
+                        errorLayoutR.setVisibility(View.VISIBLE);
+                        volleyError.setVisibility(View.VISIBLE);
+                        volleyError.setText(context.getString(R.string.BAD_CONTENT));
+                        articleScroll.setVisibility(View.GONE);
+                        return;
+                    } else {
+                        tv.setText(Html.fromHtml(new ContentDecrypter().decrypt((content))));
+                        readerProgressBar.setVisibility(View.GONE);
+                        articleScroll.setVisibility(View.VISIBLE);
+                    }
+
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -216,7 +243,7 @@ public class ArticleContent {
                 // Save the file here
 
                 try {
-                    File bmDir = context.getDir("BOOKMARKS",Context.MODE_PRIVATE);
+                    File bmDir = context.getDir(context.getResources().getString(R.string.BOOKMARK_DIRECTORY), Context.MODE_PRIVATE);
                     File newBM = new File(bmDir, id + ""); //Getting a file within the dir.
 
                     FileOutputStream f = new FileOutputStream(newBM);

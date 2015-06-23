@@ -14,7 +14,7 @@
     <string name="server_error">خطأ في الخادم.</string>
     <string name="network_error">خطأ في الشبكة.</string>
     <string name="parse_error">تحليل خطأ.</string>
-    <string name="title_activity_article_reader">ArticleReader</string>
+    <string name="title_activity_article_reader">القارئ</string>
     <string name="title_activity_about_us">المركز الدبلوماسي</string>
     <string name="about_us_p1">(1) مركز بحث وتفكير استراتيجي، تأسس في الدوحة، نوفمبر2014  (2) يهتم المركز برصد وتحليل الشؤون الخليجية، وما يرتبط بها من تفاعلات إقليمية ودولية.  (3) المركز متخصص في إدارة وفض المنازعات وتسويتها من خلال:  أ - تحليل مسارات وآليات التسوية (المفاوضات، الدبلوماسية، التحكيم، الوساطة، ..)  ب - تحليل الصراعات القائمة والمتوقعة (العرقية، الدينية، السياسية، الاقتصادية)  ج - بناء سجل المخاطر الخليجية والإقليمية (الأمنية، البيئية، السياسية، الاقتصادية)</string>
     <string name="about_us_p2">د - تحليل حفظ وبناء السلام (المواثيق، المنظمات، التجارب والخبرات)  (4) يشكل المركز حلقة وصل بين الباحثين والمفكرين والخبراء، والمسؤولين وصانعي القرار.  (5) يقوم المركز على تقديم البحوث والدراسات والتقديرات والاستشارات المتخصصة.  (6) يعتبر المركز دليلاً للباحثين والمهتمين لقواعد البيانات الدقيقة والملفات المتكاملة.</string>
@@ -41,7 +41,7 @@
         <item>فض المنازعات</item>
         <item>برامج ومشاريع</item>
         <item>الفعاليات</item>
-        <item>العناوين</item>
+        <item>المستندات المحفوظة</item>
         <item>اتصل بنا</item>
         <item>الإعدادات</item>
     </array>
@@ -183,7 +183,7 @@
     <string name="HOME">الرئيسية</string>
     <string name="AUTHORS">المؤلفين</string>
     <string name="CATEGORIES">الفئات</string>
-    <string name="BOOKMARKS">العناوين</string>
+    <string name="BOOKMARKS">المستندات المحفوظة</string>
     <string name="SETTINGS">الإعدادات</string>
     <string name="NO_CATEGORIES">لا يوجد فئات محددة</string>
     <string name="LANGUAGE">لغة</string>
@@ -192,8 +192,8 @@
     <string name="LANGUAGE_SETTINGS">لغة البرنامج</string>
     <string name="CHANGE_LANG_SUMMARY">تغيير لغة البرنامج من خلال التالي.</string>
     <string name="CATEGORY_MESSAGE">حدد الفئات سترون في درج التصفح.</string>
-    <string name="DCSDR">DCSDR</string>
-    <string name="VERSION_SUMMARY">المركز الدبلوماسي للدراسات المنازعات القرار، الإصدار: 0.5</string>
+    <string name="DCSDR">DCSDR - المركز الدبلوماسي </string>
+    <string name="VERSION_SUMMARY">المركز الدبلوماسي للدراسات المنازعات القرار، الإصدار: 0.9</string>
     <string name="NO_ARTICLES">لا توجد مقالات تم العثور عليها.</string>
     <string name="ARABIC_SUPPORT">إلا إذا لغة الهاتف الخاص بك هي اللغة العربية، نحن لا نؤيد تماما هذا الخيار. هل أنت متأكد أنك تريد أن تجعل هذا التغيير؟</string>
     <string name="CANCEL">إلغاء</string>
@@ -201,13 +201,32 @@
     <string name="HOMEPAGE">الصفحة الرئيسية</string>
     <string name="search_hint">ابحث DCSDR</string>
     <string name="SEARCH_RESULT_TITLE">نتائج البحث</string>
-    <string name="BOOKMARK">BOOKMARK</string>
-    <string name="ALREADY_BOOKMARKED">Article already bookmarked.</string>
+    <string name="BOOKMARK">حفظ</string>
+    <string name="ALREADY_BOOKMARKED">تم حفظ هذه الوثيقة من قبل.</string>
     <string name="DELETE_BOOKMARK">deleteBookmark</string>
-    <string name="REMOVE_BOOKMARK">Remove Bookmark</string>
-    <string name="BOOKMARK_ADDED">Bookmark added.</string>
-    <string name="BOOKMARK_REMOVED">Bookmark removed.</string>
-    <string name="NO_BOOKMARK">NO_BOOKMARK</string>
+    <string name="REMOVE_BOOKMARK">حذف المستند</string>
+    <string name="BOOKMARK_ADDED">تم حفظ المستند.</string>
+    <string name="BOOKMARK_REMOVED">لقد تم حذف المستند</string>
+    <string name="NO_BOOKMARK">تم الحفظ</string>
+    <string name="BAD_CONTENT">الموقع يعاني من بعض المشاكل مع هذه الوثيقة، يرجى العودة لاحقا.</string>
+    <string name="OPEN_BOOKMARKS">المستندات المحفوظة</string>
+    <string name="NO_BOOKMARKS_SAVED">لم يتم العثور على مستندات محفوظة..</string>
+    <string name="DELETE_BOOKMARK_BUTTON">حذف</string>
+    <string name="CONTACT_DETAILS">المزيد من التفاصيل</string>
+    <string name="FAX_TITLE">رقم الفاكس</string>
+    <string name="FAX_NUMBER">00974&#8211;4488&#8211;5571</string>
+    <string name="PHONE_NUMBER_TITLE">هاتف</string>
+    <string name="PHONE_NUMBER_1">00974&#8211;4447&#8211;5572</string>
+    <string name="PHONE_NUMBER_2">00974&#8211;4444&#8211;8606</string>
+    <string name="PO_BOX">صندوق البريد</string>
+    <string name="LOCATION">المكان</string>
+    <string name="PO_BOX_NUMBER">11882</string>
+    <string name="LOCATION_DETAILS_2">الدوحة، قطر</string>
+    <string name="E_MAIL">البريد الإلكتروني</string>
+    <string name="LOCATION_DETAILS">النادي الدبلوماسي</string>
+    <string name="title_activity_search">نتائج البحث</string>
+    <string name="SEARCH">بحث</string>
+    <string name="BOOKMARK_DIRECTORY">BOOKMARKS_AR</string>
 
 
 </resources>

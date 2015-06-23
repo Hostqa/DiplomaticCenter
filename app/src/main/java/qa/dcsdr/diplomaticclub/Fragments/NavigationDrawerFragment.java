@@ -13,7 +13,6 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,9 +26,9 @@ import java.util.List;
 
 import qa.dcsdr.diplomaticclub.Activities.AboutUsActivity;
 import qa.dcsdr.diplomaticclub.Activities.AuthorsActivity;
+import qa.dcsdr.diplomaticclub.Activities.BookmarksActivity;
 import qa.dcsdr.diplomaticclub.Activities.Category;
 import qa.dcsdr.diplomaticclub.Activities.ContactUsActivity;
-import qa.dcsdr.diplomaticclub.Activities.DisplayArticleListActivity;
 import qa.dcsdr.diplomaticclub.Activities.HomePageActivity;
 import qa.dcsdr.diplomaticclub.Activities.SettingsActivity;
 import qa.dcsdr.diplomaticclub.Adapters.MyAdapter;
@@ -258,7 +257,6 @@ public class NavigationDrawerFragment extends Fragment implements ClickListener 
                 "PROGRAMS_AND_PROJECTS_SELECTED",
                 "EVENTS_SELECTED"};
         if ((getActivity().getSharedPreferences("DRAWER_CHANGES", Context.MODE_PRIVATE).getBoolean(keys[currentBeingChecked], true))) {
-            Log.d("HERE!!!", "h");
             return 1 + getRealIndex(numToCheck, currentBeingChecked + 1);
         } else
             return getRealIndex(numToCheck, currentBeingChecked + 1);
@@ -278,17 +276,13 @@ public class NavigationDrawerFragment extends Fragment implements ClickListener 
             public void run() {
                 int cont = 0;
                 Intent intent = null;
-//                Toast.makeText(getActivity(),"P+J"+position+" J : " + ,Toast.LENGTH_SHORT).show();
                 if (title.equals(HOME)){
-
                     intent = new Intent(getActivity(), HomePageActivity.class);
                 }
                 else if (title.equals(ABOUT_US)){
-
                     intent = new Intent(getActivity(), AboutUsActivity.class);
                 }
                 else if (title.equals(AUTHORS)){
-
                     intent = new Intent(getActivity(), AuthorsActivity.class);
                 }
                 else if (title.equals(CATEGORIES) || (title.equals(getString(R.string.NO_CATEGORIES)))){
@@ -303,19 +297,16 @@ public class NavigationDrawerFragment extends Fragment implements ClickListener 
                     intent = new Intent(getActivity(), Category.Publications.class);
                     intent.putExtra(getActivity().getString(R.string.CAT_TITLE_TAG),
                             PUBLICATIONS);
-
                 }
                 else if (title.equals(DISP_RESOL)){
                     intent = new Intent(getActivity(), Category.DisputesResolution.class);
                     intent.putExtra(getActivity().getString(R.string.CAT_TITLE_TAG),
                             DISP_RESOL);
-
                 }
                 else if (title.equals(PROG_AND_PROJ)){
                     intent = new Intent(getActivity(), Category.ProgramsAndProjects.class);
                     intent.putExtra(getActivity().getString(R.string.CAT_TITLE_TAG),
                             PROG_AND_PROJ);
-
                 }
                 else if (title.equals(EVENTS)){
                     intent = new Intent(getActivity(), Category.Events.class);
@@ -324,8 +315,8 @@ public class NavigationDrawerFragment extends Fragment implements ClickListener 
 
                 }
                 else if (title.equals(BOOKMARKS)){
-                    intent = new Intent(getActivity(), DisplayArticleListActivity.class);
-                    intent.putExtra("CAT_TITLE","Bookmarks");
+                    intent = new Intent(getActivity(), BookmarksActivity.class);
+                    intent.putExtra("CAT_TITLE",getResources().getString(R.string.BOOKMARKS));
                     intent.putExtra(getActivity().getString(R.string.PARENT_CLASS_TAG), getActivity().getString(R.string.DISPLAY_FRAGMENT_PARENT_TAG));
                     String url = "LOCAL";
                     intent.putExtra("URL", url);

@@ -79,6 +79,16 @@
                 android:text="@string/RETRY"
                 android:visibility="gone" />
 
+            <Button
+                android:id="@+id/openBookmarks"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="@string/OPEN_BOOKMARKS"
+                android:visibility="gone" />
+
+
 
         </LinearLayout>
 

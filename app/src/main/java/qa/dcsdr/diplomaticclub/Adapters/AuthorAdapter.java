@@ -69,7 +69,6 @@ public class AuthorAdapter  extends RecyclerView.Adapter<AuthorAdapter.ArticleVi
         try {
             context.openFileInput(currentAuthor.getTitle());
         } catch (FileNotFoundException e) {
-//            Toast.makeText(context,"FileNotFoundException",Toast.LENGTH_SHORT);
             loadImage(urlTN, holder, currentAuthor.getTitle());
         }
         holder.readMore.setOnClickListener(new View.OnClickListener() {

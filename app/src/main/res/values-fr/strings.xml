@@ -14,7 +14,7 @@
     <string name="server_error">Erreur de serveur. </string>
     <string name="network_error">erreur de réseau. </string>
     <string name="parse_error">Erreur d\'analyse.</string>
-    <string name="title_activity_article_reader">ArticleReader</string>
+    <string name="title_activity_article_reader">Lecteur</string>
     <string name="title_activity_about_us">Centre Diplomatique</string>
     <string name="about_us_p1"> Un centre de réflexion et de recherche stratégique, fondé à Doha en Novembre 2014.</string>
     <string name="about_us_p2">
@@ -196,14 +196,14 @@ Le centre offre les recherches, études, évaluations et les conseils spécialis
     <string name="BOOKMARKS">Signets</string>
     <string name="SETTINGS">Paramètres</string>
     <string name="NO_CATEGORIES">Pas de catégories sélectionnées</string>
-   <string name="LANGUAGE">Langue</string>
+    <string name="LANGUAGE">Langue</string>
     <string name="LANGUAGE_DIALOG">Changer la langue de l\'application.</string>
     <string name="ENGLISH">Anglais</string>
     <string name="LANGUAGE_SETTINGS">App Langue</string>
     <string name="CHANGE_LANG_SUMMARY">Changer la langue de l\'application ci-dessous.</string>
     <string name="CATEGORY_MESSAGE">Sélectionnez les catégories que vous verrez dans le tiroir de navigation.</string>
     <string name="DCSDR">DCSDR</string>
-    <string name="VERSION_SUMMARY">Centre Diplomatique Des Etudes Et La Résolution Des Disputes, Version 0.5</string>
+    <string name="VERSION_SUMMARY">Centre Diplomatique Des Etudes Et La Résolution Des Disputes, Version 0.9</string>
     <string name="NO_ARTICLES">Pas d\'article trouvé.</string>
     <string name="ARABIC_SUPPORT">Sauf la langue de votre téléphone est l\'arabe, nous ne soutenons pas entièrement cette option. Etes-vous sûr que vous voulez faire ce changement?</string>
     <string name="CANCEL">Annuler</string>
@@ -211,13 +211,31 @@ Le centre offre les recherches, études, évaluations et les conseils spécialis
     <string name="HOMEPAGE">PAGE D\'ACCUEIL</string>
     <string name="search_hint">Recherche DCSDR</string>
     <string name="SEARCH_RESULT_TITLE">Résultats de la Recherche</string>
-    <string name="BOOKMARK">BOOKMARK</string>
-    <string name="ALREADY_BOOKMARKED">Article already bookmarked.</string>
+    <string name="BOOKMARK">Signet</string>
+    <string name="ALREADY_BOOKMARKED">Article Déjà Signet.</string>
     <string name="DELETE_BOOKMARK">deleteBookmark</string>
-    <string name="REMOVE_BOOKMARK">Remove Bookmark</string>
-    <string name="BOOKMARK_ADDED">Bookmark added.</string>
-    <string name="BOOKMARK_REMOVED">Bookmark removed.</string>
-    <string name="NO_BOOKMARK">NO_BOOKMARK</string>
-
+    <string name="REMOVE_BOOKMARK">Supprimer le Signet</string>
+    <string name="BOOKMARK_ADDED">Bookmark Ajouté.</string>
+    <string name="BOOKMARK_REMOVED">Bookmark Retiré.</string>
+    <string name="NO_BOOKMARK">Déjà Signet</string>
+    <string name="BAD_CONTENT">DCSDR a des difficultés à cet article, S\'IL VOUS PLAÎT revenir plus tard.</string>
+    <string name="OPEN_BOOKMARKS">Signets Ouverts</string>
+    <string name="NO_BOOKMARKS_SAVED">Aucun signet trouvé.</string>
+    <string name="DELETE_BOOKMARK_BUTTON">RETIRER</string>
+    <string name="CONTACT_DETAILS">Détails Du Contact</string>
+    <string name="FAX_TITLE">Numéro de Fax</string>
+    <string name="FAX_NUMBER">00974&#8211;4488&#8211;5571</string>
+    <string name="PHONE_NUMBER_TITLE">Téléphone</string>
+    <string name="PHONE_NUMBER_1">00974&#8211;4447&#8211;5572</string>
+    <string name="PHONE_NUMBER_2">00974&#8211;4444&#8211;8606</string>
+    <string name="PO_BOX">Boîte Postale</string>
+    <string name="LOCATION">Emplacement</string>
+    <string name="PO_BOX_NUMBER">11882</string>
+    <string name="LOCATION_DETAILS_2">Doha, Qatar</string>
+    <string name="E_MAIL">E-Mail</string>
+    <string name="LOCATION_DETAILS">Club Diplomatique</string>
+    <string name="title_activity_search">Résultats de la Recherche</string>
+    <string name="SEARCH">Recherche</string>
+    <string name="BOOKMARK_DIRECTORY">BOOKMARKS_FR</string>
 
 </resources>

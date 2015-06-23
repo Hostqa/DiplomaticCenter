@@ -106,7 +106,24 @@
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_centerVertical="true"
                 android:layout_centerHorizontal="true" />
+
+            <Button
+                style="android:attr/borderlessButtonStyle"
+                android:id="@+id/deleteBookmark"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@drawable/custom_bg"
+                android:gravity="center"
+                android:text="@string/DELETE_BOOKMARK_BUTTON"
+                android:textColor="@color/colorPrimaryDark"
+                android:visibility="gone"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignBottom="@+id/shareArticle"
+                android:layout_alignTop="@+id/shareArticle" />
+
         </RelativeLayout>
+
 
     </LinearLayout>
 
