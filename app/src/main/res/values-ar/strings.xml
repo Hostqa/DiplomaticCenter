@@ -210,7 +210,7 @@
     <string name="NO_BOOKMARK">تم الحفظ</string>
     <string name="BAD_CONTENT">الموقع يعاني من بعض المشاكل مع هذه الوثيقة، يرجى العودة لاحقا.</string>
     <string name="OPEN_BOOKMARKS">المستندات المحفوظة</string>
-    <string name="NO_BOOKMARKS_SAVED">لم يتم العثور على مستندات محفوظة..</string>
+    <string name="NO_BOOKMARKS_SAVED">لم يتم العثور على مستندات محفوظة.</string>
     <string name="DELETE_BOOKMARK_BUTTON">حذف</string>
     <string name="CONTACT_DETAILS">المزيد من التفاصيل</string>
     <string name="FAX_TITLE">رقم الفاكس</string>
