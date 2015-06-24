@@ -9,9 +9,6 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
-import android.widget.Toast;
-
-import java.util.Locale;
 
 import qa.dcsdr.diplomaticclub.Fragments.AuthorListFragment;
 import qa.dcsdr.diplomaticclub.R;
@@ -25,7 +22,7 @@ public class AuthorsActivity extends ActionBarActivity {
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setNavigationBarColor(getResources().getColor(R.color.colorPrimaryDark));
         }
-        Toast.makeText(this, Locale.getDefault().getDisplayLanguage(), Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, Locale.getDefault().getDisplayLanguage(), Toast.LENGTH_SHORT).show();
         requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         super.onCreate(savedInstanceState);
         FragmentManager fm = getSupportFragmentManager();

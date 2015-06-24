@@ -227,6 +227,8 @@
     <string name="title_activity_search">نتائج البحث</string>
     <string name="SEARCH">بحث</string>
     <string name="BOOKMARK_DIRECTORY">BOOKMARKS_AR</string>
+    <string name="SEARCH_URL">http://www.dcsdr.qa/api/xml_en_search.php?query=</string>
+    <string name="FEATURED_PARTIAL_URL">http://www.dcsdr.qa/api/xml_en_show_home_setting_</string>
 
 
 </resources>

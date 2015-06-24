@@ -15,6 +15,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -44,7 +45,7 @@ import qa.dcsdr.diplomaticclub.Items.VolleySingleton;
 import qa.dcsdr.diplomaticclub.R;
 import qa.dcsdr.diplomaticclub.Tools.HomePageViewPager;
 import qa.dcsdr.diplomaticclub.Tools.MyApplication;
-import qa.dcsdr.diplomaticclub.Tools.ParseArticle;
+import qa.dcsdr.diplomaticclub.Tools.ParseFeatured;
 
 public class HomePageActivity extends ActionBarActivity implements SharedPreferences.OnSharedPreferenceChangeListener {
 
@@ -72,7 +73,7 @@ public class HomePageActivity extends ActionBarActivity implements SharedPrefere
 
     private VolleySingleton volleySingleton;
     private RequestQueue requestQueue;
-    private ParseArticle parseApp;
+    private ParseFeatured parseApp;
     private int total = 0;
     private int totalPrime = 0;
     HomePageViewPager[] hpvp;
@@ -87,16 +88,20 @@ public class HomePageActivity extends ActionBarActivity implements SharedPrefere
     private void sendXmlRequest(HomePagePagerAdapter[] hppa) {
 
         SharedPreferences sp = getSharedPreferences("HOMEPAGE_CHANGES", MODE_PRIVATE);
-        String[] keys = {"FEATURED_ALL", "FEATURED_RESEARCH_AND_STUDIES_SELECTED",
+        String[] keys = {"FEATURED_ALL",
+                "FEATURED_RESEARCH_AND_STUDIES_SELECTED",
                 "FEATURED_PUBLICATIONS_SELECTED",
                 "FEATURED_DISPUTES_RESOLUTION_SELECTED",
                 "FEATURED_PROGRAMS_AND_PROJECTS_SELECTED",
                 "FEATURED_EVENTS_SELECTED"};
 
+        String [] urls = {getFeatured(1),
+                    getFeatured(2),
+                    getFeatured(5),
+                    getFeatured(3),
+                    getFeatured(6),
+                    getFeatured(4)};
         total = 0;
-
-        String url = "http://www.dcsdr.qa/api/xml_en_show_post_by_category_id.php?id=4&level=2";
-        String url1 = "http://www.dcsdr.qa/api/xml_en_show_post_by_category_id.php?id=2&level=3";
 
         for (int i = 0; i < hppa.length; i++) {
             if (!sp.getBoolean(keys[i], true)) {
@@ -104,20 +109,22 @@ public class HomePageActivity extends ActionBarActivity implements SharedPrefere
                 continue;
             }
             total += 1;
-            if (i % 2 == 0)
-                requestQueue.add(getStringRequest(url, i, hppa));
-            else
-                requestQueue.add(getStringRequest(url1, i, hppa));
+            requestQueue.add(getStringRequest(urls[i], i, hppa));
         }
+    }
+
+    private String getFeatured(int i) {
+        return getString(R.string.FEATURED_PARTIAL_URL) + i + ".php";
     }
 
     public StringRequest getStringRequest(String url, final int p, final HomePagePagerAdapter[] hppa) {
         StringRequest stringRequest = new StringRequest(url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                parseApp = new ParseArticle(response);
+                parseApp = new ParseFeatured(response, activity);
                 parseApp.processXml();
                 articleList = parseApp.getArticles();
+                Log.d("LENGTH",articleList.size()+"");
                 totalPrime += 1;
                 if (totalPrime == total) {
                     progressBar.setVisibility(View.GONE);

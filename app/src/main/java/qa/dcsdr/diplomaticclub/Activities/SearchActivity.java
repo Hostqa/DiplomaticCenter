@@ -47,16 +47,15 @@ public class SearchActivity extends ActionBarActivity {
     }
 
     private void performSearch(String query) {
-        String resultsUrl = ""+query;
+        String resultsUrl = getString(R.string.SEARCH_URL)+query;
         FragmentManager fm = getSupportFragmentManager();
         fragment = fm.findFragmentByTag("DisplayCategoriesFragment");
         if (fragment == null) {
             FragmentTransaction ft = fm.beginTransaction();
             fragment =new DisplayArticleListFragment();
             Bundle args = new Bundle();
-            String url = getString(R.string.SHOW_AUTHOR_ARTICLES_URL)+"1";
             args.putString("CAT_TITLE", getString(R.string.SEARCH_RESULT_TITLE));
-            args.putString("URL",url);
+            args.putString("URL",resultsUrl);
             fragment.setArguments(args);
             ft.replace(android.R.id.content, fragment, "myFragmentTag");
             ft.commit();

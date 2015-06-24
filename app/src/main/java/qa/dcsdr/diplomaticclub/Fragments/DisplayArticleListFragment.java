@@ -50,6 +50,7 @@ import qa.dcsdr.diplomaticclub.Items.HidingScrollListener;
 import qa.dcsdr.diplomaticclub.Items.VolleySingleton;
 import qa.dcsdr.diplomaticclub.R;
 import qa.dcsdr.diplomaticclub.Tools.ParseArticle;
+import qa.dcsdr.diplomaticclub.Tools.ParseSearch;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -68,6 +69,7 @@ public class DisplayArticleListFragment extends Fragment implements ClickListene
     private RecyclerView articlesRV;
     private TextView volleyError;
     private ParseArticle parseApp;
+    private ParseSearch parseSearch;
     private Toolbar toolbar;
     private TextView noArticles;
     private Button retryButton;
@@ -233,11 +235,6 @@ public class DisplayArticleListFragment extends Fragment implements ClickListene
                 newArticle.setAuthor(br.readLine());
                 String length = br.readLine();
                 newArticle.setLength(Integer.parseInt(length));
-//                Toast.makeText(getActivity(), "LENGTH: " + newArticle.getLength(),Toast.LENGTH_SHORT).show();
-//                char[] b = new char[newArticle.getLength()];
-//                br.read(b, 0, newArticle.getLength());
-//                String c = new String(b);
-//                newArticle.setContent(c);
                 articleList.add(newArticle);
                 br.close();
                 fis.close();
@@ -275,9 +272,16 @@ public class DisplayArticleListFragment extends Fragment implements ClickListene
             public void onResponse(String response) {
                 linlaHeaderProgress.setVisibility(View.GONE);
                 volleyError.setVisibility(View.GONE);
-                parseApp = new ParseArticle(response, getActivity());
-                parseApp.processXml();
-                articleList = parseApp.getArticles();
+                if (getRequestUrl().contains("search")) {
+                    parseSearch = new ParseSearch(response, getActivity());
+                    parseSearch.processXml();
+                    articleList = parseSearch.getArticles();
+                }
+                else {
+                    parseApp = new ParseArticle(response, getActivity());
+                    parseApp.processXml();
+                    articleList = parseApp.getArticles();
+                }
                 if (articleList.size() == 0) {
                     linlaHeaderProgress.setVisibility(View.GONE);
                     linearLayout.setVisibility(View.VISIBLE);
@@ -322,7 +326,6 @@ public class DisplayArticleListFragment extends Fragment implements ClickListene
         final Intent intent;
         intent = new Intent(getActivity(), ArticleReader.class);
         intent.putExtra("ARTICLE_LIST", articleList);
-//        Toast.makeText(getActivity(), "ITEM CLICKED" + articleList.get(position).getLength(),Toast.LENGTH_SHORT).show();
         intent.putExtra("POSITION", position);
         if (title != null)
             intent.putExtra("CAT_TITLE", title);
@@ -331,7 +334,6 @@ public class DisplayArticleListFragment extends Fragment implements ClickListene
         intent.putExtra(getString(R.string.PARENT_CLASS_TAG), getString(R.string.DISPLAY_FRAGMENT_TAG));
         intent.putExtra("URL", getRequestUrl());
         startActivity(intent);
-
     }
 
     public String createImageFromBitmap(Bitmap bitmap) {
