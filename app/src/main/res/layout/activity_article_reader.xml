@@ -85,7 +85,8 @@
             android:scrollbarAlwaysDrawVerticalTrack="true"
             android:fillViewport="true"
             android:keepScreenOn="true"
-            android:scrollbarSize="22.5sp"
+            android:scrollbarThumbVertical="@drawable/scrollbar"
+            android:scrollbarSize="9sp"
             android:scrollbars="vertical">
 
             <LinearLayout

@@ -21,6 +21,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
@@ -70,6 +71,8 @@ public class HomePageActivity extends ActionBarActivity implements SharedPrefere
     private TextView volleyErrorHomePage;
     private Button retryButtonHomePage;
     private Button openBookmarks;
+
+    private RelativeLayout splash;
 
     private VolleySingleton volleySingleton;
     private RequestQueue requestQueue;
@@ -129,6 +132,9 @@ public class HomePageActivity extends ActionBarActivity implements SharedPrefere
                 if (totalPrime == total) {
                     progressBar.setVisibility(View.GONE);
                     volleyErrorHomePage.setVisibility(View.GONE);
+                    splash.setVisibility(View.GONE);
+                    getSupportActionBar().show();
+
                 }
                 hppa[p].setArticleList(articleList);
                 hppa[p].notifyDataSetChanged();
@@ -187,6 +193,8 @@ public class HomePageActivity extends ActionBarActivity implements SharedPrefere
         retryButtonHomePage = (Button) findViewById(R.id.retryButtonHomePage);
         openBookmarks = (Button) findViewById(R.id.openBookmarks);
 
+        splash = (RelativeLayout) findViewById(R.id.splash);
+
         volleySingleton = VolleySingleton.getsInstance();
         requestQueue = volleySingleton.getRequestQueue();
 
@@ -195,7 +203,7 @@ public class HomePageActivity extends ActionBarActivity implements SharedPrefere
         NavigationDrawerFragment drawerFragment = (NavigationDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.fragment_navigation_drawer);
         drawerFragment.setUp(R.id.fragment_navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout), toolbar, true);
-
+        getSupportActionBar().hide();
         initializeAdapters();
 
         final HomePagePagerAdapter[] hppa = {featuredA, researchAndStudiesA, publicationsA,
@@ -264,6 +272,8 @@ public class HomePageActivity extends ActionBarActivity implements SharedPrefere
             }
         };
 
+//        progressBar.setVisibility(View.GONE);
+//        volleyErrorHomePage.setVisibility(View.GONE);
         getSharedPreferences("HOMEPAGE_CHANGES", Context.MODE_PRIVATE).registerOnSharedPreferenceChangeListener(homepageListener);
 
 

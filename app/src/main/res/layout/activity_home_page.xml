@@ -5,6 +5,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <RelativeLayout
+        android:id="@+id/splash"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:background="@color/colorPrimary">
+        <ImageView
+            android:scaleType="fitXY"
+            android:layout_width="175dp"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="215dp"
+            android:src="@drawable/splash"
+            />
+    </RelativeLayout>
+
+
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/ahp"
@@ -25,37 +43,33 @@
             android:orientation="vertical"
             android:visibility="gone">
 
-            <fr.castorflex.android.circularprogressbar.CircularProgressBar
-                xmlns:android="http://schemas.android.com/apk/res/android"
+            <fr.castorflex.android.circularprogressbar.CircularProgressBar xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/pbHeaderProgressHomePage"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:gravity="center"
                 android:layout_gravity="center"
-                android:id="@+id/pbHeaderProgressHomePage"
-
+                android:gravity="center"
+                android:visibility="gone"
                 android:indeterminate="true"
                 app:cpb_color="#FFee44"
                 app:cpb_colors="@array/colors"
-                app:cpb_rotation_speed="1.0"
-                app:cpb_sweep_speed="1.0"
-                app:cpb_stroke_width="3dp"
-                app:cpb_min_sweep_angle="10"
                 app:cpb_max_sweep_angle="300"
-                />
-
-
+                app:cpb_min_sweep_angle="10"
+                app:cpb_rotation_speed="1.0"
+                app:cpb_stroke_width="3dp"
+                app:cpb_sweep_speed="1.0" />
 
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/errorLayoutHomePage"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center"
-            android:visibility="gone"
-            android:id="@+id/errorLayoutHomePage"
             android:layout_gravity="center"
-            android:orientation="vertical">
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone">
 
             <TextView
                 android:id="@+id/volleyErrorHomePage"
@@ -89,18 +103,13 @@
                 android:visibility="gone" />
 
 
-
         </LinearLayout>
-
-
-
-
-
 
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="542dp"
+            android:fillViewport="false">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -112,42 +121,43 @@
                     android:id="@+id/pager1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"/>
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp" />
+
                 <qa.dcsdr.diplomaticclub.Tools.HomePageViewPager xmlns:android="http://schemas.android.com/apk/res/android"
                     android:id="@+id/pager2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"/>
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp" />
 
                 <qa.dcsdr.diplomaticclub.Tools.HomePageViewPager xmlns:android="http://schemas.android.com/apk/res/android"
                     android:id="@+id/pager3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"/>
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp" />
 
                 <qa.dcsdr.diplomaticclub.Tools.HomePageViewPager xmlns:android="http://schemas.android.com/apk/res/android"
                     android:id="@+id/pager4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"/>
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp" />
 
                 <qa.dcsdr.diplomaticclub.Tools.HomePageViewPager xmlns:android="http://schemas.android.com/apk/res/android"
                     android:id="@+id/pager5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"/>
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp" />
 
                 <qa.dcsdr.diplomaticclub.Tools.HomePageViewPager xmlns:android="http://schemas.android.com/apk/res/android"
                     android:id="@+id/pager6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"/>
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp" />
 
             </LinearLayout>
 
