@@ -2,7 +2,7 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
 
 
-    <item android:right="15dp">
+    <item android:right="10dp">
         <shape
             android:shape="rectangle">
             <gradient
@@ -11,7 +11,7 @@
                 android:startColor="#00000000" />
         </shape>
     </item>
-    <item android:left="75dp" android:drawable="@drawable/blackblock_background"/>
+    <item android:left="80dp" android:drawable="@drawable/blackblock_background"/>
 
 
 </layer-list>

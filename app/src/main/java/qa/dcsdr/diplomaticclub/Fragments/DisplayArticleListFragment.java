@@ -41,6 +41,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 
 import qa.dcsdr.diplomaticclub.Activities.ArticleReader;
 import qa.dcsdr.diplomaticclub.Adapters.ArticleAdapter;
@@ -219,6 +221,17 @@ public class DisplayArticleListFragment extends Fragment implements ClickListene
         ArrayList<Article> articleList = new ArrayList<>();
         File bmDir = getActivity().getDir(getString(R.string.BOOKMARK_DIRECTORY), Context.MODE_PRIVATE);
         File[] f = bmDir.listFiles();
+        Arrays.sort(f, new Comparator() {
+            public int compare(Object o1, Object o2) {
+                if (((File) o1).lastModified() > ((File) o2).lastModified()) {
+                    return -1;
+                } else if (((File) o1).lastModified() < ((File) o2).lastModified()) {
+                    return +1;
+                } else {
+                    return 0;
+                }
+            }
+        });
         for (int i = 0; i < f.length; i++) {
             try {
                 if (f[i].getName().indexOf("content") != -1)
