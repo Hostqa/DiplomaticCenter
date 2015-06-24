@@ -12,7 +12,8 @@
         <item name="android:textColorPrimary">#FFFFFF</item>
         <item name="android:textColorSecondary">#BBBBBB</item>
     </style>
-    <!--<style name="splashScreenTheme" parent="AppTheme">-->
-        <!--<item name="android:windowBackground">@drawable/logo_splash</item>-->
-    <!--</style>-->
+
+
+
+
 </resources>

@@ -22,6 +22,7 @@ import com.android.volley.toolbox.NetworkImageView;
 import java.io.ByteArrayOutputStream;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import qa.dcsdr.diplomaticclub.Activities.ArticleReader;
 import qa.dcsdr.diplomaticclub.Items.Article;
@@ -43,6 +44,7 @@ public class HomePageFragment extends Fragment {
     private ArrayList<Article> articleList;
     private int position;
     private ImageLoader imageLoader;
+    private boolean[] isImageSaved;
 
     public void setCategory(String category) {
         this.category = category;
@@ -74,6 +76,7 @@ public class HomePageFragment extends Fragment {
         featuredTitle.setText(Ellipsizer.ellipsize(article.getTitle(), 60));
 
         featuredImage.setImageUrl(article.getPhoto(), imageLoader);
+
 //        try {
 //            getActivity().openFileInput(article.getTitle());
 //        } catch (FileNotFoundException e) {
@@ -83,14 +86,9 @@ public class HomePageFragment extends Fragment {
         readMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), ArticleReader.class);
-                intent.putExtra("CAT_TITLE", category);
-                intent.putExtra("ARTICLE_LIST", articleList);
-                intent.putExtra("POSITION", position);
-                intent.putExtra("IS_HOME",1);
-                intent.putExtra("URL","HOME");
-                intent.putExtra(getString(R.string.PARENT_CLASS_TAG), getString(R.string.DISPLAY_FRAGMENT_TAG));
-                startActivity(intent);
+                loadImage(articleList.get(position).
+                        getPhoto(), articleList.get(position).getTitle());
+
             }
         });
 
@@ -122,6 +120,14 @@ public class HomePageFragment extends Fragment {
                         FileOutputStream fo = getActivity().openFileOutput(fileName, Context.MODE_PRIVATE);
                         fo.write(bytes.toByteArray());
                         fo.close();
+                        Intent intent = new Intent(getActivity(), ArticleReader.class);
+                        intent.putExtra("CAT_TITLE", category);
+                        intent.putExtra("ARTICLE_LIST", articleList);
+                        intent.putExtra("POSITION", position);
+                        intent.putExtra("IS_HOME", 1);
+                        intent.putExtra("URL", "HOME");
+                        intent.putExtra(getString(R.string.PARENT_CLASS_TAG), getString(R.string.DISPLAY_FRAGMENT_TAG));
+                        startActivity(intent);
                     } catch (Exception e) {
                         fileName = null;
                     }
@@ -136,6 +142,8 @@ public class HomePageFragment extends Fragment {
 
     public void setArticleList(ArrayList<Article> articleList) {
         this.articleList = articleList;
+        this.isImageSaved = new boolean[articleList.size()];
+        Arrays.fill(this.isImageSaved, false);
     }
 
     public void setPosition(int position) {

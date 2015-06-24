@@ -3,6 +3,8 @@ package qa.dcsdr.diplomaticclub.Activities;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Rect;
 import android.os.Build;
 import android.os.Bundle;
@@ -19,17 +21,18 @@ import android.view.ViewTreeObserver;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.toolbox.ImageLoader;
-import com.android.volley.toolbox.NetworkImageView;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
@@ -47,7 +50,7 @@ public class ArticleReader extends ActionBarActivity {
     private TextView articleTitle;
     private TextView articleContents;
     private TextView articleCategory;
-    private NetworkImageView articleImage;
+    private ImageView articleImage;
     private TextView articleAuthor;
     private TextView articleDate;
     private Button nextArticle;
@@ -100,7 +103,7 @@ public class ArticleReader extends ActionBarActivity {
         articleCategory = (TextView) findViewById(R.id.category);
         articleAuthor = (TextView) findViewById(R.id.articleAuthor);
         articleDate = (TextView) findViewById(R.id.articleDate);
-        articleImage = (NetworkImageView) findViewById(R.id.articleImage);
+        articleImage = (ImageView) findViewById(R.id.articleImage);
         c = getWindow().getDecorView().findViewById(android.R.id.content);
         scrollView = (ScrollView) findViewById(R.id.articleScroll);
         errorLayoutR = (LinearLayout) findViewById(R.id.errorLayoutR);
@@ -167,14 +170,13 @@ public class ArticleReader extends ActionBarActivity {
             }
         }
         // TODO: make sure image is always there
-        articleImage.setImageUrl(current.getPhoto(), imageLoader);
-
-//        try {
-//            Bitmap bitmap = BitmapFactory.decodeStream(openFileInput(current.getTitle()));
-//            articleImage.setImageBitmap(bitmap);
-//        } catch (FileNotFoundException e) {
-//            articleImage.setImageUrl(current.getPhoto(), imageLoader);
-//        }
+//        articleImage.setImageUrl(current.getPhoto(), imageLoader);
+        try {
+            Bitmap bitmap = BitmapFactory.decodeStream(openFileInput(current.getTitle()));
+            articleImage.setImageBitmap(bitmap);
+        } catch (FileNotFoundException e) {
+            articleImage.setImageDrawable(getResources().getDrawable(R.drawable.default_art_image));
+        }
         prevArticle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -474,12 +476,12 @@ public class ArticleReader extends ActionBarActivity {
             }
         }
 
-        articleImage.setImageUrl(current.getPhoto(), imageLoader);
-//        try {
-//            Bitmap bitmap = BitmapFactory.decodeStream(openFileInput(current.getTitle()));
-//            articleImage.setImageBitmap(bitmap);
-//        } catch (FileNotFoundException e) {
-//        }
+//        articleImage.setImageUrl(current.getPhoto(), imageLoader);
+        try {
+            Bitmap bitmap = BitmapFactory.decodeStream(openFileInput(current.getTitle()));
+            articleImage.setImageBitmap(bitmap);
+        } catch (FileNotFoundException e) {
+        }
         mHandler.postDelayed(new Runnable() {
             @Override
             public void run() {

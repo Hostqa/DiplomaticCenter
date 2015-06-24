@@ -159,6 +159,12 @@
                     android:paddingBottom="10dp"
                     android:paddingTop="10dp" />
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:background="@color/colorAccent"
+                    android:layout_height="50dp"/>
+
+
             </LinearLayout>
 
         </ScrollView>

@@ -4,11 +4,14 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,6 +22,7 @@ import com.android.volley.toolbox.NetworkImageView;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -77,20 +81,28 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
         holder.listItemU.setText(currentArticle.getTitle());
         holder.authorTV.setText(currentArticle.getAuthor());
         holder.summary.setText(currentArticle.getSumAbstract());
-        String urlTN = currentArticle.getPhoto();
-        holder.listIconViewU.setImageUrl(urlTN, imageLoader);
-
-//        if (!isImageSaved[position]) {
-//            try {
-//                context.openFileInput(articleList.get(position).getTitle());
-//            } catch (FileNotFoundException e) {
-//                Toast.makeText(context, "IMAGE SAVING", Toast.LENGTH_SHORT).show();
-//                loadImage(articleList.get(position).
-//                        getPhoto(), articleList.get(position).getTitle());
-//            }
-//            isImageSaved[position] = true;
-//        }
-
+        if (isBookmark) {
+            holder.listIconViewU.setVisibility(View.GONE);
+            Log.d("isBookmark","yes");
+            try {
+                Log.d("isBookmark","try");
+                holder.localImage.setImageBitmap(BitmapFactory.decodeStream
+                        (context.openFileInput(currentArticle.getTitle())));
+                holder.localImage.setVisibility(View.VISIBLE);
+            } catch (FileNotFoundException e) {
+                Log.d("isBookmark","catch");
+                holder.localImage.setVisibility(View.GONE);
+                holder.listIconViewU.setVisibility(View.VISIBLE);
+            }
+        }
+        else {
+            holder.listIconViewU.setImageUrl(currentArticle.getPhoto(), imageLoader);
+        }
+        if (!isImageSaved[position]){
+            loadImage(articleList.get(position).
+                    getPhoto(), articleList.get(position).getTitle());
+            isImageSaved[position] = true;
+        }
 
     }
 
@@ -131,20 +143,19 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
                         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
                         response.getBitmap().compress(Bitmap.CompressFormat.JPEG, 100, bytes);
                         FileOutputStream fo = context.openFileOutput(fileName, Context.MODE_PRIVATE);
+                        Log.d("isBookmark","catch");
                         fo.write(bytes.toByteArray());
                         fo.close();
                     } catch (Exception e) {
-                        fileName = null;
                     }
                 }
-
                 @Override
                 public void onErrorResponse(VolleyError error) {
                 }
-
             });
         }
     }
+
 
     @Override
     public int getItemCount() {
@@ -153,6 +164,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
 
     class ArticleViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         NetworkImageView listIconViewU;
+        ImageView localImage;
         TextView listItemU;
         TextView authorTV;
         TextView summary;
@@ -163,6 +175,9 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
         public ArticleViewHolder(View itemView) {
             super(itemView);
             listIconViewU = (NetworkImageView) itemView.findViewById(R.id.PlistIconViewU);
+            listIconViewU.setDefaultImageResId(R.drawable.loading_image);
+            listIconViewU.setErrorImageResId(R.drawable.default_art_image);
+            localImage = (ImageView) itemView.findViewById(R.id.imageLocal);
             listItemU = (TextView) itemView.findViewById(R.id.PlistItemU);
             authorTV = (TextView) itemView.findViewById(R.id.PauthorTV);
             summary = (TextView) itemView.findViewById(R.id.article_abstract);

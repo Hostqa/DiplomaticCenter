@@ -39,6 +39,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import fr.castorflex.android.circularprogressbar.CircularProgressBar;
 import qa.dcsdr.diplomaticclub.Adapters.HomePagePagerAdapter;
 import qa.dcsdr.diplomaticclub.Fragments.NavigationDrawerFragment;
 import qa.dcsdr.diplomaticclub.Items.Article;
@@ -77,6 +78,8 @@ public class HomePageActivity extends ActionBarActivity implements SharedPrefere
     private VolleySingleton volleySingleton;
     private RequestQueue requestQueue;
     private ParseFeatured parseApp;
+
+    private CircularProgressBar cpb;
     private int total = 0;
     private int totalPrime = 0;
     HomePageViewPager[] hpvp;
@@ -133,6 +136,7 @@ public class HomePageActivity extends ActionBarActivity implements SharedPrefere
                     progressBar.setVisibility(View.GONE);
                     volleyErrorHomePage.setVisibility(View.GONE);
                     splash.setVisibility(View.GONE);
+                    cpb.setVisibility(View.GONE);
                     getSupportActionBar().show();
 
                 }
@@ -142,6 +146,8 @@ public class HomePageActivity extends ActionBarActivity implements SharedPrefere
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                splash.setVisibility(View.GONE);
+                getSupportActionBar().show();
                 progressBar.setVisibility(View.GONE);
                 errorLayout.setVisibility(View.VISIBLE);
                 volleyErrorHomePage.setVisibility(View.VISIBLE);
@@ -192,6 +198,7 @@ public class HomePageActivity extends ActionBarActivity implements SharedPrefere
         volleyErrorHomePage = (TextView) findViewById(R.id.volleyErrorHomePage);
         retryButtonHomePage = (Button) findViewById(R.id.retryButtonHomePage);
         openBookmarks = (Button) findViewById(R.id.openBookmarks);
+        cpb = (CircularProgressBar) findViewById(R.id.pbHeaderProgressHomePage);
 
         splash = (RelativeLayout) findViewById(R.id.splash);
 
@@ -219,6 +226,7 @@ public class HomePageActivity extends ActionBarActivity implements SharedPrefere
         hpvpM = new HomePageViewPager[]{featured, researchAndStudies, publications,
                 disputes_resolution, programsAndProjects, events};
 
+        cpb.setVisibility(View.GONE);
         progressBar.setVisibility(View.VISIBLE);
         errorLayout.setVisibility(View.GONE);
 
@@ -240,6 +248,8 @@ public class HomePageActivity extends ActionBarActivity implements SharedPrefere
         retryButtonHomePage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                cpb.setVisibility(View.VISIBLE);
+
                 retryButtonHomePage.setVisibility(View.GONE);
                 openBookmarks.setVisibility(View.GONE);
                 volleyErrorHomePage.setVisibility(View.GONE);

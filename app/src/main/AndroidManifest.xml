@@ -169,6 +169,22 @@
             android:configChanges="keyboardHidden|locale|orientation|screenSize"
             android:label="@string/title_activity_home_page"
             android:launchMode="singleTask" >
+
+
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="http"
+                    android:host="dcsdr.qa"
+                    android:pathPrefix="/english/" />
+                <data android:scheme="http"
+                    android:host="www.dcsdr.qa"
+                    android:pathPrefix="/english/" />
+            </intent-filter>
+
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
