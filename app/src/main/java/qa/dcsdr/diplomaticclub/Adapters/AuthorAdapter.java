@@ -44,7 +44,7 @@ public class AuthorAdapter  extends RecyclerView.Adapter<AuthorAdapter.ArticleVi
     }
 
     public AuthorAdapter(Context context) {
-        layoutInflater = layoutInflater.from(context);
+        layoutInflater = LayoutInflater.from(context);
         volleySingleton=VolleySingleton.getsInstance();
         imageLoader=volleySingleton.getImageLoader();
         this.context=context;

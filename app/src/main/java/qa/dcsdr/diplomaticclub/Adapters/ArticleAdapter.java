@@ -59,7 +59,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
     }
 
     public ArticleAdapter(Context context, boolean isBookmark) {
-        layoutInflater = layoutInflater.from(context);
+        layoutInflater = LayoutInflater.from(context);
         volleySingleton = VolleySingleton.getsInstance();
         imageLoader = volleySingleton.getImageLoader();
         this.context = context;

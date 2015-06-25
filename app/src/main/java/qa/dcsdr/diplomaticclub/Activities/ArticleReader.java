@@ -157,10 +157,8 @@ public class ArticleReader extends ActionBarActivity {
                 } else {
                     ac.setIdAndUrl(getResources().getString(R.string.SINGLE_ARTICLE_ID), articleList.get(position).getId());
                     ac.sendXmlRequest(c);
-                    menu.findItem(R.id.bookmark).setIcon(R.drawable.ic_bookmark_border);
-                    menu.findItem(R.id.bookmark).setTitle(R.string.BOOKMARK);
-                    if (this.menu.findItem(R.string.DELETE_BOOKMARK) != null)
-                        this.menu.removeItem(R.string.DELETE_BOOKMARK);
+                    // TODO: FIX FOLLOWING BUG
+
                 }
 
 
@@ -170,8 +168,6 @@ public class ArticleReader extends ActionBarActivity {
                 articleContents.setText("Error.");
             }
         }
-        // TODO: make sure image is always there
-//        articleImage.setImageUrl(current.getPhoto(), imageLoader);
         try {
             Bitmap bitmap = BitmapFactory.decodeStream(openFileInput(current.getTitle()));
             articleImage.setImageBitmap(bitmap);
@@ -235,7 +231,6 @@ public class ArticleReader extends ActionBarActivity {
             }
 
         }
-
 
         scrollView.getViewTreeObserver().addOnScrollChangedListener(new ViewTreeObserver.OnScrollChangedListener() {
 
@@ -308,6 +303,7 @@ public class ArticleReader extends ActionBarActivity {
                 }
             }
         });
+
     }
 
     @Override
@@ -343,6 +339,11 @@ public class ArticleReader extends ActionBarActivity {
                 MenuItem mi = this.menu.add(Menu.NONE, R.string.DELETE_BOOKMARK,
                         200, R.string.REMOVE_BOOKMARK);
                 mi.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
+            } else {
+                menu.findItem(R.id.bookmark).setIcon(R.drawable.ic_bookmark_border);
+                menu.findItem(R.id.bookmark).setTitle(R.string.BOOKMARK);
+                if (this.menu.findItem(R.string.DELETE_BOOKMARK) != null)
+                    this.menu.removeItem(R.string.DELETE_BOOKMARK);
             }
 
         }
