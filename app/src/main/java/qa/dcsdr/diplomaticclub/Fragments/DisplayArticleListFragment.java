@@ -82,14 +82,14 @@ public class DisplayArticleListFragment extends Fragment implements ClickListene
     private String url;
     private String title;
 
-    public String getRequestUrl() {
+    private String getRequestUrl() {
         if (url != null)
             return url;
         else
             return (String) this.getActivity().getIntent().getExtras().get("URL");
     }
 
-    public String getTitle() {
+    private String getTitle() {
         return (String) this.getActivity().getIntent().getExtras().get("CAT_TITLE");
     }
 
@@ -217,7 +217,7 @@ public class DisplayArticleListFragment extends Fragment implements ClickListene
         super.onCreateOptionsMenu(menu, inflater);
     }
 
-    public ArrayList<Article> getSavedBookmarks() {
+    private ArrayList<Article> getSavedBookmarks() {
         ArrayList<Article> articleList = new ArrayList<>();
         File bmDir = getActivity().getDir(getString(R.string.BOOKMARK_DIRECTORY), Context.MODE_PRIVATE);
         File[] f = bmDir.listFiles();

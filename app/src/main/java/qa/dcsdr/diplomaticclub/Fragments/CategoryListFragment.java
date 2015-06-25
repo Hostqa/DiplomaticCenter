@@ -29,7 +29,7 @@ import qa.dcsdr.diplomaticclub.R;
  */
 public class CategoryListFragment extends Fragment {
 
-    Toolbar toolbar;
+    private Toolbar toolbar;
     private RecyclerView recyclerView;
     private CategoryAdapter adapter;
     private OnFragmentInteractionListener mListener;

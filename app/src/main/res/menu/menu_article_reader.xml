@@ -16,19 +16,19 @@
     <item
         android:id="@+id/increase"
         android:icon="@drawable/ic_zoom_in"
-        android:orderInCategory="100"
+        android:orderInCategory="1"
         android:title="@string/LARGER_TEXT"
         app:showAsAction="always" />
     <item
         android:id="@+id/decrease"
         android:icon="@drawable/ic_zoom_out"
-        android:orderInCategory="100"
+        android:orderInCategory="2"
         android:title="@string/SMALLER_TEXT"
         app:showAsAction="always" />
     <item
         android:id="@+id/bookmark"
         android:icon="@drawable/ic_bookmark_border"
-        android:orderInCategory="100"
+        android:orderInCategory="3"
         android:title="@string/BOOKMARK"
         app:showAsAction="always" />
     <item

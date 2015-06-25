@@ -13,19 +13,18 @@ import qa.dcsdr.diplomaticclub.Items.Article;
 public class ParseArticle {
 
     private String data;
-    private FragmentActivity fa;
     private ArrayList<Article> articles;
 
 
     public ParseArticle(String xmlData) {
         this.data = xmlData;
-        this.articles = new ArrayList<Article>();
+        this.articles = new ArrayList<>();
     }
 
     public ParseArticle(String xmlData, FragmentActivity activity) {
         this.data=xmlData;
-        this.articles = new ArrayList<Article>();
-        this.fa=activity;
+        this.articles = new ArrayList<>();
+        FragmentActivity fa = activity;
     }
 
     public ArrayList<Article> getArticles() {
@@ -60,8 +59,8 @@ public class ParseArticle {
                 } else if (eventType == XmlPullParser.END_TAG) {
                     if (inEntry) {
                         if (tag.toLowerCase().contains(item.toLowerCase())) {
-                            if (currentArticle.getTitle()!="N/A"&&
-                                    currentArticle.getAuthor()!="N/A")
+                            if (!currentArticle.getTitle().equals("N/A")&&
+                                    !currentArticle.getAuthor().equals("N/A"))
                                 articles.add(currentArticle);
                             inEntry = false;
                         }

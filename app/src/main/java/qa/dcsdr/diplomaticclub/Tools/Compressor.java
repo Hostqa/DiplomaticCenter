@@ -9,7 +9,7 @@ import java.util.zip.GZIPOutputStream;
 /**
  * Created by Tamim on 6/19/2015.
  */
-public class Compressor {
+class Compressor {
 
     public static String decompress(byte[] compressed) throws IOException {
         final int BUFFER_SIZE = 32;

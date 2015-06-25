@@ -10,16 +10,16 @@ import qa.dcsdr.diplomaticclub.Tools.Ellipsizer;
  */
 public class Article implements Parcelable {
 
-    int id;
-    String title;
-    String link;
-    String photo;
+    private int id;
+    private String title;
+    private String link;
+    private String photo;
 
 
-    String description;
-    String date;
-    String author;
-    String content;
+    private String description;
+    private String date;
+    private String author;
+    private String content;
 
     public int getLength() {
         return length;
@@ -29,7 +29,7 @@ public class Article implements Parcelable {
         this.length = length;
     }
 
-    int length;
+    private int length;
 
 
 

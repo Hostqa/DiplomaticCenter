@@ -22,7 +22,6 @@
             android:layout_width="fill_parent"
             android:adjustViewBounds="true"
            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
             android:src="@drawable/default_art_image" />
 
         <ImageView
@@ -31,7 +30,6 @@
             android:layout_width="fill_parent"
             android:adjustViewBounds="true"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
             android:src="@drawable/default_art_image" />
         <LinearLayout
             android:layout_width="match_parent"

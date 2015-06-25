@@ -22,7 +22,7 @@ public class CategoryDictionary {
         initializeData();
     }
 
-    public String s(int id){
+    private String s(int id){
         return context.getString(id);
     }
 

@@ -58,15 +58,6 @@ public class ArticleContent {
         this.url = url;
     }
 
-
-    public ArticleContent(int id, String url) {
-        this.id = id;
-        this.url = url + id;
-        volleySingleton = VolleySingleton.getsInstance();
-        requestQueue = volleySingleton.getRequestQueue();
-        context = null;
-    }
-
     public ArticleContent(int id, String url, Context context) {
         this.id = id;
         this.url = url + id;
@@ -75,7 +66,7 @@ public class ArticleContent {
         this.context = context;
     }
 
-    public String processXml(String data) {
+    private String processXml(String data) {
         String content = "";
         boolean inEntry = false;
         String textValue = "";
@@ -115,8 +106,7 @@ public class ArticleContent {
         }
     }
 
-
-    public Article processBookmark(String data) {
+    private Article processBookmark(String data) {
         boolean inEntry = false;
         String textValue = "";
         Article currentArticle = null;

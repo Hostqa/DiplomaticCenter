@@ -49,7 +49,6 @@
                     android:fontFamily="sans-serif-light"
                     android:gravity="bottom"
                     android:padding="10dp"
-                    android:paddingLeft="10dp"
                     android:text="@string/CONTACT_US"
                     android:textColor="#FFFFFF"
                     android:textSize="26sp" />
@@ -106,7 +105,8 @@
                     android:layout_marginRight="30dp"
                     android:layout_marginTop="30dp"
                     android:orientation="horizontal"
-                    android:weightSum="8">
+                    android:weightSum="8"
+                    android:baselineAligned="false">
 
 
                     <LinearLayout
@@ -377,7 +377,6 @@
                         style="android:attr/borderlessButtonStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
                         android:layout_gravity="center_horizontal"
                         android:layout_margin="12dp"
                         android:background="@drawable/custom_bg"

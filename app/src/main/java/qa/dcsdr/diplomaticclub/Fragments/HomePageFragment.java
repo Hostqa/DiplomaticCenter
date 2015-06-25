@@ -33,14 +33,14 @@ import qa.dcsdr.diplomaticclub.Tools.Ellipsizer;
 
 public class HomePageFragment extends Fragment {
 
-    Article article;
-    TextView featuredCategory;
-    NetworkImageView featuredImage;
-    TextView featuredTitle;
-    TextView featuredAuthor;
-    String category;
-    Button readMore;
-    Button featuredShare;
+    private Article article;
+    private TextView featuredCategory;
+    private NetworkImageView featuredImage;
+    private TextView featuredTitle;
+    private TextView featuredAuthor;
+    private String category;
+    private Button readMore;
+    private Button featuredShare;
     private ArrayList<Article> articleList;
     private int position;
     private ImageLoader imageLoader;

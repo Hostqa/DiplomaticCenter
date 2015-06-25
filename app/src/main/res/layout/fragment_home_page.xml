@@ -92,7 +92,6 @@
             android:id="@+id/featuredAuthor"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_alignParentBottom="true"
             android:fontFamily="sans-serif-light"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
@@ -106,7 +105,9 @@
             android:layout_height="45dp"
             android:paddingBottom="6dp"
             android:paddingLeft="14dp"
-            android:paddingRight="20dp">
+            android:paddingStart="14dp"
+            android:paddingRight="20dp"
+            android:paddingEnd="20dp">
 
             <Button
                 android:id="@+id/featuredReadMore"

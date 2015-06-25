@@ -34,7 +34,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
     private LayoutInflater inflater;
     private List<CategoryEntry> data = Collections.emptyList();
     private Context context;
-    final CategoryDictionary categoryDictionary;
+    private final CategoryDictionary categoryDictionary;
 
     public CategoryAdapter(Context context, List<CategoryEntry> data) {
         this.context = context;
@@ -50,7 +50,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
         return holder;
     }
 
-    public static int calculateInSampleSize(
+    private static int calculateInSampleSize(
             BitmapFactory.Options options, int reqWidth, int reqHeight) {
         final int height = options.outHeight;
         final int width = options.outWidth;

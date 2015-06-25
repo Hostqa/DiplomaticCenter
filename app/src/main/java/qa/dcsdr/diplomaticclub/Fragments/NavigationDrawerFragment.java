@@ -57,18 +57,18 @@ public class NavigationDrawerFragment extends Fragment implements ClickListener 
     private View containerView;
     private Runnable mPendingRunnable;
 
-    String HOME;
-    String ABOUT_US;
-    String AUTHORS;
-    String CATEGORIES;
-    String RES_AND_STUD;
-    String PUBLICATIONS;
-    String DISP_RESOL;
-    String PROG_AND_PROJ;
-    String EVENTS;
-    String BOOKMARKS;
-    String CONTACT_US;
-    String SETTINGS;
+    private String HOME;
+    private String ABOUT_US;
+    private String AUTHORS;
+    private String CATEGORIES;
+    private String RES_AND_STUD;
+    private String PUBLICATIONS;
+    private String DISP_RESOL;
+    private String PROG_AND_PROJ;
+    private String EVENTS;
+    private String BOOKMARKS;
+    private String CONTACT_US;
+    private String SETTINGS;
 
     private SharedPreferences.OnSharedPreferenceChangeListener drawerListener;
 
@@ -131,7 +131,7 @@ public class NavigationDrawerFragment extends Fragment implements ClickListener 
         return layout;
     }
 
-    public List<DrawerEntry> getData() {
+    private List<DrawerEntry> getData() {
         //load only static data inside a drawer
         List<DrawerEntry> data = new ArrayList<>();
         String[] titles = getResources().getStringArray(R.array.drawer_items);
@@ -223,14 +223,14 @@ public class NavigationDrawerFragment extends Fragment implements ClickListener 
     }
 
 
-    public static void saveToPreferences(Context context, String preferenceName, String preferenceValue) {
+    private static void saveToPreferences(Context context, String preferenceName, String preferenceValue) {
         SharedPreferences sharedPreferences = context.getSharedPreferences(PREF_FILE_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(preferenceName, preferenceValue);
         editor.apply();
     }
 
-    public static String readFromPreferences(Context context, String preferenceName, String defaultValue) {
+    private static String readFromPreferences(Context context, String preferenceName, String defaultValue) {
         SharedPreferences sharedPreferences = context.getSharedPreferences(PREF_FILE_NAME, Context.MODE_PRIVATE);
         return sharedPreferences.getString(preferenceName, defaultValue);
     }

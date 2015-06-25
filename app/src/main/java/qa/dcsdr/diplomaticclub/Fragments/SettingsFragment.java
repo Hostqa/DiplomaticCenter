@@ -26,7 +26,7 @@ public class SettingsFragment extends PreferenceFragment implements SharedPrefer
         getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
     }
 
-    public void change(String key, boolean current) {
+    private void change(String key, boolean current) {
         if (current)
             getActivity().getSharedPreferences("DRAWER_CHANGES",
                     Context.MODE_PRIVATE).edit().putBoolean(key, true).apply();
@@ -35,7 +35,7 @@ public class SettingsFragment extends PreferenceFragment implements SharedPrefer
                     Context.MODE_PRIVATE).edit().putBoolean(key, false).apply();
     }
 
-    public void changeFeatured(String key, boolean current) {
+    private void changeFeatured(String key, boolean current) {
         if (current)
             getActivity().getSharedPreferences("HOMEPAGE_CHANGES",
                     Context.MODE_PRIVATE).edit().putBoolean(key, true).apply();

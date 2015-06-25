@@ -82,7 +82,7 @@ public class HomePageActivity extends ActionBarActivity implements SharedPrefere
     private CircularProgressBar cpb;
     private int total = 0;
     private int totalPrime = 0;
-    HomePageViewPager[] hpvp;
+    private HomePageViewPager[] hpvp;
     private HomePageViewPager[] hpvpM;
 
     private Activity activity;
@@ -123,7 +123,7 @@ public class HomePageActivity extends ActionBarActivity implements SharedPrefere
         return getString(R.string.FEATURED_PARTIAL_URL) + i + ".php";
     }
 
-    public StringRequest getStringRequest(String url, final int p, final HomePagePagerAdapter[] hppa) {
+    private StringRequest getStringRequest(String url, final int p, final HomePagePagerAdapter[] hppa) {
         StringRequest stringRequest = new StringRequest(url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {

@@ -48,7 +48,6 @@
                     android:fontFamily="sans-serif-light"
                     android:gravity="bottom"
                     android:padding="10dp"
-                    android:paddingLeft="10dp"
                     android:text="@string/ABOUT_US"
                     android:textColor="#FFFFFF"
                     android:textSize="26sp" />

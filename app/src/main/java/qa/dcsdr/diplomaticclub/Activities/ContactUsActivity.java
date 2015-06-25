@@ -104,7 +104,7 @@ public class ContactUsActivity extends ActionBarActivity  {
     }
 
     // TODO: Get correct URL and test functionality
-    public String performPostCall(String requestURL,
+    private String performPostCall(String requestURL,
                                    HashMap<String, String> postDataParams) {
         URL url;
         String response = "";

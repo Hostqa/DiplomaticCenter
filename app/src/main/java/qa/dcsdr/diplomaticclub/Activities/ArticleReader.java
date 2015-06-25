@@ -446,7 +446,7 @@ public class ArticleReader extends ActionBarActivity {
     /*
         Allows navigation from one article to another.
     */
-    public void navigate(boolean isNext) {
+    private void navigate(boolean isNext) {
         boolean virtual = articleList.get(0).getTitle().equals("N/A");
         if (isNext) {
             this.position += 1;

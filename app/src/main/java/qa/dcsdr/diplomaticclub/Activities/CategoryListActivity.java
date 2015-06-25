@@ -15,7 +15,7 @@ import qa.dcsdr.diplomaticclub.R;
 
 public class CategoryListActivity extends ActionBarActivity {
 
-    Fragment fragment ;
+    private Fragment fragment ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

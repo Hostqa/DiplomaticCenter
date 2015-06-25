@@ -26,8 +26,8 @@ public class HomePageAdapter extends RecyclerView.Adapter<HomePageAdapter.Catego
 
     private final VolleySingleton volleySingleton;
     private final ImageLoader imageLoader;
-    List<HomePageEntry> entries;
-    Context context;
+    private List<HomePageEntry> entries;
+    private Context context;
 
     public HomePageAdapter(List<HomePageEntry> entries, Context context) {
         this.entries = entries;
@@ -43,7 +43,7 @@ public class HomePageAdapter extends RecyclerView.Adapter<HomePageAdapter.Catego
         return holder;
     }
 
-    public static int calculateInSampleSize(
+    private static int calculateInSampleSize(
             BitmapFactory.Options options, int reqWidth, int reqHeight) {
         // Raw height and width of image
         final int height = options.outHeight;
