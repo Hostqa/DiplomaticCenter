@@ -36,19 +36,6 @@ import qa.dcsdr.diplomaticclub.Items.ClickListener;
 import qa.dcsdr.diplomaticclub.Items.DrawerEntry;
 import qa.dcsdr.diplomaticclub.R;
 
-//import static qa.dcsdr.diplomaticclub.Tools.DrawerItemNumbers.DrawerItems.ABOUT_US;
-//import static qa.dcsdr.diplomaticclub.Tools.DrawerItemNumbers.DrawerItems.AUTHORS;
-//import static qa.dcsdr.diplomaticclub.Tools.DrawerItemNumbers.DrawerItems.BOOKMARKS;
-//import static qa.dcsdr.diplomaticclub.Tools.DrawerItemNumbers.DrawerItems.CATEGORIES;
-//import static qa.dcsdr.diplomaticclub.Tools.DrawerItemNumbers.DrawerItems.CONTACT_US;
-//import static qa.dcsdr.diplomaticclub.Tools.DrawerItemNumbers.DrawerItems.DISP_RESOL;
-//import static qa.dcsdr.diplomaticclub.Tools.DrawerItemNumbers.DrawerItems.EVENTS;
-//import static qa.dcsdr.diplomaticclub.Tools.DrawerItemNumbers.DrawerItems.HOME;
-//import static qa.dcsdr.diplomaticclub.Tools.DrawerItemNumbers.DrawerItems.PROG_AND_PROJ;
-//import static qa.dcsdr.diplomaticclub.Tools.DrawerItemNumbers.DrawerItems.PUBLICATIONS;
-//import static qa.dcsdr.diplomaticclub.Tools.DrawerItemNumbers.DrawerItems.RES_AND_STUD;
-//import static qa.dcsdr.diplomaticclub.Tools.DrawerItemNumbers.DrawerItems.SETTINGS;
-
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -118,7 +105,7 @@ public class NavigationDrawerFragment extends Fragment implements ClickListener 
                         "PROGRAMS_AND_PROJECTS_SELECTED",
                         "EVENTS_SELECTED"};
                 List<String> list = Arrays.asList(keys);
-                    int i = list.indexOf(key);
+                int i = list.indexOf(key);
                 if (i != -1) {
                     adapter.delete(i);
                 }
@@ -167,10 +154,10 @@ public class NavigationDrawerFragment extends Fragment implements ClickListener 
         for (int a = 4; a < 9; a++) {
             if (!sharedPref.getBoolean(keys[a], true)) j++;
         }
-        if (j==5) {
+        if (j == 5) {
             DrawerEntry nde = new DrawerEntry();
             nde.setTitle(getActivity().getResources().getString(R.string.NO_CATEGORIES));
-            data.add(4,nde);
+            data.add(4, nde);
         }
         return data;
     }
@@ -270,71 +257,55 @@ public class NavigationDrawerFragment extends Fragment implements ClickListener 
 //        int l= getActivity().getSharedPreferences("DRAWER_CHANGES", Context.MODE_PRIVATE).getInt(numOfEntries, 5);
         RelativeLayout rl = (RelativeLayout) view;
         TextView tv = (TextView) rl.findViewById(R.id.listText);
-        final String title = tv.getText()+"";
+        final String title = tv.getText() + "";
         mPendingRunnable = new Runnable() {
             @Override
             public void run() {
                 int cont = 0;
                 Intent intent = null;
-                if (title.equals(HOME)){
+                if (title.equals(HOME)) {
                     intent = new Intent(getActivity(), HomePageActivity.class);
-                }
-                else if (title.equals(ABOUT_US)){
+                } else if (title.equals(ABOUT_US)) {
                     intent = new Intent(getActivity(), AboutUsActivity.class);
-                }
-                else if (title.equals(AUTHORS)){
+                } else if (title.equals(AUTHORS)) {
                     intent = new Intent(getActivity(), AuthorsActivity.class);
-                }
-                else if (title.equals(CATEGORIES) || (title.equals(getString(R.string.NO_CATEGORIES)))){
+                } else if (title.equals(CATEGORIES) || (title.equals(getString(R.string.NO_CATEGORIES)))) {
                     return;
-                }
-                else if (title.equals(RES_AND_STUD)){
+                } else if (title.equals(RES_AND_STUD)) {
                     intent = new Intent(getActivity(), Category.ResearchAndStudies.class);
                     intent.putExtra(getActivity().getString(R.string.CAT_TITLE_TAG),
                             RES_AND_STUD);
-                }
-                else if (title.equals(PUBLICATIONS)){
+                } else if (title.equals(PUBLICATIONS)) {
                     intent = new Intent(getActivity(), Category.Publications.class);
                     intent.putExtra(getActivity().getString(R.string.CAT_TITLE_TAG),
                             PUBLICATIONS);
-                }
-                else if (title.equals(DISP_RESOL)){
+                } else if (title.equals(DISP_RESOL)) {
                     intent = new Intent(getActivity(), Category.DisputesResolution.class);
                     intent.putExtra(getActivity().getString(R.string.CAT_TITLE_TAG),
                             DISP_RESOL);
-                }
-                else if (title.equals(PROG_AND_PROJ)){
+                } else if (title.equals(PROG_AND_PROJ)) {
                     intent = new Intent(getActivity(), Category.ProgramsAndProjects.class);
                     intent.putExtra(getActivity().getString(R.string.CAT_TITLE_TAG),
                             PROG_AND_PROJ);
-                }
-                else if (title.equals(EVENTS)){
+                } else if (title.equals(EVENTS)) {
                     intent = new Intent(getActivity(), Category.Events.class);
                     intent.putExtra(getActivity().getString(R.string.CAT_TITLE_TAG),
                             EVENTS);
-
-                }
-                else if (title.equals(BOOKMARKS)){
+                } else if (title.equals(BOOKMARKS)) {
                     intent = new Intent(getActivity(), BookmarksActivity.class);
-                    intent.putExtra("CAT_TITLE",getResources().getString(R.string.BOOKMARKS));
+                    intent.putExtra("CAT_TITLE", getResources().getString(R.string.BOOKMARKS));
                     intent.putExtra(getActivity().getString(R.string.PARENT_CLASS_TAG), getActivity().getString(R.string.DISPLAY_FRAGMENT_PARENT_TAG));
                     String url = "LOCAL";
                     intent.putExtra("URL", url);
-
-                }
-                else if (title.equals(CONTACT_US)){
+                } else if (title.equals(CONTACT_US)) {
                     intent = new Intent(getActivity(), ContactUsActivity.class);
-
-                }
-                else if (title.equals(SETTINGS)){
+                } else if (title.equals(SETTINGS)) {
                     intent = new Intent(getActivity(), SettingsActivity.class);
-
                 }
                 startActivity(intent);
             }
         };
         mDrawerLayout.closeDrawer(Gravity.START);
     }
-
 
 }

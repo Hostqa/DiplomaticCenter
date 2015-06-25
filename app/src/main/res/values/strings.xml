@@ -153,7 +153,7 @@
     <string name="DAY_MODE">Day Mode</string>
     <string name="ABOUT_US">About Us</string>
     <string name="FRAGMENTS_ADDRESS">qa.dcsdr.diplomaticclub.Fragments.</string>
-    <string name="ALL_FEATURED">All Featured Papers</string>
+    <string name="ALL_FEATURED">Featured Posts</string>
     <string name="FEATURED_RESEARCH_AND_STUDIES"><![CDATA[Featured Research & Studies]]></string>
     <string name="FEATURED_PUBLICATIONS">Featured Publications</string>
     <string name="FEATURED_DISPUTES_RESOLUTION">Featured Disputes Resolution</string>
@@ -248,5 +248,6 @@
     <string name="BOOKMARK_DIRECTORY">BOOKMARKS_EN</string>
     <string name="SEARCH_URL">http://www.dcsdr.qa/api/xml_en_search.php?query=</string>
     <string name="FEATURED_PARTIAL_URL">http://www.dcsdr.qa/api/xml_en_show_home_setting_</string>
+    <string name="OPENING_BOOKMARK">Bookmark opened.</string>
 
 </resources>

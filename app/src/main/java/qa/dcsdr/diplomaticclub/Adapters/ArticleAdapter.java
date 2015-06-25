@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,10 +18,10 @@ import android.widget.Toast;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
+import com.squareup.picasso.Picasso;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -49,6 +48,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
 
     public void setArticleList(ArrayList<Article> articleList) {
         this.articleList = articleList;
+        this.articleList.add(0,new Article(0));
         this.isImageSaved = new boolean[articleList.size()];
         Arrays.fill(this.isImageSaved, false);
         notifyItemRangeChanged(0, articleList.size());
@@ -68,9 +68,20 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
 
     @Override
     public ArticleViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = layoutInflater.inflate(R.layout.article_card, parent, false);
+        View view;
+        if (viewType==0)
+            view = layoutInflater.inflate(R.layout.article_blank_card,parent,false);
+        else {
+            view = layoutInflater.inflate(R.layout.article_card, parent, false);
+
+        }
         ArticleViewHolder viewHolder = new ArticleViewHolder(view);
         return viewHolder;
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return (position == 0 ? 0 : 1);
     }
 
 
@@ -81,16 +92,16 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
         holder.listItemU.setText(currentArticle.getTitle());
         holder.authorTV.setText(currentArticle.getAuthor());
         holder.summary.setText(currentArticle.getSumAbstract());
-        if (isBookmark) {
+        if (isBookmark && currentArticle.getTitle()!="N/A") {
             holder.listIconViewU.setVisibility(View.GONE);
-            Log.d("isBookmark","yes");
             try {
-                Log.d("isBookmark","try");
-                holder.localImage.setImageBitmap(BitmapFactory.decodeStream
-                        (context.openFileInput(currentArticle.getTitle())));
+//                holder.localImage.setImageBitmap(BitmapFactory.decodeStream
+//                        (context.openFileInput(currentArticle.getTitle())));
+                File nf = new File(context.getFilesDir(),currentArticle.getTitle());
+                Picasso.with(context).load(nf).placeholder(R.drawable.loading_image).
+                        error(R.drawable.default_art_image).into(holder.localImage);
                 holder.localImage.setVisibility(View.VISIBLE);
-            } catch (FileNotFoundException e) {
-                Log.d("isBookmark","catch");
+            } catch (Exception e) {
                 holder.localImage.setVisibility(View.GONE);
                 holder.listIconViewU.setVisibility(View.VISIBLE);
             }
@@ -134,6 +145,11 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
 
 
     private void loadImage(String url, final String title) {
+        // TODO: CHECK IF THIS WORKS
+        File nf = new File(context.getFilesDir(),title);
+        if (nf.exists()) {
+            return;
+        }
         if (url != null && url != "N/A") {
             imageLoader.get(url, new ImageLoader.ImageListener() {
                 @Override

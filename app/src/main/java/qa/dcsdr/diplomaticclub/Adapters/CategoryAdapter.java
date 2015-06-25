@@ -15,6 +15,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.Collections;
 import java.util.List;
 
@@ -82,9 +84,11 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
     @Override
     public void onBindViewHolder(ViewHolderCategories holder, final int position) {
         final CategoryEntry current = data.get(position);
-        holder.getCategoryImage().setImageBitmap(
-                decodeSampledBitmapFromResource(context.getResources(),
-                        current.getCategoryImageId(), 300, 120));
+        Picasso.with(context).load(current.getCategoryImageId()).placeholder(R.drawable.loading_image).
+                error(R.drawable.default_art_image).into(holder.getCategoryImage());
+//        holder.getCategoryImage().setImageBitmap(
+//                decodeSampledBitmapFromResource(context.getResources(),
+//                        current.getCategoryImageId(), 300, 120));
         holder.getCategoryTitle().setText(current.getCategoryTitle());
         LinearLayout ln = holder.getSubCategoryList();
         for (int i = 0; i < current.getSubCategories().size(); i++) {

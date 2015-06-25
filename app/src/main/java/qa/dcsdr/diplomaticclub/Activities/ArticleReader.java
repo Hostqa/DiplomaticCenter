@@ -146,6 +146,7 @@ public class ArticleReader extends ActionBarActivity {
                 File f = getDir(getString(R.string.BOOKMARK_DIRECTORY), Context.MODE_PRIVATE);
                 File nf = new File(f, articleList.get(position).getId() + "");
                 if (nf.exists()) {
+                    Toast.makeText(this, getString(R.string.OPENING_BOOKMARK), Toast.LENGTH_SHORT).show();
                     String content = getSavedBookmark(articleList.get(position).getId());
                     articleContents.setText(Html.fromHtml(new ContentDecrypter().decrypt((content))));
                     retryButton.setVisibility(View.GONE);
@@ -177,14 +178,27 @@ public class ArticleReader extends ActionBarActivity {
         } catch (FileNotFoundException e) {
             articleImage.setImageDrawable(getResources().getDrawable(R.drawable.default_art_image));
         }
+        final boolean virtual = articleList.get(0).getTitle().equals("N/A");
         prevArticle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (position > 0) {
-                    navigate(false);
+                if (virtual) {
+                    if (position > 1) {
+                        navigate(false);
+                    } else {
+                        prevArticle.setVisibility(View.GONE);
+                    }
+
                 } else {
-                    prevArticle.setVisibility(View.GONE);
+                    if (position > 0) {
+                        navigate(false);
+                    } else {
+                        prevArticle.setVisibility(View.GONE);
+                    }
+
                 }
+
+
             }
         });
         nextArticle.setOnClickListener(new View.OnClickListener() {
@@ -197,14 +211,31 @@ public class ArticleReader extends ActionBarActivity {
                 }
             }
         });
-        if (articleList.size() == 1) {
-            nextArticle.setVisibility(View.GONE);
-            prevArticle.setVisibility(View.GONE);
-        } else if (position == (articleList.size() - 1)) {
-            nextArticle.setVisibility(View.GONE);
-        } else if (position == 0) {
-            prevArticle.setVisibility(View.GONE);
+
+        if (virtual) {
+            if (articleList.size() == 2) {
+                nextArticle.setVisibility(View.GONE);
+                prevArticle.setVisibility(View.GONE);
+            } else if (position == (articleList.size() - 1)) {
+                nextArticle.setVisibility(View.GONE);
+            } else if (position == 1) {
+                prevArticle.setVisibility(View.GONE);
+            }
+
         }
+        else {
+
+            if (articleList.size() == 1) {
+                nextArticle.setVisibility(View.GONE);
+                prevArticle.setVisibility(View.GONE);
+            } else if (position == (articleList.size() - 1)) {
+                nextArticle.setVisibility(View.GONE);
+            } else if (position == 0) {
+                prevArticle.setVisibility(View.GONE);
+            }
+
+        }
+
 
         scrollView.getViewTreeObserver().addOnScrollChangedListener(new ViewTreeObserver.OnScrollChangedListener() {
 
@@ -415,6 +446,7 @@ public class ArticleReader extends ActionBarActivity {
         Allows navigation from one article to another.
     */
     public void navigate(boolean isNext) {
+        boolean virtual = articleList.get(0).getTitle().equals("N/A");
         if (isNext) {
             this.position += 1;
             if (position == (articleList.size() - 1)) {
@@ -422,13 +454,20 @@ public class ArticleReader extends ActionBarActivity {
             }
         } else {
             this.position -= 1;
-            if (position == 0) {
+            if (position == 0 || virtual) {
                 prevArticle.setVisibility(View.GONE);
             }
         }
-        if (position > 0 && prevArticle.getVisibility() == View.GONE) {
-            prevArticle.setVisibility(View.VISIBLE);
+        if (virtual) {
+            if (position > 1 && prevArticle.getVisibility() == View.GONE) {
+                prevArticle.setVisibility(View.VISIBLE);
+            }
+        } else {
+            if (position > 0 && prevArticle.getVisibility() == View.GONE) {
+                prevArticle.setVisibility(View.VISIBLE);
+            }
         }
+
         if (position < (articleList.size() - 1) && nextArticle.getVisibility() == View.GONE) {
             nextArticle.setVisibility(View.VISIBLE);
         }
@@ -512,25 +551,25 @@ public class ArticleReader extends ActionBarActivity {
         }
         return "";
     }
-
-    @Override
-    public void onBackPressed() {
-        Intent intent;
-        if (this.getIntent().hasExtra("URL")) {
-            if (this.getIntent().getExtras().get("URL").equals("LOCAL")) {
-                intent = new Intent(a, DisplayArticleListActivity.class);
-                intent.putExtra("CAT_TITLE", category);
-                intent.putExtra(getString(R.string.PARENT_CLASS_TAG), getString(R.string.DISPLAY_FRAGMENT_PARENT_TAG));
-                intent.putExtra("URL", url);
-                startActivity(intent);
-                finish();
-            } else {
-                super.onBackPressed();
-            }
-        } else {
-            super.onBackPressed();
-        }
-
-    }
+//
+//    @Override
+//    public void onBackPressed() {
+//        Intent intent;
+//        if (this.getIntent().hasExtra("URL")) {
+//            if (this.getIntent().getExtras().get("URL").equals("LOCAL")) {
+//                intent = new Intent(a, DisplayArticleListActivity.class);
+//                intent.putExtra("CAT_TITLE", category);
+//                intent.putExtra(getString(R.string.PARENT_CLASS_TAG), getString(R.string.DISPLAY_FRAGMENT_PARENT_TAG));
+//                intent.putExtra("URL", url);
+//                startActivity(intent);
+//                finish();
+//            } else {
+//                super.onBackPressed();
+//            }
+//        } else {
+//            super.onBackPressed();
+//        }
+//
+//    }
 
 }

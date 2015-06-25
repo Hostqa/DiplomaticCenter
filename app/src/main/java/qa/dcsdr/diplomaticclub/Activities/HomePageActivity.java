@@ -138,6 +138,9 @@ public class HomePageActivity extends ActionBarActivity implements SharedPrefere
                     splash.setVisibility(View.GONE);
                     cpb.setVisibility(View.GONE);
                     getSupportActionBar().show();
+                    if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                        getWindow().setNavigationBarColor(getResources().getColor(R.color.colorPrimaryDark));
+                    }
 
                 }
                 hppa[p].setArticleList(articleList);
@@ -148,6 +151,9 @@ public class HomePageActivity extends ActionBarActivity implements SharedPrefere
             public void onErrorResponse(VolleyError error) {
                 splash.setVisibility(View.GONE);
                 getSupportActionBar().show();
+                if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    getWindow().setNavigationBarColor(getResources().getColor(R.color.colorPrimaryDark));
+                }
                 progressBar.setVisibility(View.GONE);
                 errorLayout.setVisibility(View.VISIBLE);
                 volleyErrorHomePage.setVisibility(View.VISIBLE);
@@ -185,11 +191,23 @@ public class HomePageActivity extends ActionBarActivity implements SharedPrefere
         setContentView(R.layout.activity_home_page);
         setTitle(R.string.title_activity_main);
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            getWindow().setNavigationBarColor(getResources().getColor(R.color.colorPrimaryDark));
+            getWindow().setNavigationBarColor(getResources().getColor(R.color.colorPrimary));
         }
 
         PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
         getSharedPreferences("LANGUAGE_CHANGE", MODE_PRIVATE).registerOnSharedPreferenceChangeListener(this);
+
+        final Intent intent = getIntent();
+        final String action = intent.getAction();
+
+        // This is for intercepting a URL
+        if (Intent.ACTION_VIEW.equals(action)) {
+            String url = intent.getDataString();
+            if (url.contains("post")){
+                String[] urlParsed = url.split("-");
+                int id = Integer.parseInt(urlParsed[urlParsed.length - 1]);
+            }
+        }
 
         activity = this;
         toolbar = (Toolbar) findViewById(R.id.app_bar);
@@ -357,7 +375,7 @@ public class HomePageActivity extends ActionBarActivity implements SharedPrefere
     public void onBackPressed() {
         new AlertDialog.Builder(this)
                 .setMessage(getString(R.string.EXIT_MESSAGE))
-                .setCancelable(false)
+                .setCancelable(true)
                 .setPositiveButton(getString(R.string.YES), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         activity.finish();
@@ -380,6 +398,12 @@ public class HomePageActivity extends ActionBarActivity implements SharedPrefere
             restartActivity();
         }
     }
+
+
+
+
+
+
 
 
 }

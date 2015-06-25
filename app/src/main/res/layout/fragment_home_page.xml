@@ -25,6 +25,7 @@
             android:background="@color/colorPrimary"
             android:fontFamily="sans-serif-light"
             android:paddingBottom="8dp"
+            android:visibility="gone"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
             android:paddingTop="8dp"
