@@ -63,7 +63,7 @@ public class AuthorListFragment extends Fragment implements ClickListener {
      *
      * @return A new instance of fragment CategoryTest.
      */
-    public static AuthorListFragment newInstance(String param1, String param2) {
+    public static AuthorListFragment newInstance() {
         AuthorListFragment fragment = new AuthorListFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
