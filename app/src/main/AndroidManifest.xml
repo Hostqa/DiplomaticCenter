@@ -56,7 +56,7 @@
             android:name=".Activities.DisplayArticleListActivity"
             android:configChanges="orientation"
             android:label="@string/title_activity_display_articles"
-            android:launchMode="singleTask"
+            android:launchMode="singleTop"
             android:parentActivityName=".Activities.CategoryListActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
