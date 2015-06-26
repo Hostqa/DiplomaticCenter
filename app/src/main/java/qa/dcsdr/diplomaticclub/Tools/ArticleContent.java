@@ -2,7 +2,6 @@ package qa.dcsdr.diplomaticclub.Tools;
 
 import android.content.Context;
 import android.text.Html;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -101,7 +100,6 @@ public class ArticleContent {
             return content;
 
         } catch (Exception e) {
-            Log.d("NO CONTENT", e.toString());
             return "error";
         }
     }
@@ -135,7 +133,6 @@ public class ArticleContent {
                         if (tag.equalsIgnoreCase("content")) {
                             currentArticle.setContent(textValue);
                             currentArticle.setLength(textValue.length());
-                            Log.d("LENGTH:", currentArticle.getLength() + "");
                         } else if (tag.equalsIgnoreCase("title"))
                             currentArticle.setTitle(textValue);
                         else if (tag.equalsIgnoreCase("link"))

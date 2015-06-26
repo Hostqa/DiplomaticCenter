@@ -15,7 +15,6 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -142,7 +141,6 @@ public class HomePageActivity extends AppCompatActivity implements SharedPrefere
                 parseApp = new ParseFeatured(response, activity);
                 parseApp.processXml();
                 articleList = parseApp.getArticles();
-                Log.d("LENGTH",articleList.size()+"");
                 totalPrime += 1;
                 if (totalPrime == total) {
                     progressBar.setVisibility(View.GONE);

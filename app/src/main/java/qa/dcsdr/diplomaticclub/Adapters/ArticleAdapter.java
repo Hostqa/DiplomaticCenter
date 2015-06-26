@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -156,7 +155,6 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
                         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
                         response.getBitmap().compress(Bitmap.CompressFormat.JPEG, 100, bytes);
                         FileOutputStream fo = context.openFileOutput(title, Context.MODE_PRIVATE);
-                        Log.d("isBookmark","catch");
                         fo.write(bytes.toByteArray());
                         fo.close();
                     } catch (Exception e) {
