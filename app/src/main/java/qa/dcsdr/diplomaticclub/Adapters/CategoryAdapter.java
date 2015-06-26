@@ -46,8 +46,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
     @Override
     public ViewHolderCategories onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = inflater.inflate(R.layout.category_card, parent, false);
-        ViewHolderCategories holder = new ViewHolderCategories(view, viewType);
-        return holder;
+        return new ViewHolderCategories(view, viewType);
     }
 
     private static int calculateInSampleSize(

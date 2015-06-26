@@ -4,7 +4,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -64,14 +64,15 @@ public class CategoryListFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_category_list, container, false);
         toolbar = (Toolbar) view.findViewById(R.id.app_bar);
-        ActionBarActivity activity = (ActionBarActivity) getActivity();
+        AppCompatActivity activity = (AppCompatActivity) getActivity();
         CategoryDictionary categoryDictionary = new CategoryDictionary(getActivity());
         String category = (String) getActivity().getIntent().getExtras().get("CAT_TITLE");
         adapter = new CategoryAdapter(getActivity(), categoryDictionary.getList(category));
         activity.setSupportActionBar(toolbar);
-        activity.getSupportActionBar().setDisplayShowHomeEnabled(true);
-        activity.getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
-        activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        if (activity.getSupportActionBar()!=null) {
+            activity.getSupportActionBar().setDisplayShowHomeEnabled(true);
+            activity.getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
+        }
         DrawerLayout dl = (DrawerLayout) view.findViewById(R.id.drawer_layout);
         NavigationDrawerFragment drawerFragment = (NavigationDrawerFragment)
                 getChildFragmentManager().findFragmentById(R.id.fragment_navigation_drawer_cl);

@@ -75,8 +75,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
             view = layoutInflater.inflate(R.layout.article_card, parent, false);
 
         }
-        ArticleViewHolder viewHolder = new ArticleViewHolder(view);
-        return viewHolder;
+        return new ArticleViewHolder(view);
     }
 
     @Override
@@ -92,7 +91,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
         holder.listItemU.setText(currentArticle.getTitle());
         holder.authorTV.setText(currentArticle.getAuthor());
         holder.summary.setText(currentArticle.getSumAbstract());
-        if (isBookmark && currentArticle.getTitle()!="N/A") {
+        if (isBookmark && !currentArticle.getTitle().equals("N/A")) {
             holder.listIconViewU.setVisibility(View.GONE);
             try {
 //                holder.localImage.setImageBitmap(BitmapFactory.decodeStream
@@ -145,20 +144,18 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
 
 
     private void loadImage(String url, final String title) {
-        // TODO: CHECK IF THIS WORKS
         File nf = new File(context.getFilesDir(),title);
         if (nf.exists()) {
             return;
         }
-        if (url != null && url != "N/A") {
+        if (url != null && !url.equals("N/A")) {
             imageLoader.get(url, new ImageLoader.ImageListener() {
                 @Override
                 public void onResponse(ImageLoader.ImageContainer response, boolean isImmediate) {
-                    String fileName = title;//no .png or .jpg needed
                     try {
                         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
                         response.getBitmap().compress(Bitmap.CompressFormat.JPEG, 100, bytes);
-                        FileOutputStream fo = context.openFileOutput(fileName, Context.MODE_PRIVATE);
+                        FileOutputStream fo = context.openFileOutput(title, Context.MODE_PRIVATE);
                         Log.d("isBookmark","catch");
                         fo.write(bytes.toByteArray());
                         fo.close();
@@ -206,7 +203,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
                 public void onClick(View v) {
                     Intent sendIntent = new Intent();
                     sendIntent.setAction(Intent.ACTION_SEND);
-                    sendIntent.putExtra(Intent.EXTRA_TEXT, articleList.get(getPosition()).getLink());
+                    sendIntent.putExtra(Intent.EXTRA_TEXT, articleList.get(getAdapterPosition()).getLink());
                     sendIntent.setType("text/plain");
                     context.startActivity(sendIntent);
 
@@ -217,7 +214,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
                 removeBookmark.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        removeBookmark(getPosition());
+                        removeBookmark(getAdapterPosition());
                     }
                 });
             }
@@ -226,7 +223,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
         @Override
         public void onClick(View v) {
             if (clickListener != null)
-                clickListener.itemClicked(v, getPosition());
+                clickListener.itemClicked(v, getAdapterPosition());
         }
     }
 

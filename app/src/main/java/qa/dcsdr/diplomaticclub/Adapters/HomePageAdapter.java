@@ -39,8 +39,7 @@ public class HomePageAdapter extends RecyclerView.Adapter<HomePageAdapter.Catego
     @Override
     public CategoryViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.home_page_category, parent, false);
-        CategoryViewHolder holder = new CategoryViewHolder(view);
-        return holder;
+        return new CategoryViewHolder(view);
     }
 
     private static int calculateInSampleSize(

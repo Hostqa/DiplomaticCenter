@@ -5,7 +5,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -42,7 +42,7 @@ import javax.net.ssl.HttpsURLConnection;
 import qa.dcsdr.diplomaticclub.Fragments.NavigationDrawerFragment;
 import qa.dcsdr.diplomaticclub.R;
 
-public class ContactUsActivity extends ActionBarActivity  {
+public class ContactUsActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
     private GoogleMap mMap; // Might be null if Google Play services APK is not available.

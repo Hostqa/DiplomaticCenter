@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -105,9 +105,10 @@ public class AuthorListFragment extends Fragment implements ClickListener {
         volleyError = (TextView) view.findViewById(R.id.volleyError);
         url = getResources().getString(R.string.AUTHOR_LIST_URL);
         toolbar = (Toolbar) view.findViewById(R.id.app_bar);
-        ActionBarActivity activity = (ActionBarActivity) getActivity();
+        AppCompatActivity activity = (AppCompatActivity) getActivity();
         activity.setSupportActionBar(toolbar);
-        activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        if (activity.getSupportActionBar()!=null)
+            activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         activity.setProgressBarIndeterminateVisibility(true);
         DrawerLayout dl = (DrawerLayout) view.findViewById(R.id.drawer_layout_aa);
         NavigationDrawerFragment drawerFragment = (NavigationDrawerFragment)

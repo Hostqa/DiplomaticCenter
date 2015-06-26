@@ -3,14 +3,12 @@ package qa.dcsdr.diplomaticclub.Activities;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Rect;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.util.TypedValue;
@@ -28,11 +26,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.toolbox.ImageLoader;
+import com.squareup.picasso.Picasso;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
@@ -44,7 +42,7 @@ import qa.dcsdr.diplomaticclub.Tools.ArticleContent;
 import qa.dcsdr.diplomaticclub.Tools.ContentDecrypter;
 
 
-public class ArticleReader extends ActionBarActivity {
+public class ArticleReader extends AppCompatActivity {
 
     private Toolbar toolbar;
     private TextView articleTitle;
@@ -85,8 +83,10 @@ public class ArticleReader extends ActionBarActivity {
         setTitle(getResources().getString(R.string.title_activity_article_reader));
         toolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
         NavigationDrawerFragment drawerFragment = (NavigationDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.fragment_navigation_drawer);
         drawerFragment.setUp(R.id.fragment_navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout), toolbar, true);
@@ -168,12 +168,14 @@ public class ArticleReader extends ActionBarActivity {
                 articleContents.setText("Error.");
             }
         }
-        try {
-            Bitmap bitmap = BitmapFactory.decodeStream(openFileInput(current.getTitle()));
-            articleImage.setImageBitmap(bitmap);
-        } catch (FileNotFoundException e) {
-            articleImage.setImageDrawable(getResources().getDrawable(R.drawable.default_art_image));
+        File f = new File(getFilesDir(), current.getTitle());
+        if (f.exists()) {
+            Picasso.with(this).load(f).placeholder(R.drawable.loading_image).
+                    error(R.drawable.default_art_image).into(articleImage);
+        } else {
+            Picasso.with(this).load(R.drawable.default_art_image);
         }
+
         final boolean virtual = articleList.get(0).getTitle().equals("N/A");
         prevArticle.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -218,8 +220,7 @@ public class ArticleReader extends ActionBarActivity {
                 prevArticle.setVisibility(View.GONE);
             }
 
-        }
-        else {
+        } else {
 
             if (articleList.size() == 1) {
                 nextArticle.setVisibility(View.GONE);
@@ -420,19 +421,15 @@ public class ArticleReader extends ActionBarActivity {
 
     private void removeBookmark() {
         File bmDir = getDir(getString(R.string.BOOKMARK_DIRECTORY), Context.MODE_PRIVATE);
-        File[] f = bmDir.listFiles();
-        for (int i = 0; i < f.length; i++) {
-            if (f[i].getName().equals(articleList.get(position).getId() + "")) {
-                boolean b = f[i].delete();
-                if (b)
-                    Toast.makeText(this, getString(R.string.BOOKMARK_REMOVED), Toast.LENGTH_SHORT).show();
-
-            } else if (f[i].getName().equals(articleList.get(position).getId() + "_content")) {
-                boolean b = f[i].delete();
-                if (b)
-                    Toast.makeText(this, getString(R.string.BOOKMARK_REMOVED), Toast.LENGTH_SHORT).show();
-            }
-        }
+        File data = new File(bmDir, articleList.get(position).getId() + "");
+        File content = new File(bmDir, articleList.get(position).getId() + "_content");
+        boolean success1 = false, success2 = false;
+        if (data.exists())
+            success1 = data.delete();
+        if (content.exists())
+            success2 = content.delete();
+        if (success1 && success2)
+            Toast.makeText(this, getString(R.string.BOOKMARK_REMOVED), Toast.LENGTH_SHORT).show();
         onBackPressed();
 
     }
@@ -517,11 +514,18 @@ public class ArticleReader extends ActionBarActivity {
         }
 
 //        articleImage.setImageUrl(current.getPhoto(), imageLoader);
-        try {
-            Bitmap bitmap = BitmapFactory.decodeStream(openFileInput(current.getTitle()));
-            articleImage.setImageBitmap(bitmap);
-        } catch (FileNotFoundException e) {
+
+
+
+
+        File f = new File(getFilesDir(), current.getTitle());
+        if (f.exists()) {
+            Picasso.with(this).load(f).placeholder(R.drawable.loading_image).
+                    error(R.drawable.default_art_image).into(articleImage);
+        } else {
+            Picasso.with(this).load(R.drawable.default_art_image);
         }
+
         mHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -532,23 +536,17 @@ public class ArticleReader extends ActionBarActivity {
 
     private String getSavedBookmark(int id) {
         File bmDir = getDir(getString(R.string.BOOKMARK_DIRECTORY), Context.MODE_PRIVATE);
-        File[] f = bmDir.listFiles();
-        // TODO: GET SPECIFIC FILE
-        try {
-            for (int i = 0; i < f.length; i++) {
-                if (f[i].getName().equals(id + "_content")) {
-                    FileInputStream fis = new FileInputStream(f[i]);
-                    BufferedReader br = new BufferedReader(new InputStreamReader(fis));
-                    char[] b = new char[(int) f[i].length()];
-                    br.read(b, 0, (int) f[i].length());
-                    String c = new String(b);
-                    return c;
-                }
-
+        File nf = new File(bmDir, id + "_content");
+        if (nf.exists()) {
+            try {
+                FileInputStream fis = new FileInputStream(nf);
+                BufferedReader br = new BufferedReader(new InputStreamReader(fis));
+                char[] b = new char[(int) nf.length()];
+                br.read(b, 0, (int) nf.length());
+                return new String(b);
+            } catch (java.io.IOException e) {
+                e.printStackTrace();
             }
-
-        } catch (java.io.IOException e) {
-            e.printStackTrace();
         }
         return "";
     }

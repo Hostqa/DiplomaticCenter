@@ -11,8 +11,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -49,7 +49,7 @@ import qa.dcsdr.diplomaticclub.Tools.HomePageViewPager;
 import qa.dcsdr.diplomaticclub.Tools.MyApplication;
 import qa.dcsdr.diplomaticclub.Tools.ParseFeatured;
 
-public class HomePageActivity extends ActionBarActivity implements SharedPreferences.OnSharedPreferenceChangeListener {
+public class HomePageActivity extends AppCompatActivity implements SharedPreferences.OnSharedPreferenceChangeListener {
 
     private Toolbar toolbar;
 
@@ -59,6 +59,15 @@ public class HomePageActivity extends ActionBarActivity implements SharedPrefere
     private HomePageViewPager disputes_resolution;
     private HomePageViewPager programsAndProjects;
     private HomePageViewPager events;
+
+    private LinearLayout featuredLL;
+    private LinearLayout researchAndStudiesLL;
+    private LinearLayout publicationsLL;
+    private LinearLayout disputes_resolutionLL;
+    private LinearLayout programsAndProjectsLL;
+    private LinearLayout eventsLL;
+
+
 
     private HomePagePagerAdapter featuredA;
     private HomePagePagerAdapter researchAndStudiesA;
@@ -83,6 +92,8 @@ public class HomePageActivity extends ActionBarActivity implements SharedPrefere
     private int total = 0;
     private int totalPrime = 0;
     private HomePageViewPager[] hpvp;
+    private LinearLayout[] hpll;
+    private LinearLayout[] hpllM;
     private HomePageViewPager[] hpvpM;
 
     private Activity activity;
@@ -112,6 +123,7 @@ public class HomePageActivity extends ActionBarActivity implements SharedPrefere
         for (int i = 0; i < hppa.length; i++) {
             if (!sp.getBoolean(keys[i], true)) {
                 hpvpM[i].setVisibility(View.GONE);
+                hpllM[i].setVisibility(View.GONE);
                 continue;
             }
             total += 1;
@@ -124,7 +136,7 @@ public class HomePageActivity extends ActionBarActivity implements SharedPrefere
     }
 
     private StringRequest getStringRequest(String url, final int p, final HomePagePagerAdapter[] hppa) {
-        StringRequest stringRequest = new StringRequest(url, new Response.Listener<String>() {
+        return new StringRequest(url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 parseApp = new ParseFeatured(response, activity);
@@ -174,7 +186,6 @@ public class HomePageActivity extends ActionBarActivity implements SharedPrefere
                 openBookmarks.setVisibility(View.VISIBLE);
             }
         });
-        return stringRequest;
     }
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
@@ -241,6 +252,14 @@ public class HomePageActivity extends ActionBarActivity implements SharedPrefere
         hpvp = new HomePageViewPager[]{researchAndStudies, publications,
                 disputes_resolution, programsAndProjects, events};
 
+        hpll = new LinearLayout[]{researchAndStudiesLL, publicationsLL,
+                disputes_resolutionLL, programsAndProjectsLL, eventsLL};
+
+
+        hpllM = new LinearLayout[]{featuredLL, researchAndStudiesLL, publicationsLL,
+                disputes_resolutionLL, programsAndProjectsLL, eventsLL};
+
+
         hpvpM = new HomePageViewPager[]{featured, researchAndStudies, publications,
                 disputes_resolution, programsAndProjects, events};
 
@@ -293,10 +312,12 @@ public class HomePageActivity extends ActionBarActivity implements SharedPrefere
                     sendXmlRequest(hppa);
 
                     hpvp[i].setVisibility(View.VISIBLE);
+                    hpll[i].setVisibility(View.VISIBLE);
 
-                } else
+                } else {
                     hpvp[i].setVisibility(View.GONE);
-
+                    hpll[i].setVisibility(View.GONE);
+                }
             }
         };
 
@@ -313,26 +334,31 @@ public class HomePageActivity extends ActionBarActivity implements SharedPrefere
         featuredA.setCategory(getString(R.string.ALL_FEATURED));
         featured.setAdapter(featuredA);
 
+        researchAndStudiesLL = (LinearLayout) findViewById(R.id.featuredCategory2);
         researchAndStudies = (HomePageViewPager) findViewById(R.id.pager2);
         researchAndStudiesA = new HomePagePagerAdapter(getSupportFragmentManager(), articleList);
         researchAndStudiesA.setCategory(getString(R.string.FEATURED_RESEARCH_AND_STUDIES));
         researchAndStudies.setAdapter(researchAndStudiesA);
 
+        publicationsLL = (LinearLayout) findViewById(R.id.featuredCategory3);
         publications = (HomePageViewPager) findViewById(R.id.pager3);
         publicationsA = new HomePagePagerAdapter(getSupportFragmentManager(), articleList);
         publicationsA.setCategory(getString(R.string.FEATURED_PUBLICATIONS));
         publications.setAdapter(publicationsA);
 
+        disputes_resolutionLL = (LinearLayout) findViewById(R.id.featuredCategory4);
         disputes_resolution = (HomePageViewPager) findViewById(R.id.pager4);
         disputes_resolutionA = new HomePagePagerAdapter(getSupportFragmentManager(), articleList);
         disputes_resolutionA.setCategory(getString(R.string.FEATURED_DISPUTES_RESOLUTION));
         disputes_resolution.setAdapter(disputes_resolutionA);
 
+        programsAndProjectsLL = (LinearLayout) findViewById(R.id.featuredCategory5);
         programsAndProjects = (HomePageViewPager) findViewById(R.id.pager5);
         programsAndProjectsA = new HomePagePagerAdapter(getSupportFragmentManager(), articleList);
         programsAndProjectsA.setCategory(getString(R.string.FEATURED_PROGRAMS_AND_PROJECTS));
         programsAndProjects.setAdapter(programsAndProjectsA);
 
+        eventsLL = (LinearLayout) findViewById(R.id.featuredCategory6);
         events = (HomePageViewPager) findViewById(R.id.pager6);
         eventsA = new HomePagePagerAdapter(getSupportFragmentManager(), articleList);
         eventsA.setCategory(getString(R.string.FEATURED_EVENTS));

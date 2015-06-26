@@ -53,8 +53,7 @@ public class AuthorAdapter  extends RecyclerView.Adapter<AuthorAdapter.ArticleVi
     @Override
     public ArticleViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = layoutInflater.inflate(R.layout.author_card, parent, false);
-        ArticleViewHolder viewHolder = new ArticleViewHolder(view);
-        return viewHolder;
+        return new ArticleViewHolder(view);
     }
 
     @Override
@@ -100,16 +99,15 @@ public class AuthorAdapter  extends RecyclerView.Adapter<AuthorAdapter.ArticleVi
     }
 
     private void loadImage(String url, final ArticleViewHolder viewHolderPublication, final String title) {
-        if (url!=null && url!="N/A")
+        if (url!=null && !url.equals("N/A"))
         {
             imageLoader.get(url, new ImageLoader.ImageListener() {
                 @Override
                 public void onResponse(ImageLoader.ImageContainer response, boolean isImmediate) {
-                    String fileName = title; //no .png or .jpg needed
                     try {
                         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
                         response.getBitmap().compress(Bitmap.CompressFormat.JPEG, 100, bytes);
-                        FileOutputStream fo = context.openFileOutput(fileName, Context.MODE_PRIVATE);
+                        FileOutputStream fo = context.openFileOutput(title, Context.MODE_PRIVATE);
                         fo.write(bytes.toByteArray());
                         fo.close();
                     } catch (Exception e) {}
@@ -145,7 +143,7 @@ public class AuthorAdapter  extends RecyclerView.Adapter<AuthorAdapter.ArticleVi
         @Override
         public void onClick(View v) {
             if (clickListener!=null)
-                clickListener.itemClicked(v,getPosition());
+                clickListener.itemClicked(v,getAdapterPosition());
         }
     }
 

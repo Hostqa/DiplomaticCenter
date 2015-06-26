@@ -6,7 +6,7 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -77,8 +77,7 @@ public class DisplayArticleListFragment extends Fragment implements ClickListene
     private Button retryButton;
     private LinearLayout linearLayout;
     private LinearLayout noBookmarksFound;
-    private ActionBarActivity activity;
-    boolean scroll_down;
+    private AppCompatActivity activity;
     private String url;
     private String title;
 
@@ -137,7 +136,7 @@ public class DisplayArticleListFragment extends Fragment implements ClickListene
         retryButton = (Button) view.findViewById(R.id.retryButton);
         final LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         toolbar = (Toolbar) view.findViewById(R.id.app_bar);
-        activity = (ActionBarActivity) getActivity();
+        activity = (AppCompatActivity) getActivity();
         activity.setSupportActionBar(toolbar);
         activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         activity.setProgressBarIndeterminateVisibility(true);
@@ -234,7 +233,7 @@ public class DisplayArticleListFragment extends Fragment implements ClickListene
         });
         for (int i = 0; i < f.length; i++) {
             try {
-                if (f[i].getName().indexOf("content") != -1)
+                if (f[i].getName().contains("content"))
                     continue;
                 FileInputStream fis = new FileInputStream(f[i]);
                 BufferedReader br = new BufferedReader(new InputStreamReader(fis));
@@ -291,7 +290,7 @@ public class DisplayArticleListFragment extends Fragment implements ClickListene
                     articleList = parseSearch.getArticles();
                 }
                 else {
-                    parseApp = new ParseArticle(response, getActivity());
+                    parseApp = new ParseArticle(response);
                     parseApp.processXml();
                     articleList = parseApp.getArticles();
                 }

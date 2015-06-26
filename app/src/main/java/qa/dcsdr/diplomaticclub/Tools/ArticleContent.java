@@ -176,18 +176,12 @@ public class ArticleContent {
                 String content = processXml(response);
                 TextView tv = (TextView) view.findViewById(R.id.articleContents);
                 try {
-//                    Toast.makeText(context,"CONTENT:" + content,Toast.LENGTH_SHORT).show();
-//                    Log.d("CONTENT", content);
-//                    Log.d("response", response);
-                    if (content == "error") {
-                        // TODO: error not getting caught!!!
-//                        Toast.makeText(context, "PROBLEM KHERE", Toast.LENGTH_SHORT).show();
+                    if (content.equals("error")) {
                         readerProgressBar.setVisibility(View.GONE);
                         errorLayoutR.setVisibility(View.VISIBLE);
                         volleyError.setVisibility(View.VISIBLE);
                         volleyError.setText(context.getString(R.string.BAD_CONTENT));
                         articleScroll.setVisibility(View.GONE);
-                        return;
                     } else {
                         tv.setText(Html.fromHtml(new ContentDecrypter().decrypt((content))));
                         readerProgressBar.setVisibility(View.GONE);
@@ -244,7 +238,6 @@ public class ArticleContent {
                     File newBMContent = new File(bmDir, id + "_content"); //Getting a file within the dir.
                     FileOutputStream f1 = new FileOutputStream(newBMContent);
                     byte[] b1 = content.getContent().getBytes();
-                    Log.d("TESTINGGG", new String(b1));
                     f1.write(b1);
                     f1.close();
 

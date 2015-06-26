@@ -1,7 +1,5 @@
 package qa.dcsdr.diplomaticclub.Tools;
 
-import android.support.v4.app.FragmentActivity;
-
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
 
@@ -21,11 +19,6 @@ public class ParseArticle {
         this.articles = new ArrayList<>();
     }
 
-    public ParseArticle(String xmlData, FragmentActivity activity) {
-        this.data=xmlData;
-        this.articles = new ArrayList<>();
-        FragmentActivity fa = activity;
-    }
 
     public ArrayList<Article> getArticles() {
         return articles;

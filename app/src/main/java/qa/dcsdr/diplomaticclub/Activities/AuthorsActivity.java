@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
@@ -13,7 +13,7 @@ import android.view.Window;
 import qa.dcsdr.diplomaticclub.Fragments.AuthorListFragment;
 import qa.dcsdr.diplomaticclub.R;
 
-public class AuthorsActivity extends ActionBarActivity {
+public class AuthorsActivity extends AppCompatActivity {
 
     private Fragment fragment;
 

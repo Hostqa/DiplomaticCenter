@@ -48,9 +48,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         int layout = viewType == 0 ? R.layout.nav_drawer_entry : R.layout.nav_drawer_title;
         View view = inflater.inflate(layout, parent, false);
-        MyViewHolder holder = new MyViewHolder(view, viewType);
 //        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
-        return holder;
+        return new MyViewHolder(view, viewType);
     }
 
 
@@ -123,7 +122,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 //            delete(getPosition());
 //            return;
             if (clickListener != null)
-                clickListener.itemClicked(v, getPosition());
+                clickListener.itemClicked(v, getAdapterPosition());
         }
     }
 
