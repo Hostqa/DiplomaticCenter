@@ -13,8 +13,8 @@
         android:background="@color/colorPrimary">
 
         <ImageView
-            android:layout_width="175dp"
-            android:layout_height="215dp"
+            android:layout_width="156dp"
+            android:layout_height="250dp"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:layout_gravity="center_horizontal"

@@ -256,7 +256,8 @@ public class ArticleContent {
     }
 
     private void showViews() {
-        menu.setGroupEnabled(R.id.customizationGroup,true);
+        menu.setGroupVisible(R.id.customizationGroup,true);
+//        menu.setGroupEnabled(R.id.customizationGroup,true);
     }
 
 }

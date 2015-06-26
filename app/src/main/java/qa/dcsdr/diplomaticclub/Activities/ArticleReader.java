@@ -95,7 +95,6 @@ public class ArticleReader extends AppCompatActivity {
         category = (String) extras.get("CAT_TITLE");
         position = (int) extras.get("POSITION");
         url = (String) extras.get("URL");
-
         Article current = articleList.get(position);
 
         ac = new ArticleContent(current.getId(), getResources().getString(R.string.SINGLE_ARTICLE_ID), this);
@@ -315,7 +314,10 @@ public class ArticleReader extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_article_reader, menu);
-        menu.setGroupEnabled(R.id.customizationGroup,false);
+        File f = getDir(getString(R.string.BOOKMARK_DIRECTORY), Context.MODE_PRIVATE);
+        File nf = new File(f, articleList.get(position).getId() + "");
+        if (!getIntent().getExtras().get("URL").equals("LOCAL") && !nf.exists())
+            menu.setGroupVisible(R.id.customizationGroup,false);
         ac.setMenu(menu);
         this.menu = menu;
         if (getIntent().getExtras().get("URL").equals("LOCAL")) {
@@ -325,8 +327,6 @@ public class ArticleReader extends AppCompatActivity {
                     200, R.string.REMOVE_BOOKMARK);
             mi.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
         } else {
-            File f = getDir(getString(R.string.BOOKMARK_DIRECTORY), Context.MODE_PRIVATE);
-            File nf = new File(f, articleList.get(position).getId() + "");
             if (nf.exists()) {
                 menu.findItem(R.id.bookmark).setIcon(R.drawable.ic_bookmark);
                 menu.findItem(R.id.bookmark).setTitle(R.string.NO_BOOKMARK);
