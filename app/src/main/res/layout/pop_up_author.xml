@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+
+    android:layout_height="wrap_content"
+    android:background="@color/colorAccent"
+    android:orientation="vertical">
+
+    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/authorTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:fontFamily="sans-serif-light"
+        android:paddingBottom="2dp"
+        android:paddingEnd="10dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="10dp"
+        android:paddingStart="20dp"
+        android:paddingTop="6dp"
+        android:text="Author Title"
+        android:textAllCaps="true"
+        android:textColor="@color/colorPrimary"
+        android:textSize="20sp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/authorDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
+                android:paddingBottom="12dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingTop="6dp"
+                android:text="This is a sample abstract that is full of randomness and ..."
+                android:textColor="#ff000000"
+                android:textSize="16sp" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/close"
+                    style="android:attr/borderlessButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:background="@drawable/custom_bg"
+                    android:gravity="center"
+                    android:paddingEnd="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingStart="10dp"
+                    android:text="@string/CLOSE"
+                    android:textColor="@color/colorPrimaryDark" />
+
+                <Button
+                    android:id="@+id/showPapersAuthor"
+                    style="android:attr/borderlessButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:background="@drawable/custom_bg"
+                    android:gravity="center"
+                    android:paddingEnd="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingStart="10dp"
+                    android:text="@string/SHOW_PAPERS"
+                    android:textColor="@color/colorPrimaryDark" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</LinearLayout>

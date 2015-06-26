@@ -240,5 +240,6 @@ Le centre offre les recherches, études, évaluations et les conseils spécialis
    <string name="SEARCH_URL">http://www.dcsdr.qa/api/xml_en_search.php?query=</string>
    <string name="FEATURED_PARTIAL_URL">http://www.dcsdr.qa/api/xml_en_show_home_setting_</string>
    <string name="OPENING_BOOKMARK">Signet Ouvert</string>
+   <string name="CLOSE">CLOSE</string>
 
 </resources>

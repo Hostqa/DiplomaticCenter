@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -91,6 +92,8 @@ public class AuthorListFragment extends Fragment implements ClickListener {
         retryButton=(Button)view.findViewById(R.id.retryButton);
         final LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         authorsAdapter= new AuthorAdapter(getActivity());
+        authorsAdapter.setActivity(getActivity());
+        authorsAdapter.setView(view);
         authorsRV = (RecyclerView) view.findViewById(R.id.authorList);
 
         authorsRV.setLayoutManager(layoutManager);
@@ -123,6 +126,9 @@ public class AuthorListFragment extends Fragment implements ClickListener {
                 sendXmlRequest(url);
             }
         });
+
+        FrameLayout fl = (FrameLayout) view.findViewById(R.id.authorsFL);
+        fl.getForeground().setAlpha(0);
 
         if (savedInstanceState != null) {
             authorList = savedInstanceState.getParcelableArrayList(STATE_ARTICLES);

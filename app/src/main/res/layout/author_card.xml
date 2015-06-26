@@ -4,97 +4,112 @@
     android:id="@+id/card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="15dp"
-    android:paddingBottom="15dp"
+    android:layout_margin="10dp"
+    android:paddingBottom="10dp"
     card_view:cardBackgroundColor="#FFFFFF"
-    card_view:cardCornerRadius="4dp"
-    card_view:cardElevation="6dp">
+    card_view:cardCornerRadius="2dp"
+    card_view:cardElevation="3dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="horizontal">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center_vertical"
+            android:background="@color/colorAccent">
 
             <com.android.volley.toolbox.NetworkImageView
                 android:id="@+id/authorImage"
-                android:layout_width="fill_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="110dp"
+                android:layout_gravity="center_vertical"
                 android:adjustViewBounds="true"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
                 android:src="@drawable/sample_author" />
 
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <TextView xmlns:android="http://schemas.android.com/apk/res/android"
                 android:id="@+id/authorTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAllCaps="true"
-                android:fontFamily="sans-serif-light"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp"
-                android:background="#BB000000"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp"
-                android:text="Author Title"
-                android:textColor="@color/colorWhite"
-                android:textSize="20sp"
-                android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"/>
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:fontFamily="sans-serif-light"
+                android:paddingBottom="2dp"
+                android:paddingEnd="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingStart="10dp"
+                android:paddingTop="6dp"
+                android:text="Author Title"
+                android:textAllCaps="true"
+                android:textColor="@color/colorPrimary"
+                android:textSize="16sp" />
 
-        </RelativeLayout>
+            <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/authorDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
+                android:paddingBottom="3dp"
+                android:paddingEnd="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingStart="10dp"
+                android:paddingTop="3dp"
+                android:text="... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ...... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... "
+                android:textColor="#ff000000"
+                android:textSize="14sp" />
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="bottom"
+                android:paddingBottom="1dp"
+                android:paddingEnd="12dp"
+                android:paddingLeft="7dp"
+                android:paddingRight="12dp"
+                android:paddingStart="7dp">
 
-        <TextView xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/authorDescription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-light"
-            android:paddingBottom="12dp"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:paddingTop="6dp"
-            android:text="This is a sample abstract that is full of randomness and ..."
-            android:textColor="#ff000000"
-            android:textSize="14sp"/>
+                <Button
+                    android:id="@+id/readMoreAuthor"
+                    style="android:attr/borderlessButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/custom_bg"
+                    android:gravity="center"
+                    android:paddingLeft="5dp"
+                    android:text="@string/READ_MORE"
+                    android:textColor="@color/colorPrimaryDark" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:paddingBottom="6dp"
-            android:paddingLeft="14dp"
-            android:paddingStart="14dp"
-            android:paddingRight="20dp"
-            android:paddingEnd="20dp">
+                <Button
+                    android:id="@+id/showPapersAuthor"
+                    style="android:attr/borderlessButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:background="@drawable/custom_bg"
+                    android:gravity="center"
+                    android:paddingRight="10dp"
+                    android:text="@string/SHOW_PAPERS"
+                    android:textColor="@color/colorPrimaryDark" />
 
-            <Button
-                android:id="@+id/readMoreAuthor"
-                style="android:attr/borderlessButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_centerVertical="true"
-                android:background="@drawable/custom_bg"
-                android:gravity="center"
-                android:text="@string/READ_MORE"
-                android:textColor="@color/colorPrimaryDark" />
+            </RelativeLayout>
 
-            <Button
-                style="android:attr/borderlessButtonStyle"
-                android:id="@+id/showPapersAuthor"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@drawable/custom_bg"
-                android:gravity="center"
-                android:text="@string/SHOW_PAPERS"
-                android:textColor="@color/colorPrimaryDark"
-                android:layout_centerVertical="true"
-                android:layout_centerHorizontal="true" />
-        </RelativeLayout>
+        </LinearLayout>
+
 
     </LinearLayout>
 

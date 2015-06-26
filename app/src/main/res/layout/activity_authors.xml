@@ -12,8 +12,9 @@
         android:layout_height="match_parent"
         android:background="@color/colorAccent"
         android:tag="DisplayAuthorsTag"
+        android:id="@+id/authorsFL"
+        android:foreground="@drawable/dim_layout"
         tools:context="qa.dcsdr.diplomaticclub.Activities.AuthorsActivity">
-
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -39,7 +40,6 @@
                     android:layout_height="50dp"
                     android:layout_gravity="center"
                     android:gravity="center"
-
                     android:indeterminate="true"
                     app:cpb_color="#FFee44"
                     app:cpb_colors="@array/colors"
@@ -103,11 +103,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
 
+
         </LinearLayout>
 
     </FrameLayout>
-
-
 
 
     <fragment

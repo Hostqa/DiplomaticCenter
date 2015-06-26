@@ -249,5 +249,6 @@
     <string name="SEARCH_URL">http://www.dcsdr.qa/api/xml_en_search.php?query=</string>
     <string name="FEATURED_PARTIAL_URL">http://www.dcsdr.qa/api/xml_en_show_home_setting_</string>
     <string name="OPENING_BOOKMARK">Bookmark opened.</string>
+    <string name="CLOSE">CLOSE</string>
 
 </resources>

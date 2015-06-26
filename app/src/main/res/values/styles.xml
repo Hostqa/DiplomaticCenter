@@ -13,7 +13,9 @@
         <item name="android:textColorSecondary">#BBBBBB</item>
     </style>
 
-
-
+    <style name="Animation">
+        <item name="android:windowEnterAnimation">@anim/popupanim</item>
+        <item name="android:windowExitAnimation">@anim/popupanimclose</item>
+    </style>
 
 </resources>
