@@ -34,7 +34,6 @@ public class HomePagePagerAdapter extends FragmentStatePagerAdapter  {
 
     @Override
     public Fragment getItem(int position) {
-        // TODO Auto-generated method stub
         HomePageFragment fragment = new HomePageFragment();
         fragment.setArticleList(articleList);
         fragment.setPosition(position);

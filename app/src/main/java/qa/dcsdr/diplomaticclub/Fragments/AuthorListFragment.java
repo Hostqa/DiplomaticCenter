@@ -92,6 +92,7 @@ public class AuthorListFragment extends Fragment implements ClickListener {
         final LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         authorsAdapter= new AuthorAdapter(getActivity());
         authorsRV = (RecyclerView) view.findViewById(R.id.authorList);
+
         authorsRV.setLayoutManager(layoutManager);
         authorsRV.setAdapter(authorsAdapter);
         volleyError = (TextView) view.findViewById(R.id.volleyError);
