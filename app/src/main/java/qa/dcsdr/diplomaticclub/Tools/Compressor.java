@@ -8,6 +8,10 @@ import java.util.zip.GZIPOutputStream;
 
 /**
  * Created by Tamim on 6/19/2015.
+ * This is for compressing and decompressing. Currently not being used
+ * to improve performance. If space becomes an issue regarding content,
+ * it can be used in the respective classes that store and load content
+ * from internal storage.
  */
 class Compressor {
 

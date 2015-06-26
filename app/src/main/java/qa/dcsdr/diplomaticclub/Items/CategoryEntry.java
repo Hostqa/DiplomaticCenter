@@ -5,6 +5,7 @@ import java.util.List;
 
 /**
  * Created by Tamim on 6/13/2015.
+ * This is a category entry that has a list of sub-categories.
  */
 public class CategoryEntry {
 

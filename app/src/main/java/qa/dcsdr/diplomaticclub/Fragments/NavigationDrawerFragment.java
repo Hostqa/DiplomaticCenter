@@ -8,12 +8,12 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,13 +31,14 @@ import qa.dcsdr.diplomaticclub.Activities.Category;
 import qa.dcsdr.diplomaticclub.Activities.ContactUsActivity;
 import qa.dcsdr.diplomaticclub.Activities.HomePageActivity;
 import qa.dcsdr.diplomaticclub.Activities.SettingsActivity;
-import qa.dcsdr.diplomaticclub.Adapters.MyAdapter;
+import qa.dcsdr.diplomaticclub.Adapters.DrawerAdapter;
 import qa.dcsdr.diplomaticclub.Items.ClickListener;
 import qa.dcsdr.diplomaticclub.Items.DrawerEntry;
 import qa.dcsdr.diplomaticclub.R;
 
 /**
- * A simple {@link Fragment} subclass.
+ * Created by Tamim on 5/26/2015.
+ * This is the fragment for the navigation drawer.
  */
 public class NavigationDrawerFragment extends Fragment implements ClickListener {
 
@@ -45,9 +46,10 @@ public class NavigationDrawerFragment extends Fragment implements ClickListener 
     private ActionBarDrawerToggle mDrawerToggle;
     private DrawerLayout mDrawerLayout;
     private Handler mHandler = new Handler();
-    private MyAdapter adapter;
+    private DrawerAdapter adapter;
 
-    // The following is for showing the drawer when the user opens the app for the very first time
+    // The following is for showing the drawer when the user
+    // opens the app for the very first time
     private boolean mUserLearnedDrawer;
     private boolean mFromSavedInstanceState;
 
@@ -73,16 +75,17 @@ public class NavigationDrawerFragment extends Fragment implements ClickListener 
     private SharedPreferences.OnSharedPreferenceChangeListener drawerListener;
 
     public NavigationDrawerFragment() {
-        // Required empty public constructor
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mUserLearnedDrawer = Boolean.valueOf(readFromPreferences(getActivity(), KEY_USER_LEARNED_DRAWER, "false"));
+
         if (savedInstanceState != null) {
             mFromSavedInstanceState = true;
         }
+
         HOME = getActivity().getResources().getString(R.string.HOME);
         ABOUT_US = getActivity().getResources().getString(R.string.ABOUT_US);
         AUTHORS = getActivity().getResources().getString(R.string.AUTHORS);
@@ -123,19 +126,16 @@ public class NavigationDrawerFragment extends Fragment implements ClickListener 
                              Bundle savedInstanceState) {
         View layout = inflater.inflate(R.layout.fragment_navigation_drawer, container, false);
         recyclerView = (RecyclerView) layout.findViewById(R.id.drawerList);
-        adapter = new MyAdapter(getActivity(), getData());
+        adapter = new DrawerAdapter(getActivity(), getData());
         adapter.setClickListener(this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        // Inflate the layout for this fragment
         return layout;
     }
 
     private List<DrawerEntry> getData() {
-        //load only static data inside a drawer
         List<DrawerEntry> data = new ArrayList<>();
         String[] titles = getResources().getStringArray(R.array.drawer_items);
-        String[] categories = getResources().getStringArray(R.array.drawer_items);
         String[] keys = {"", "", "", "", "RESEARCH_AND_STUDIES_SELECTED",
                 "PUBLICATIONS_SELECTED",
                 "DISPUTES_RESOLUTION_SELECTED",
@@ -163,6 +163,7 @@ public class NavigationDrawerFragment extends Fragment implements ClickListener 
     }
 
     public void setUp(int fragmentId, final DrawerLayout drawerLayout, Toolbar toolbar, boolean hb) {
+
         containerView = getActivity().findViewById(fragmentId);
         mDrawerLayout = drawerLayout;
 
@@ -190,21 +191,8 @@ public class NavigationDrawerFragment extends Fragment implements ClickListener 
                 }
 
             }
-
-
-//            @Override
-//            public boolean onOptionsItemSelected(MenuItem item) {
-//                if (item != null && item.getItemId() == android.R.id.home) {
-//                    if (mDrawerLayout.isDrawerOpen(Gravity.RIGHT)) {
-//                        mDrawerLayout.closeDrawer(Gravity.RIGHT);
-//                    } else {
-//                        mDrawerLayout.openDrawer(Gravity.RIGHT);
-//                    }
-//                }
-//                return false;
-//            }
-
         };
+
 //        if (!mUserLearnedDrawer && !mFromSavedInstanceState) {
 //            mDrawerLayout.openDrawer(containerView);
 //            drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
@@ -222,7 +210,6 @@ public class NavigationDrawerFragment extends Fragment implements ClickListener 
         }
     }
 
-
     private static void saveToPreferences(Context context, String preferenceName, String preferenceValue) {
         SharedPreferences sharedPreferences = context.getSharedPreferences(PREF_FILE_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -235,26 +222,8 @@ public class NavigationDrawerFragment extends Fragment implements ClickListener 
         return sharedPreferences.getString(preferenceName, defaultValue);
     }
 
-
-    private int getRealIndex(int numToCheck, int currentBeingChecked) {
-        if (currentBeingChecked == numToCheck) return 0;
-        String[] keys = {"RESEARCH_AND_STUDIES_SELECTED",
-                "PUBLICATIONS_SELECTED",
-                "DISPUTES_RESOLUTION_SELECTED",
-                "PROGRAMS_AND_PROJECTS_SELECTED",
-                "EVENTS_SELECTED"};
-        if ((getActivity().getSharedPreferences("DRAWER_CHANGES", Context.MODE_PRIVATE).getBoolean(keys[currentBeingChecked], true))) {
-            return 1 + getRealIndex(numToCheck, currentBeingChecked + 1);
-        } else
-            return getRealIndex(numToCheck, currentBeingChecked + 1);
-    }
-
-
     @Override
     public void itemClicked(View view, final int position) {
-        final List<String> categories = Arrays.asList((getResources().getStringArray(R.array.drawer_items)));
-//        String numOfEntries = "NUM_OF_ENTRIES";
-//        int l= getActivity().getSharedPreferences("DRAWER_CHANGES", Context.MODE_PRIVATE).getInt(numOfEntries, 5);
         RelativeLayout rl = (RelativeLayout) view;
         TextView tv = (TextView) rl.findViewById(R.id.listText);
         final String title = tv.getText() + "";
@@ -305,7 +274,7 @@ public class NavigationDrawerFragment extends Fragment implements ClickListener 
                 startActivity(intent);
             }
         };
-        mDrawerLayout.closeDrawer(Gravity.START);
+        mDrawerLayout.closeDrawer(GravityCompat.START);
     }
 
 }

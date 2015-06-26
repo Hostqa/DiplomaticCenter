@@ -13,6 +13,10 @@ import android.view.Window;
 import qa.dcsdr.diplomaticclub.Fragments.AuthorListFragment;
 import qa.dcsdr.diplomaticclub.R;
 
+/**
+ * Created by Tamim on 6/20/2015.
+ * This activity displays the list of authors.
+ */
 public class AuthorsActivity extends AppCompatActivity {
 
     private Fragment fragment;
@@ -22,7 +26,6 @@ public class AuthorsActivity extends AppCompatActivity {
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setNavigationBarColor(getResources().getColor(R.color.colorPrimaryDark));
         }
-//        Toast.makeText(this, Locale.getDefault().getDisplayLanguage(), Toast.LENGTH_SHORT).show();
         supportRequestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         super.onCreate(savedInstanceState);
         FragmentManager fm = getSupportFragmentManager();
@@ -39,7 +42,6 @@ public class AuthorsActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_authors, menu);
-
         return true;
     }
 
@@ -49,8 +51,6 @@ public class AuthorsActivity extends AppCompatActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        //noinspection SimplifiableIfStatement
-
         return super.onOptionsItemSelected(item);
     }
 }

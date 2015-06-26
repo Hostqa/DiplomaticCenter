@@ -42,6 +42,11 @@ import javax.net.ssl.HttpsURLConnection;
 import qa.dcsdr.diplomaticclub.Fragments.NavigationDrawerFragment;
 import qa.dcsdr.diplomaticclub.R;
 
+/**
+ * Created by Tamim on 6/25/2015.
+ * This activity displays the map for the user and all the necessary
+ * contact information.
+ */
 public class ContactUsActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
@@ -79,24 +84,24 @@ public class ContactUsActivity extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (name.getText().length()==0)
-                    Toast.makeText(a, getString(R.string.PLEASE_ENTER_NAME), Toast.LENGTH_SHORT).show();
-                else if (email.getText().length()==0)
-                    Toast.makeText(a, getString(R.string.PLEASE_ENTER_EMAIL), Toast.LENGTH_SHORT).show();
+                if (name.getText().length() == 0)
+                    Toast.makeText(a, ContactUsActivity.this.getString(R.string.PLEASE_ENTER_NAME), Toast.LENGTH_SHORT).show();
+                else if (email.getText().length() == 0)
+                    Toast.makeText(a, ContactUsActivity.this.getString(R.string.PLEASE_ENTER_EMAIL), Toast.LENGTH_SHORT).show();
                 else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email.getText()).matches())
-                    Toast.makeText(a, getString(R.string.PLEASE_ENTER_EMAIL_CORRECT), Toast.LENGTH_SHORT).show();
-                else if (subject.getText().length()==0)
-                    Toast.makeText(a, getString(R.string.PLEASE_ENTER_SUBJECT), Toast.LENGTH_SHORT).show();
-                else if (message.getText().length()==0)
-                    Toast.makeText(a, getString(R.string.PLEASE_ENTER_MESSAGE), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(a, ContactUsActivity.this.getString(R.string.PLEASE_ENTER_EMAIL_CORRECT), Toast.LENGTH_SHORT).show();
+                else if (subject.getText().length() == 0)
+                    Toast.makeText(a, ContactUsActivity.this.getString(R.string.PLEASE_ENTER_SUBJECT), Toast.LENGTH_SHORT).show();
+                else if (message.getText().length() == 0)
+                    Toast.makeText(a, ContactUsActivity.this.getString(R.string.PLEASE_ENTER_MESSAGE), Toast.LENGTH_SHORT).show();
                 else {
                     String postUrl = "";
-                    HashMap<String,String> formParam = new HashMap<String, String>();
-                    formParam.put("Name",name.getText().toString());
-                    formParam.put("E-mail",email.getText().toString());
-                    formParam.put("Subject",subject.getText().toString());
+                    HashMap<String, String> formParam = new HashMap<String, String>();
+                    formParam.put("Name", name.getText().toString());
+                    formParam.put("E-mail", email.getText().toString());
+                    formParam.put("Subject", subject.getText().toString());
                     formParam.put("Message", message.getText().toString());
-                    String result = performPostCall(postUrl, formParam);
+                    String result = ContactUsActivity.this.performPostCall(postUrl, formParam);
                     Toast.makeText(a, "Request result: " + result, Toast.LENGTH_SHORT).show();
                 }
             }
@@ -121,10 +126,10 @@ public class ContactUsActivity extends AppCompatActivity {
             BufferedWriter writer = new BufferedWriter(
                     new OutputStreamWriter(os, "UTF-8"));
             writer.write(getPostDataString(postDataParams));
-
             writer.flush();
             writer.close();
             os.close();
+
             int responseCode=conn.getResponseCode();
 
             if (responseCode == HttpsURLConnection.HTTP_OK) {
@@ -136,7 +141,7 @@ public class ContactUsActivity extends AppCompatActivity {
             }
             else {
                 response="";
-
+                // TODO: fix this when we have correct URL
                 throw new HttpException(responseCode+"");
             }
         } catch (Exception e) {
@@ -199,6 +204,9 @@ public class ContactUsActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Sets up the correct pin for DCSDR.
+     */
     private void setUpMap() {
         LatLng latLng = new LatLng(25.3667129,51.5290834);
         MarkerOptions marker =  new MarkerOptions().position(latLng).title("Diplomatic Center");

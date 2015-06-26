@@ -32,6 +32,7 @@ import qa.dcsdr.diplomaticclub.R;
 
 /**
  * Created by Tamim on 6/11/2015.
+ * This is the adapter for displaying articles.
  */
 public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleViewHolder> {
 
@@ -42,7 +43,6 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
     private LayoutInflater layoutInflater;
     private VolleySingleton volleySingleton;
     private ImageLoader imageLoader;
-
     private boolean isBookmark;
 
     public void setArticleList(ArrayList<Article> articleList) {
@@ -67,13 +67,8 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
 
     @Override
     public ArticleViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view;
-        if (viewType==0)
-            view = layoutInflater.inflate(R.layout.article_blank_card,parent,false);
-        else {
-            view = layoutInflater.inflate(R.layout.article_card, parent, false);
-
-        }
+        int resource = viewType == 0 ? R.layout.article_blank_card : R.layout.article_card;
+        View view = layoutInflater.inflate(resource,parent,false);
         return new ArticleViewHolder(view);
     }
 
@@ -82,19 +77,15 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
         return (position == 0 ? 0 : 1);
     }
 
-
     @Override
     public void onBindViewHolder(final ArticleViewHolder holder, final int position) {
         final Article currentArticle = articleList.get(position);
-
         holder.listItemU.setText(currentArticle.getTitle());
         holder.authorTV.setText(currentArticle.getAuthor());
         holder.summary.setText(currentArticle.getSumAbstract());
         if (isBookmark && !currentArticle.getTitle().equals("N/A")) {
             holder.listIconViewU.setVisibility(View.GONE);
             try {
-//                holder.localImage.setImageBitmap(BitmapFactory.decodeStream
-//                        (context.openFileInput(currentArticle.getTitle())));
                 File nf = new File(context.getFilesDir(),currentArticle.getTitle());
                 Picasso.with(context).load(nf).placeholder(R.drawable.loading_image).
                         error(R.drawable.default_art_image).into(holder.localImage);
@@ -104,15 +95,13 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
                 holder.listIconViewU.setVisibility(View.VISIBLE);
             }
         }
-        else {
+        else
             holder.listIconViewU.setImageUrl(currentArticle.getPhoto(), imageLoader);
-        }
         if (!isImageSaved[position]){
             loadImage(articleList.get(position).
                     getPhoto(), articleList.get(position).getTitle());
             isImageSaved[position] = true;
         }
-
     }
 
     private void removeBookmark(int position) {
@@ -128,25 +117,22 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
         if (a && b) {
             articleList.remove(position);
             notifyItemRemoved(position);
-
-            if (articleList.size() == 0) {
-                View rootView = ((Activity) context).getWindow().getDecorView().findViewById(android.R.id.content);
-                LinearLayout noBookmarksFound = (LinearLayout) rootView.findViewById(R.id.noBookmarksLayout);
+            if (articleList.size() == 1) {
+                View rootView = ((Activity) context).getWindow().
+                        getDecorView().findViewById(android.R.id.content);
+                LinearLayout noBookmarksFound = (LinearLayout)
+                        rootView.findViewById(R.id.noBookmarksLayout);
                 noBookmarksFound.setVisibility(View.VISIBLE);
-
             }
             Toast.makeText(context, context.getString(R.string.BOOKMARK_REMOVED),
                     Toast.LENGTH_SHORT).show();
         }
-
     }
-
 
     private void loadImage(String url, final String title) {
         File nf = new File(context.getFilesDir(),title);
-        if (nf.exists()) {
+        if (nf.exists())
             return;
-        }
         if (url != null && !url.equals("N/A")) {
             imageLoader.get(url, new ImageLoader.ImageListener() {
                 @Override
@@ -167,13 +153,13 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
         }
     }
 
-
     @Override
     public int getItemCount() {
         return articleList.size();
     }
 
     class ArticleViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
         NetworkImageView listIconViewU;
         ImageView localImage;
         TextView listItemU;
@@ -204,7 +190,6 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
                     sendIntent.putExtra(Intent.EXTRA_TEXT, articleList.get(getAdapterPosition()).getLink());
                     sendIntent.setType("text/plain");
                     context.startActivity(sendIntent);
-
                 }
             });
             if (isBookmark) {
@@ -224,6 +209,5 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
                 clickListener.itemClicked(v, getAdapterPosition());
         }
     }
-
 
 }

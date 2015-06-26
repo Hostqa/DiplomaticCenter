@@ -1,6 +1,5 @@
 package qa.dcsdr.diplomaticclub.Fragments;
 
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
@@ -12,37 +11,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.List;
-
 import qa.dcsdr.diplomaticclub.Adapters.CategoryAdapter;
 import qa.dcsdr.diplomaticclub.Items.CategoryDictionary;
-import qa.dcsdr.diplomaticclub.Items.CategoryEntry;
 import qa.dcsdr.diplomaticclub.R;
 
 /**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link CategoryListFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link CategoryListFragment#newInstance} factory method to
- * create an instance of this fragment.
+ * Created by Tamim on 6/17/2015.
+ * This is the fragment for the category list.
  */
 public class CategoryListFragment extends Fragment {
 
     private Toolbar toolbar;
     private RecyclerView recyclerView;
     private CategoryAdapter adapter;
-    private OnFragmentInteractionListener mListener;
-    private List<CategoryEntry> data;
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @return A new instance of fragment DisputesResolutionFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static CategoryListFragment newInstance(String param1, String param2) {
+    public static CategoryListFragment newInstance() {
         CategoryListFragment fragment = new CategoryListFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
@@ -50,7 +33,6 @@ public class CategoryListFragment extends Fragment {
     }
 
     public CategoryListFragment() {
-        // Required empty public constructor
     }
 
     @Override
@@ -86,16 +68,5 @@ public class CategoryListFragment extends Fragment {
         return view;
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
-
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
-    }
 
 }

@@ -7,9 +7,21 @@ import android.os.Parcelable;
  * Created by Tamim on 6/17/2015.
  */
 public class Author implements Parcelable {
+
     private String title;
     private int id;
     private String photo;
+    private String description;
+
+    public static final Parcelable.Creator<Author> CREATOR
+            = new Parcelable.Creator<Author>() {
+        public Author createFromParcel(Parcel in) {
+            return new Author(in);
+        }
+        public Author[] newArray(int size) {
+            return new Author[size];
+        }
+    };
 
     public Author(){}
 
@@ -37,8 +49,6 @@ public class Author implements Parcelable {
         this.description = description;
     }
 
-    private String description;
-
     @Override
     public int describeContents() {
         return 0;
@@ -52,6 +62,7 @@ public class Author implements Parcelable {
         dest.writeString(description);
 
     }
+
     public Author(Parcel in) {
         id = in.readInt();
         title = in.readString();
@@ -66,15 +77,5 @@ public class Author implements Parcelable {
     public void setId(int id) {
         this.id = id;
     }
-
-    public static final Parcelable.Creator<Author> CREATOR
-            = new Parcelable.Creator<Author>() {
-        public Author createFromParcel(Parcel in) {
-            return new Author(in);
-        }
-        public Author[] newArray(int size) {
-            return new Author[size];
-        }
-    };
 
 }

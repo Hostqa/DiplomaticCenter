@@ -13,6 +13,10 @@ import android.view.MenuItem;
 import qa.dcsdr.diplomaticclub.Fragments.CategoryListFragment;
 import qa.dcsdr.diplomaticclub.R;
 
+/**
+ * Created by Tamim on 6/25/2015.
+ * This places the category list for the user.
+ */
 public class CategoryListActivity extends AppCompatActivity {
 
     private Fragment fragment ;

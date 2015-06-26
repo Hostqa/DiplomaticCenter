@@ -11,6 +11,7 @@ import qa.dcsdr.diplomaticclub.Tools.MyApplication;
 
 /**
  * Created by Tamim on 6/10/2015.
+ * This allows all network calls to be executed.
  */
 public class VolleySingleton {
 
@@ -18,22 +19,22 @@ public class VolleySingleton {
     private ImageLoader imageLoader;
     private RequestQueue mRequestQueue;
 
+    /**
+     * Volley singleton with a LRU cache.
+     */
     private VolleySingleton() {
         mRequestQueue = Volley.newRequestQueue(MyApplication.getAppContext());
         imageLoader = new ImageLoader(mRequestQueue, new ImageLoader.ImageCache() {
             private LruCache<String, Bitmap> cache = new LruCache<>((int) ((Runtime.getRuntime().maxMemory() / 1024) / 8));
-
             @Override
             public Bitmap getBitmap(String url) {
                 return cache.get(url);
             }
-
             @Override
             public void putBitmap(String url, Bitmap bitmap) {
                 cache.put(url, bitmap);
             }
         });
-
     }
 
     public static VolleySingleton getsInstance() {

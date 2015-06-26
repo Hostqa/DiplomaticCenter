@@ -15,13 +15,16 @@ import android.view.Window;
 import qa.dcsdr.diplomaticclub.Fragments.DisplayArticleListFragment;
 import qa.dcsdr.diplomaticclub.R;
 
+/**
+ * Created by Tamim on 6/25/2015.
+ * This activity activates the search functionality on the homepage.
+ */
 public class SearchActivity extends AppCompatActivity {
 
     private Fragment fragment ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Intent myIntent = getIntent();
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setNavigationBarColor(getResources().getColor(R.color.colorPrimaryDark));
         }
@@ -38,14 +41,15 @@ public class SearchActivity extends AppCompatActivity {
     }
 
     private void handleIntent(Intent intent) {
-
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             String query = intent.getStringExtra(SearchManager.QUERY);
             performSearch(query);
-            //use the query to search your data somehow
         }
     }
 
+    /**
+     *  Perform the search and return the results for the user.
+     */
     private void performSearch(String query) {
         String resultsUrl = getString(R.string.SEARCH_URL)+query;
         FragmentManager fm = getSupportFragmentManager();
@@ -77,10 +81,6 @@ public class SearchActivity extends AppCompatActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
         return super.onOptionsItemSelected(item);
     }
 }

@@ -2,6 +2,7 @@ package qa.dcsdr.diplomaticclub.Items;
 
 /**
  * Created by Tamim on 6/7/2015.
+ * This is a drawer entry with just a title.
  */
 public class DrawerEntry {
 

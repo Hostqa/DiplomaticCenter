@@ -4,6 +4,7 @@ import android.util.Base64;
 
 /**
  * Created by Tamim on 6/13/2015.
+ * This is for decrypting base64 content.
  */
 public class ContentDecrypter {
 

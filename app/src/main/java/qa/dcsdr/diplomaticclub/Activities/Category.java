@@ -2,6 +2,8 @@ package qa.dcsdr.diplomaticclub.Activities;
 
 /**
  * Created by Tamim on 6/15/2015.
+ * This file extends the CategoryListActivity for each category
+ * in lieu of creating as many activities.
  */
 public class Category {
 

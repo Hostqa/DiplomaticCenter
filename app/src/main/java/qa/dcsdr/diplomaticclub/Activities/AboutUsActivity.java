@@ -11,7 +11,13 @@ import android.view.MenuItem;
 import qa.dcsdr.diplomaticclub.Fragments.NavigationDrawerFragment;
 import qa.dcsdr.diplomaticclub.R;
 
+/**
+ * Created by Tamim on 6/20/2015.
+ * This Activity simply places the toolbar and drawer in place.
+ * The rest of the information is in the layout.
+ */
 public class AboutUsActivity extends AppCompatActivity {
+
     private Toolbar toolbar;
 
     @Override
@@ -23,7 +29,7 @@ public class AboutUsActivity extends AppCompatActivity {
             getWindow().setNavigationBarColor(getResources().getColor(R.color.colorPrimaryDark));
         }
         setSupportActionBar(toolbar);
-        if (getSupportActionBar()!=null)
+        if (getSupportActionBar() != null)
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         NavigationDrawerFragment drawerFragment = (NavigationDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.fragment_navigation_drawer);
@@ -34,8 +40,6 @@ public class AboutUsActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_about_us, menu);
-
-
         return true;
     }
 
@@ -45,15 +49,6 @@ public class AboutUsActivity extends AppCompatActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        if (id == R.id.search_button) {
-            onSearchRequested();
-        }
-
         return super.onOptionsItemSelected(item);
     }
 }

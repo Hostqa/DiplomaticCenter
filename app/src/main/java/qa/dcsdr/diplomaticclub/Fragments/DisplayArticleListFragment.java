@@ -2,7 +2,6 @@ package qa.dcsdr.diplomaticclub.Fragments;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
@@ -34,10 +33,8 @@ import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.StringRequest;
 
 import java.io.BufferedReader;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -51,13 +48,11 @@ import qa.dcsdr.diplomaticclub.Items.ClickListener;
 import qa.dcsdr.diplomaticclub.Items.HidingScrollListener;
 import qa.dcsdr.diplomaticclub.Items.VolleySingleton;
 import qa.dcsdr.diplomaticclub.R;
-import qa.dcsdr.diplomaticclub.Tools.ParseArticle;
-import qa.dcsdr.diplomaticclub.Tools.ParseSearch;
+import qa.dcsdr.diplomaticclub.Tools.ParsingFactory;
 
 /**
- * A simple {@link Fragment} subclass.
- * Use the {@link DisplayArticleListFragment#newInstance} factory method to
- * create an instance of this fragment.
+ * Created by Tamim on 6/17/2015.
+ * This is the fragment for displaying an article list.
  */
 public class DisplayArticleListFragment extends Fragment implements ClickListener {
 
@@ -70,8 +65,8 @@ public class DisplayArticleListFragment extends Fragment implements ClickListene
     private ArrayList<Article> articleList = new ArrayList<>();
     private RecyclerView articlesRV;
     private TextView volleyError;
-    private ParseArticle parseApp;
-    private ParseSearch parseSearch;
+    private ParsingFactory parseApp;
+    private ParsingFactory parseSearch;
     private Toolbar toolbar;
     private TextView noArticles;
     private Button retryButton;
@@ -92,13 +87,6 @@ public class DisplayArticleListFragment extends Fragment implements ClickListene
         return (String) this.getActivity().getIntent().getExtras().get("CAT_TITLE");
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param category Parameter 1.
-     * @return A new instance of fragment CategoryTest.
-     */
     public static DisplayArticleListFragment newInstance(String category) {
         DisplayArticleListFragment fragment = new DisplayArticleListFragment();
         Bundle args = new Bundle();
@@ -108,12 +96,10 @@ public class DisplayArticleListFragment extends Fragment implements ClickListene
     }
 
     public DisplayArticleListFragment() {
-        // Required empty public constructor
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
         if (getArguments() != null) {
@@ -143,15 +129,9 @@ public class DisplayArticleListFragment extends Fragment implements ClickListene
         DrawerLayout dl = (DrawerLayout) view.findViewById(R.id.drawer_layout_dal);
         NavigationDrawerFragment drawerFragment = (NavigationDrawerFragment)
                 getChildFragmentManager().findFragmentById(R.id.fragment_navigation_drawer_dal);
-        if (drawerFragment == null) {
-        }
-        if (drawerFragment == null) {
-            drawerFragment = (NavigationDrawerFragment)
-                    getChildFragmentManager().findFragmentById(R.id.fragment_navigation_drawer);
-        }
-        if (drawerFragment != null && dl != null) {
+        if (drawerFragment != null && dl != null)
             drawerFragment.setUp(R.id.fragment_navigation_drawer_dal, dl, toolbar, true);
-        }
+        // Check if this is a list of bookmarks or not
         if (getActivity().getIntent().getExtras().getString("URL", "").equals("LOCAL")) {
             rPubAdapter = new ArticleAdapter(getActivity(), true);
         } else {
@@ -161,18 +141,17 @@ public class DisplayArticleListFragment extends Fragment implements ClickListene
         articlesRV = (RecyclerView) view.findViewById(R.id.articleList);
         volleyError = (TextView) view.findViewById(R.id.volleyError);
 
-
         articlesRV.addOnScrollListener(new HidingScrollListener() {
             @Override
             public void onHide() {
                 hideViews();
             }
-
             @Override
             public void onShow() {
                 showViews();
             }
         });
+
         articlesRV.setLayoutManager(layoutManager);
         articlesRV.setAdapter(rPubAdapter);
         linlaHeaderProgress.setVisibility(View.VISIBLE);
@@ -181,6 +160,7 @@ public class DisplayArticleListFragment extends Fragment implements ClickListene
 
         linearLayout = (LinearLayout) view.findViewById(R.id.errorLayout);
         linearLayout.setVisibility(View.GONE);
+
         retryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -191,6 +171,7 @@ public class DisplayArticleListFragment extends Fragment implements ClickListene
                 sendXmlRequest(view);
             }
         });
+
         if (savedInstanceState != null) {
             articleList = savedInstanceState.getParcelableArrayList(STATE_ARTICLES);
             rPubAdapter.setArticleList(articleList);
@@ -198,21 +179,20 @@ public class DisplayArticleListFragment extends Fragment implements ClickListene
             linlaHeaderProgress.setVisibility(View.GONE);
             articleList = getSavedBookmarks();
             rPubAdapter.setArticleList(articleList);
-            if (articleList.size() == 0) {
+            if (articleList.size() == 1) {
                 noBookmarksFound.setVisibility(View.VISIBLE);
             }
         } else {
             sendXmlRequest(view);
         }
+
         return view;
     }
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-
         // Inflate the menu; this adds items to the action bar if it is present.
         inflater.inflate(R.menu.menu_display_article_list, menu);
-
         super.onCreateOptionsMenu(menu, inflater);
     }
 
@@ -220,7 +200,8 @@ public class DisplayArticleListFragment extends Fragment implements ClickListene
         ArrayList<Article> articleList = new ArrayList<>();
         File bmDir = getActivity().getDir(getString(R.string.BOOKMARK_DIRECTORY), Context.MODE_PRIVATE);
         File[] f = bmDir.listFiles();
-        Arrays.sort(f, new Comparator() {
+
+        Comparator comparator = new Comparator() {
             public int compare(Object o1, Object o2) {
                 if (((File) o1).lastModified() > ((File) o2).lastModified()) {
                     return -1;
@@ -230,7 +211,10 @@ public class DisplayArticleListFragment extends Fragment implements ClickListene
                     return 0;
                 }
             }
-        });
+        };
+
+        Arrays.sort(f,comparator);
+
         for (int i = 0; i < f.length; i++) {
             try {
                 if (f[i].getName().contains("content"))
@@ -257,7 +241,6 @@ public class DisplayArticleListFragment extends Fragment implements ClickListene
         return articleList;
     }
 
-
     private void hideViews() {
         toolbar.animate().translationY(-toolbar.getHeight()).setInterpolator(new AccelerateInterpolator(2));
     }
@@ -268,7 +251,8 @@ public class DisplayArticleListFragment extends Fragment implements ClickListene
     }
 
     private void sendXmlRequest(final View view) {
-        final LinearLayout linlaHeaderProgress = (LinearLayout) view.findViewById(R.id.linlaHeaderProgress);
+        final LinearLayout linlaHeaderProgress = (LinearLayout)
+                view.findViewById(R.id.linlaHeaderProgress);
         retryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -279,18 +263,19 @@ public class DisplayArticleListFragment extends Fragment implements ClickListene
                 sendXmlRequest(view);
             }
         });
-        StringRequest stringRequest = new StringRequest(getRequestUrl(), new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(getRequestUrl(),
+                new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 linlaHeaderProgress.setVisibility(View.GONE);
                 volleyError.setVisibility(View.GONE);
                 if (getRequestUrl().contains("search")) {
-                    parseSearch = new ParseSearch(response, getActivity());
-                    parseSearch.processXml();
+                    parseSearch = new ParsingFactory(response, 1);
+                    parseSearch.processSearchOrFeaturedXml(false);
                     articleList = parseSearch.getArticles();
                 }
                 else {
-                    parseApp = new ParseArticle(response);
+                    parseApp = new ParsingFactory(response, 1);
                     parseApp.processXml();
                     articleList = parseApp.getArticles();
                 }
@@ -346,21 +331,6 @@ public class DisplayArticleListFragment extends Fragment implements ClickListene
         intent.putExtra(getString(R.string.PARENT_CLASS_TAG), getString(R.string.DISPLAY_FRAGMENT_TAG));
         intent.putExtra("URL", getRequestUrl());
         startActivity(intent);
-    }
-
-    public String createImageFromBitmap(Bitmap bitmap) {
-        String fileName = "myImage";//no .png or .jpg needed
-        try {
-            ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
-            FileOutputStream fo = getActivity().openFileOutput(fileName, Context.MODE_PRIVATE);
-            fo.write(bytes.toByteArray());
-            fo.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-            fileName = null;
-        }
-        return fileName;
     }
 
 }

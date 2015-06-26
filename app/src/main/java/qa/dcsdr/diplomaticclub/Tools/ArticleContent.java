@@ -2,6 +2,7 @@ package qa.dcsdr.diplomaticclub.Tools;
 
 import android.content.Context;
 import android.text.Html;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -33,14 +34,15 @@ import qa.dcsdr.diplomaticclub.R;
 
 /**
  * Created by Tamim on 6/18/2015.
+ * This returns the content for a single article.
  */
 public class ArticleContent {
 
     private final RequestQueue requestQueue;
     private final VolleySingleton volleySingleton;
     private final Context context;
-    private Article current;
     private String url;
+    private Menu menu = null;
 
     public int getId() {
         return id;
@@ -145,19 +147,16 @@ public class ArticleContent {
                             currentArticle.setDate(textValue);
                         else if (tag.equalsIgnoreCase("writer"))
                             currentArticle.setAuthor(textValue);
-
                     }
                 }
                 eventType = xpp.next();
             }
             return currentArticle;
-
         } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
     }
-
 
     public void sendXmlRequest(final View view) {
         final LinearLayout readerProgressBar = (LinearLayout) view.findViewById(R.id.readerProgressBar);
@@ -176,15 +175,16 @@ public class ArticleContent {
                     if (content.equals("error")) {
                         readerProgressBar.setVisibility(View.GONE);
                         errorLayoutR.setVisibility(View.VISIBLE);
-                        volleyError.setVisibility(View.VISIBLE);
                         volleyError.setText(context.getString(R.string.BAD_CONTENT));
+                        volleyError.setVisibility(View.VISIBLE);
                         articleScroll.setVisibility(View.GONE);
                     } else {
                         tv.setText(Html.fromHtml(new ContentDecrypter().decrypt((content))));
                         readerProgressBar.setVisibility(View.GONE);
                         articleScroll.setVisibility(View.VISIBLE);
+                        if (menu!=null)
+                            showViews();
                     }
-
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -209,12 +209,10 @@ public class ArticleContent {
                     volleyError.setText(error.toString());
                 }
                 retryButton.setVisibility(View.VISIBLE);
-
             }
         });
         requestQueue.add(stringRequest);
     }
-
 
     public void bookmarkArticle() {
         StringRequest stringRequest = new StringRequest(this.url, new Response.Listener<String>() {
@@ -222,7 +220,6 @@ public class ArticleContent {
             public void onResponse(String response) {
                 Article content = processBookmark(response);
                 // Save the file here
-
                 try {
                     File bmDir = context.getDir(context.getResources().getString(R.string.BOOKMARK_DIRECTORY), Context.MODE_PRIVATE);
                     File newBM = new File(bmDir, id + ""); //Getting a file within the dir.
@@ -241,19 +238,25 @@ public class ArticleContent {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-
-//                Compressor compressor = new Compressor();
-//                compressor.compress(content);
-
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
-
             }
         });
         requestQueue.add(stringRequest);
+    }
+
+    public Menu getMenu() {
+        return menu;
+    }
+
+    public void setMenu(Menu menu) {
+        this.menu = menu;
+    }
+
+    private void showViews() {
+        menu.setGroupEnabled(R.id.customizationGroup,true);
     }
 
 }

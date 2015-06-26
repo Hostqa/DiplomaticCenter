@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 
-
 package qa.dcsdr.diplomaticclub.Tools;
 
 import android.content.Context;

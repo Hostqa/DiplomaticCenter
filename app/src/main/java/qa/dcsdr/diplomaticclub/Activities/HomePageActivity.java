@@ -46,8 +46,13 @@ import qa.dcsdr.diplomaticclub.Items.VolleySingleton;
 import qa.dcsdr.diplomaticclub.R;
 import qa.dcsdr.diplomaticclub.Tools.HomePageViewPager;
 import qa.dcsdr.diplomaticclub.Tools.MyApplication;
-import qa.dcsdr.diplomaticclub.Tools.ParseFeatured;
+import qa.dcsdr.diplomaticclub.Tools.ParsingFactory;
 
+/**
+ * Created by Tamim on 6/20/2015.
+ * This activity is the homepage. It loads all the settings the
+ * user has selected and loads featured categories accordingly.
+ */
 public class HomePageActivity extends AppCompatActivity implements SharedPreferences.OnSharedPreferenceChangeListener {
 
     private Toolbar toolbar;
@@ -66,8 +71,6 @@ public class HomePageActivity extends AppCompatActivity implements SharedPrefere
     private LinearLayout programsAndProjectsLL;
     private LinearLayout eventsLL;
 
-
-
     private HomePagePagerAdapter featuredA;
     private HomePagePagerAdapter researchAndStudiesA;
     private HomePagePagerAdapter publicationsA;
@@ -85,7 +88,7 @@ public class HomePageActivity extends AppCompatActivity implements SharedPrefere
 
     private VolleySingleton volleySingleton;
     private RequestQueue requestQueue;
-    private ParseFeatured parseApp;
+    private ParsingFactory parseApp;
 
     private CircularProgressBar cpb;
     private int total = 0;
@@ -111,12 +114,12 @@ public class HomePageActivity extends AppCompatActivity implements SharedPrefere
                 "FEATURED_PROGRAMS_AND_PROJECTS_SELECTED",
                 "FEATURED_EVENTS_SELECTED"};
 
-        String [] urls = {getFeatured(1),
-                    getFeatured(2),
-                    getFeatured(5),
-                    getFeatured(3),
-                    getFeatured(6),
-                    getFeatured(4)};
+        String[] urls = {getFeatured(1),
+                getFeatured(2),
+                getFeatured(5),
+                getFeatured(3),
+                getFeatured(6),
+                getFeatured(4)};
         total = 0;
 
         for (int i = 0; i < hppa.length; i++) {
@@ -138,8 +141,8 @@ public class HomePageActivity extends AppCompatActivity implements SharedPrefere
         return new StringRequest(url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                parseApp = new ParseFeatured(response, activity);
-                parseApp.processXml();
+                parseApp = new ParsingFactory(response, 1);
+                parseApp.processSearchOrFeaturedXml(true);
                 articleList = parseApp.getArticles();
                 totalPrime += 1;
                 if (totalPrime == total) {
@@ -151,7 +154,6 @@ public class HomePageActivity extends AppCompatActivity implements SharedPrefere
                     if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                         getWindow().setNavigationBarColor(getResources().getColor(R.color.colorPrimaryDark));
                     }
-
                 }
                 hppa[p].setArticleList(articleList);
                 hppa[p].notifyDataSetChanged();
@@ -212,7 +214,7 @@ public class HomePageActivity extends AppCompatActivity implements SharedPrefere
         // This is for intercepting a URL
         if (Intent.ACTION_VIEW.equals(action)) {
             String url = intent.getDataString();
-            if (url.contains("post")){
+            if (url.contains("post")) {
                 String[] urlParsed = url.split("-");
                 int id = Integer.parseInt(urlParsed[urlParsed.length - 1]);
             }
@@ -243,20 +245,14 @@ public class HomePageActivity extends AppCompatActivity implements SharedPrefere
         final HomePagePagerAdapter[] hppa = {featuredA, researchAndStudiesA, publicationsA,
                 disputes_resolutionA, programsAndProjectsA, eventsA};
 
-        final List<HomePagePagerAdapter> hppaCopy = new ArrayList<HomePagePagerAdapter>();
-//        {featuredA, researchAndStudiesA, publicationsA,
-//                disputes_resolutionA, programsAndProjectsA, eventsA};
-
         hpvp = new HomePageViewPager[]{researchAndStudies, publications,
                 disputes_resolution, programsAndProjects, events};
 
         hpll = new LinearLayout[]{researchAndStudiesLL, publicationsLL,
                 disputes_resolutionLL, programsAndProjectsLL, eventsLL};
 
-
         hpllM = new LinearLayout[]{featuredLL, researchAndStudiesLL, publicationsLL,
                 disputes_resolutionLL, programsAndProjectsLL, eventsLL};
-
 
         hpvpM = new HomePageViewPager[]{featured, researchAndStudies, publications,
                 disputes_resolution, programsAndProjects, events};
@@ -308,7 +304,6 @@ public class HomePageActivity extends AppCompatActivity implements SharedPrefere
                 int v = hpvp[i].getVisibility();
                 if (v == View.GONE) {
                     sendXmlRequest(hppa);
-
                     hpvp[i].setVisibility(View.VISIBLE);
                     hpll[i].setVisibility(View.VISIBLE);
 
@@ -319,14 +314,12 @@ public class HomePageActivity extends AppCompatActivity implements SharedPrefere
             }
         };
 
-//        progressBar.setVisibility(View.GONE);
-//        volleyErrorHomePage.setVisibility(View.GONE);
         getSharedPreferences("HOMEPAGE_CHANGES", Context.MODE_PRIVATE).registerOnSharedPreferenceChangeListener(homepageListener);
-
 
     }
 
     private void initializeAdapters() {
+
         featured = (HomePageViewPager) findViewById(R.id.pager1);
         featuredA = new HomePagePagerAdapter(getSupportFragmentManager(), articleList);
         featuredA.setCategory(getString(R.string.ALL_FEATURED));
@@ -361,13 +354,13 @@ public class HomePageActivity extends AppCompatActivity implements SharedPrefere
         eventsA = new HomePagePagerAdapter(getSupportFragmentManager(), articleList);
         eventsA.setCategory(getString(R.string.FEATURED_EVENTS));
         events.setAdapter(eventsA);
+
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_home_page, menu);
-
         // Associate searchable configuration with the SearchView
         SearchManager searchManager =
                 (SearchManager) getSystemService(Context.SEARCH_SERVICE);
@@ -375,9 +368,7 @@ public class HomePageActivity extends AppCompatActivity implements SharedPrefere
                 (SearchView) menu.findItem(R.id.search_button).getActionView();
         searchView.setSearchableInfo(
                 searchManager.getSearchableInfo(getComponentName()));
-
         return true;
-
     }
 
 
@@ -393,7 +384,6 @@ public class HomePageActivity extends AppCompatActivity implements SharedPrefere
         }
         return super.onOptionsItemSelected(item);
     }
-
 
     @Override
     public void onBackPressed() {
@@ -422,12 +412,5 @@ public class HomePageActivity extends AppCompatActivity implements SharedPrefere
             restartActivity();
         }
     }
-
-
-
-
-
-
-
 
 }

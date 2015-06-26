@@ -2,7 +2,6 @@ package qa.dcsdr.diplomaticclub.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,13 +9,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
 
-import java.io.ByteArrayOutputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.util.ArrayList;
 
 import qa.dcsdr.diplomaticclub.Activities.DisplayArticleListActivity;
@@ -28,6 +23,7 @@ import qa.dcsdr.diplomaticclub.Tools.Ellipsizer;
 
 /**
  * Created by Tamim on 6/11/2015.
+ * This is the adapter for displaying the authors.
  */
 public class AuthorAdapter  extends RecyclerView.Adapter<AuthorAdapter.ArticleViewHolder>  {
 
@@ -65,11 +61,7 @@ public class AuthorAdapter  extends RecyclerView.Adapter<AuthorAdapter.ArticleVi
         holder.authorImage.setDefaultImageResId(R.drawable.author_ph);
         holder.authorImage.setErrorImageResId(R.drawable.author_ph);
         holder.authorImage.setImageUrl(urlTN, imageLoader);
-        try {
-            context.openFileInput(currentAuthor.getTitle());
-        } catch (FileNotFoundException e) {
-            loadImage(urlTN, holder, currentAuthor.getTitle());
-        }
+
         holder.readMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -98,33 +90,13 @@ public class AuthorAdapter  extends RecyclerView.Adapter<AuthorAdapter.ArticleVi
         });
     }
 
-    private void loadImage(String url, final ArticleViewHolder viewHolderPublication, final String title) {
-        if (url!=null && !url.equals("N/A"))
-        {
-            imageLoader.get(url, new ImageLoader.ImageListener() {
-                @Override
-                public void onResponse(ImageLoader.ImageContainer response, boolean isImmediate) {
-                    try {
-                        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-                        response.getBitmap().compress(Bitmap.CompressFormat.JPEG, 100, bytes);
-                        FileOutputStream fo = context.openFileOutput(title, Context.MODE_PRIVATE);
-                        fo.write(bytes.toByteArray());
-                        fo.close();
-                    } catch (Exception e) {}
-                }
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                }
-            });
-        }
-    }
-
     @Override
     public int getItemCount() {
         return authorList.size();
     }
 
     class ArticleViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
         NetworkImageView authorImage;
         TextView authorTitle;
         TextView authorDescription;

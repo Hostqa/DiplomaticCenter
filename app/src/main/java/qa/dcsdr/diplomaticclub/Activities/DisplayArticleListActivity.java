@@ -14,7 +14,11 @@ import android.view.Window;
 import qa.dcsdr.diplomaticclub.Fragments.DisplayArticleListFragment;
 import qa.dcsdr.diplomaticclub.R;
 
-
+/**
+ * Created by Tamim on 6/20/2015.
+ * This activity displays the article list in a certain subcatagory,
+ * search query or bookmarks.
+ */
 public class DisplayArticleListActivity extends AppCompatActivity {
 
     private Fragment fragment ;
@@ -76,7 +80,6 @@ public class DisplayArticleListActivity extends AppCompatActivity {
         return newIntent;
     }
 
-    // TODO: Low Priority: Try and make parent have only one instance
     @Override
     public void onBackPressed() {
         finish();

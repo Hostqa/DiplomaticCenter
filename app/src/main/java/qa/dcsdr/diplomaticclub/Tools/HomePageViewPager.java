@@ -7,6 +7,7 @@ import android.view.View;
 
 /**
  * Created by Tamim on 6/16/2015.
+ * This is the ViewPager for the homepage.
  */
 public class HomePageViewPager extends ViewPager {
 
@@ -30,7 +31,6 @@ public class HomePageViewPager extends ViewPager {
         height+=getPaddingBottom();
         height+=getPaddingTop();
         heightMeasureSpec = MeasureSpec.makeMeasureSpec(height, MeasureSpec.EXACTLY);
-
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
 

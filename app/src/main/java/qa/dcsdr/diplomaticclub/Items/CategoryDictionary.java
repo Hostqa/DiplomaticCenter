@@ -10,6 +10,7 @@ import qa.dcsdr.diplomaticclub.R;
 
 /**
  * Created by Tamim on 6/14/2015.
+ * This "dictionary" has all the categories and sub-categories.
  */
 public class CategoryDictionary {
     

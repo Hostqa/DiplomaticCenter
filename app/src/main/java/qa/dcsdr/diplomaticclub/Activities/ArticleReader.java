@@ -25,7 +25,6 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.toolbox.ImageLoader;
 import com.squareup.picasso.Picasso;
 
 import java.io.BufferedReader;
@@ -36,7 +35,6 @@ import java.util.ArrayList;
 
 import qa.dcsdr.diplomaticclub.Fragments.NavigationDrawerFragment;
 import qa.dcsdr.diplomaticclub.Items.Article;
-import qa.dcsdr.diplomaticclub.Items.VolleySingleton;
 import qa.dcsdr.diplomaticclub.R;
 import qa.dcsdr.diplomaticclub.Tools.ArticleContent;
 import qa.dcsdr.diplomaticclub.Tools.ContentDecrypter;
@@ -68,8 +66,6 @@ public class ArticleReader extends AppCompatActivity {
     private String url;
     private Menu menu;
     private float defaultSize;
-    private ImageLoader imageLoader;
-    private VolleySingleton volleySingleton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,26 +74,32 @@ public class ArticleReader extends AppCompatActivity {
             getWindow().setNavigationBarColor(getResources().getColor(R.color.colorPrimaryDark));
         }
         a = this;
-
         setContentView(R.layout.activity_article_reader);
         setTitle(getResources().getString(R.string.title_activity_article_reader));
+
         toolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
+
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayShowHomeEnabled(true);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
         NavigationDrawerFragment drawerFragment = (NavigationDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.fragment_navigation_drawer);
-        drawerFragment.setUp(R.id.fragment_navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout), toolbar, true);
+        drawerFragment.setUp(R.id.fragment_navigation_drawer, (DrawerLayout)
+                findViewById(R.id.drawer_layout), toolbar, true);
+
         Intent myIntent = getIntent();
         Bundle extras = myIntent.getExtras();
         articleList = (ArrayList<Article>) extras.get("ARTICLE_LIST");
         category = (String) extras.get("CAT_TITLE");
         position = (int) extras.get("POSITION");
         url = (String) extras.get("URL");
+
         Article current = articleList.get(position);
+
         ac = new ArticleContent(current.getId(), getResources().getString(R.string.SINGLE_ARTICLE_ID), this);
+
         articleTitle = (TextView) findViewById(R.id.articleTitle);
         articleContents = (TextView) findViewById(R.id.articleContents);
         articleCategory = (TextView) findViewById(R.id.category);
@@ -113,13 +115,11 @@ public class ArticleReader extends AppCompatActivity {
         nextArticle = (Button) findViewById(R.id.next);
         prevArticle = (Button) findViewById(R.id.prev);
         articleCategory.setText(category);
+
         articleTitle.setText(current.getTitle());
         articleAuthor.setText(current.getAuthor());
         articleDate.setText(current.getDate());
         defaultSize = articleContents.getTextSize();
-
-        volleySingleton = VolleySingleton.getsInstance();
-        imageLoader = volleySingleton.getImageLoader();
 
         retryButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -140,9 +140,7 @@ public class ArticleReader extends AppCompatActivity {
             articleContents.setText(Html.fromHtml(new ContentDecrypter().decrypt
                     ((getSavedBookmark(articleList.get(position).getId())))));
         } else {
-
             try {
-
                 File f = getDir(getString(R.string.BOOKMARK_DIRECTORY), Context.MODE_PRIVATE);
                 File nf = new File(f, articleList.get(position).getId() + "");
                 if (nf.exists()) {
@@ -157,17 +155,13 @@ public class ArticleReader extends AppCompatActivity {
                 } else {
                     ac.setIdAndUrl(getResources().getString(R.string.SINGLE_ARTICLE_ID), articleList.get(position).getId());
                     ac.sendXmlRequest(c);
-                    // TODO: FIX FOLLOWING BUG
-
                 }
-
-
-//                ac.sendXmlRequest(c);
             } catch (Exception e) {
                 e.printStackTrace();
                 articleContents.setText("Error.");
             }
         }
+
         File f = new File(getFilesDir(), current.getTitle());
         if (f.exists()) {
             Picasso.with(this).load(f).placeholder(R.drawable.loading_image).
@@ -177,63 +171,55 @@ public class ArticleReader extends AppCompatActivity {
         }
 
         final boolean virtual = articleList.get(0).getTitle().equals("N/A");
+
         prevArticle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (virtual) {
                     if (position > 1) {
-                        navigate(false);
+                        ArticleReader.this.navigate(false);
                     } else {
                         prevArticle.setVisibility(View.GONE);
                     }
-
                 } else {
                     if (position > 0) {
-                        navigate(false);
+                        ArticleReader.this.navigate(false);
                     } else {
                         prevArticle.setVisibility(View.GONE);
                     }
-
                 }
-
-
             }
         });
+
         nextArticle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (position < (articleList.size() - 1)) {
-                    navigate(true);
+                    ArticleReader.this.navigate(true);
                 } else {
                     nextArticle.setVisibility(View.GONE);
                 }
             }
         });
 
-        if (virtual) {
-            if (articleList.size() == 2) {
-                nextArticle.setVisibility(View.GONE);
-                prevArticle.setVisibility(View.GONE);
-            } else if (position == (articleList.size() - 1)) {
-                nextArticle.setVisibility(View.GONE);
-            } else if (position == 1) {
-                prevArticle.setVisibility(View.GONE);
-            }
+        int correctBound = virtual ? 2 : 1;
+        int correctPosition = virtual ? 1 : 0;
 
-        } else {
-
-            if (articleList.size() == 1) {
-                nextArticle.setVisibility(View.GONE);
-                prevArticle.setVisibility(View.GONE);
-            } else if (position == (articleList.size() - 1)) {
-                nextArticle.setVisibility(View.GONE);
-            } else if (position == 0) {
-                prevArticle.setVisibility(View.GONE);
-            }
-
+        if (articleList.size() == correctBound) {
+            nextArticle.setVisibility(View.GONE);
+            prevArticle.setVisibility(View.GONE);
+        } else if (position == (articleList.size() - 1))
+            nextArticle.setVisibility(View.GONE);
+        else if (position == correctPosition) {
+            prevArticle.setVisibility(View.GONE);
         }
-
-        scrollView.getViewTreeObserver().addOnScrollChangedListener(new ViewTreeObserver.OnScrollChangedListener() {
+        /**
+         * This scrollview allows the bar to dissappear when reading
+         * as well as fading out when the article image is
+         * appearing/disappearing
+         */
+        scrollView.getViewTreeObserver().addOnScrollChangedListener(
+                new ViewTreeObserver.OnScrollChangedListener() {
 
             public boolean goingUp = false;
             private static final int HIDE_THRESHOLD = 20;
@@ -242,12 +228,15 @@ public class ArticleReader extends AppCompatActivity {
             private float current;
 
             private void onHide() {
-                toolbar.animate().translationY(-toolbar.getHeight()).setInterpolator(new AccelerateInterpolator(2));
+                toolbar.animate().translationY(-toolbar.getHeight()).setInterpolator(
+                        new AccelerateInterpolator(2));
             }
 
             private void onShow() {
-                toolbar.animate().translationY(0).setInterpolator(new DecelerateInterpolator(2));
-                toolbar.animate().translationY(0).setInterpolator(new DecelerateInterpolator(2)).start();
+                toolbar.animate().translationY(0).setInterpolator
+                        (new DecelerateInterpolator(2));
+                toolbar.animate().translationY(0).setInterpolator
+                        (new DecelerateInterpolator(2)).start();
             }
 
             @Override
@@ -267,7 +256,8 @@ public class ArticleReader extends AppCompatActivity {
                             controlsVisible = true;
                         } else {
                             if (y != 0 && !next && !prev && !goingUp)
-                                toolbar.setAlpha((articleImage.getHeight() - y) / articleImage.getHeight());
+                                toolbar.setAlpha
+                                        ((articleImage.getHeight() - y) / articleImage.getHeight());
                             else
                                 toolbar.setAlpha(1);
                         }
@@ -281,7 +271,8 @@ public class ArticleReader extends AppCompatActivity {
                             controlsVisible = true;
                         } else {
                             if (y != 0 && !next && !prev && !goingUp)
-                                toolbar.setAlpha((articleImage.getHeight() - y) / articleImage.getHeight());
+                                toolbar.setAlpha
+                                        ((articleImage.getHeight() - y) / articleImage.getHeight());
                             else
                                 toolbar.setAlpha(1);
                         }
@@ -307,6 +298,7 @@ public class ArticleReader extends AppCompatActivity {
 
     }
 
+
     @Override
     public Intent getSupportParentActivityIntent() {
         Intent parentIntent = getIntent();
@@ -323,6 +315,8 @@ public class ArticleReader extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_article_reader, menu);
+        menu.setGroupEnabled(R.id.customizationGroup,false);
+        ac.setMenu(menu);
         this.menu = menu;
         if (getIntent().getExtras().get("URL").equals("LOCAL")) {
             menu.findItem(R.id.bookmark).setIcon(R.drawable.ic_bookmark);
@@ -331,7 +325,6 @@ public class ArticleReader extends AppCompatActivity {
                     200, R.string.REMOVE_BOOKMARK);
             mi.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
         } else {
-
             File f = getDir(getString(R.string.BOOKMARK_DIRECTORY), Context.MODE_PRIVATE);
             File nf = new File(f, articleList.get(position).getId() + "");
             if (nf.exists()) {
@@ -346,14 +339,16 @@ public class ArticleReader extends AppCompatActivity {
                 if (this.menu.findItem(R.string.DELETE_BOOKMARK) != null)
                     this.menu.removeItem(R.string.DELETE_BOOKMARK);
             }
-
         }
         return true;
     }
 
-    /*
-           Allowing the user to change text size and adding Night Mode.
-    */
+    /**
+     * Allowing the user to change text size, activating night/day mode
+     * and bookmarking an article.
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -374,32 +369,17 @@ public class ArticleReader extends AppCompatActivity {
                 articleContents.setTextSize(TypedValue.COMPLEX_UNIT_PX, articleContents.getTextSize() - 3);
         } else if (id == R.id.night_mode) {
             String currentMode = (String) menu.findItem(R.id.night_mode).getTitle();
-            if (currentMode.equals(getString(R.string.NIGHT_MODE))) {
-                articleTitle.setTextColor(getResources().getColor(R.color.colorWhite));
-                articleContents.setTextColor(getResources().getColor(R.color.colorWhite));
-                scrollView.setBackgroundColor(getResources().getColor(R.color.colorBlack));
-                nextArticle.setTextColor(getResources().getColor(R.color.colorWhite));
-                prevArticle.setTextColor(getResources().getColor(R.color.colorWhite));
-                articleAuthor.setTextColor(getResources().getColor(R.color.colorWhite));
-                articleDate.setTextColor(getResources().getColor(R.color.colorWhite));
-                menu.findItem(R.id.night_mode).setTitle(getString(R.string.DAY_MODE));
-            } else {
-                articleTitle.setTextColor(getResources().getColor(R.color.colorBlack));
-                articleContents.setTextColor(getResources().getColor(R.color.colorBlack));
-                scrollView.setBackgroundColor(getResources().getColor(R.color.colorWhite));
-                nextArticle.setTextColor(getResources().getColor(R.color.colorPrimary));
-                prevArticle.setTextColor(getResources().getColor(R.color.colorPrimary));
-                articleAuthor.setTextColor(getResources().getColor(R.color.colorPrimaryLight));
-                articleDate.setTextColor(getResources().getColor(R.color.colorPrimaryLight));
-                menu.findItem(R.id.night_mode).setTitle(getString(R.string.NIGHT_MODE));
-            }
+            if (currentMode.equals(getString(R.string.NIGHT_MODE)))
+                activateNightMode();
+             else
+                activateDayMode();
         } else if (id == R.id.default_size) {
             articleContents.setTextSize(TypedValue.COMPLEX_UNIT_PX, defaultSize);
         } else if (id == R.id.bookmark) {
-
             if (url.equals("LOCAL"))
                 Toast.makeText(this, getString(R.string.ALREADY_BOOKMARKED), Toast.LENGTH_SHORT).show();
-            else if (menu.findItem(R.id.bookmark).getTitle().equals(getResources().getString(R.string.NO_BOOKMARK)))
+            else if (menu.findItem(R.id.bookmark).getTitle().equals
+                    (getResources().getString(R.string.NO_BOOKMARK)))
                 Toast.makeText(this, getString(R.string.ALREADY_BOOKMARKED), Toast.LENGTH_SHORT).show();
 
             else {
@@ -419,6 +399,28 @@ public class ArticleReader extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    private void activateDayMode() {
+        articleTitle.setTextColor(getResources().getColor(R.color.colorBlack));
+        articleContents.setTextColor(getResources().getColor(R.color.colorBlack));
+        scrollView.setBackgroundColor(getResources().getColor(R.color.colorWhite));
+        nextArticle.setTextColor(getResources().getColor(R.color.colorPrimary));
+        prevArticle.setTextColor(getResources().getColor(R.color.colorPrimary));
+        articleAuthor.setTextColor(getResources().getColor(R.color.colorPrimaryLight));
+        articleDate.setTextColor(getResources().getColor(R.color.colorPrimaryLight));
+        menu.findItem(R.id.night_mode).setTitle(getString(R.string.NIGHT_MODE));
+    }
+
+    private void activateNightMode() {
+        articleTitle.setTextColor(getResources().getColor(R.color.colorWhite));
+        articleContents.setTextColor(getResources().getColor(R.color.colorWhite));
+        scrollView.setBackgroundColor(getResources().getColor(R.color.colorBlack));
+        nextArticle.setTextColor(getResources().getColor(R.color.colorWhite));
+        prevArticle.setTextColor(getResources().getColor(R.color.colorWhite));
+        articleAuthor.setTextColor(getResources().getColor(R.color.colorWhite));
+        articleDate.setTextColor(getResources().getColor(R.color.colorWhite));
+        menu.findItem(R.id.night_mode).setTitle(getString(R.string.DAY_MODE));
+    }
+
     private void removeBookmark() {
         File bmDir = getDir(getString(R.string.BOOKMARK_DIRECTORY), Context.MODE_PRIVATE);
         File data = new File(bmDir, articleList.get(position).getId() + "");
@@ -431,7 +433,6 @@ public class ArticleReader extends AppCompatActivity {
         if (success1 && success2)
             Toast.makeText(this, getString(R.string.BOOKMARK_REMOVED), Toast.LENGTH_SHORT).show();
         onBackPressed();
-
     }
 
     private void bookmarkArticle() {
@@ -440,8 +441,8 @@ public class ArticleReader extends AppCompatActivity {
         toBookmark.bookmarkArticle();
     }
 
-    /*
-        Allows navigation from one article to another.
+    /**
+     *  Allows navigation from one article to another.
     */
     private void navigate(boolean isNext) {
         boolean virtual = articleList.get(0).getTitle().equals("N/A");
@@ -469,6 +470,7 @@ public class ArticleReader extends AppCompatActivity {
         if (position < (articleList.size() - 1) && nextArticle.getVisibility() == View.GONE) {
             nextArticle.setVisibility(View.VISIBLE);
         }
+
         Article current = articleList.get(position);
         articleTitle.setText(current.getTitle());
         articleAuthor.setText(current.getAuthor());
@@ -513,11 +515,6 @@ public class ArticleReader extends AppCompatActivity {
             }
         }
 
-//        articleImage.setImageUrl(current.getPhoto(), imageLoader);
-
-
-
-
         File f = new File(getFilesDir(), current.getTitle());
         if (f.exists()) {
             Picasso.with(this).load(f).placeholder(R.drawable.loading_image).
@@ -532,6 +529,7 @@ public class ArticleReader extends AppCompatActivity {
                 scrollView.smoothScrollTo(0, 0);
             }
         }, 200);
+
     }
 
     private String getSavedBookmark(int id) {
@@ -550,25 +548,27 @@ public class ArticleReader extends AppCompatActivity {
         }
         return "";
     }
-//
-//    @Override
-//    public void onBackPressed() {
-//        Intent intent;
-//        if (this.getIntent().hasExtra("URL")) {
-//            if (this.getIntent().getExtras().get("URL").equals("LOCAL")) {
-//                intent = new Intent(a, DisplayArticleListActivity.class);
-//                intent.putExtra("CAT_TITLE", category);
-//                intent.putExtra(getString(R.string.PARENT_CLASS_TAG), getString(R.string.DISPLAY_FRAGMENT_PARENT_TAG));
-//                intent.putExtra("URL", url);
-//                startActivity(intent);
-//                finish();
-//            } else {
-//                super.onBackPressed();
-//            }
-//        } else {
-//            super.onBackPressed();
-//        }
-//
-//    }
+
+    /*
+    @Override
+    public void onBackPressed() {
+        Intent intent;
+        if (this.getIntent().hasExtra("URL")) {
+            if (this.getIntent().getExtras().get("URL").equals("LOCAL")) {
+                intent = new Intent(a, DisplayArticleListActivity.class);
+                intent.putExtra("CAT_TITLE", category);
+                intent.putExtra(getString(R.string.PARENT_CLASS_TAG), getString(R.string.DISPLAY_FRAGMENT_PARENT_TAG));
+                intent.putExtra("URL", url);
+                startActivity(intent);
+                finish();
+            } else {
+                super.onBackPressed();
+            }
+        } else {
+            super.onBackPressed();
+        }
+
+    }
+    */
 
 }

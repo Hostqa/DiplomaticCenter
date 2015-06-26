@@ -1,9 +1,5 @@
 package qa.dcsdr.diplomaticclub.Fragments;
 
-/**
- * Created by Tamim on 6/16/2015.
- */
-
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -30,7 +26,10 @@ import qa.dcsdr.diplomaticclub.Items.VolleySingleton;
 import qa.dcsdr.diplomaticclub.R;
 import qa.dcsdr.diplomaticclub.Tools.Ellipsizer;
 
-
+/**
+ * Created by Tamim on 6/16/2015.
+ * This is the fragment for the homepage.
+ */
 public class HomePageFragment extends Fragment {
 
     private Article article;
@@ -53,7 +52,6 @@ public class HomePageFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // TODO Auto-generated method stub
         VolleySingleton volleySingleton;
         volleySingleton=VolleySingleton.getsInstance();
         imageLoader=volleySingleton.getImageLoader();
@@ -61,11 +59,11 @@ public class HomePageFragment extends Fragment {
         article = articleList.get(position);
 
         View view =  inflater.inflate(R.layout.fragment_home_page,container,false);
+
         featuredCategory = (TextView) view.findViewById(R.id.featuredCategory);
         featuredImage = (NetworkImageView) view.findViewById(R.id.featuredImage);
         featuredTitle= (TextView) view.findViewById(R.id.featuredTitle);
         featuredAuthor= (TextView) view.findViewById(R.id.featuredAuthor);
-
         readMore = (Button) view.findViewById(R.id.featuredReadMore);
         featuredShare = (Button) view.findViewById(R.id.featuredShare);
 
@@ -74,14 +72,7 @@ public class HomePageFragment extends Fragment {
         featuredImage.setDefaultImageResId(R.drawable.loading_image);
         featuredImage.setErrorImageResId(R.drawable.default_art_image);
         featuredTitle.setText(Ellipsizer.ellipsize(article.getTitle(), 60));
-
         featuredImage.setImageUrl(article.getPhoto(), imageLoader);
-
-//        try {
-//            getActivity().openFileInput(article.getTitle());
-//        } catch (FileNotFoundException e) {
-//            loadImage(article.getPhoto(), article.getTitle());
-//        }
 
         readMore.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,18 +97,16 @@ public class HomePageFragment extends Fragment {
         return view;
     }
 
-
     private void loadImage(String url, final String title) {
         if (url!=null && url!="N/A")
         {
             imageLoader.get(url, new ImageLoader.ImageListener() {
                 @Override
                 public void onResponse(ImageLoader.ImageContainer response, boolean isImmediate) {
-                    String fileName = title;//no .png or .jpg needed
                     try {
                         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
                         response.getBitmap().compress(Bitmap.CompressFormat.JPEG, 100, bytes);
-                        FileOutputStream fo = getActivity().openFileOutput(fileName, Context.MODE_PRIVATE);
+                        FileOutputStream fo = getActivity().openFileOutput(title, Context.MODE_PRIVATE);
                         fo.write(bytes.toByteArray());
                         fo.close();
                         Intent intent = new Intent(getActivity(), ArticleReader.class);
@@ -129,7 +118,6 @@ public class HomePageFragment extends Fragment {
                         intent.putExtra(getString(R.string.PARENT_CLASS_TAG), getString(R.string.DISPLAY_FRAGMENT_TAG));
                         startActivity(intent);
                     } catch (Exception e) {
-                        fileName = null;
                     }
                 }
 

@@ -10,6 +10,9 @@ import qa.dcsdr.diplomaticclub.R;
 
 /**
  * Created by Tamim on 6/21/2015.
+ * This was created for the language preference in options. It allows
+ * the user to be notified that the Arabic language is only supported
+ * under certain conditions.
  */
 public class LogCleanPreference extends ListPreference {
 
@@ -48,7 +51,6 @@ public class LogCleanPreference extends ListPreference {
                                             mClickedDialogEntryIndex = which;
                                             LogCleanPreference.this.onClick(dialog, DialogInterface.BUTTON_POSITIVE);
                                             dialog.dismiss();
-
                                         }
                                     })
                                     .setNegativeButton(mContext.getString(R.string.NO), new DialogInterface.OnClickListener() {
@@ -65,7 +67,6 @@ public class LogCleanPreference extends ListPreference {
                         }
                     }
                 });
-
         builder.setPositiveButton(null, null);
     }
 
@@ -81,4 +82,5 @@ public class LogCleanPreference extends ListPreference {
             }
         }
     }
+
 }

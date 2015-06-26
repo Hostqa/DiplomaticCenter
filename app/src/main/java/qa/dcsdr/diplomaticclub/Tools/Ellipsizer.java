@@ -2,6 +2,7 @@ package qa.dcsdr.diplomaticclub.Tools;
 
 /**
  * Created by Tamim on 6/17/2015.
+ * This is for displaying a shortened version of article descriptions.
  */
 public class Ellipsizer {
 

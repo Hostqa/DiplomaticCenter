@@ -24,7 +24,6 @@ import com.android.volley.Response;
 import com.android.volley.ServerError;
 import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.StringRequest;
 
 import java.util.ArrayList;
@@ -34,28 +33,22 @@ import qa.dcsdr.diplomaticclub.Items.Author;
 import qa.dcsdr.diplomaticclub.Items.ClickListener;
 import qa.dcsdr.diplomaticclub.Items.VolleySingleton;
 import qa.dcsdr.diplomaticclub.R;
-import qa.dcsdr.diplomaticclub.Tools.ParseAuthor;
+import qa.dcsdr.diplomaticclub.Tools.ParsingFactory;
+
 
 /**
  * Created by Tamim on 6/17/2015.
- */
-
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link DisplayArticleListFragment#newInstance} factory method to
- * create an instance of this fragment.
+ * This is the fragment for the authors list.
  */
 public class AuthorListFragment extends Fragment implements ClickListener {
 
     private static final String STATE_ARTICLES = "state_articles";
-
     private VolleySingleton volleySingleton;
-    private ImageLoader imageLoader;
     private RequestQueue requestQueue;
     private ArrayList<Author> authorList = new ArrayList<>();
     private RecyclerView authorsRV;
     private TextView volleyError;
-    private ParseAuthor parseApp;
+    private ParsingFactory parseApp;
     private Toolbar toolbar;
     private TextView noArticles;
     private Button retryButton;
@@ -78,7 +71,6 @@ public class AuthorListFragment extends Fragment implements ClickListener {
     }
 
     public AuthorListFragment() {
-        // Required empty public constructor
     }
 
     @Override
@@ -107,6 +99,7 @@ public class AuthorListFragment extends Fragment implements ClickListener {
         toolbar = (Toolbar) view.findViewById(R.id.app_bar);
         AppCompatActivity activity = (AppCompatActivity) getActivity();
         activity.setSupportActionBar(toolbar);
+
         if (activity.getSupportActionBar()!=null)
             activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         activity.setProgressBarIndeterminateVisibility(true);
@@ -118,6 +111,7 @@ public class AuthorListFragment extends Fragment implements ClickListener {
         progressHeader.setVisibility(View.VISIBLE);
         linearLayout = (LinearLayout) view.findViewById(R.id.errorLayout);
         linearLayout.setVisibility(View.GONE);
+
         retryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -135,9 +129,9 @@ public class AuthorListFragment extends Fragment implements ClickListener {
         } else {
             sendXmlRequest(url);
         }
+
         return view;
     }
-
 
     private void sendXmlRequest(String url) {
         StringRequest stringRequest = new StringRequest(url, new Response.Listener<String>() {
@@ -145,8 +139,8 @@ public class AuthorListFragment extends Fragment implements ClickListener {
             public void onResponse(String response) {
                 progressHeader.setVisibility(View.GONE);
                 volleyError.setVisibility(View.GONE);
-                parseApp = new ParseAuthor(response);
-                parseApp.processXml();
+                parseApp = new ParsingFactory(response,0);
+                parseApp.processAuthorXml();
                 authorList = parseApp.getAuthors();
                 if (authorList.size() == 0) {
                     progressHeader.setVisibility(View.GONE);

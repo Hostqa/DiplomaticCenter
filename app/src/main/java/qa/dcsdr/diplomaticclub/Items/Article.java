@@ -14,12 +14,21 @@ public class Article implements Parcelable {
     private String title;
     private String link;
     private String photo;
-
-
     private String description;
     private String date;
     private String author;
     private String content;
+    private int length;
+
+    public static final Parcelable.Creator<Article> CREATOR
+            = new Parcelable.Creator<Article>() {
+        public Article createFromParcel(Parcel in) {
+            return new Article(in);
+        }
+        public Article[] newArray(int size) {
+            return new Article[size];
+        }
+    };
 
     public int getLength() {
         return length;
@@ -28,10 +37,6 @@ public class Article implements Parcelable {
     public void setLength(int length) {
         this.length = length;
     }
-
-    private int length;
-
-
 
     public String getDescription() {
         return description;
@@ -44,7 +49,6 @@ public class Article implements Parcelable {
     public void setContent(String content) {
         this.content = content;
     }
-
 
     public int getId() {
         return id;
@@ -120,13 +124,6 @@ public class Article implements Parcelable {
         this.author = author;
     }
 
-    public String toString() {
-        String str = "";
-        str += getTitle() + "\n" +
-                "Date: " + getDate();
-        return str;
-    }
-
     public String getSumAbstract() {
         return Ellipsizer.ellipsize(description, 60);
     }
@@ -148,17 +145,6 @@ public class Article implements Parcelable {
         dest.writeInt(length);
     }
 
-    public static final Parcelable.Creator<Article> CREATOR
-            = new Parcelable.Creator<Article>() {
-        public Article createFromParcel(Parcel in) {
-            return new Article(in);
-        }
-
-        public Article[] newArray(int size) {
-            return new Article[size];
-        }
-    };
-
     public String toStringWithoutContent() {
         return  getTitle() + "\n" +
                 getLink() + "\n" +
@@ -168,4 +154,12 @@ public class Article implements Parcelable {
                 getAuthor()  + "\n"+
                 getLength()  + "\n";
     }
+
+    public String toString() {
+        String str = "";
+        str += getTitle() + "\n" +
+                "Date: " + getDate();
+        return str;
+    }
+
 }

@@ -2,9 +2,6 @@ package qa.dcsdr.diplomaticclub.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.support.v7.widget.RecyclerView;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -27,9 +24,9 @@ import qa.dcsdr.diplomaticclub.R;
 
 /**
  * Created by Tamim on 6/13/2015.
+ * This is the adapter for the categories that lists all the sub-categories.
  */
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHolderCategories> {
-
 
     private LayoutInflater inflater;
     private List<CategoryEntry> data = Collections.emptyList();
@@ -49,45 +46,11 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
         return new ViewHolderCategories(view, viewType);
     }
 
-    private static int calculateInSampleSize(
-            BitmapFactory.Options options, int reqWidth, int reqHeight) {
-        final int height = options.outHeight;
-        final int width = options.outWidth;
-        int inSampleSize = 1;
-        if (height > reqHeight || width > reqWidth) {
-            final int halfHeight = height / 2;
-            final int halfWidth = width / 2;
-            // Calculate the largest inSampleSize value that is a power of 2 and keeps both
-            // height and width larger than the requested height and width.
-            while ((halfHeight / inSampleSize) > reqHeight
-                    && (halfWidth / inSampleSize) > reqWidth) {
-                inSampleSize *= 2;
-            }
-        }
-        return inSampleSize;
-    }
-
-    public static Bitmap decodeSampledBitmapFromResource(Resources res, int resId,
-                                                         int reqWidth, int reqHeight) {
-        // First decode with inJustDecodeBounds=true to check dimensions
-        final BitmapFactory.Options options = new BitmapFactory.Options();
-        options.inJustDecodeBounds = true;
-        BitmapFactory.decodeResource(res, resId, options);
-        // Calculate inSampleSize
-        options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
-        // Decode bitmap with inSampleSize set
-        options.inJustDecodeBounds = false;
-        return BitmapFactory.decodeResource(res, resId, options);
-    }
-
     @Override
     public void onBindViewHolder(ViewHolderCategories holder, final int position) {
         final CategoryEntry current = data.get(position);
         Picasso.with(context).load(current.getCategoryImageId()).placeholder(R.drawable.loading_image).
                 error(R.drawable.default_art_image).into(holder.getCategoryImage());
-//        holder.getCategoryImage().setImageBitmap(
-//                decodeSampledBitmapFromResource(context.getResources(),
-//                        current.getCategoryImageId(), 300, 120));
         holder.getCategoryTitle().setText(current.getCategoryTitle());
         LinearLayout ln = holder.getSubCategoryList();
         for (int i = 0; i < current.getSubCategories().size(); i++) {
@@ -109,9 +72,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
                     String url = categoryDictionary.getUrl(current.getSubCategories().get(finalI));
                     intent.putExtra("URL", url);
                     context.startActivity(intent);
-
                 }
-
             });
             ln.addView(textView);
         }
@@ -123,9 +84,9 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
     }
 
     class ViewHolderCategories extends RecyclerView.ViewHolder implements View.OnClickListener {
+
         private ImageView categoryImage;
         private TextView categoryTitle;
-        //        private TextView categoryDescription;
         private Button openSubCategories;
         private LinearLayout subCategoryList;
 

@@ -9,6 +9,7 @@ import java.util.Locale;
 
 /**
  * Created by Tamim on 6/10/2015.
+ * This is the Application class used by the app.
  */
 public class MyApplication extends android.app.Application{
 
@@ -54,4 +55,5 @@ public class MyApplication extends android.app.Application{
     public static Context getAppContext(){
         return sInstance.getApplicationContext();
     }
+
 }

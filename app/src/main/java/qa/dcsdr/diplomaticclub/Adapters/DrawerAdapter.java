@@ -19,7 +19,7 @@ import qa.dcsdr.diplomaticclub.R;
 /**
  * Created by Tamim on 6/7/2015.
  */
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
+public class DrawerAdapter extends RecyclerView.Adapter<DrawerAdapter.MyViewHolder> {
 
     private LayoutInflater inflater;
     private List<DrawerEntry> data = Collections.emptyList();
@@ -38,7 +38,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         else return 1;
     }
 
-    public MyAdapter(Context context, List<DrawerEntry> data) {
+    public DrawerAdapter(Context context, List<DrawerEntry> data) {
         this.context = context;
         inflater = LayoutInflater.from(context);
         this.data = data;

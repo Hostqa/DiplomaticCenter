@@ -3,43 +3,49 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="qa.dcsdr.diplomaticclub.Activities.ArticleReader">
 
-    <item
-        android:id="@+id/top"
-        android:orderInCategory="100"
-        android:title="@string/JUMP_TO_TOP"
-        app:showAsAction="never" />
-    <item
-        android:id="@+id/bottom"
-        android:orderInCategory="100"
-        android:title="@string/JUMP_TO_BOTTOM"
-        app:showAsAction="never" />
-    <item
-        android:id="@+id/increase"
-        android:icon="@drawable/ic_zoom_in"
-        android:orderInCategory="1"
-        android:title="@string/LARGER_TEXT"
-        app:showAsAction="always" />
-    <item
-        android:id="@+id/decrease"
-        android:icon="@drawable/ic_zoom_out"
-        android:orderInCategory="2"
-        android:title="@string/SMALLER_TEXT"
-        app:showAsAction="always" />
-    <item
-        android:id="@+id/bookmark"
-        android:icon="@drawable/ic_bookmark_border"
-        android:orderInCategory="3"
-        android:title="@string/BOOKMARK"
-        app:showAsAction="always" />
-    <item
-        android:id="@+id/night_mode"
-        android:orderInCategory="100"
-        android:title="@string/NIGHT_MODE"
-        app:showAsAction="never" />
-    <item
-        android:id="@+id/default_size"
-        android:orderInCategory="100"
-        android:title="@string/RESET_SIZE"
-        app:showAsAction="never" />
+    <group android:id="@+id/customizationGroup" >
+
+        <item
+            android:id="@+id/top"
+            android:orderInCategory="100"
+            android:title="@string/JUMP_TO_TOP"
+            app:showAsAction="never" />
+        <item
+            android:id="@+id/bottom"
+            android:orderInCategory="100"
+            android:title="@string/JUMP_TO_BOTTOM"
+            app:showAsAction="never" />
+        <item
+            android:id="@+id/increase"
+            android:icon="@drawable/ic_zoom_in"
+            android:orderInCategory="1"
+            android:title="@string/LARGER_TEXT"
+            app:showAsAction="always" />
+        <item
+            android:id="@+id/decrease"
+            android:icon="@drawable/ic_zoom_out"
+            android:orderInCategory="2"
+            android:title="@string/SMALLER_TEXT"
+            app:showAsAction="always" />
+        <item
+            android:id="@+id/bookmark"
+            android:icon="@drawable/ic_bookmark_border"
+            android:orderInCategory="3"
+            android:title="@string/BOOKMARK"
+            app:showAsAction="always" />
+        <item
+            android:id="@+id/night_mode"
+            android:orderInCategory="100"
+            android:title="@string/NIGHT_MODE"
+            app:showAsAction="never" />
+        <item
+            android:id="@+id/default_size"
+            android:orderInCategory="100"
+            android:title="@string/RESET_SIZE"
+            app:showAsAction="never" />
+
+
+    </group>
+
 
 </menu>

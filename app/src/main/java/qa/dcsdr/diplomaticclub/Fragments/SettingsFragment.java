@@ -16,8 +16,10 @@ import qa.dcsdr.diplomaticclub.R;
 
 /**
  * Created by Tamim on 6/20/2015.
+ * This is the fragment for the settings page.
  */
-public class SettingsFragment extends PreferenceFragment implements SharedPreferences.OnSharedPreferenceChangeListener {
+public class SettingsFragment extends PreferenceFragment
+        implements SharedPreferences.OnSharedPreferenceChangeListener {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -64,7 +66,6 @@ public class SettingsFragment extends PreferenceFragment implements SharedPrefer
                 changeFeatured("FEATURED_EVENTS_SELECTED", current);
             }
         } else if (key.equals("LANGUAGE_KEY")) {
-
             Locale myLocale = new Locale((sharedPreferences.getString(key, "en")));
             Resources res = getResources();
             DisplayMetrics dm = res.getDisplayMetrics();
@@ -92,12 +93,10 @@ public class SettingsFragment extends PreferenceFragment implements SharedPrefer
         }
     }
 
-
     @Override
     public void onResume() {
         super.onResume();
         getPreferenceManager().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
-
     }
 
     @Override
@@ -111,4 +110,5 @@ public class SettingsFragment extends PreferenceFragment implements SharedPrefer
         super.onStop();
         getPreferenceScreen().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(this);
     }
+
 }

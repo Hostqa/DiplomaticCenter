@@ -11,8 +11,8 @@ import qa.dcsdr.diplomaticclub.Items.Article;
 
 /**
  * Created by Tamim on 6/16/2015.
+ * This is the fragment adapter for the homepage.
  */
-
 public class HomePagePagerAdapter extends FragmentStatePagerAdapter  {
 
     private ArrayList<Article> articleList = new ArrayList<>();
@@ -26,13 +26,11 @@ public class HomePagePagerAdapter extends FragmentStatePagerAdapter  {
     public HomePagePagerAdapter(FragmentManager fm, ArrayList<Article> articleList) {
         super(fm);
         this.articleList=articleList;
-        // TODO Auto-generated constructor stub
     }
 
     public void setArticleList(ArrayList<Article> articleList) {
         this.articleList = articleList;
     }
-
 
     @Override
     public Fragment getItem(int position) {
@@ -46,12 +44,12 @@ public class HomePagePagerAdapter extends FragmentStatePagerAdapter  {
 
     @Override
     public int getCount() {
-        // TODO Auto-generated method stub
         return articleList.size();
     }
 
     public void setCategory(String category) {
         this.category = category;
     }
+
 }
 
