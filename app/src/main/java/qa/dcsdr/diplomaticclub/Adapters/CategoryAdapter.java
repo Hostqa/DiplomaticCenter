@@ -53,6 +53,8 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
                 error(R.drawable.default_art_image).into(holder.getCategoryImage());
         holder.getCategoryTitle().setText(current.getCategoryTitle());
         LinearLayout ln = holder.getSubCategoryList();
+        if (ln.getChildCount()==current.getSubCategories().size())
+            return;
         for (int i = 0; i < current.getSubCategories().size(); i++) {
             TextView textView = new TextView(context);
             textView.setText(current.getSubCategories().get(i));
