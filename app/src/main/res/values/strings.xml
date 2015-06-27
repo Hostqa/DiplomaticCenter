@@ -160,12 +160,10 @@
     <string name="FEATURED_PROGRAMS_AND_PROJECTS"><![CDATA[Featured Programs & Projects]]></string>
     <string name="FEATURED_EVENTS">Featured Events</string>
     <string name="READ_MORE">READ MORE</string>
-    <string name="READ_LESS">READ LESS</string>
     <string name="SHOW_AUTHOR_ARTICLES_URL">http://www.dcsdr.qa/api/xml_en_show_post_by_writer_id.php?id=</string>
     <string name="AUTHOR_LIST_URL">http://www.dcsdr.qa/api/xml_en_show_writer.php</string>
     <string name="SINGLE_ARTICLE_ID">http://www.dcsdr.qa/english/xml.php?id=</string>
     <string name="SHOW_PAPERS">SHOW PAPERS</string>
-    <string name="DRAWER_DIRECTION">start</string>
     <string name="SHARE">SHARE</string>
     <string name="NEXT_ARTICLE">NEXT ARTICLE</string>
     <string name="PREVIOUS_ARTICLE">PREVIOUS ARTICLE</string>
@@ -190,7 +188,6 @@
     <string name="EXIT_MESSAGE">Are you sure you want to exit DCSDR?</string>
     <string name="YES">Yes</string>
     <string name="NO">No</string>
-    <string name="DIRECTION">0</string>
     <string name="RETRY">RETRY</string>
     <string name="NO_ARTICLES_FOUND">NO ARTICLES FOUND.</string>
     <string name="title_settings">Settings</string>
@@ -217,10 +214,8 @@
     <string name="search_hint">Search DCSDR</string>
     <string name="title_activity_search">Search Results</string>
 
-    <string name="hello_world" translatable="false">Hello world!</string>
     <string name="SEARCH_RESULT_TITLE">Search Results</string>
     <string name="BOOKMARK">Bookmark</string>
-    <string name="title_activity_bookmarks" translatable="false">BookmarksActivity</string>
     <string name="ALREADY_BOOKMARKED">Article already bookmarked.</string>
     <string name="DELETE_BOOKMARK">deleteBookmark</string>
     <string name="REMOVE_BOOKMARK">Remove Bookmark</string>

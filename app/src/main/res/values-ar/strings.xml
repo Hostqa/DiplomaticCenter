@@ -143,14 +143,12 @@
     <string name="FEATURED_EVENTS">أحداث المميزة</string>
     <string name="APP_TITLE">المركز الدبلوماسي</string>
     <string name="READ_MORE">اقرأ المزيد</string>
-    <string name="READ_LESS">اقرأ أقل</string>
     <string name="SINGLE_ARTICLE_ID">http://www.dcsdr.qa/arabic/xml.php?id=</string>
     <string name="FEATURED_DISPUTES_RESOLUTION">المنازعات المعروضة القرار</string>
     <string name="FRAGMENTS_ADDRESS">qa.dcsdr.diplomaticclub.Fragments.</string>
     <string name="SHOW_AUTHOR_ARTICLES_URL">http://www.dcsdr.qa/api/xml_en_show_post_by_writer_id.php?id=</string>
     <string name="AUTHOR_LIST_URL">http://www.dcsdr.qa/api/xml_en_show_writer.php</string>
     <string name="SHOW_PAPERS">عرض  المقالات</string>
-    <string name="DRAWER_DIRECTION">start</string>
     <string name="SHARE">مشاركة</string>
     <string name="NEXT_ARTICLE">المقال التالي</string>
     <string name="PREVIOUS_ARTICLE">المقال السابق</string>
@@ -175,7 +173,6 @@
     <string name="NO">كلا </string>
     <string name="JUMP_TO_BOTTOM">الانتقال إلى الأسفل</string>
     <string name="JUMP_TO_TOP">انتقال إلى الأعلى</string>
-    <string name="DIRECTION">0</string>
     <string name="RETRY">إعادة المحاولة</string>
     <string name="NO_ARTICLES_FOUND">لا توجد مقالات تم العثور عليها.</string>
     <string name="title_settings">الإعدادات</string>
@@ -230,7 +227,7 @@
     <string name="SEARCH_URL">http://www.dcsdr.qa/api/xml_en_search.php?query=</string>
     <string name="FEATURED_PARTIAL_URL">http://www.dcsdr.qa/api/xml_en_show_home_setting_</string>
     <string name="OPENING_BOOKMARK">تم تحميل المستند المحفوظ</string>
-    <string name="CLOSE">CLOSE</string>
+    <string name="CLOSE">أغلق</string>
 
 
 </resources>

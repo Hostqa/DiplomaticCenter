@@ -146,14 +146,12 @@ Le centre offre les recherches, études, évaluations et les conseils spécialis
     <string name="DAY_MODE">Mode Jour</string>
     <string name="ABOUT_US">A Propos</string>
 
-    <string name="DRAWER_DIRECTION">start</string>
     <string name="ALL_FEATURED">Tous les Articles en Vedette</string>
     <string name="FEATURED_RESEARCH_AND_STUDIES">Vedette Recherches et études</string>
     <string name="FEATURED_PUBLICATIONS">Publications en Vedette</string>
     <string name="FEATURED_PROGRAMS_AND_PROJECTS">Programmes et Projets Phares</string>
     <string name="FEATURED_EVENTS">Evénements sélectionnés</string>
     <string name="READ_MORE">Plus</string>
-    <string name="READ_LESS">Moins</string>
     <string name="SINGLE_ARTICLE_ID">http://www.dcsdr.qa/english/xml.php?id=</string>
     <string name="FEATURED_DISPUTES_RESOLUTION">Résolution des Différends en Vedette </string>
     <string name="FRAGMENTS_ADDRESS">qa.dcsdr.diplomaticclub.Fragments.</string>
@@ -185,7 +183,6 @@ Le centre offre les recherches, études, évaluations et les conseils spécialis
     <string name="EXIT_MESSAGE">Êtes-vous sûr de vouloir quitter DCSDR?</string>
     <string name="YES">Oui</string>
     <string name="NO">Non</string>
-    <string name="DIRECTION">0</string>
     <string name="RETRY">REPR</string>
     <string name="NO_ARTICLES_FOUND">Pas d\'article trouvé.</string>
     <string name="title_settings">Paramètres</string>
@@ -240,6 +237,6 @@ Le centre offre les recherches, études, évaluations et les conseils spécialis
    <string name="SEARCH_URL">http://www.dcsdr.qa/api/xml_en_search.php?query=</string>
    <string name="FEATURED_PARTIAL_URL">http://www.dcsdr.qa/api/xml_en_show_home_setting_</string>
    <string name="OPENING_BOOKMARK">Signet Ouvert</string>
-   <string name="CLOSE">CLOSE</string>
+   <string name="CLOSE">FERMER</string>
 
 </resources>
