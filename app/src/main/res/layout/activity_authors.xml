@@ -74,12 +74,12 @@
                     android:visibility="gone" />
 
                 <TextView
-                    android:id="@+id/noArticles"
+                    android:id="@+id/noAuthors"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:fontFamily="sans-serif-light"
-                    android:text="@string/NO_ARTICLES_FOUND"
+                    android:text="@string/NO_AUTHORS_FOUND"
                     android:textAllCaps="true"
                     android:textColor="#000000"
                     android:textSize="20sp"

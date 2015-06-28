@@ -51,7 +51,7 @@ public class AuthorListFragment extends Fragment implements ClickListener {
     private TextView volleyError;
     private ParsingFactory parseApp;
     private Toolbar toolbar;
-    private TextView noArticles;
+    private TextView noAuthors;
     private Button retryButton;
     private LinearLayout linearLayout;
     private AuthorAdapter authorsAdapter;
@@ -88,7 +88,7 @@ public class AuthorListFragment extends Fragment implements ClickListener {
                              final Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.activity_authors, container, false);
-        noArticles = (TextView) view.findViewById(R.id.noArticles);
+        noAuthors = (TextView) view.findViewById(R.id.noArticles);
         progressHeader = (LinearLayout) view.findViewById(R.id.progressHeader);
         retryButton = (Button) view.findViewById(R.id.retryButton);
         final LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
@@ -165,7 +165,7 @@ public class AuthorListFragment extends Fragment implements ClickListener {
                 if (authorList.size() == 0) {
                     progressHeader.setVisibility(View.GONE);
                     linearLayout.setVisibility(View.VISIBLE);
-                    noArticles.setVisibility(View.VISIBLE);
+                    noAuthors.setVisibility(View.VISIBLE);
                 }
                 authorsAdapter.setAuthorList(authorList);
             }

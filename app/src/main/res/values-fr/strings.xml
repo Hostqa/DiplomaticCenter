@@ -240,5 +240,6 @@ Le centre offre les recherches, études, évaluations et les conseils spécialis
    <string name="CLOSE">FERMER</string>
    <string name="search_hint_authors">Recherche Auteurs</string>
    <string name="SEARCH_URL_AUTHORS">http://www.dcsdr.qa/api/xml_en_search_writer.php?query=</string>
+   <string name="NO_AUTHORS_FOUND">Aucun Auteurs Ont Constaté.</string>
 
 </resources>

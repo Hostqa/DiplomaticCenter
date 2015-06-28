@@ -247,5 +247,6 @@
     <string name="CLOSE">CLOSE</string>
     <string name="search_hint_authors">Search Authors</string>
     <string name="SEARCH_URL_AUTHORS">http://www.dcsdr.qa/api/xml_en_search_writer.php?query=</string>
+    <string name="NO_AUTHORS_FOUND">NO AUTHORS FOUNDS.</string>
 
 </resources>

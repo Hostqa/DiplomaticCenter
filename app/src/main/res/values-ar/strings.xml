@@ -230,6 +230,7 @@
     <string name="CLOSE">أغلق</string>
     <string name="search_hint_authors">بحث المؤلفين</string>
     <string name="SEARCH_URL_AUTHORS">http://www.dcsdr.qa/api/xml_en_search_writer.php?query=</string>
+    <string name="NO_AUTHORS_FOUND">لم نتمكن من العثور على أي نتيجة.</string>
 
 
 </resources>
