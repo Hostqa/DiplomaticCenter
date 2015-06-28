@@ -15,6 +15,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -23,23 +29,11 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-import org.apache.http.HttpException;
-
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.UnsupportedEncodingException;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.net.ssl.HttpsURLConnection;
-
 import qa.dcsdr.diplomaticclub.Fragments.NavigationDrawerFragment;
+import qa.dcsdr.diplomaticclub.Items.VolleySingleton;
 import qa.dcsdr.diplomaticclub.R;
 
 /**
@@ -49,6 +43,8 @@ import qa.dcsdr.diplomaticclub.R;
  */
 public class ContactUsActivity extends AppCompatActivity {
 
+    private VolleySingleton volleySingleton;
+    private RequestQueue requestQueue;
     private Toolbar toolbar;
     private GoogleMap mMap; // Might be null if Google Play services APK is not available.
     private EditText name;
@@ -72,13 +68,16 @@ public class ContactUsActivity extends AppCompatActivity {
                 getSupportFragmentManager().findFragmentById(R.id.fragment_navigation_drawer);
         drawerFragment.setUp(R.id.fragment_navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout), toolbar, true);
 
-        setUpMapIfNeeded();
+        setUpMap();
 
-        name=(EditText)findViewById(R.id.name);
-        email=(EditText)findViewById(R.id.email);
-        subject=(EditText)findViewById(R.id.subject);
-        message=(EditText)findViewById(R.id.message);
-        submit=(Button)findViewById(R.id.submitForm);
+        volleySingleton = VolleySingleton.getsInstance();
+        requestQueue = volleySingleton.getRequestQueue();
+
+        name = (EditText) findViewById(R.id.name);
+        email = (EditText) findViewById(R.id.email);
+        subject = (EditText) findViewById(R.id.subject);
+        message = (EditText) findViewById(R.id.message);
+        submit = (Button) findViewById(R.id.submitForm);
 
         final Context a = this;
         submit.setOnClickListener(new View.OnClickListener() {
@@ -95,74 +94,53 @@ public class ContactUsActivity extends AppCompatActivity {
                 else if (message.getText().length() == 0)
                     Toast.makeText(a, ContactUsActivity.this.getString(R.string.PLEASE_ENTER_MESSAGE), Toast.LENGTH_SHORT).show();
                 else {
-                    String postUrl = "";
+                    String postUrl = "http://www.dcsdr.qa/api/xml_en_contact_us.php";
                     HashMap<String, String> formParam = new HashMap<String, String>();
-                    formParam.put("Name", name.getText().toString());
-                    formParam.put("E-mail", email.getText().toString());
-                    formParam.put("Subject", subject.getText().toString());
-                    formParam.put("Message", message.getText().toString());
-                    String result = ContactUsActivity.this.performPostCall(postUrl, formParam);
-                    Toast.makeText(a, "Request result: " + result, Toast.LENGTH_SHORT).show();
+                    formParam.put("name", name.getText().toString());
+                    formParam.put("name", email.getText().toString());
+                    formParam.put("subject", subject.getText().toString());
+                    formParam.put("message", message.getText().toString());
+
+                    performPostCall(postUrl, formParam);
                 }
             }
         });
     }
 
-    // TODO: Get correct URL and test functionality
-    private String performPostCall(String requestURL,
-                                   HashMap<String, String> postDataParams) {
-        URL url;
-        String response = "";
-        try {
-            url = new URL(requestURL);
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setReadTimeout(15000);
-            conn.setConnectTimeout(15000);
-            conn.setRequestMethod("POST");
-            conn.setDoInput(true);
-            conn.setDoOutput(true);
-
-            OutputStream os = conn.getOutputStream();
-            BufferedWriter writer = new BufferedWriter(
-                    new OutputStreamWriter(os, "UTF-8"));
-            writer.write(getPostDataString(postDataParams));
-            writer.flush();
-            writer.close();
-            os.close();
-
-            int responseCode=conn.getResponseCode();
-
-            if (responseCode == HttpsURLConnection.HTTP_OK) {
-                String line;
-                BufferedReader br=new BufferedReader(new InputStreamReader(conn.getInputStream()));
-                while ((line=br.readLine()) != null) {
-                    response+=line;
-                }
+    /**
+     * Submits the POST request for the Contact Us page.
+     * @param requestURL
+     * @param formParam
+     */
+    private void performPostCall(String requestURL, final HashMap<String, String> formParam) {
+        final Context a = this;
+        StringRequest sr = new StringRequest(Request.Method.POST,
+                requestURL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Toast.makeText(a, "Success: " + response, Toast.LENGTH_SHORT).show();
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(a, "Error: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                }) {
+            @Override
+            protected Map<String, String> getParams() {
+                return formParam;
             }
-            else {
-                response="";
-                // TODO: fix this when we have correct URL
-                throw new HttpException(responseCode+"");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return response;
-    }
 
-    private String getPostDataString(HashMap<String, String> params) throws UnsupportedEncodingException {
-        StringBuilder result = new StringBuilder();
-        boolean first = true;
-        for(Map.Entry<String, String> entry : params.entrySet()){
-            if (first)
-                first = false;
-            else
-                result.append("&");
-            result.append(URLEncoder.encode(entry.getKey(), "UTF-8"));
-            result.append("=");
-            result.append(URLEncoder.encode(entry.getValue(), "UTF-8"));
-        }
-        return result.toString();
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("Content-Type", "application/x-www-form-urlencoded");
+                return params;
+            }
+        };
+        requestQueue.add(sr);
     }
 
     @Override
@@ -184,8 +162,8 @@ public class ContactUsActivity extends AppCompatActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        
-        if(id==android.R.id.home){
+
+        if (id == android.R.id.home) {
             NavUtils.navigateUpFromSameTask(this);
         }
         return super.onOptionsItemSelected(item);
@@ -208,8 +186,8 @@ public class ContactUsActivity extends AppCompatActivity {
      * Sets up the correct pin for DCSDR.
      */
     private void setUpMap() {
-        LatLng latLng = new LatLng(25.3667129,51.5290834);
-        MarkerOptions marker =  new MarkerOptions().position(latLng).title("Diplomatic Center");
+        LatLng latLng = new LatLng(25.3667129, 51.5290834);
+        MarkerOptions marker = new MarkerOptions().position(latLng).title(getResources().getString(R.string.APP_TITLE));
         mMap.addMarker(marker);
         CameraPosition cameraPosition = new CameraPosition.Builder().target(latLng).zoom(14.0f).build();
         CameraUpdate cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition);
