@@ -88,7 +88,7 @@ public class AuthorListFragment extends Fragment implements ClickListener {
                              final Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.activity_authors, container, false);
-        noAuthors = (TextView) view.findViewById(R.id.noArticles);
+        noAuthors = (TextView) view.findViewById(R.id.noAuthors);
         progressHeader = (LinearLayout) view.findViewById(R.id.progressHeader);
         retryButton = (Button) view.findViewById(R.id.retryButton);
         final LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
