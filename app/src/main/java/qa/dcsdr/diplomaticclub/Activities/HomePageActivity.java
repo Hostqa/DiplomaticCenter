@@ -91,8 +91,7 @@ public class HomePageActivity extends AppCompatActivity implements SharedPrefere
     private ParsingFactory parseApp;
 
     private CircularProgressBar cpb;
-    private int total = 0;
-    private int totalPrime = 0;
+
     private HomePageViewPager[] hpvp;
     private LinearLayout[] hpll;
     private LinearLayout[] hpllM;
@@ -103,6 +102,9 @@ public class HomePageActivity extends AppCompatActivity implements SharedPrefere
     private ArrayList<Article> articleList = new ArrayList<>();
 
     private SharedPreferences.OnSharedPreferenceChangeListener homepageListener;
+
+    private int total = 0;
+    private int totalPrime = 0;
 
     private void sendXmlRequest(HomePagePagerAdapter[] hppa) {
 
@@ -371,7 +373,6 @@ public class HomePageActivity extends AppCompatActivity implements SharedPrefere
         return true;
     }
 
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -413,4 +414,26 @@ public class HomePageActivity extends AppCompatActivity implements SharedPrefere
         }
     }
 
+    public void setCurrentItem(String category, boolean b, boolean isLeft) {
+        int correctPosition;
+        HomePageViewPager homePageViewPager;
+        if (category.equals(getString(R.string.ALL_FEATURED)))
+            homePageViewPager = featured;
+        else if (category.equals(getString(R.string.FEATURED_RESEARCH_AND_STUDIES)))
+            homePageViewPager = researchAndStudies;
+        else if (category.equals(getString(R.string.FEATURED_PUBLICATIONS)))
+            homePageViewPager = publications;
+        else if (category.equals(getString(R.string.FEATURED_DISPUTES_RESOLUTION)))
+            homePageViewPager = disputes_resolution;
+        else if (category.equals(getString(R.string.FEATURED_PROGRAMS_AND_PROJECTS)))
+            homePageViewPager = programsAndProjects;
+        else
+            homePageViewPager = events;
+        correctPosition = getCorrectPosition(homePageViewPager.getCurrentItem(), isLeft);
+        homePageViewPager.setCurrentItem(correctPosition, b);
+    }
+
+    private int getCorrectPosition(int currentItem, boolean isLeft) {
+        return isLeft ? currentItem - 1 : currentItem + 1;
+    }
 }

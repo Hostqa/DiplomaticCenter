@@ -95,6 +95,7 @@
         <activity
             android:name=".Activities.CategoryListActivity"
             android:label="@string/title_activity_category_list"
+            android:launchMode="singleTop"
             android:parentActivityName=".Activities.HomePageActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

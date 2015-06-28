@@ -27,7 +27,7 @@ import java.util.List;
 import qa.dcsdr.diplomaticclub.Activities.AboutUsActivity;
 import qa.dcsdr.diplomaticclub.Activities.AuthorsActivity;
 import qa.dcsdr.diplomaticclub.Activities.BookmarksActivity;
-import qa.dcsdr.diplomaticclub.Activities.Category;
+import qa.dcsdr.diplomaticclub.Activities.CategoryListActivity;
 import qa.dcsdr.diplomaticclub.Activities.ContactUsActivity;
 import qa.dcsdr.diplomaticclub.Activities.HomePageActivity;
 import qa.dcsdr.diplomaticclub.Activities.SettingsActivity;
@@ -222,6 +222,20 @@ public class NavigationDrawerFragment extends Fragment implements ClickListener 
         return sharedPreferences.getString(preferenceName, defaultValue);
     }
 
+    private boolean isOtherCategoryOpen(String oldTitle, String newTitle) {
+
+        String[] catTitles = {RES_AND_STUD,
+                PUBLICATIONS,
+                DISP_RESOL,
+                PROG_AND_PROJ,
+                EVENTS};
+
+        for (int i = 0; i < catTitles.length; i++)
+            if (catTitles[i].equals(oldTitle) && !catTitles[i].equals(newTitle))
+                return true;
+        return false;
+    }
+
     @Override
     public void itemClicked(View view, final int position) {
         RelativeLayout rl = (RelativeLayout) view;
@@ -241,23 +255,33 @@ public class NavigationDrawerFragment extends Fragment implements ClickListener 
                 } else if (title.equals(CATEGORIES) || (title.equals(getString(R.string.NO_CATEGORIES)))) {
                     return;
                 } else if (title.equals(RES_AND_STUD)) {
-                    intent = new Intent(getActivity(), Category.ResearchAndStudies.class);
+                    intent = new Intent(getActivity(), CategoryListActivity.class);
+                    if (isOtherCategoryOpen(getActivity().getTitle().toString(),RES_AND_STUD))
+                        getActivity().finish();
                     intent.putExtra(getActivity().getString(R.string.CAT_TITLE_TAG),
                             RES_AND_STUD);
                 } else if (title.equals(PUBLICATIONS)) {
-                    intent = new Intent(getActivity(), Category.Publications.class);
+                    intent = new Intent(getActivity(), CategoryListActivity.class);
+                    if (isOtherCategoryOpen(getActivity().getTitle().toString(),PUBLICATIONS))
+                        getActivity().finish();
                     intent.putExtra(getActivity().getString(R.string.CAT_TITLE_TAG),
                             PUBLICATIONS);
                 } else if (title.equals(DISP_RESOL)) {
-                    intent = new Intent(getActivity(), Category.DisputesResolution.class);
+                    intent = new Intent(getActivity(), CategoryListActivity.class);
+                    if (isOtherCategoryOpen(getActivity().getTitle().toString(),DISP_RESOL))
+                        getActivity().finish();
                     intent.putExtra(getActivity().getString(R.string.CAT_TITLE_TAG),
                             DISP_RESOL);
                 } else if (title.equals(PROG_AND_PROJ)) {
-                    intent = new Intent(getActivity(), Category.ProgramsAndProjects.class);
+                    intent = new Intent(getActivity(), CategoryListActivity.class);
+                    if (isOtherCategoryOpen(getActivity().getTitle().toString(),PROG_AND_PROJ))
+                        getActivity().finish();
                     intent.putExtra(getActivity().getString(R.string.CAT_TITLE_TAG),
                             PROG_AND_PROJ);
                 } else if (title.equals(EVENTS)) {
-                    intent = new Intent(getActivity(), Category.Events.class);
+                    intent = new Intent(getActivity(), CategoryListActivity.class);
+                    if (isOtherCategoryOpen(getActivity().getTitle().toString(),EVENTS))
+                        getActivity().finish();
                     intent.putExtra(getActivity().getString(R.string.CAT_TITLE_TAG),
                             EVENTS);
                 } else if (title.equals(BOOKMARKS)) {
