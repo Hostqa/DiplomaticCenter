@@ -65,7 +65,7 @@
                     android:layout_height="match_parent"
                     android:layout_gravity="center_vertical"
                     android:background="#00000000"
-                    android:src="@drawable/arrow_r" />
+                    android:src="@drawable/arrow_left" />
             </LinearLayout>
 
             <LinearLayout
@@ -85,7 +85,7 @@
                     android:layout_height="match_parent"
                     android:layout_gravity="center_vertical"
                     android:background="#00000000"
-                    android:src="@drawable/arrow" />
+                    android:src="@drawable/arrow_right" />
 
             </LinearLayout>
 
