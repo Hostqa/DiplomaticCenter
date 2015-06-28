@@ -205,7 +205,7 @@
     <string name="CHANGE_LANG_SUMMARY">Change the language of the app below.</string>
     <string name="CATEGORY_MESSAGE">Select the Categories you will see in the navigation drawer.</string>
     <string name="DCSDR">DCSDR</string>
-    <string name="VERSION_SUMMARY">Diplomatic Center for Studies of Disputes Resolution, Version: 0.9.5</string>
+    <string name="VERSION_SUMMARY">Diplomatic Center for Studies of Disputes Resolution, Version: 0.9.8</string>
     <string name="NO_ARTICLES">NO ARTICLES FOUND.</string>
     <string name="ARABIC_SUPPORT">Unless your phone\'s language is Arabic, we do not fully support this option. Are you sure you want to make this change?</string>
     <string name="CANCEL">Cancel</string>
@@ -245,5 +245,7 @@
     <string name="FEATURED_PARTIAL_URL">http://www.dcsdr.qa/api/xml_en_show_home_setting_</string>
     <string name="OPENING_BOOKMARK">Bookmark opened.</string>
     <string name="CLOSE">CLOSE</string>
+    <string name="search_hint_authors">Search Authors</string>
+    <string name="SEARCH_URL_AUTHORS">http://www.dcsdr.qa/api/xml_en_search_writer.php?query=</string>
 
 </resources>

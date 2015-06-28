@@ -8,12 +8,11 @@
 
     <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/fl"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:id="@+id/fl"
         tools:context="qa.dcsdr.diplomaticclub.Activities.ArticleReader">
-
 
         <LinearLayout
             android:id="@+id/readerProgressBar"
@@ -82,18 +81,18 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:adjustViewBounds="true"
-            android:scrollbarAlwaysDrawVerticalTrack="true"
             android:fillViewport="true"
             android:keepScreenOn="true"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarSize="6sp"
             android:scrollbarThumbVertical="@drawable/scrollbar"
-            android:scrollbarSize="6.5sp"
             android:scrollbars="vertical">
 
             <LinearLayout
-                android:paddingTop="@dimen/abc_action_bar_default_height_material"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingTop="@dimen/abc_action_bar_default_height_material">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -119,6 +118,8 @@
                         android:fontFamily="sans-serif-light"
                         android:gravity="bottom"
                         android:padding="10dp"
+                        android:paddingLeft="10dp"
+                        android:paddingStart="10dp"
                         android:text="Sample Category"
                         android:textColor="#FFFFFF"
                         android:textSize="26sp" />
@@ -143,8 +144,6 @@
                     android:fontFamily="sans-serif-light"
                     android:paddingLeft="10dp"
                     android:paddingStart="10dp"
-                    android:paddingRight="10dp"
-                    android:paddingEnd="10dp"
                     android:text="Author"
                     android:textColor="#ff2b2b2b"
                     android:textSize="16sp"
@@ -159,10 +158,8 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
                     android:paddingBottom="10dp"
-                    android:paddingStart="10dp"
-                    android:paddingEnd="10dp"
                     android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
+                    android:paddingStart="10dp"
                     android:paddingTop="5dp"
                     android:text="2015-02-10"
                     android:textColor="@color/colorPrimaryLight"
@@ -176,54 +173,55 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif"
-                    android:padding="10dp"
                     android:linksClickable="true"
+                    android:padding="10dp"
                     android:text="Loading content..."
                     android:textSize="15sp" />
 
                 <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:textColor="@color/colorPrimaryDark"
                     android:orientation="horizontal"
-                    android:layout_width="match_parent">
+                    android:textColor="@color/colorPrimaryDark">
 
                     <Button
                         android:id="@+id/prev"
                         style="android:attr/borderlessButtonStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/PREVIOUS_ARTICLE"
-
-                        android:background="@drawable/custom_bg"
                         android:layout_marginLeft="12dp"
+
                         android:layout_marginStart="12dp"
+                        android:background="@drawable/custom_bg"
+                        android:text="@string/PREVIOUS_ARTICLE"
                         android:textColor="@color/colorPrimaryDark" />
+
                     <View
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:layout_weight="1"
-                        />
+                        android:layout_weight="1" />
 
                     <Button
-                        android:id="@+id/next" style="android:attr/borderlessButtonStyle"
+                        android:id="@+id/next"
+                        style="android:attr/borderlessButtonStyle"
                         android:layout_width="wrap_content"
-                        android:layout_marginRight="12dp"
-                        android:layout_marginEnd="12dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginEnd="12dp"
+                        android:layout_marginRight="12dp"
 
-                        android:text="@string/NEXT_ARTICLE"
                         android:background="@drawable/custom_bg"
+                        android:text="@string/NEXT_ARTICLE"
                         android:textColor="@color/colorPrimaryDark" />
                 </LinearLayout>
             </LinearLayout>
         </ScrollView>
 
         <include
-              android:layout_width="match_parent"
-            android:layout_height="@dimen/abc_action_bar_default_height_material"
             android:id="@+id/app_bar"
-            layout="@layout/app_bar" />
+            layout="@layout/app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/abc_action_bar_default_height_material" />
     </FrameLayout>
 
 
@@ -239,4 +237,3 @@
     </fragment>
 
 </android.support.v4.widget.DrawerLayout>
-

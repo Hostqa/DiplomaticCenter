@@ -66,6 +66,7 @@ public class ArticleReader extends AppCompatActivity {
     private String url;
     private Menu menu;
     private float defaultSize;
+    int loaded = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -220,80 +221,80 @@ public class ArticleReader extends AppCompatActivity {
         scrollView.getViewTreeObserver().addOnScrollChangedListener(
                 new ViewTreeObserver.OnScrollChangedListener() {
 
-            public boolean goingUp = false;
-            private static final int HIDE_THRESHOLD = 20;
-            private int scrolledDistance = 0;
-            private boolean controlsVisible = true;
-            private float current;
+                    public boolean goingUp = false;
+                    private static final int HIDE_THRESHOLD = 20;
+                    private int scrolledDistance = 0;
+                    private boolean controlsVisible = true;
+                    private float current;
 
-            private void onHide() {
-                toolbar.animate().translationY(-toolbar.getHeight()).setInterpolator(
-                        new AccelerateInterpolator(2));
-            }
+                    private void onHide() {
+                        toolbar.animate().translationY(-toolbar.getHeight()).setInterpolator(
+                                new AccelerateInterpolator(2));
+                    }
 
-            private void onShow() {
-                toolbar.animate().translationY(0).setInterpolator
-                        (new DecelerateInterpolator(2));
-                toolbar.animate().translationY(0).setInterpolator
-                        (new DecelerateInterpolator(2)).start();
-            }
+                    private void onShow() {
+                        toolbar.animate().translationY(0).setInterpolator
+                                (new DecelerateInterpolator(2));
+                        toolbar.animate().translationY(0).setInterpolator
+                                (new DecelerateInterpolator(2)).start();
+                    }
 
-            @Override
-            public void onScrollChanged() {
-                float old = current;
-                float y = scrollView.getScrollY();
-                current = y;
-                Rect scrollBounds = new Rect();
-                scrollView.getHitRect(scrollBounds);
-                boolean next = nextArticle.getLocalVisibleRect(scrollBounds);
-                boolean prev = prevArticle.getLocalVisibleRect(scrollBounds);
-                if (goingUp && (y < old)) {
-                    if (articleImage.getLocalVisibleRect(scrollBounds) || next || prev) {
-                        if (!controlsVisible) {
-                            onShow();
-                            toolbar.setAlpha(1);
-                            controlsVisible = true;
+                    @Override
+                    public void onScrollChanged() {
+                        float old = current;
+                        float y = scrollView.getScrollY();
+                        current = y;
+                        Rect scrollBounds = new Rect();
+                        scrollView.getHitRect(scrollBounds);
+                        boolean next = nextArticle.getLocalVisibleRect(scrollBounds);
+                        boolean prev = prevArticle.getLocalVisibleRect(scrollBounds);
+                        if (goingUp && (y < old)) {
+                            if (articleImage.getLocalVisibleRect(scrollBounds) || next || prev) {
+                                if (!controlsVisible) {
+                                    onShow();
+                                    toolbar.setAlpha(1);
+                                    controlsVisible = true;
+                                } else {
+                                    if (y != 0 && !next && !prev && !goingUp)
+                                        toolbar.setAlpha
+                                                ((articleImage.getHeight() - y) / articleImage.getHeight());
+                                    else
+                                        toolbar.setAlpha(1);
+                                }
+                            }
                         } else {
-                            if (y != 0 && !next && !prev && !goingUp)
-                                toolbar.setAlpha
-                                        ((articleImage.getHeight() - y) / articleImage.getHeight());
-                            else
-                                toolbar.setAlpha(1);
+                            goingUp = false;
+                            if (articleImage.getLocalVisibleRect(scrollBounds) || next || prev) {
+                                if (!controlsVisible) {
+                                    onShow();
+                                    toolbar.setAlpha(1);
+                                    controlsVisible = true;
+                                } else {
+                                    if (y != 0 && !next && !prev && !goingUp)
+                                        toolbar.setAlpha
+                                                ((articleImage.getHeight() - y) / articleImage.getHeight());
+                                    else
+                                        toolbar.setAlpha(1);
+                                }
+                            } else {
+                                if (scrolledDistance > HIDE_THRESHOLD && controlsVisible) {
+                                    onHide();
+                                    controlsVisible = false;
+                                    scrolledDistance = 0;
+                                } else if ((y < old) && !controlsVisible) {
+                                    goingUp = true;
+                                    toolbar.setAlpha(1);
+                                    onShow();
+                                    controlsVisible = true;
+                                    scrolledDistance = 0;
+                                }
+                            }
+                            if ((controlsVisible && y > 0) || (!controlsVisible && y < 0)) {
+                                scrolledDistance += y;
+                            }
                         }
                     }
-                } else {
-                    goingUp = false;
-                    if (articleImage.getLocalVisibleRect(scrollBounds) || next || prev) {
-                        if (!controlsVisible) {
-                            onShow();
-                            toolbar.setAlpha(1);
-                            controlsVisible = true;
-                        } else {
-                            if (y != 0 && !next && !prev && !goingUp)
-                                toolbar.setAlpha
-                                        ((articleImage.getHeight() - y) / articleImage.getHeight());
-                            else
-                                toolbar.setAlpha(1);
-                        }
-                    } else {
-                        if (scrolledDistance > HIDE_THRESHOLD && controlsVisible) {
-                            onHide();
-                            controlsVisible = false;
-                            scrolledDistance = 0;
-                        } else if ((y < old) && !controlsVisible) {
-                            goingUp = true;
-                            toolbar.setAlpha(1);
-                            onShow();
-                            controlsVisible = true;
-                            scrolledDistance = 0;
-                        }
-                    }
-                    if ((controlsVisible && y > 0) || (!controlsVisible && y < 0)) {
-                        scrolledDistance += y;
-                    }
-                }
-            }
-        });
+                });
 
     }
 
@@ -314,10 +315,11 @@ public class ArticleReader extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_article_reader, menu);
+        loaded += 1;
         File f = getDir(getString(R.string.BOOKMARK_DIRECTORY), Context.MODE_PRIVATE);
         File nf = new File(f, articleList.get(position).getId() + "");
         if (!getIntent().getExtras().get("URL").equals("LOCAL") && !nf.exists())
-            menu.setGroupVisible(R.id.customizationGroup,false);
+            menu.setGroupVisible(R.id.customizationGroup, false);
         ac.setMenu(menu);
         this.menu = menu;
         if (getIntent().getExtras().get("URL").equals("LOCAL")) {
@@ -346,6 +348,7 @@ public class ArticleReader extends AppCompatActivity {
     /**
      * Allowing the user to change text size, activating night/day mode
      * and bookmarking an article.
+     *
      * @param item
      * @return
      */
@@ -371,7 +374,7 @@ public class ArticleReader extends AppCompatActivity {
             String currentMode = (String) menu.findItem(R.id.night_mode).getTitle();
             if (currentMode.equals(getString(R.string.NIGHT_MODE)))
                 activateNightMode();
-             else
+            else
                 activateDayMode();
         } else if (id == R.id.default_size) {
             articleContents.setTextSize(TypedValue.COMPLEX_UNIT_PX, defaultSize);
@@ -442,8 +445,8 @@ public class ArticleReader extends AppCompatActivity {
     }
 
     /**
-     *  Allows navigation from one article to another.
-    */
+     * Allows navigation from one article to another.
+     */
     private void navigate(boolean isNext) {
         boolean virtual = articleList.get(0).getTitle().equals("N/A");
         if (isNext) {
@@ -496,6 +499,7 @@ public class ArticleReader extends AppCompatActivity {
                     scrollView.setVisibility(View.VISIBLE);
                     menu.findItem(R.id.bookmark).setIcon(R.drawable.ic_bookmark);
                     menu.findItem(R.id.bookmark).setTitle(R.string.NO_BOOKMARK);
+
                     if (this.menu.findItem(R.string.DELETE_BOOKMARK) == null) {
                         MenuItem mi = this.menu.add(Menu.NONE, R.string.DELETE_BOOKMARK,
                                 200, R.string.REMOVE_BOOKMARK);
@@ -503,6 +507,7 @@ public class ArticleReader extends AppCompatActivity {
                     }
                 } else {
                     ac.setIdAndUrl(getResources().getString(R.string.SINGLE_ARTICLE_ID), articleList.get(position).getId());
+                    menu.setGroupVisible(R.id.customizationGroup, false);
                     ac.sendXmlRequest(c);
                     menu.findItem(R.id.bookmark).setIcon(R.drawable.ic_bookmark_border);
                     menu.findItem(R.id.bookmark).setTitle(R.string.BOOKMARK);
@@ -549,7 +554,7 @@ public class ArticleReader extends AppCompatActivity {
         return "";
     }
 
-    /*
+
     @Override
     public void onBackPressed() {
         Intent intent;
@@ -567,8 +572,7 @@ public class ArticleReader extends AppCompatActivity {
         } else {
             super.onBackPressed();
         }
-
     }
-    */
+
 
 }

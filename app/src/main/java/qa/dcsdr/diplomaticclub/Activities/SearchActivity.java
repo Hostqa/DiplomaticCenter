@@ -21,8 +21,6 @@ import qa.dcsdr.diplomaticclub.R;
  */
 public class SearchActivity extends AppCompatActivity {
 
-    private Fragment fragment ;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -53,7 +51,7 @@ public class SearchActivity extends AppCompatActivity {
     private void performSearch(String query) {
         String resultsUrl = getString(R.string.SEARCH_URL)+query;
         FragmentManager fm = getSupportFragmentManager();
-        fragment = fm.findFragmentByTag("DisplayCategoriesFragment");
+        Fragment fragment = fm.findFragmentByTag("DisplayCategoriesFragment");
         if (fragment == null) {
             FragmentTransaction ft = fm.beginTransaction();
             fragment =new DisplayArticleListFragment();
@@ -63,8 +61,6 @@ public class SearchActivity extends AppCompatActivity {
             fragment.setArguments(args);
             ft.replace(android.R.id.content, fragment, "myFragmentTag");
             ft.commit();
-        } else {
-
         }
     }
 

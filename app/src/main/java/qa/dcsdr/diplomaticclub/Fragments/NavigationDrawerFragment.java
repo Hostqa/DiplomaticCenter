@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
-import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -133,35 +132,17 @@ public class NavigationDrawerFragment extends Fragment implements ClickListener 
         return layout;
     }
 
-    private List<DrawerEntry> getData() {
+    public List<DrawerEntry> getData() {
+        //load only static data inside a drawer
         List<DrawerEntry> data = new ArrayList<>();
         String[] titles = getResources().getStringArray(R.array.drawer_items);
-        String[] keys = {"", "", "", "", "RESEARCH_AND_STUDIES_SELECTED",
-                "PUBLICATIONS_SELECTED",
-                "DISPUTES_RESOLUTION_SELECTED",
-                "PROGRAMS_AND_PROJECTS_SELECTED",
-                "EVENTS_SELECTED", "", "", ""};
-        SharedPreferences sharedPref = getActivity().getSharedPreferences("DRAWER_CHANGES", Context.MODE_PRIVATE);
-        PreferenceManager.setDefaultValues(getActivity(), R.xml.preferences, false);
-        int j = 0;
         for (int i = 0; i < titles.length; i++) {
-            if (i < 4 || i > 8 || sharedPref.getBoolean(keys[i], true)) {
-                DrawerEntry current = new DrawerEntry();
-                current.setTitle(titles[i % titles.length]);
-                data.add(current);
-            }
-        }
-        for (int a = 4; a < 9; a++) {
-            if (!sharedPref.getBoolean(keys[a], true)) j++;
-        }
-        if (j == 5) {
-            DrawerEntry nde = new DrawerEntry();
-            nde.setTitle(getActivity().getResources().getString(R.string.NO_CATEGORIES));
-            data.add(4, nde);
+            DrawerEntry current = new DrawerEntry();
+            current.setTitle(titles[i % titles.length]);
+            data.add(current);
         }
         return data;
     }
-
     public void setUp(int fragmentId, final DrawerLayout drawerLayout, Toolbar toolbar, boolean hb) {
 
         containerView = getActivity().findViewById(fragmentId);
@@ -177,14 +158,14 @@ public class NavigationDrawerFragment extends Fragment implements ClickListener 
                     mUserLearnedDrawer = true;
                     saveToPreferences(getActivity(), KEY_USER_LEARNED_DRAWER, mUserLearnedDrawer + "");
                 }
-                getActivity().invalidateOptionsMenu();
+//                getActivity().invalidateOptionsMenu();
             }
 
             @Override
             public void onDrawerClosed(View drawerView) {
                 super.onDrawerClosed(drawerView);
                 drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
-                getActivity().invalidateOptionsMenu();
+//                getActivity().invalidateOptionsMenu();
                 if (mPendingRunnable != null) {
                     mHandler.post(mPendingRunnable);
                     mPendingRunnable = null;

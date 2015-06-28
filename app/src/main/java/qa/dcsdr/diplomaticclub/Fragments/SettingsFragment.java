@@ -28,14 +28,6 @@ public class SettingsFragment extends PreferenceFragment
         getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
     }
 
-    private void change(String key, boolean current) {
-        if (current)
-            getActivity().getSharedPreferences("DRAWER_CHANGES",
-                    Context.MODE_PRIVATE).edit().putBoolean(key, true).apply();
-        else
-            getActivity().getSharedPreferences("DRAWER_CHANGES",
-                    Context.MODE_PRIVATE).edit().putBoolean(key, false).apply();
-    }
 
     private void changeFeatured(String key, boolean current) {
         if (current)
@@ -77,19 +69,6 @@ public class SettingsFragment extends PreferenceFragment
             startActivity(refresh);
             getActivity().getSharedPreferences("LANGUAGE_CHANGE", Context.MODE_PRIVATE)
                     .edit().putString(key, sharedPreferences.getString(key, "en")).apply();
-        } else {
-            boolean current = sharedPreferences.getBoolean(key, true);
-            if (key.equals("RESEARCH_AND_STUDIES_SELECTED")) {
-                change("RESEARCH_AND_STUDIES_SELECTED", current);
-            } else if (key.equals("PUBLICATIONS_SELECTED")) {
-                change("PUBLICATIONS_SELECTED", current);
-            } else if (key.equals("DISPUTES_RESOLUTION_SELECTED")) {
-                change("DISPUTES_RESOLUTION_SELECTED", current);
-            } else if (key.equals("PROGRAMS_AND_PROJECTS_SELECTED")) {
-                change("PROGRAMS_AND_PROJECTS_SELECTED", current);
-            } else if (key.equals("EVENTS_SELECTED")) {
-                change("EVENTS_SELECTED", current);
-            }
         }
     }
 

@@ -51,7 +51,7 @@ public class ParsingFactory {
             XmlPullParser xpp = factory.newPullParser();
             xpp.setInput(new StringReader(this.data));
             int eventType = xpp.getEventType();
-            String item="item";
+            String item = "item";
             String key = isFeatured ? "post" : "search";
             while (eventType != XmlPullParser.END_DOCUMENT) {
                 String tag = xpp.getName();
@@ -87,6 +87,58 @@ public class ParsingFactory {
                                 currentArticle.setDate(textValue);
                             else if (tag.equalsIgnoreCase("writer"))
                                 currentArticle.setAuthor(textValue);
+                        }
+                    }
+                }
+                eventType = xpp.next();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            status = false;
+        }
+        return status;
+    }
+
+    public boolean processAuthorSearchXml() {
+        boolean status = true;
+        Author currentAuthor = null;
+        boolean inEntry = false;
+        boolean inKey = false;
+        String textValue = "";
+        try {
+            XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
+            factory.setNamespaceAware(true);
+            XmlPullParser xpp = factory.newPullParser();
+            xpp.setInput(new StringReader(this.data));
+            int eventType = xpp.getEventType();
+            String item = "item";
+            String key = "search";
+            while (eventType != XmlPullParser.END_DOCUMENT) {
+                String tag = xpp.getName();
+                if (eventType == XmlPullParser.START_TAG) {
+                    if (tag.toLowerCase().contains(item.toLowerCase())) {
+                        inEntry = true;
+                        currentAuthor = new Author();
+                    } else if (tag.toLowerCase().contains(key.toLowerCase())) {
+                        inKey = true;
+                    }
+                } else if (eventType == XmlPullParser.TEXT) {
+                    textValue = xpp.getText();
+                } else if (eventType == XmlPullParser.END_TAG) {
+                    if (inKey) {
+                        if (inEntry) {
+                            if (tag.toLowerCase().contains(item.toLowerCase())) {
+                                authors.add(currentAuthor);
+                                inEntry = false;
+                            }
+                            if (tag.equalsIgnoreCase("writer"))
+                                currentAuthor.setTitle(textValue);
+                            else if (tag.equalsIgnoreCase("writerPic"))
+                                currentAuthor.setPhoto(textValue);
+                            else if (tag.equalsIgnoreCase("writerDesc"))
+                                currentAuthor.setDescription(textValue);
+                            else if (tag.equalsIgnoreCase("writerID"))
+                                currentAuthor.setId(Integer.valueOf(textValue));
                         }
                     }
                 }
@@ -157,7 +209,7 @@ public class ParsingFactory {
             XmlPullParser xpp = factory.newPullParser();
             xpp.setInput(new StringReader(this.data));
             int eventType = xpp.getEventType();
-            String item="item";
+            String item = "item";
             while (eventType != XmlPullParser.END_DOCUMENT) {
                 String tag = xpp.getName();
                 if (eventType == XmlPullParser.START_TAG) {
@@ -174,7 +226,7 @@ public class ParsingFactory {
                 } else if (eventType == XmlPullParser.END_TAG) {
                     if (inEntry) {
                         if (tag.toLowerCase().contains(item.toLowerCase())) {
-                            if (!currentArticle.getTitle().equals("N/A")&&
+                            if (!currentArticle.getTitle().equals("N/A") &&
                                     !currentArticle.getAuthor().equals("N/A"))
                                 articles.add(currentArticle);
                             inEntry = false;

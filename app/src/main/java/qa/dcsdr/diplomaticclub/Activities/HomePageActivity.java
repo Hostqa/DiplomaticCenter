@@ -436,4 +436,5 @@ public class HomePageActivity extends AppCompatActivity implements SharedPrefere
     private int getCorrectPosition(int currentItem, boolean isLeft) {
         return isLeft ? currentItem - 1 : currentItem + 1;
     }
+
 }

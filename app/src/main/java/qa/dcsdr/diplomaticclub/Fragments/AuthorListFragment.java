@@ -56,6 +56,7 @@ public class AuthorListFragment extends Fragment implements ClickListener {
     private LinearLayout linearLayout;
     private AuthorAdapter authorsAdapter;
     private String url;
+    private boolean isSearch;
     private LinearLayout progressHeader;
 
     /**
@@ -77,7 +78,7 @@ public class AuthorListFragment extends Fragment implements ClickListener {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {}
+
         volleySingleton = VolleySingleton.getsInstance();
         requestQueue = volleySingleton.getRequestQueue();
     }
@@ -89,22 +90,31 @@ public class AuthorListFragment extends Fragment implements ClickListener {
         final View view = inflater.inflate(R.layout.activity_authors, container, false);
         noArticles = (TextView) view.findViewById(R.id.noArticles);
         progressHeader = (LinearLayout) view.findViewById(R.id.progressHeader);
-        retryButton=(Button)view.findViewById(R.id.retryButton);
+        retryButton = (Button) view.findViewById(R.id.retryButton);
         final LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
-        authorsAdapter= new AuthorAdapter(getActivity());
+        authorsAdapter = new AuthorAdapter(getActivity());
         authorsAdapter.setActivity(getActivity());
         authorsAdapter.setView(view);
         authorsRV = (RecyclerView) view.findViewById(R.id.authorList);
 
+        Bundle extras = getArguments();
+        if (extras != null) {
+            if (extras.containsKey("URL"))
+                url = extras.getString("URL");
+            if (extras.containsKey("IS_SEARCH"))
+                isSearch = true;
+        }
+
         authorsRV.setLayoutManager(layoutManager);
         authorsRV.setAdapter(authorsAdapter);
         volleyError = (TextView) view.findViewById(R.id.volleyError);
-        url = getResources().getString(R.string.AUTHOR_LIST_URL);
+        if (url == null)
+            url = getResources().getString(R.string.AUTHOR_LIST_URL);
         toolbar = (Toolbar) view.findViewById(R.id.app_bar);
         AppCompatActivity activity = (AppCompatActivity) getActivity();
         activity.setSupportActionBar(toolbar);
 
-        if (activity.getSupportActionBar()!=null)
+        if (activity.getSupportActionBar() != null)
             activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         activity.setProgressBarIndeterminateVisibility(true);
         DrawerLayout dl = (DrawerLayout) view.findViewById(R.id.drawer_layout_aa);
@@ -146,8 +156,11 @@ public class AuthorListFragment extends Fragment implements ClickListener {
             public void onResponse(String response) {
                 progressHeader.setVisibility(View.GONE);
                 volleyError.setVisibility(View.GONE);
-                parseApp = new ParsingFactory(response,0);
-                parseApp.processAuthorXml();
+                parseApp = new ParsingFactory(response, 0);
+                if (isSearch)
+                    parseApp.processAuthorSearchXml();
+                else
+                    parseApp.processAuthorXml();
                 authorList = parseApp.getAuthors();
                 if (authorList.size() == 0) {
                     progressHeader.setVisibility(View.GONE);

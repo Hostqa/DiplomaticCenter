@@ -27,9 +27,7 @@
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
-        <meta-data
-            android:name="android.app.default_searchable"
-            android:value=".Activities.SearchActivity" />
+
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="@string/google_maps_key" />
@@ -39,6 +37,7 @@
             android:configChanges="orientation"
             android:label="@string/BOOKMARKS"
             android:launchMode="singleTask"
+            android:noHistory="true"
             android:parentActivityName=".Activities.CategoryListActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -47,9 +46,7 @@
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
 
-            <meta-data
-                android:name="android.app.searchable"
-                android:resource="@xml/searchable" />
+
         </activity>
 
         <activity
@@ -64,9 +61,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
-            <meta-data
-                android:name="android.app.searchable"
-                android:resource="@xml/searchable" />
+
         </activity>
 
         <activity
@@ -203,6 +198,9 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activities.HomePageActivity" />
+            <meta-data
+                android:name="android.app.default_searchable"
+                android:value=".Activities.SearchAuthorsActivity" />
         </activity>
 
         <activity
@@ -228,6 +226,20 @@
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
         </activity>
+
+        <activity
+            android:name=".Activities.SearchAuthorsActivity"
+            android:label="@string/title_activity_search"
+            android:launchMode="singleTop"
+            android:noHistory="true">
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable_authors" />
+        </activity>
+
 
     </application>
 
