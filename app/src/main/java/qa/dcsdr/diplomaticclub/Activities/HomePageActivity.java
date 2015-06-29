@@ -197,7 +197,6 @@ public class HomePageActivity extends AppCompatActivity implements SharedPrefere
         }
     }
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -269,6 +268,8 @@ public class HomePageActivity extends AppCompatActivity implements SharedPrefere
             @Override
             public void onClick(View v) {
                 Intent intent;
+                if (CategoryListActivity.getA() != null) CategoryListActivity.getA().finish();
+                if (DisplayArticleListActivity.getA() != null) DisplayArticleListActivity.getA().finish();
                 intent = new Intent(activity, BookmarksActivity.class);
                 intent.putExtra("CAT_TITLE", getResources().getString(R.string.BOOKMARKS));
                 intent.putExtra(getString(R.string.PARENT_CLASS_TAG), getString(R.string.DISPLAY_FRAGMENT_PARENT_TAG));

@@ -1,5 +1,6 @@
 package qa.dcsdr.diplomaticclub.Activities;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -21,10 +22,17 @@ import qa.dcsdr.diplomaticclub.R;
  */
 public class DisplayArticleListActivity extends AppCompatActivity {
 
-    private Fragment fragment ;
+    private Fragment fragment;
+
+    private static Activity a = null;
+
+    public static Activity getA() {
+        return a;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        a = this;
         Intent myIntent = getIntent();
         String title = (String) myIntent.getExtras().get("CAT_TITLE");
         setTitle(title);
@@ -37,9 +45,9 @@ public class DisplayArticleListActivity extends AppCompatActivity {
         fragment = fm.findFragmentByTag("DisplayCategoriesFragment");
         if (fragment == null) {
             FragmentTransaction ft = fm.beginTransaction();
-            fragment =new DisplayArticleListFragment();
+            fragment = new DisplayArticleListFragment();
             Bundle args = new Bundle();
-            args.putString("CAT_TITLE",title);
+            args.putString("CAT_TITLE", title);
             fragment.setArguments(args);
             ft.replace(android.R.id.content, fragment, "myFragmentTag");
             ft.commit();
@@ -69,9 +77,9 @@ public class DisplayArticleListActivity extends AppCompatActivity {
 
     @Override
     public Intent getSupportParentActivityIntent() {
-        Intent parentIntent= getIntent();
+        Intent parentIntent = getIntent();
         String className = parentIntent.getStringExtra(getString(R.string.PARENT_CLASS_TAG));
-        Intent newIntent=null;
+        Intent newIntent = null;
         try {
             newIntent = new Intent(this, Class.forName(getString(R.string.FRAGMENTS_ADDRESS) + className));
         } catch (ClassNotFoundException e) {

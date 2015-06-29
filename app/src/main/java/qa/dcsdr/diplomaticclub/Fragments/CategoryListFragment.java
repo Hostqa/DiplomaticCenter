@@ -68,5 +68,4 @@ public class CategoryListFragment extends Fragment {
         return view;
     }
 
-
 }

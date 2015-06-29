@@ -53,7 +53,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
                 error(R.drawable.default_art_image).into(holder.getCategoryImage());
         holder.getCategoryTitle().setText(current.getCategoryTitle());
         LinearLayout ln = holder.getSubCategoryList();
-        if (ln.getChildCount()==current.getSubCategories().size())
+        if (ln.getChildCount() == current.getSubCategories().size())
             return;
         for (int i = 0; i < current.getSubCategories().size(); i++) {
             TextView textView = new TextView(context);
@@ -68,6 +68,8 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
             textView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    if (DisplayArticleListActivity.getA() != null)
+                        DisplayArticleListActivity.getA().finish();
                     Intent intent = new Intent(context, DisplayArticleListActivity.class);
                     intent.putExtra("CAT_TITLE", current.getSubCategories().get(finalI));
                     intent.putExtra(context.getString(R.string.PARENT_CLASS_TAG), context.getString(R.string.DISPLAY_FRAGMENT_PARENT_TAG));

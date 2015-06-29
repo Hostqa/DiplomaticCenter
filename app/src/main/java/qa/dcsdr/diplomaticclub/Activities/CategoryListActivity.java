@@ -1,5 +1,6 @@
 package qa.dcsdr.diplomaticclub.Activities;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -21,9 +22,16 @@ public class CategoryListActivity extends AppCompatActivity {
 
     private Fragment fragment ;
 
+    public static Activity a = null;
+
+    public static Activity getA() {
+        return a;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        a = this;
         Intent myIntent = getIntent();
         String title = ((String)myIntent.getExtras().get("CAT_TITLE"));
         setTitle(title);

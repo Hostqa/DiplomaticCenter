@@ -28,6 +28,7 @@ import qa.dcsdr.diplomaticclub.Activities.AuthorsActivity;
 import qa.dcsdr.diplomaticclub.Activities.BookmarksActivity;
 import qa.dcsdr.diplomaticclub.Activities.CategoryListActivity;
 import qa.dcsdr.diplomaticclub.Activities.ContactUsActivity;
+import qa.dcsdr.diplomaticclub.Activities.DisplayArticleListActivity;
 import qa.dcsdr.diplomaticclub.Activities.HomePageActivity;
 import qa.dcsdr.diplomaticclub.Activities.SettingsActivity;
 import qa.dcsdr.diplomaticclub.Adapters.DrawerAdapter;
@@ -143,6 +144,7 @@ public class NavigationDrawerFragment extends Fragment implements ClickListener 
         }
         return data;
     }
+
     public void setUp(int fragmentId, final DrawerLayout drawerLayout, Toolbar toolbar, boolean hb) {
 
         containerView = getActivity().findViewById(fragmentId);
@@ -203,20 +205,6 @@ public class NavigationDrawerFragment extends Fragment implements ClickListener 
         return sharedPreferences.getString(preferenceName, defaultValue);
     }
 
-    private boolean isOtherCategoryOpen(String oldTitle, String newTitle) {
-
-        String[] catTitles = {RES_AND_STUD,
-                PUBLICATIONS,
-                DISP_RESOL,
-                PROG_AND_PROJ,
-                EVENTS};
-
-        for (int i = 0; i < catTitles.length; i++)
-            if (catTitles[i].equals(oldTitle) && !catTitles[i].equals(newTitle))
-                return true;
-        return false;
-    }
-
     @Override
     public void itemClicked(View view, final int position) {
         RelativeLayout rl = (RelativeLayout) view;
@@ -225,7 +213,6 @@ public class NavigationDrawerFragment extends Fragment implements ClickListener 
         mPendingRunnable = new Runnable() {
             @Override
             public void run() {
-                int cont = 0;
                 Intent intent = null;
                 if (title.equals(HOME)) {
                     intent = new Intent(getActivity(), HomePageActivity.class);
@@ -233,44 +220,64 @@ public class NavigationDrawerFragment extends Fragment implements ClickListener 
                     intent = new Intent(getActivity(), AboutUsActivity.class);
                 } else if (title.equals(AUTHORS)) {
                     intent = new Intent(getActivity(), AuthorsActivity.class);
-                } else if (title.equals(CATEGORIES) || (title.equals(getString(R.string.NO_CATEGORIES)))) {
+                } else if (title.equals(CATEGORIES) ||
+                        (title.equals(getString(R.string.NO_CATEGORIES)))) {
                     return;
                 } else if (title.equals(RES_AND_STUD)) {
-                    intent = new Intent(getActivity(), CategoryListActivity.class);
-                    if (isOtherCategoryOpen(getActivity().getTitle().toString(),RES_AND_STUD))
-                        getActivity().finish();
-                    intent.putExtra(getActivity().getString(R.string.CAT_TITLE_TAG),
-                            RES_AND_STUD);
+                    if (!getActivity().getTitle().toString().equals(RES_AND_STUD)) {
+                        if (CategoryListActivity.getA() != null)
+                            CategoryListActivity.getA().finish();
+                        intent = new Intent(getActivity(), CategoryListActivity.class);
+                        intent.putExtra(getActivity().getString(R.string.CAT_TITLE_TAG),
+                                RES_AND_STUD);
+                    } else return;
                 } else if (title.equals(PUBLICATIONS)) {
-                    intent = new Intent(getActivity(), CategoryListActivity.class);
-                    if (isOtherCategoryOpen(getActivity().getTitle().toString(),PUBLICATIONS))
-                        getActivity().finish();
-                    intent.putExtra(getActivity().getString(R.string.CAT_TITLE_TAG),
-                            PUBLICATIONS);
+                    if (!getActivity().getTitle().toString().equals(PUBLICATIONS)) {
+                        if (CategoryListActivity.getA() != null)
+                            CategoryListActivity.getA().finish();
+                        intent = new Intent(getActivity(), CategoryListActivity.class);
+                        intent.putExtra(getActivity().getString(R.string.CAT_TITLE_TAG),
+                                PUBLICATIONS);
+                    } else return;
                 } else if (title.equals(DISP_RESOL)) {
-                    intent = new Intent(getActivity(), CategoryListActivity.class);
-                    if (isOtherCategoryOpen(getActivity().getTitle().toString(),DISP_RESOL))
-                        getActivity().finish();
-                    intent.putExtra(getActivity().getString(R.string.CAT_TITLE_TAG),
-                            DISP_RESOL);
+                    if (!getActivity().getTitle().toString().equals(DISP_RESOL)) {
+                        if (CategoryListActivity.getA() != null)
+                            CategoryListActivity.getA().finish();
+                        intent = new Intent(getActivity(), CategoryListActivity.class);
+                        intent.putExtra(getActivity().getString(R.string.CAT_TITLE_TAG),
+                                DISP_RESOL);
+                    } else return;
                 } else if (title.equals(PROG_AND_PROJ)) {
-                    intent = new Intent(getActivity(), CategoryListActivity.class);
-                    if (isOtherCategoryOpen(getActivity().getTitle().toString(),PROG_AND_PROJ))
-                        getActivity().finish();
-                    intent.putExtra(getActivity().getString(R.string.CAT_TITLE_TAG),
-                            PROG_AND_PROJ);
+                    if (!getActivity().getTitle().toString().equals(PROG_AND_PROJ)) {
+                        if (CategoryListActivity.getA() != null)
+                            CategoryListActivity.getA().finish();
+                        intent = new Intent(getActivity(), CategoryListActivity.class);
+                        intent.putExtra(getActivity().getString(R.string.CAT_TITLE_TAG),
+                                PROG_AND_PROJ);
+                    } else return;
                 } else if (title.equals(EVENTS)) {
-                    intent = new Intent(getActivity(), CategoryListActivity.class);
-                    if (isOtherCategoryOpen(getActivity().getTitle().toString(),EVENTS))
-                        getActivity().finish();
-                    intent.putExtra(getActivity().getString(R.string.CAT_TITLE_TAG),
-                            EVENTS);
+                    if (!getActivity().getTitle().toString().equals(EVENTS)) {
+
+                        if (CategoryListActivity.getA() != null)
+                            CategoryListActivity.getA().finish();
+                        intent = new Intent(getActivity(), CategoryListActivity.class);
+                        intent.putExtra(getActivity().getString(R.string.CAT_TITLE_TAG),
+                                EVENTS);
+                    } else return;
+
                 } else if (title.equals(BOOKMARKS)) {
-                    intent = new Intent(getActivity(), BookmarksActivity.class);
-                    intent.putExtra("CAT_TITLE", getResources().getString(R.string.BOOKMARKS));
-                    intent.putExtra(getActivity().getString(R.string.PARENT_CLASS_TAG), getActivity().getString(R.string.DISPLAY_FRAGMENT_PARENT_TAG));
-                    String url = "LOCAL";
-                    intent.putExtra("URL", url);
+                    if (!getActivity().getTitle().toString().equals(BOOKMARKS)) {
+                        if (CategoryListActivity.getA() != null)
+                            CategoryListActivity.getA().finish();
+                        if (DisplayArticleListActivity.getA() != null)
+                            DisplayArticleListActivity.getA().finish();
+                        intent = new Intent(getActivity(), BookmarksActivity.class);
+                        intent.putExtra("CAT_TITLE", getResources().getString(R.string.BOOKMARKS));
+                        intent.putExtra(getActivity().getString(R.string.PARENT_CLASS_TAG),
+                                getActivity().getString(R.string.DISPLAY_FRAGMENT_PARENT_TAG));
+                        String url = "LOCAL";
+                        intent.putExtra("URL", url);
+                    } else return;
                 } else if (title.equals(CONTACT_US)) {
                     intent = new Intent(getActivity(), ContactUsActivity.class);
                 } else if (title.equals(SETTINGS)) {

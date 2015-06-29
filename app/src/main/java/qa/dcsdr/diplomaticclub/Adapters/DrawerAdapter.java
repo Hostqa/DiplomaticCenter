@@ -119,8 +119,6 @@ public class DrawerAdapter extends RecyclerView.Adapter<DrawerAdapter.MyViewHold
 
         @Override
         public void onClick(View v) {
-//            delete(getPosition());
-//            return;
             if (clickListener != null)
                 clickListener.itemClicked(v, getAdapterPosition());
         }
