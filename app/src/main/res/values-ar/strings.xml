@@ -1,28 +1,5 @@
 <resources>
 
-    <string name="app_name">DCSDR</string>
-    <string name="title_activity_main">المركز الدبلوماسي</string>
-
-    <string name="action_settings">الإعدادات</string>
-
-    <string name="drawer_open">Open</string>
-    <string name="drawer_close">Close</string>
-
-    <string name="title_activity_display_articles">DisplayArticlesActivity</string>
-    <string name="error_timeout">اتصال إنترنت غير متوفر.</string>
-    <string name="auth_failure">فشل التفويض.</string>
-    <string name="server_error">خطأ في الخادم.</string>
-    <string name="network_error">خطأ في الشبكة.</string>
-    <string name="parse_error">تحليل خطأ.</string>
-    <string name="title_activity_article_reader">القارئ</string>
-    <string name="title_activity_about_us">المركز الدبلوماسي</string>
-    <string name="about_us_p1">(1) مركز بحث وتفكير استراتيجي، تأسس في الدوحة، نوفمبر2014  (2) يهتم المركز برصد وتحليل الشؤون الخليجية، وما يرتبط بها من تفاعلات إقليمية ودولية.  (3) المركز متخصص في إدارة وفض المنازعات وتسويتها من خلال:  أ - تحليل مسارات وآليات التسوية (المفاوضات، الدبلوماسية، التحكيم، الوساطة، ..)  ب - تحليل الصراعات القائمة والمتوقعة (العرقية، الدينية، السياسية، الاقتصادية)  ج - بناء سجل المخاطر الخليجية والإقليمية (الأمنية، البيئية، السياسية، الاقتصادية)</string>
-    <string name="about_us_p2">د - تحليل حفظ وبناء السلام (المواثيق، المنظمات، التجارب والخبرات)  (4) يشكل المركز حلقة وصل بين الباحثين والمفكرين والخبراء، والمسؤولين وصانعي القرار.  (5) يقوم المركز على تقديم البحوث والدراسات والتقديرات والاستشارات المتخصصة.  (6) يعتبر المركز دليلاً للباحثين والمهتمين لقواعد البيانات الدقيقة والملفات المتكاملة.</string>
-    <string name="PARENT_CLASS_TAG">ParentClassName</string>
-    <string name="DISPLAY_FRAGMENT_TAG">DisplayArticleListFragment</string>
-    <string name="DISPLAY_FRAGMENT_PARENT_TAG">CategoryListFragment</string>
-    <string name="title_activity_category_list">CategoryListActivity</string>
-
     <array name="categories">
         <item>بحوث ودراسات</item>
         <item>الإصدارا</item>
@@ -46,21 +23,36 @@
         <item>الإعدادات</item>
     </array>
 
-
     <array name="colors">
         <item>#094b7c</item>
         <item>#000000</item>
-
     </array>
 
+    <string name="app_name">DCSDR</string>
+    <string name="title_activity_main">المركز الدبلوماسي</string>
+    <string name="action_settings">الإعدادات</string>
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
+    <string name="title_activity_display_articles">DisplayArticlesActivity</string>
+    <string name="error_timeout">اتصال إنترنت غير متوفر.</string>
+    <string name="auth_failure">فشل التفويض.</string>
+    <string name="server_error">خطأ في الخادم.</string>
+    <string name="network_error">خطأ في الشبكة.</string>
+    <string name="parse_error">تحليل خطأ.</string>
+    <string name="title_activity_article_reader">القارئ</string>
+    <string name="title_activity_about_us">المركز الدبلوماسي</string>
+    <string name="about_us_p1">(1) مركز بحث وتفكير استراتيجي، تأسس في الدوحة، نوفمبر2014  (2) يهتم المركز برصد وتحليل الشؤون الخليجية، وما يرتبط بها من تفاعلات إقليمية ودولية.  (3) المركز متخصص في إدارة وفض المنازعات وتسويتها من خلال:  أ - تحليل مسارات وآليات التسوية (المفاوضات، الدبلوماسية، التحكيم، الوساطة، ..)  ب - تحليل الصراعات القائمة والمتوقعة (العرقية، الدينية، السياسية، الاقتصادية)  ج - بناء سجل المخاطر الخليجية والإقليمية (الأمنية، البيئية، السياسية، الاقتصادية)</string>
+    <string name="about_us_p2">د - تحليل حفظ وبناء السلام (المواثيق، المنظمات، التجارب والخبرات)  (4) يشكل المركز حلقة وصل بين الباحثين والمفكرين والخبراء، والمسؤولين وصانعي القرار.  (5) يقوم المركز على تقديم البحوث والدراسات والتقديرات والاستشارات المتخصصة.  (6) يعتبر المركز دليلاً للباحثين والمهتمين لقواعد البيانات الدقيقة والملفات المتكاملة.</string>
+    <string name="PARENT_CLASS_TAG">ParentClassName</string>
+    <string name="DISPLAY_FRAGMENT_TAG">DisplayArticleListFragment</string>
+    <string name="DISPLAY_FRAGMENT_PARENT_TAG">CategoryListFragment</string>
+    <string name="title_activity_category_list">CategoryListActivity</string>
     <string name="RESEARCH_AND_STUDIES">بحوث ودراسات</string>
-
     <string name="EXPAND">مشاهدة الكل</string>
     <string name="COLLAPSE">إخفاء كل</string>
     <string name="title_activity_contact_us">المركز الدبلوماسي</string>
     <string name="title_activity_home_page">DCSDR</string>
     <string name="title_activity_authors">المؤلفين</string>
-
     <string name="ALL_RESEARCH_AND_STUDIES">جميع البحوث والدراسات</string>
     <string name="STUDIES">دراسات</string>
     <string name="POLITICAL_STUDIES">دراسات سياسية</string>
@@ -190,7 +182,7 @@
     <string name="CHANGE_LANG_SUMMARY">تغيير لغة البرنامج من خلال التالي.</string>
     <string name="CATEGORY_MESSAGE">حدد الفئات سترون في درج التصفح.</string>
     <string name="DCSDR">المركز الدبلوماسي </string>
-    <string name="VERSION_SUMMARY">المركز الدبلوماسي للدراسات المنازعات القرار، الإصدار: 0.9.8</string>
+    <string name="VERSION_SUMMARY">المركز الدبلوماسي للدراسات المنازعات القرار، الإصدار: 0.9.9</string>
     <string name="NO_ARTICLES">لا توجد مقالات تم العثور عليها.</string>
     <string name="ARABIC_SUPPORT">إلا إذا لغة الهاتف الخاص بك هي اللغة العربية، نحن لا نؤيد تماما هذا الخيار. هل أنت متأكد أنك تريد أن تجعل هذا التغيير؟</string>
     <string name="CANCEL">إلغاء</string>
@@ -231,6 +223,7 @@
     <string name="search_hint_authors">بحث المؤلفين</string>
     <string name="SEARCH_URL_AUTHORS">http://www.dcsdr.qa/api/xml_en_search_writer.php?query=</string>
     <string name="NO_AUTHORS_FOUND">لم نتمكن من العثور على أي نتيجة.</string>
-
+    <string name="ERROR_CONTACT_US">خطأ: يرجى إعادة المحاولة لاحقا.</string>
+    <string name="MESSAGE_SUCCESS_CONTACT_US">تم إرسال الرسالة.</string>
 
 </resources>

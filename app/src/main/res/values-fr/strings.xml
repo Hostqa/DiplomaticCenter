@@ -1,37 +1,5 @@
 <resources>
 
-    <string name="app_name">DCSDR</string>
-    <string name="title_activity_main">Centre Diplomatique</string>
-
-    <string name="action_settings">Paramètres</string>
-
-    <string name="drawer_open">Open</string>
-    <string name="drawer_close">Close</string>
-
-    <string name="title_activity_display_articles">DisplayArticlesActivity</string>
-    <string name="error_timeout">Pas de connexion Internet. </string>
-    <string name="auth_failure">Échec de l\'autorisation. </string>
-    <string name="server_error">Erreur de serveur. </string>
-    <string name="network_error">erreur de réseau. </string>
-    <string name="parse_error">Erreur d\'analyse.</string>
-    <string name="title_activity_article_reader">Lecteur</string>
-    <string name="title_activity_about_us">Centre Diplomatique</string>
-    <string name="about_us_p1"> Un centre de réflexion et de recherche stratégique, fondé à Doha en Novembre 2014.</string>
-    <string name="about_us_p2">
-Ayant pour activité la surveillance et l’analyse des affaires du Golfe et ses interactions internationales et régionales associés où dans le cœur de ceux les questions des conflits et l’analyse des disputes.
-Le Centre est spécialisé dans la gestion et le règlement des litiges à travers:
-L’analyse des pistes et les mécanismes de règlement (Négociations - Diplomatie - Arbitrage – médiation).
-L’analyse des conflits existants et escomptés (ethnique – religieuse – politique – économique).
-La création de registre de risques du Golfe et régionaux (Risques de sécurité, environnementaux, politiques, économique).
-L’analyse du maintien et consolidation de la paix (les chartes, organisations, et les expériences).
-Le centre représente un lien entre les chercheurs, intellectuels, experts, responsables et décideurs.
-Le centre offre les recherches, études, évaluations et les conseils spécialisés.
- Le centre représente le guide pour les chercheurs et les personnes intéressées dans les règles de données précises et des fichiers intégrés.</string>
-    <string name="PARENT_CLASS_TAG">ParentClassName</string>
-    <string name="DISPLAY_FRAGMENT_TAG">DisplayArticleListFragment</string>
-    <string name="DISPLAY_FRAGMENT_PARENT_TAG">CategoryListFragment</string>
-    <string name="title_activity_category_list">CategoryListActivity</string>
-
     <array name="categories">
         <item>Recherches Et Études</item>
         <item>Publications</item>
@@ -55,21 +23,45 @@ Le centre offre les recherches, études, évaluations et les conseils spécialis
         <item>Paramètres</item>
     </array>
 
-
     <array name="colors">
         <item>#094b7c</item>
         <item>#000000</item>
-
     </array>
 
+    <string name="app_name">DCSDR</string>
+    <string name="title_activity_main">Centre Diplomatique</string>
+    <string name="action_settings">Paramètres</string>
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
+    <string name="title_activity_display_articles">DisplayArticlesActivity</string>
+    <string name="error_timeout">Pas de connexion Internet. </string>
+    <string name="auth_failure">Échec de l\'autorisation. </string>
+    <string name="server_error">Erreur de serveur. </string>
+    <string name="network_error">erreur de réseau. </string>
+    <string name="parse_error">Erreur d\'analyse.</string>
+    <string name="title_activity_article_reader">Lecteur</string>
+    <string name="title_activity_about_us">Centre Diplomatique</string>
+    <string name="about_us_p1"> Un centre de réflexion et de recherche stratégique, fondé à Doha en Novembre 2014.</string>
+   <string name="about_us_p2">
+Ayant pour activité la surveillance et l’analyse des affaires du Golfe et ses interactions internationales et régionales associés où dans le cœur de ceux les questions des conflits et l’analyse des disputes.
+Le Centre est spécialisé dans la gestion et le règlement des litiges à travers:
+L’analyse des pistes et les mécanismes de règlement (Négociations - Diplomatie - Arbitrage – médiation).
+L’analyse des conflits existants et escomptés (ethnique – religieuse – politique – économique).
+La création de registre de risques du Golfe et régionaux (Risques de sécurité, environnementaux, politiques, économique).
+L’analyse du maintien et consolidation de la paix (les chartes, organisations, et les expériences).
+Le centre représente un lien entre les chercheurs, intellectuels, experts, responsables et décideurs.
+Le centre offre les recherches, études, évaluations et les conseils spécialisés.
+ Le centre représente le guide pour les chercheurs et les personnes intéressées dans les règles de données précises et des fichiers intégrés.</string>
+    <string name="PARENT_CLASS_TAG">ParentClassName</string>
+    <string name="DISPLAY_FRAGMENT_TAG">DisplayArticleListFragment</string>
+    <string name="DISPLAY_FRAGMENT_PARENT_TAG">CategoryListFragment</string>
+    <string name="title_activity_category_list">CategoryListActivity</string>
     <string name="RESEARCH_AND_STUDIES"><![CDATA[Recherches Et Études]]></string>
-
     <string name="EXPAND">Spectacle</string>
     <string name="COLLAPSE">CACHER</string>
     <string name="title_activity_contact_us">Centre Diplomatique </string>
     <string name="title_activity_home_page">DCSDR</string>
     <string name="title_activity_authors">Auteurs</string>
-
     <string name="ALL_RESEARCH_AND_STUDIES">Tous Recherches et Études</string>
     <string name="STUDIES">Études</string>
     <string name="POLITICAL_STUDIES">Études Politiques</string>
@@ -145,7 +137,6 @@ Le centre offre les recherches, études, évaluations et les conseils spécialis
     <string name="NIGHT_MODE">Mode Nuit</string>
     <string name="DAY_MODE">Mode Jour</string>
     <string name="ABOUT_US">A Propos</string>
-
     <string name="ALL_FEATURED">Tous les Articles en Vedette</string>
     <string name="FEATURED_RESEARCH_AND_STUDIES">Vedette Recherches et études</string>
     <string name="FEATURED_PUBLICATIONS">Publications en Vedette</string>
@@ -200,7 +191,7 @@ Le centre offre les recherches, études, évaluations et les conseils spécialis
     <string name="CHANGE_LANG_SUMMARY">Changer la langue de l\'application ci-dessous.</string>
     <string name="CATEGORY_MESSAGE">Sélectionnez les catégories que vous verrez dans le tiroir de navigation.</string>
     <string name="DCSDR">DCSDR</string>
-    <string name="VERSION_SUMMARY">Centre Diplomatique Des Etudes Et La Résolution Des Disputes, Version 0.9.8</string>
+    <string name="VERSION_SUMMARY">Centre Diplomatique Des Etudes Et La Résolution Des Disputes, Version 0.9.9</string>
     <string name="NO_ARTICLES">Pas d\'article trouvé.</string>
     <string name="ARABIC_SUPPORT">Sauf la langue de votre téléphone est l\'arabe, nous ne soutenons pas entièrement cette option. Etes-vous sûr que vous voulez faire ce changement?</string>
     <string name="CANCEL">Annuler</string>
@@ -234,12 +225,14 @@ Le centre offre les recherches, études, évaluations et les conseils spécialis
     <string name="title_activity_search">Résultats de la Recherche</string>
     <string name="SEARCH">Recherche</string>
     <string name="BOOKMARK_DIRECTORY">BOOKMARKS_FR</string>
-   <string name="SEARCH_URL">http://www.dcsdr.qa/api/xml_en_search.php?query=</string>
-   <string name="FEATURED_PARTIAL_URL">http://www.dcsdr.qa/api/xml_en_show_home_setting_</string>
-   <string name="OPENING_BOOKMARK">Signet Ouvert</string>
-   <string name="CLOSE">FERMER</string>
-   <string name="search_hint_authors">Recherche Auteurs</string>
-   <string name="SEARCH_URL_AUTHORS">http://www.dcsdr.qa/api/xml_en_search_writer.php?query=</string>
-   <string name="NO_AUTHORS_FOUND">Aucun Auteurs Ont Constaté.</string>
+    <string name="SEARCH_URL">http://www.dcsdr.qa/api/xml_en_search.php?query=</string>
+    <string name="FEATURED_PARTIAL_URL">http://www.dcsdr.qa/api/xml_en_show_home_setting_</string>
+    <string name="OPENING_BOOKMARK">Signet Ouvert</string>
+    <string name="CLOSE">FERMER</string>
+    <string name="search_hint_authors">Recherche Auteurs</string>
+    <string name="SEARCH_URL_AUTHORS">http://www.dcsdr.qa/api/xml_en_search_writer.php?query=</string>
+    <string name="NO_AUTHORS_FOUND">Aucun Auteurs Ont Constaté.</string>
+    <string name="ERROR_CONTACT_US">Erreur: S\'il vous plaît réessayer plus tard.</string>
+    <string name="MESSAGE_SUCCESS_CONTACT_US">Message envoyé.</string>
 
 </resources>

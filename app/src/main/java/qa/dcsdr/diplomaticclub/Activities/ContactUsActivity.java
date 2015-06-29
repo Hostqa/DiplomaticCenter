@@ -97,7 +97,7 @@ public class ContactUsActivity extends AppCompatActivity {
                     String postUrl = "http://www.dcsdr.qa/api/xml_en_contact_us.php";
                     HashMap<String, String> formParam = new HashMap<String, String>();
                     formParam.put("name", name.getText().toString());
-                    formParam.put("name", email.getText().toString());
+                    formParam.put("email", email.getText().toString());
                     formParam.put("subject", subject.getText().toString());
                     formParam.put("message", message.getText().toString());
 
@@ -119,13 +119,22 @@ public class ContactUsActivity extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Toast.makeText(a, "Success: " + response, Toast.LENGTH_SHORT).show();
+                        if (response.toLowerCase().contains("success")) {
+                            Toast.makeText(a, getString(R.string.MESSAGE_SUCCESS_CONTACT_US), Toast.LENGTH_SHORT).show();
+                            name.setText("");
+                            email.setText("");
+                            subject.setText("");
+                            message.setText("");
+                        }
+                        else {
+                            Toast.makeText(a, getString(R.string.ERROR_CONTACT_US), Toast.LENGTH_SHORT).show();
+                        }
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(a, "Error: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(a, getString(R.string.ERROR_CONTACT_US), Toast.LENGTH_SHORT).show();
                     }
                 }) {
             @Override
@@ -188,6 +197,7 @@ public class ContactUsActivity extends AppCompatActivity {
     private void setUpMap() {
         LatLng latLng = new LatLng(25.3667129, 51.5290834);
         MarkerOptions marker = new MarkerOptions().position(latLng).title(getResources().getString(R.string.APP_TITLE));
+        if (mMap==null) return;
         mMap.addMarker(marker);
         CameraPosition cameraPosition = new CameraPosition.Builder().target(latLng).zoom(14.0f).build();
         CameraUpdate cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition);
