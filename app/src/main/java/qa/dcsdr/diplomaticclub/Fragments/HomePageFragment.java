@@ -61,16 +61,16 @@ public class HomePageFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         VolleySingleton volleySingleton;
-        volleySingleton=VolleySingleton.getsInstance();
-        imageLoader=volleySingleton.getImageLoader();
+        volleySingleton = VolleySingleton.getsInstance();
+        imageLoader = volleySingleton.getImageLoader();
         article = articleList.get(position);
 
-        View view =  inflater.inflate(R.layout.fragment_home_page,container,false);
+        View view = inflater.inflate(R.layout.fragment_home_page, container, false);
 
         featuredCategory = (TextView) view.findViewById(R.id.featuredCategory);
         featuredImage = (NetworkImageView) view.findViewById(R.id.featuredImage);
-        featuredTitle= (TextView) view.findViewById(R.id.featuredTitle);
-        featuredAuthor= (TextView) view.findViewById(R.id.featuredAuthor);
+        featuredTitle = (TextView) view.findViewById(R.id.featuredTitle);
+        featuredAuthor = (TextView) view.findViewById(R.id.featuredAuthor);
         readMore = (Button) view.findViewById(R.id.featuredReadMore);
         featuredShare = (Button) view.findViewById(R.id.featuredShare);
 
@@ -90,7 +90,7 @@ public class HomePageFragment extends Fragment {
         left.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((HomePageActivity)getActivity()).setCurrentItem(category, true, true);
+                ((HomePageActivity) getActivity()).setCurrentItem(category, true, true);
             }
         });
 
@@ -105,7 +105,7 @@ public class HomePageFragment extends Fragment {
             leftLayout.setVisibility(View.GONE);
             left.setVisibility(View.GONE);
         }
-        if (position == articleList.size()-1) {
+        if (position == articleList.size() - 1) {
             right.setVisibility(View.GONE);
             rightLayout.setVisibility(View.GONE);
         }
@@ -133,8 +133,7 @@ public class HomePageFragment extends Fragment {
     }
 
     private void loadImage(String url, final String title) {
-        if (url!=null && url!="N/A")
-        {
+        if (url != null && url != "N/A") {
             imageLoader.get(url, new ImageLoader.ImageListener() {
                 @Override
                 public void onResponse(ImageLoader.ImageContainer response, boolean isImmediate) {
@@ -157,7 +156,8 @@ public class HomePageFragment extends Fragment {
                 }
 
                 @Override
-                public void onErrorResponse(VolleyError error) {}
+                public void onErrorResponse(VolleyError error) {
+                }
 
             });
         }

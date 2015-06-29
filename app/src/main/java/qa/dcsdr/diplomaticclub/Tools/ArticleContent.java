@@ -182,7 +182,7 @@ public class ArticleContent {
                         tv.setText(Html.fromHtml(new ContentDecrypter().decrypt((content))));
                         readerProgressBar.setVisibility(View.GONE);
                         articleScroll.setVisibility(View.VISIBLE);
-                        if (menu!=null)
+                        if (menu != null)
                             showViews();
                     }
                 } catch (Exception e) {
@@ -256,7 +256,7 @@ public class ArticleContent {
     }
 
     private void showViews() {
-        menu.setGroupVisible(R.id.customizationGroup,true);
+        menu.setGroupVisible(R.id.customizationGroup, true);
 //        menu.setGroupEnabled(R.id.customizationGroup,true);
     }
 

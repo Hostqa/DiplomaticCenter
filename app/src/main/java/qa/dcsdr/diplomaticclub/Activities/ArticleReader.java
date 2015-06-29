@@ -3,6 +3,7 @@ package qa.dcsdr.diplomaticclub.Activities;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Rect;
 import android.os.Build;
 import android.os.Bundle;
@@ -25,16 +26,21 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.ImageLoader;
 import com.squareup.picasso.Picasso;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 import qa.dcsdr.diplomaticclub.Fragments.NavigationDrawerFragment;
 import qa.dcsdr.diplomaticclub.Items.Article;
+import qa.dcsdr.diplomaticclub.Items.VolleySingleton;
 import qa.dcsdr.diplomaticclub.R;
 import qa.dcsdr.diplomaticclub.Tools.ArticleContent;
 import qa.dcsdr.diplomaticclub.Tools.ContentDecrypter;
@@ -67,6 +73,7 @@ public class ArticleReader extends AppCompatActivity {
     private Menu menu;
     private float defaultSize;
     int loaded = 0;
+    private ImageLoader imageLoader;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +84,9 @@ public class ArticleReader extends AppCompatActivity {
         a = this;
         setContentView(R.layout.activity_article_reader);
         setTitle(getResources().getString(R.string.title_activity_article_reader));
+
+        VolleySingleton volleySingleton = VolleySingleton.getsInstance();
+        imageLoader = volleySingleton.getImageLoader();
 
         toolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
@@ -525,7 +535,8 @@ public class ArticleReader extends AppCompatActivity {
             Picasso.with(this).load(f).placeholder(R.drawable.loading_image).
                     error(R.drawable.default_art_image).into(articleImage);
         } else {
-            Picasso.with(this).load(R.drawable.default_art_image);
+            loadImage(articleList.get(position).
+                    getPhoto(), articleList.get(position).getTitle());
         }
 
         mHandler.postDelayed(new Runnable() {
@@ -535,6 +546,31 @@ public class ArticleReader extends AppCompatActivity {
             }
         }, 200);
 
+    }
+
+    private void loadImage(String url, final String title) {
+        if (url != null && !url.equals("N/A")) {
+            imageLoader.get(url, new ImageLoader.ImageListener() {
+                @Override
+                public void onResponse(ImageLoader.ImageContainer response, boolean isImmediate) {
+                    try {
+                        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+                        response.getBitmap().compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+                        FileOutputStream fo = openFileOutput(title, Context.MODE_PRIVATE);
+                        fo.write(bytes.toByteArray());
+                        fo.close();
+                        File f = new File(getFilesDir(), title);
+                        Picasso.with(a).load(f).placeholder(R.drawable.loading_image).
+                                error(R.drawable.default_art_image).into(articleImage);
+                    } catch (Exception e) {
+                    }
+                }
+
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                }
+            });
+        }
     }
 
     private String getSavedBookmark(int id) {

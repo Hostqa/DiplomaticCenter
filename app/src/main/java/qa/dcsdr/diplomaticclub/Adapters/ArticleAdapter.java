@@ -130,7 +130,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
     }
 
     private void loadImage(String url, final String title) {
-        File nf = new File(context.getFilesDir(),title);
+        File nf = new File(context.getFilesDir(), title);
         if (nf.exists())
             return;
         if (url != null && !url.equals("N/A")) {
@@ -146,6 +146,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
                     } catch (Exception e) {
                     }
                 }
+
                 @Override
                 public void onErrorResponse(VolleyError error) {
                 }
