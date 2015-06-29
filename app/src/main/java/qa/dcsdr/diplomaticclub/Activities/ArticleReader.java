@@ -509,7 +509,7 @@ public class ArticleReader extends AppCompatActivity {
                     scrollView.setVisibility(View.VISIBLE);
                     menu.findItem(R.id.bookmark).setIcon(R.drawable.ic_bookmark);
                     menu.findItem(R.id.bookmark).setTitle(R.string.NO_BOOKMARK);
-
+                    Toast.makeText(this, getString(R.string.OPENING_BOOKMARK), Toast.LENGTH_SHORT).show();
                     if (this.menu.findItem(R.string.DELETE_BOOKMARK) == null) {
                         MenuItem mi = this.menu.add(Menu.NONE, R.string.DELETE_BOOKMARK,
                                 200, R.string.REMOVE_BOOKMARK);

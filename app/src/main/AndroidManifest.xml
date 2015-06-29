@@ -112,6 +112,11 @@
             android:configChanges="keyboardHidden|locale|orientation|screenSize"
             android:label="@string/title_activity_home_page"
             android:launchMode="singleTask">
+
+            <meta-data
+                android:name="android.app.default_searchable"
+                android:value=".Activities.SearchActivity" />
+
             <intent-filter>
 
                 <action android:name="android.intent.action.VIEW" />
