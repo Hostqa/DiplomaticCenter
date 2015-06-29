@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/fl"
@@ -29,7 +28,6 @@
                 android:layout_height="50dp"
                 android:layout_gravity="center"
                 android:gravity="center"
-
                 android:indeterminate="true"
                 app:cpb_color="#FFee44"
                 app:cpb_colors="@array/colors"
@@ -38,7 +36,6 @@
                 app:cpb_rotation_speed="1.0"
                 app:cpb_stroke_width="3dp"
                 app:cpb_sweep_speed="1.0" />
-
         </LinearLayout>
 
         <LinearLayout
@@ -72,9 +69,7 @@
                 android:text="@string/RETRY"
                 android:visibility="gone" />
 
-
         </LinearLayout>
-
 
         <ScrollView
             android:id="@+id/articleScroll"
@@ -97,7 +92,6 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-
 
                     <ImageView
                         android:id="@+id/articleImage"
@@ -126,15 +120,16 @@
 
                 </RelativeLayout>
 
-
                 <TextView
                     android:id="@+id/articleTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
                     android:fontFamily="sans-serif-light"
                     android:padding="10dp"
                     android:text="Sample Title"
-                    android:textColor="#000000"
+                    android:textColor="@color/colorBlack"
                     android:textSize="24sp" />
 
                 <TextView
@@ -147,12 +142,9 @@
                     android:text="Author"
                     android:textColor="#ff2b2b2b"
                     android:textSize="16sp"
-                    android:textStyle="italic">
-
-                </TextView>
+                    android:textStyle="italic"></TextView>
 
                 <TextView
-
                     android:id="@+id/articleDate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -164,9 +156,7 @@
                     android:text="2015-02-10"
                     android:textColor="@color/colorPrimaryLight"
                     android:textSize="14sp"
-                    android:textStyle="italic">
-
-                </TextView>
+                    android:textStyle="italic"></TextView>
 
                 <TextView
                     android:id="@+id/articleContents"
@@ -176,6 +166,7 @@
                     android:linksClickable="true"
                     android:padding="10dp"
                     android:text="Loading content..."
+                    android:textIsSelectable="true"
                     android:textSize="15sp" />
 
                 <LinearLayout
@@ -191,7 +182,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="12dp"
-
                         android:layout_marginStart="12dp"
                         android:background="@drawable/custom_bg"
                         android:text="@string/PREVIOUS_ARTICLE"
@@ -209,10 +199,10 @@
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="12dp"
                         android:layout_marginRight="12dp"
-
                         android:background="@drawable/custom_bg"
                         android:text="@string/NEXT_ARTICLE"
                         android:textColor="@color/colorPrimaryDark" />
+
                 </LinearLayout>
             </LinearLayout>
         </ScrollView>
@@ -223,7 +213,6 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/abc_action_bar_default_height_material" />
     </FrameLayout>
-
 
     <fragment
         android:id="@+id/fragment_navigation_drawer"

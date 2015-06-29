@@ -13,7 +13,7 @@
             android:fromDegrees="45"
             android:toDegrees="-45">
             <shape android:shape="rectangle">
-                <solid android:color="@color/colorAccent" />
+                <solid android:color="@color/colorWhite" />
                 <corners
                     android:bottomLeftRadius="0dp"
                     android:bottomRightRadius="0dp"
@@ -26,7 +26,7 @@
             android:fromDegrees="-45"
             android:toDegrees="45">
             <shape android:shape="rectangle">
-                <solid android:color="@color/colorAccent" />
+                <solid android:color="@color/colorWhite" />
                 <corners
                     android:radius="1dp"
                     android:topLeftRadius="0dp"
