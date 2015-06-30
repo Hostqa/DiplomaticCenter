@@ -417,6 +417,7 @@ public class ArticleReader extends AppCompatActivity {
     }
 
     private void activateDayMode() {
+//        toolbar.setPopupTheme(R.style.PopupMenu);
         articleTitle.setTextColor(getResources().getColor(R.color.colorBlack));
         articleContents.setTextColor(getResources().getColor(R.color.colorBlack));
         scrollView.setBackgroundColor(getResources().getColor(R.color.colorWhite));
@@ -428,6 +429,7 @@ public class ArticleReader extends AppCompatActivity {
     }
 
     private void activateNightMode() {
+//        toolbar.setPopupTheme(R.style.PopupMenuDark);
         articleTitle.setTextColor(getResources().getColor(R.color.colorWhite));
         articleContents.setTextColor(getResources().getColor(R.color.colorWhite));
         scrollView.setBackgroundColor(getResources().getColor(R.color.colorBlack));
@@ -504,6 +506,7 @@ public class ArticleReader extends AppCompatActivity {
                 File f = getDir(getString(R.string.BOOKMARK_DIRECTORY), Context.MODE_PRIVATE);
                 File nf = new File(f, articleList.get(position).getId() + "");
                 if (nf.exists()) {
+                    Toast.makeText(this, getString(R.string.OPENING_BOOKMARK), Toast.LENGTH_SHORT).show();
                     String content = getSavedBookmark(articleList.get(position).getId());
                     articleContents.setText(Html.fromHtml(new ContentDecrypter().decrypt((content))));
                     retryButton.setVisibility(View.GONE);
@@ -513,7 +516,6 @@ public class ArticleReader extends AppCompatActivity {
                     scrollView.setVisibility(View.VISIBLE);
                     menu.findItem(R.id.bookmark).setIcon(R.drawable.ic_bookmark);
                     menu.findItem(R.id.bookmark).setTitle(R.string.NO_BOOKMARK);
-                    Toast.makeText(this, getString(R.string.OPENING_BOOKMARK), Toast.LENGTH_SHORT).show();
                     if (this.menu.findItem(R.string.DELETE_BOOKMARK) == null) {
                         MenuItem mi = this.menu.add(Menu.NONE, R.string.DELETE_BOOKMARK,
                                 200, R.string.REMOVE_BOOKMARK);

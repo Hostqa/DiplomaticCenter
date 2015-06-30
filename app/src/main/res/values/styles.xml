@@ -1,12 +1,12 @@
 <resources>
 
     <!-- Base application theme. -->
-        <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar" >
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorPrimaryDark</item>
-        </style>
+    </style>
 
     <style name="CustomToolbar" parent="ThemeOverlay.AppCompat.Dark">
         <item name="android:textColorPrimary">#FFFFFF</item>
@@ -16,6 +16,16 @@
     <style name="Animation">
         <item name="android:windowEnterAnimation">@anim/popupanim</item>
         <item name="android:windowExitAnimation">@anim/popupanimclose</item>
+    </style>
+
+    <style name="PopupMenu" parent="@android:style/Widget.PopupMenu">
+        <item name="android:background">@color/colorAccent</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="PopupMenuDark" parent="@android:style/Widget.PopupMenu">
+        <item name="android:background">@color/colorBlack</item>
+        <item name="android:textColor">@color/colorAccent</item>
     </style>
 
 </resources>
