@@ -142,6 +142,7 @@
     <string name="AUTHOR_LIST_URL">http://www.dcsdr.qa/api/xml_en_show_writer.php</string>
     <string name="SHOW_PAPERS">عرض  المقالات</string>
     <string name="SHARE">مشاركة</string>
+    <string name="SHARE_LC">مشاركة</string>
     <string name="NEXT_ARTICLE">المقال التالي</string>
     <string name="PREVIOUS_ARTICLE">المقال السابق</string>
     <string name="LARGER_TEXT">تكبير الخط</string>
@@ -225,5 +226,6 @@
     <string name="NO_AUTHORS_FOUND">لم نتمكن من العثور على أي نتيجة.</string>
     <string name="ERROR_CONTACT_US">خطأ: يرجى إعادة المحاولة لاحقا.</string>
     <string name="MESSAGE_SUCCESS_CONTACT_US">تم إرسال الرسالة.</string>
+    <string name="CONTACT_US_FORM_URL">http://www.dcsdr.qa/api/xml_en_contact_us.php</string>
 
 </resources>

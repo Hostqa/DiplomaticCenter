@@ -94,7 +94,7 @@ public class ContactUsActivity extends AppCompatActivity {
                 else if (message.getText().length() == 0)
                     Toast.makeText(a, ContactUsActivity.this.getString(R.string.PLEASE_ENTER_MESSAGE), Toast.LENGTH_SHORT).show();
                 else {
-                    String postUrl = "http://www.dcsdr.qa/api/xml_en_contact_us.php";
+                    String postUrl = getString(R.string.CONTACT_US_FORM_URL);
                     HashMap<String, String> formParam = new HashMap<String, String>();
                     formParam.put("name", name.getText().toString());
                     formParam.put("email", email.getText().toString());

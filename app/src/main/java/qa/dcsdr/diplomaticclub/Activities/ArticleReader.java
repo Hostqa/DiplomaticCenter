@@ -369,8 +369,12 @@ public class ArticleReader extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if (id == R.id.share) {
+            Intent sendIntent = new Intent();
+            sendIntent.setAction(Intent.ACTION_SEND);
+            sendIntent.putExtra(Intent.EXTRA_TEXT, articleList.get(position).getLink());
+            sendIntent.setType("text/plain");
+            startActivity(sendIntent);
         } else if (id == R.id.top) {
             scrollView.smoothScrollTo(0, 0);
         } else if (id == R.id.bottom) {

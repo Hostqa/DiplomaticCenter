@@ -30,6 +30,7 @@ public class SearchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         handleIntent(getIntent());
 
+
     }
 
     @Override
@@ -64,6 +65,7 @@ public class SearchActivity extends AppCompatActivity {
         }
     }
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -79,4 +81,5 @@ public class SearchActivity extends AppCompatActivity {
         int id = item.getItemId();
         return super.onOptionsItemSelected(item);
     }
+
 }

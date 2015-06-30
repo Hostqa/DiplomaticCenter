@@ -3,8 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="qa.dcsdr.diplomaticclub.Activities.ArticleReader">
 
-    <group android:id="@+id/customizationGroup" >
+    <group android:id="@+id/customizationGroup">
 
+        <item
+            android:id="@+id/share"
+            android:orderInCategory="100"
+            android:title="@string/SHARE_LC"
+            app:showAsAction="never" />
         <item
             android:id="@+id/top"
             android:orderInCategory="100"

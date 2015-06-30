@@ -18,10 +18,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkError;
@@ -105,6 +107,7 @@ public class HomePageActivity extends AppCompatActivity implements SharedPrefere
 
     private int total = 0;
     private int totalPrime = 0;
+    private SearchView searchView;
 
     private void sendXmlRequest(HomePagePagerAdapter[] hppa) {
 
@@ -367,8 +370,20 @@ public class HomePageActivity extends AppCompatActivity implements SharedPrefere
         // Associate searchable configuration with the SearchView
         SearchManager searchManager =
                 (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-        SearchView searchView =
+        searchView =
                 (SearchView) menu.findItem(R.id.search_button).getActionView();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                searchView.setIconified(true);
+                searchView.setIconified(true);
+                return false;
+            }
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return true;
+            }
+        });
         searchView.setSearchableInfo(
                 searchManager.getSearchableInfo(getComponentName()));
         return true;
@@ -382,7 +397,10 @@ public class HomePageActivity extends AppCompatActivity implements SharedPrefere
         int id = item.getItemId();
         //noinspection SimplifiableIfStatement
         if (id == R.id.search_button) {
+//            hideKeyboard(getWindow().getDecorView().findViewById(android.R.id.content));
+//            item.collapseActionView();
             onSearchRequested();
+//            toolbar.collapseActionView();
         }
         return super.onOptionsItemSelected(item);
     }
@@ -438,4 +456,8 @@ public class HomePageActivity extends AppCompatActivity implements SharedPrefere
         return isLeft ? currentItem - 1 : currentItem + 1;
     }
 
+    public void hideKeyboard(View view) {
+        InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
 }

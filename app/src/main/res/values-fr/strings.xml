@@ -132,7 +132,7 @@ Le centre offre les recherches, études, évaluations et les conseils spécialis
     <string name="ALL_SYMPOSIUMS">Tous les Symposiums</string>
     <string name="CONFERENCES">Conférences</string>
     <string name="ALL_CONFERENCES">Toutes les Conférences</string>
-    <string name="ID_LEVEL_URL">http://www.dcsdr.qa/api/xml_en_show_post_by_category_id.php?id=</string>
+    <string name="ID_LEVEL_URL">http://www.dcsdr.qa/api/xml_fr_show_post_by_category_id.php?id=</string>
     <string name="CAT_TITLE_TAG">CAT_TITLE</string>
     <string name="NIGHT_MODE">Mode Nuit</string>
     <string name="DAY_MODE">Mode Jour</string>
@@ -143,14 +143,15 @@ Le centre offre les recherches, études, évaluations et les conseils spécialis
     <string name="FEATURED_PROGRAMS_AND_PROJECTS">Programmes et Projets Phares</string>
     <string name="FEATURED_EVENTS">Evénements sélectionnés</string>
     <string name="READ_MORE">Plus</string>
-    <string name="SINGLE_ARTICLE_ID">http://www.dcsdr.qa/english/xml.php?id=</string>
+    <string name="SINGLE_ARTICLE_ID">http://www.dcsdr.qa/api/xml_fr_show_post_id.php?id=</string>
     <string name="FEATURED_DISPUTES_RESOLUTION">Résolution des Différends en Vedette </string>
     <string name="FRAGMENTS_ADDRESS">qa.dcsdr.diplomaticclub.Fragments.</string>
-    <string name="SHOW_AUTHOR_ARTICLES_URL">http://www.dcsdr.qa/api/xml_en_show_post_by_writer_id.php?id=</string>
+    <string name="SHOW_AUTHOR_ARTICLES_URL">http://www.dcsdr.qa/api/xml_fr_show_post_by_writer_id.php?id=</string>
     <string name="APP_TITLE">Centre Diplomatique</string>
-    <string name="AUTHOR_LIST_URL">http://www.dcsdr.qa/api/xml_en_show_writer.php</string>
+    <string name="AUTHOR_LIST_URL">http://www.dcsdr.qa/api/xml_fr_show_writer.php</string>
     <string name="SHOW_PAPERS">PAPIERS READ</string>
     <string name="SHARE">PARTAGER</string>
+    <string name="SHARE_LC">Partager</string>
     <string name="NEXT_ARTICLE">ARTICLE SUIVANT</string>
     <string name="PREVIOUS_ARTICLE">ARTICLE PRÉCÉDENT</string>
     <string name="LARGER_TEXT">Texte plus grand</string>
@@ -225,14 +226,15 @@ Le centre offre les recherches, études, évaluations et les conseils spécialis
     <string name="title_activity_search">Résultats de la Recherche</string>
     <string name="SEARCH">Recherche</string>
     <string name="BOOKMARK_DIRECTORY">BOOKMARKS_FR</string>
-    <string name="SEARCH_URL">http://www.dcsdr.qa/api/xml_en_search.php?query=</string>
-    <string name="FEATURED_PARTIAL_URL">http://www.dcsdr.qa/api/xml_en_show_home_setting_</string>
+    <string name="SEARCH_URL">http://www.dcsdr.qa/api/xml_fr_search.php?query=</string>
+    <string name="FEATURED_PARTIAL_URL">http://www.dcsdr.qa/api/xml_fr_show_home_setting_</string>
     <string name="OPENING_BOOKMARK">Signet Ouvert</string>
     <string name="CLOSE">FERMER</string>
     <string name="search_hint_authors">Recherche Auteurs</string>
-    <string name="SEARCH_URL_AUTHORS">http://www.dcsdr.qa/api/xml_en_search_writer.php?query=</string>
+    <string name="SEARCH_URL_AUTHORS">http://www.dcsdr.qa/api/xml_fr_search_writer.php?query=</string>
     <string name="NO_AUTHORS_FOUND">Aucun Auteurs Ont Constaté.</string>
     <string name="ERROR_CONTACT_US">Erreur: S\'il vous plaît réessayer plus tard.</string>
     <string name="MESSAGE_SUCCESS_CONTACT_US">Message envoyé.</string>
+    <string name="CONTACT_US_FORM_URL">http://www.dcsdr.qa/api/xml_fr_contact_us.php</string>
 
 </resources>

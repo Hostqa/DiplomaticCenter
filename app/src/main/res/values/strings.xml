@@ -157,6 +157,7 @@
     <string name="SINGLE_ARTICLE_ID">http://www.dcsdr.qa/english/xml.php?id=</string>
     <string name="SHOW_PAPERS">SHOW PAPERS</string>
     <string name="SHARE">SHARE</string>
+    <string name="SHARE_LC">Share</string>
     <string name="NEXT_ARTICLE">NEXT ARTICLE</string>
     <string name="PREVIOUS_ARTICLE">PREVIOUS ARTICLE</string>
     <string name="LARGER_TEXT">Larger Text</string>
@@ -241,5 +242,6 @@
     <string name="NO_AUTHORS_FOUND">NO AUTHORS FOUNDS.</string>
     <string name="ERROR_CONTACT_US">Error: Please try again later.</string>
     <string name="MESSAGE_SUCCESS_CONTACT_US">Message sent.</string>
+    <string name="CONTACT_US_FORM_URL">http://www.dcsdr.qa/api/xml_en_contact_us.php</string>
 
 </resources>
