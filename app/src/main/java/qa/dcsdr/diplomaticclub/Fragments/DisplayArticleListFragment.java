@@ -29,7 +29,6 @@ import com.android.volley.Response;
 import com.android.volley.ServerError;
 import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.StringRequest;
 
 import java.io.BufferedReader;
@@ -60,7 +59,6 @@ public class DisplayArticleListFragment extends Fragment implements ClickListene
     private String category;
     private ArticleAdapter rPubAdapter;
     private VolleySingleton volleySingleton;
-    private ImageLoader imageLoader;
     private RequestQueue requestQueue;
     private ArrayList<Article> articleList = new ArrayList<>();
     private RecyclerView articlesRV;

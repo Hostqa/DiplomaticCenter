@@ -23,7 +23,6 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkError;
@@ -433,7 +432,7 @@ public class HomePageActivity extends AppCompatActivity implements SharedPrefere
         }
     }
 
-    public void setCurrentItem(String category, boolean b, boolean isLeft) {
+    public void setCurrentItem(String category, boolean isLeft) {
         int correctPosition;
         HomePageViewPager homePageViewPager;
         if (category.equals(getString(R.string.ALL_FEATURED)))
@@ -449,7 +448,7 @@ public class HomePageActivity extends AppCompatActivity implements SharedPrefere
         else
             homePageViewPager = events;
         correctPosition = getCorrectPosition(homePageViewPager.getCurrentItem(), isLeft);
-        homePageViewPager.setCurrentItem(correctPosition, b);
+        homePageViewPager.setCurrentItem(correctPosition, true);
     }
 
     private int getCorrectPosition(int currentItem, boolean isLeft) {

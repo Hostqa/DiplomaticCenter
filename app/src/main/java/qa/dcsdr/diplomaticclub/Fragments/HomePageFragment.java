@@ -90,14 +90,14 @@ public class HomePageFragment extends Fragment {
         left.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((HomePageActivity) getActivity()).setCurrentItem(category, true, true);
+                ((HomePageActivity) getActivity()).setCurrentItem(category, true);
             }
         });
 
         right.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((HomePageActivity) getActivity()).setCurrentItem(category, true, false);
+                ((HomePageActivity) getActivity()).setCurrentItem(category, false);
             }
         });
 
@@ -133,7 +133,7 @@ public class HomePageFragment extends Fragment {
     }
 
     private void loadImage(String url, final String title) {
-        if (url != null && url != "N/A") {
+        if (url != null && !url.equals("N/A")) {
             imageLoader.get(url, new ImageLoader.ImageListener() {
                 @Override
                 public void onResponse(ImageLoader.ImageContainer response, boolean isImmediate) {

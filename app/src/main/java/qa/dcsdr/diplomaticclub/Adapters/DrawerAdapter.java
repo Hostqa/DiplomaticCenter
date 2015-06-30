@@ -18,13 +18,13 @@ import qa.dcsdr.diplomaticclub.R;
 
 /**
  * Created by Tamim on 6/7/2015.
+ * The adapter for the navigation drawer.
  */
 public class DrawerAdapter extends RecyclerView.Adapter<DrawerAdapter.MyViewHolder> {
 
     private LayoutInflater inflater;
     private List<DrawerEntry> data = Collections.emptyList();
     private List<DrawerEntry> removed = new ArrayList<DrawerEntry>();
-    private List<Integer> removedIndex = new ArrayList<Integer>();
 
     private Context context;
     private ClickListener clickListener;
@@ -49,7 +49,7 @@ public class DrawerAdapter extends RecyclerView.Adapter<DrawerAdapter.MyViewHold
         int layout = viewType == 0 ? R.layout.nav_drawer_entry : R.layout.nav_drawer_title;
         View view = inflater.inflate(layout, parent, false);
 //        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
-        return new MyViewHolder(view, viewType);
+        return new MyViewHolder(view);
     }
 
 
@@ -111,7 +111,7 @@ public class DrawerAdapter extends RecyclerView.Adapter<DrawerAdapter.MyViewHold
             return title;
         }
 
-        public MyViewHolder(View itemView, int viewType) {
+        public MyViewHolder(View itemView) {
             super(itemView);
             title = (TextView) itemView.findViewById(R.id.listText);
             itemView.setOnClickListener(this);

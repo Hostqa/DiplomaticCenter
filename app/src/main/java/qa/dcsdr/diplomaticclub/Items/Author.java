@@ -5,6 +5,7 @@ import android.os.Parcelable;
 
 /**
  * Created by Tamim on 6/17/2015.
+ * This is the class that stores all the author information.
  */
 public class Author implements Parcelable {
 

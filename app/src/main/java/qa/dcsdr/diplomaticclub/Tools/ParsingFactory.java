@@ -15,7 +15,7 @@ import qa.dcsdr.diplomaticclub.Items.Author;
  */
 public class ParsingFactory {
 
-    final int AUTHOR = 0;
+    private final int AUTHOR = 0;
 
     private String data;
 

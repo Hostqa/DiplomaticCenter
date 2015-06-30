@@ -223,18 +223,15 @@ public class ArticleContent {
                 try {
                     File bmDir = context.getDir(context.getResources().getString(R.string.BOOKMARK_DIRECTORY), Context.MODE_PRIVATE);
                     File newBM = new File(bmDir, id + ""); //Getting a file within the dir.
-
                     FileOutputStream f = new FileOutputStream(newBM);
                     byte[] b = content.toStringWithoutContent().getBytes();
                     f.write(b);
                     f.close();
-
                     File newBMContent = new File(bmDir, id + "_content"); //Getting a file within the dir.
                     FileOutputStream f1 = new FileOutputStream(newBMContent);
                     byte[] b1 = content.getContent().getBytes();
                     f1.write(b1);
                     f1.close();
-
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -257,7 +254,6 @@ public class ArticleContent {
 
     private void showViews() {
         menu.setGroupVisible(R.id.customizationGroup, true);
-//        menu.setGroupEnabled(R.id.customizationGroup,true);
     }
 
 }

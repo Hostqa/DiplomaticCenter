@@ -1,6 +1,5 @@
 package qa.dcsdr.diplomaticclub.Activities;
 
-import android.app.Activity;
 import android.app.SearchManager;
 import android.content.Context;
 import android.os.Build;
@@ -25,14 +24,12 @@ public class AuthorsActivity extends AppCompatActivity {
 
     private Fragment fragment;
     private SearchView searchView;
-    private Activity activity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setNavigationBarColor(getResources().getColor(R.color.colorPrimaryDark));
         }
-        activity = this;
         supportRequestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         super.onCreate(savedInstanceState);
         FragmentManager fm = getSupportFragmentManager();

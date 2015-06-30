@@ -36,7 +36,7 @@
             android:name=".Activities.BookmarksActivity"
             android:configChanges="orientation"
             android:label="@string/BOOKMARKS"
-            android:launchMode="singleTask"
+            android:launchMode="singleTop"
             android:noHistory="true"
             android:parentActivityName=".Activities.CategoryListActivity">
             <meta-data

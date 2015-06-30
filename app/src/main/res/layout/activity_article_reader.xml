@@ -85,7 +85,7 @@
 
             <LinearLayout
                 android:layout_width="fill_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:paddingTop="@dimen/abc_action_bar_default_height_material">
 
@@ -142,7 +142,7 @@
                     android:text="Author"
                     android:textColor="#ff2b2b2b"
                     android:textSize="16sp"
-                    android:textStyle="italic"></TextView>
+                    android:textStyle="italic"/>
 
                 <TextView
                     android:id="@+id/articleDate"
@@ -156,7 +156,7 @@
                     android:text="2015-02-10"
                     android:textColor="@color/colorPrimaryLight"
                     android:textSize="14sp"
-                    android:textStyle="italic"></TextView>
+                    android:textStyle="italic"/>
 
                 <TextView
                     android:id="@+id/articleContents"

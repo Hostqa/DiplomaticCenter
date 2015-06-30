@@ -72,7 +72,6 @@ public class ArticleReader extends AppCompatActivity {
     private String url;
     private Menu menu;
     private float defaultSize;
-    int loaded = 0;
     private ImageLoader imageLoader;
 
     @Override
@@ -325,7 +324,6 @@ public class ArticleReader extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_article_reader, menu);
-        loaded += 1;
         File f = getDir(getString(R.string.BOOKMARK_DIRECTORY), Context.MODE_PRIVATE);
         File nf = new File(f, articleList.get(position).getId() + "");
         if (!getIntent().getExtras().get("URL").equals("LOCAL") && !nf.exists())
@@ -359,8 +357,8 @@ public class ArticleReader extends AppCompatActivity {
      * Allowing the user to change text size, activating night/day mode
      * and bookmarking an article.
      *
-     * @param item
-     * @return
+     * @param item Item in the action bar
+     * @return Result
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -602,6 +600,8 @@ public class ArticleReader extends AppCompatActivity {
         Intent intent;
         if (this.getIntent().hasExtra("URL")) {
             if (this.getIntent().getExtras().get("URL").equals("LOCAL")) {
+                if (DisplayArticleListActivity.getA() != null)
+                    DisplayArticleListActivity.getA().finish();
                 intent = new Intent(a, DisplayArticleListActivity.class);
                 intent.putExtra("CAT_TITLE", category);
                 intent.putExtra(getString(R.string.PARENT_CLASS_TAG), getString(R.string.DISPLAY_FRAGMENT_PARENT_TAG));

@@ -94,11 +94,8 @@ public class AuthorAdapter extends RecyclerView.Adapter<AuthorAdapter.ArticleVie
     /**
      * Allows the full description of an author to be viewed
      * as a pop up.
-     *
-     * @param anchorView
-     * @param author
      */
-    public void showPopup(View anchorView, final Author author) {
+    private void showPopup(View anchorView, final Author author) {
 
         final View popupView = activity.getLayoutInflater().inflate(R.layout.pop_up_author, null);
         FrameLayout frameLayout = (FrameLayout) view.findViewById(R.id.authorsFL);

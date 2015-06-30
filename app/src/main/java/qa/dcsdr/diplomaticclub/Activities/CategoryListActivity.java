@@ -22,7 +22,7 @@ public class CategoryListActivity extends AppCompatActivity {
 
     private Fragment fragment ;
 
-    public static Activity a = null;
+    private static Activity a = null;
 
     public static Activity getA() {
         return a;

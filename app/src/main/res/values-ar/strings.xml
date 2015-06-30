@@ -2,9 +2,9 @@
 
     <array name="categories">
         <item>بحوث ودراسات</item>
-        <item>الإصدارا</item>
+        <item>الإصدارات</item>
         <item>فض المنازعات</item>
-        <item>برامج ومشاريع</item>
+        <item>البرامج والمشروعات</item>
         <item>الفعاليات</item>
     </array>
 
@@ -14,12 +14,12 @@
         <item>المؤلفين</item>
         <item>الفئات</item>
         <item>بحوث ودراسات</item>
-        <item>الإصدارا</item>
+        <item>الإصدارات</item>
         <item>فض المنازعات</item>
-        <item>برامج ومشاريع</item>
+        <item>البرامج والمشروعات</item>
         <item>الفعاليات</item>
-        <item>المستندات المحفوظة</item>
-        <item>اتصل بنا</item>
+        <item>المستندات المفضلة</item>
+        <item>تواصل معنا</item>
         <item>الإعدادات</item>
     </array>
 
@@ -67,7 +67,7 @@
     <string name="POLITICAL_ESTIMATES">تقديرات سياسية</string>
     <string name="STRATEGIC_ESTIMATES">تقديرات إستراتجية</string>
     <string name="ECONOMIC_ESTIMATES">تقديرات اقتصادية</string>
-    <string name="PUBLICATIONS">الإصدارا</string>
+    <string name="PUBLICATIONS">الإصدارات</string>
     <string name="ALL_PUBLICATIONS">جميع المطبوعات</string>
     <string name="RESEARCH_AND_STUDIES_PUBLICATIONS">البحوث والدراسات</string>
     <string name="ARBITRATION_STUDIES">الدراسات المحكمة</string>
@@ -82,7 +82,7 @@
     <string name="TREND_ANALYSIS_REPORTS">تقارير تحليل الاتجاهات</string>
     <string name="STRATEGIC_REPORTS">التقارير الإستراتجية</string>
     <string name="DISPUTES_RESOLUTION">فض المنازعات</string>
-    <string name="ALL_DISPUTES_RESOLUTION">جميع المنازعات القرار</string>
+    <string name="ALL_DISPUTES_RESOLUTION">جميع فض المنازعات</string>
     <string name="INTERNATIONAL_NEGOTIATIONS">تسوية الصراعات</string>
     <string name="PRINCIPLES_OF_NEGOTIATIONS">المفاوضات</string>
     <string name="ART_OF_DIPLOMACY">الدبلوماسية</string>
@@ -103,8 +103,8 @@
     <string name="PEACE_KEEPING">حفظ وبناء السلام</string>
     <string name="EXPERIENCES_OF_PEACE_KEEPING">تجارب حفظ السلام</string>
     <string name="EXPERIENCES_OF_PEACE_BUILDING">تجارب بناء السلام</string>
-    <string name="ALL_PROGRAMS_AND_PROJECTS">جميع البرامج والمشاريع</string>
-    <string name="PROGRAMS_AND_PROJECTS">برامج ومشاريع</string>
+    <string name="ALL_PROGRAMS_AND_PROJECTS">جميع البرامج والمشروعات</string>
+    <string name="PROGRAMS_AND_PROJECTS">البرامج والمشروعات</string>
     <string name="RESEARCH_PROJECTS">المشروعات البحثية</string>
     <string name="ALL_RESEARCH_PROJECTS">جميع المشاريع البحثية</string>
     <string name="RESEARCH_FILES">الملفات البحثية</string>
@@ -125,30 +125,30 @@
     <string name="ALL_CONFERENCES">جميع المؤتمرات</string>
     <string name="ID_LEVEL_URL">http://www.dcsdr.qa/api/xml_en_show_post_by_category_id.php?id=</string>
     <string name="CAT_TITLE_TAG">CAT_TITLE</string>
-    <string name="NIGHT_MODE">الوضع الليلي</string>
+    <string name="NIGHT_MODE">وضع المساء</string>
     <string name="DAY_MODE">الوضع النهار </string>
     <string name="ABOUT_US">من نحن</string>
-    <string name="ALL_FEATURED">جميع المقالات المميزة</string>
-    <string name="FEATURED_RESEARCH_AND_STUDIES">البحوث والدراسات المميزة</string>
-    <string name="FEATURED_PUBLICATIONS">منشورات المميزة</string>
-    <string name="FEATURED_PROGRAMS_AND_PROJECTS">برامج ومشاريع المميزة</string>
-    <string name="FEATURED_EVENTS">أحداث المميزة</string>
+    <string name="ALL_FEATURED">المختارات</string>
+    <string name="FEATURED_RESEARCH_AND_STUDIES">مختارات البحوث والدراسات</string>
+    <string name="FEATURED_PUBLICATIONS">مختارات الإصدارات</string>
+    <string name="FEATURED_PROGRAMS_AND_PROJECTS">مختارات البرامج والمشروعات</string>
+    <string name="FEATURED_EVENTS">مختارات الفعاليات</string>
     <string name="APP_TITLE">المركز الدبلوماسي</string>
     <string name="READ_MORE">اقرأ المزيد</string>
     <string name="SINGLE_ARTICLE_ID">http://www.dcsdr.qa/arabic/xml.php?id=</string>
-    <string name="FEATURED_DISPUTES_RESOLUTION">المنازعات المعروضة القرار</string>
+    <string name="FEATURED_DISPUTES_RESOLUTION">مختارات فض المنازعات</string>
     <string name="FRAGMENTS_ADDRESS">qa.dcsdr.diplomaticclub.Fragments.</string>
     <string name="SHOW_AUTHOR_ARTICLES_URL">http://www.dcsdr.qa/api/xml_en_show_post_by_writer_id.php?id=</string>
     <string name="AUTHOR_LIST_URL">http://www.dcsdr.qa/api/xml_en_show_writer.php</string>
     <string name="SHOW_PAPERS">عرض  المقالات</string>
     <string name="SHARE">مشاركة</string>
     <string name="SHARE_LC">مشاركة</string>
-    <string name="NEXT_ARTICLE">المقال التالي</string>
-    <string name="PREVIOUS_ARTICLE">المقال السابق</string>
+    <string name="NEXT_ARTICLE">التالي</string>
+    <string name="PREVIOUS_ARTICLE">السابق</string>
     <string name="LARGER_TEXT">تكبير الخط</string>
     <string name="SMALLER_TEXT">تصغير الخط</string>
     <string name="RESET_SIZE">إعادة تعيين الحجم</string>
-    <string name="CONTACT_US">اتصل بنا</string>
+    <string name="CONTACT_US">تواصل معنا</string>
     <string name="FIND_US">تجدنا هنا.</string>
     <string name="QUESTIONS_COMMENTS">أي أسئلة أو تعليقات؟ الاتصال بنا باستخدام النموذج التالي.</string>
     <string name="FORM_NAME">اسمك</string>
@@ -173,7 +173,7 @@
     <string name="HOME">الرئيسية</string>
     <string name="AUTHORS">المؤلفين</string>
     <string name="CATEGORIES">الفئات</string>
-    <string name="BOOKMARKS">المستندات المحفوظة</string>
+    <string name="BOOKMARKS">المستندات المفضلة</string>
     <string name="SETTINGS">الإعدادات</string>
     <string name="NO_CATEGORIES">لا يوجد فئات محددة</string>
     <string name="LANGUAGE">لغة</string>
@@ -200,7 +200,7 @@
     <string name="NO_BOOKMARK">تم الحفظ</string>
     <string name="BAD_CONTENT">الموقع يعاني من بعض المشاكل مع هذه الوثيقة، يرجى العودة لاحقا.</string>
     <string name="OPEN_BOOKMARKS">المستندات المحفوظة</string>
-    <string name="NO_BOOKMARKS_SAVED">لم يتم العثور على مستندات محفوظة.</string>
+    <string name="NO_BOOKMARKS_SAVED">لم يتم العثور على مستندات مفضلة.</string>
     <string name="DELETE_BOOKMARK_BUTTON">حذف</string>
     <string name="CONTACT_DETAILS">المزيد من التفاصيل</string>
     <string name="FAX_TITLE">رقم الفاكس</string>

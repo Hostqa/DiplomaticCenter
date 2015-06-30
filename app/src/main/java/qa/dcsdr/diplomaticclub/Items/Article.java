@@ -7,6 +7,7 @@ import qa.dcsdr.diplomaticclub.Tools.Ellipsizer;
 
 /**
  * Created by Tamim on 6/11/2015.
+ * This is the class that stores all the article information.
  */
 public class Article implements Parcelable {
 
@@ -25,12 +26,13 @@ public class Article implements Parcelable {
         public Article createFromParcel(Parcel in) {
             return new Article(in);
         }
+
         public Article[] newArray(int size) {
             return new Article[size];
         }
     };
 
-    public int getLength() {
+    private int getLength() {
         return length;
     }
 
@@ -77,7 +79,7 @@ public class Article implements Parcelable {
         this.description = "N/A";
         this.date = "N/A";
         this.author = "N/A";
-        this.length=0;
+        this.length = 0;
     }
 
     public String getTitle() {
@@ -146,13 +148,13 @@ public class Article implements Parcelable {
     }
 
     public String toStringWithoutContent() {
-        return  getTitle() + "\n" +
+        return getTitle() + "\n" +
                 getLink() + "\n" +
                 getPhoto() + "\n" +
                 getDescription() + "\n" +
                 getDate() + "\n" +
-                getAuthor()  + "\n"+
-                getLength()  + "\n";
+                getAuthor() + "\n" +
+                getLength() + "\n";
     }
 
     public String toString() {

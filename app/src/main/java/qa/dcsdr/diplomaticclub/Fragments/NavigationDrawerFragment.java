@@ -53,8 +53,8 @@ public class NavigationDrawerFragment extends Fragment implements ClickListener 
     private boolean mUserLearnedDrawer;
     private boolean mFromSavedInstanceState;
 
-    public static final String PREF_FILE_NAME = "drawerpref";
-    public static final String KEY_USER_LEARNED_DRAWER = "user_learned_drawer";
+    private static final String PREF_FILE_NAME = "drawerpref";
+    private static final String KEY_USER_LEARNED_DRAWER = "user_learned_drawer";
 
     private View containerView;
     private Runnable mPendingRunnable;
@@ -133,7 +133,7 @@ public class NavigationDrawerFragment extends Fragment implements ClickListener 
         return layout;
     }
 
-    public List<DrawerEntry> getData() {
+    private List<DrawerEntry> getData() {
         //load only static data inside a drawer
         List<DrawerEntry> data = new ArrayList<>();
         String[] titles = getResources().getStringArray(R.array.drawer_items);
@@ -160,14 +160,12 @@ public class NavigationDrawerFragment extends Fragment implements ClickListener 
                     mUserLearnedDrawer = true;
                     saveToPreferences(getActivity(), KEY_USER_LEARNED_DRAWER, mUserLearnedDrawer + "");
                 }
-//                getActivity().invalidateOptionsMenu();
             }
 
             @Override
             public void onDrawerClosed(View drawerView) {
                 super.onDrawerClosed(drawerView);
                 drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
-//                getActivity().invalidateOptionsMenu();
                 if (mPendingRunnable != null) {
                     mHandler.post(mPendingRunnable);
                     mPendingRunnable = null;
