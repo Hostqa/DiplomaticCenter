@@ -143,6 +143,8 @@ public class HomePageFragment extends Fragment {
                         FileOutputStream fo = getActivity().openFileOutput(title, Context.MODE_PRIVATE);
                         fo.write(bytes.toByteArray());
                         fo.close();
+                        if (ArticleReader.getA() != null)
+                            ArticleReader.getA().finish();
                         Intent intent = new Intent(getActivity(), ArticleReader.class);
                         intent.putExtra("CAT_TITLE", category);
                         intent.putExtra("ARTICLE_LIST", articleList);

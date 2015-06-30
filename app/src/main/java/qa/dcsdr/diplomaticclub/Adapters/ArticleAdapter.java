@@ -47,7 +47,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
 
     public void setArticleList(ArrayList<Article> articleList) {
         this.articleList = articleList;
-        this.articleList.add(0,new Article(0));
+        this.articleList.add(0, new Article(0));
         this.isImageSaved = new boolean[articleList.size()];
         Arrays.fill(this.isImageSaved, false);
         notifyItemRangeChanged(0, articleList.size());
@@ -68,7 +68,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
     @Override
     public ArticleViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         int resource = viewType == 0 ? R.layout.article_blank_card : R.layout.article_card;
-        View view = layoutInflater.inflate(resource,parent,false);
+        View view = layoutInflater.inflate(resource, parent, false);
         return new ArticleViewHolder(view);
     }
 
@@ -86,7 +86,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
         if (isBookmark && !currentArticle.getTitle().equals("N/A")) {
             holder.listIconViewU.setVisibility(View.GONE);
             try {
-                File nf = new File(context.getFilesDir(),currentArticle.getTitle());
+                File nf = new File(context.getFilesDir(), currentArticle.getTitle());
                 Picasso.with(context).load(nf).placeholder(R.drawable.loading_image).
                         error(R.drawable.default_art_image).into(holder.localImage);
                 holder.localImage.setVisibility(View.VISIBLE);
@@ -94,10 +94,9 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
                 holder.localImage.setVisibility(View.GONE);
                 holder.listIconViewU.setVisibility(View.VISIBLE);
             }
-        }
-        else
+        } else
             holder.listIconViewU.setImageUrl(currentArticle.getPhoto(), imageLoader);
-        if (!isImageSaved[position]){
+        if (!isImageSaved[position]) {
             loadImage(articleList.get(position).
                     getPhoto(), articleList.get(position).getTitle());
             isImageSaved[position] = true;

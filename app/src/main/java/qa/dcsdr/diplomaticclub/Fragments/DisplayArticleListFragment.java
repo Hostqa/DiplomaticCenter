@@ -319,6 +319,8 @@ public class DisplayArticleListFragment extends Fragment implements ClickListene
     @Override
     public void itemClicked(View view, int position) {
         final Intent intent;
+        if (ArticleReader.getA() != null)
+            ArticleReader.getA().finish();
         intent = new Intent(getActivity(), ArticleReader.class);
         intent.putExtra("ARTICLE_LIST", articleList);
         intent.putExtra("POSITION", position);

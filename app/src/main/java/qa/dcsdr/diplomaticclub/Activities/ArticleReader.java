@@ -63,7 +63,6 @@ public class ArticleReader extends AppCompatActivity {
     private LinearLayout errorLayoutR;
     private TextView volleyError;
     private LinearLayout readerProgressBar;
-    private Activity a;
     private String category;
     private ArrayList<Article> articleList;
     private int position;
@@ -73,6 +72,12 @@ public class ArticleReader extends AppCompatActivity {
     private Menu menu;
     private float defaultSize;
     private ImageLoader imageLoader;
+
+    private static Activity a = null;
+
+    public static Activity getA() {
+        return a;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
