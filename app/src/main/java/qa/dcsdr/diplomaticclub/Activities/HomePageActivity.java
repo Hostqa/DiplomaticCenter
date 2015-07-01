@@ -56,6 +56,7 @@ import qa.dcsdr.diplomaticclub.Tools.ParsingFactory;
  */
 public class HomePageActivity extends AppCompatActivity implements SharedPreferences.OnSharedPreferenceChangeListener {
 
+    private static SearchView searchViewS;
     private Toolbar toolbar;
 
     private HomePageViewPager featured;
@@ -199,6 +200,11 @@ public class HomePageActivity extends AppCompatActivity implements SharedPrefere
         }
     }
 
+    public static void bringUpSearch() {
+        searchViewS.setIconified(false);
+        searchViewS.setIconified(false);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -207,7 +213,6 @@ public class HomePageActivity extends AppCompatActivity implements SharedPrefere
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setNavigationBarColor(getResources().getColor(R.color.colorPrimary));
         }
-
         PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
         getSharedPreferences("LANGUAGE_CHANGE", MODE_PRIVATE).registerOnSharedPreferenceChangeListener(this);
 
@@ -369,6 +374,7 @@ public class HomePageActivity extends AppCompatActivity implements SharedPrefere
         // Associate searchable configuration with the SearchView
         SearchManager searchManager =
                 (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+
         searchView =
                 (SearchView) menu.findItem(R.id.search_button).getActionView();
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -385,6 +391,7 @@ public class HomePageActivity extends AppCompatActivity implements SharedPrefere
         });
         searchView.setSearchableInfo(
                 searchManager.getSearchableInfo(getComponentName()));
+        searchViewS= searchView;
         return true;
     }
 
