@@ -21,6 +21,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Locale;
 
 import qa.dcsdr.diplomaticclub.Activities.ArticleReader;
 import qa.dcsdr.diplomaticclub.Activities.HomePageActivity;
@@ -66,7 +67,8 @@ public class HomePageFragment extends Fragment {
         article = articleList.get(position);
 
         View view = inflater.inflate(R.layout.fragment_home_page, container, false);
-
+        String s = Locale.getDefault().getDisplayLanguage();
+        final boolean isArabic = (s.equals("العربية"));
         featuredCategory = (TextView) view.findViewById(R.id.featuredCategory);
         featuredImage = (NetworkImageView) view.findViewById(R.id.featuredImage);
         featuredTitle = (TextView) view.findViewById(R.id.featuredTitle);
@@ -90,25 +92,44 @@ public class HomePageFragment extends Fragment {
         left.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((HomePageActivity) getActivity()).setCurrentItem(category, true);
+                if (isArabic)
+                    ((HomePageActivity) getActivity()).setCurrentItem(category, false);
+                else
+                    ((HomePageActivity) getActivity()).setCurrentItem(category, true);
             }
         });
 
         right.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((HomePageActivity) getActivity()).setCurrentItem(category, false);
+                if (isArabic)
+                    ((HomePageActivity) getActivity()).setCurrentItem(category, true);
+                else
+                    ((HomePageActivity) getActivity()).setCurrentItem(category, false);
             }
         });
 
-        if (position == 0) {
-            leftLayout.setVisibility(View.GONE);
-            left.setVisibility(View.GONE);
+        if (isArabic) {
+            if (position == 0) {
+                right.setVisibility(View.GONE);
+                rightLayout.setVisibility(View.GONE);
+            }
+                if (position == articleList.size() - 1) {
+                    leftLayout.setVisibility(View.GONE);
+                left.setVisibility(View.GONE);
+            }
         }
-        if (position == articleList.size() - 1) {
-            right.setVisibility(View.GONE);
-            rightLayout.setVisibility(View.GONE);
+        else {
+            if (position == 0) {
+                leftLayout.setVisibility(View.GONE);
+                left.setVisibility(View.GONE);
+            }
+            if (position == articleList.size() - 1) {
+                right.setVisibility(View.GONE);
+                rightLayout.setVisibility(View.GONE);
+            }
         }
+
 
         readMore.setOnClickListener(new View.OnClickListener() {
             @Override

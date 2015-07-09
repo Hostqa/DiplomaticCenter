@@ -2,6 +2,7 @@ package qa.dcsdr.diplomaticclub.Tools;
 
 import android.content.Context;
 import android.text.Html;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
@@ -172,18 +173,34 @@ public class ArticleContent {
                 String content = processXml(response);
                 TextView tv = (TextView) view.findViewById(R.id.articleContents);
                 try {
+                    Log.d("C", content);
                     if (content.equals("error")) {
                         readerProgressBar.setVisibility(View.GONE);
                         errorLayoutR.setVisibility(View.VISIBLE);
                         volleyError.setText(context.getString(R.string.BAD_CONTENT));
                         volleyError.setVisibility(View.VISIBLE);
                         articleScroll.setVisibility(View.GONE);
-                    } else {
-                        tv.setText(Html.fromHtml(new ContentDecrypter().decrypt((content))));
+                    } else if (content.contains("youtube")) {
                         readerProgressBar.setVisibility(View.GONE);
-                        articleScroll.setVisibility(View.VISIBLE);
-                        if (menu != null)
-                            showViews();
+                        errorLayoutR.setVisibility(View.VISIBLE);
+                        volleyError.setText(context.getString(R.string.BAD_CONTENT));
+                        volleyError.setVisibility(View.VISIBLE);
+                        articleScroll.setVisibility(View.GONE);
+                    } else {
+                        String d = new ContentDecrypter().decrypt((content));
+                        if (d.contains("youtube")) {
+                            readerProgressBar.setVisibility(View.GONE);
+                            errorLayoutR.setVisibility(View.VISIBLE);
+                            volleyError.setText(context.getString(R.string.BAD_CONTENT));
+                            volleyError.setVisibility(View.VISIBLE);
+                            articleScroll.setVisibility(View.GONE);
+                        } else {
+                            tv.setText(Html.fromHtml(d));
+                            readerProgressBar.setVisibility(View.GONE);
+                            articleScroll.setVisibility(View.VISIBLE);
+                            if (menu != null)
+                                showViews();
+                        }
                     }
                 } catch (Exception e) {
                     e.printStackTrace();

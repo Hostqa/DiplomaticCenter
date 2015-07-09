@@ -68,7 +68,7 @@
     <string name="STRATEGIC_ESTIMATES">تقديرات إستراتجية</string>
     <string name="ECONOMIC_ESTIMATES">تقديرات اقتصادية</string>
     <string name="PUBLICATIONS">الإصدارات</string>
-    <string name="ALL_PUBLICATIONS">جميع المطبوعات</string>
+    <string name="ALL_PUBLICATIONS">جميع الإصدارات</string>
     <string name="RESEARCH_AND_STUDIES_PUBLICATIONS">البحوث والدراسات</string>
     <string name="ARBITRATION_STUDIES">الدراسات المحكمة</string>
     <string name="POLICY_ANALYSIS">تحليل سياسات</string>
@@ -123,7 +123,7 @@
     <string name="ALL_SYMPOSIUMS">جميع الندوات</string>
     <string name="CONFERENCES">المؤتمرات</string>
     <string name="ALL_CONFERENCES">جميع المؤتمرات</string>
-    <string name="ID_LEVEL_URL">http://www.dcsdr.qa/api/xml_en_show_post_by_category_id.php?id=</string>
+    <string name="ID_LEVEL_URL">http://www.dcsdr.qa/api/xml_ar_show_post_by_category_id.php?id=</string>
     <string name="CAT_TITLE_TAG">CAT_TITLE</string>
     <string name="NIGHT_MODE">وضع المساء</string>
     <string name="DAY_MODE">الوضع النهار </string>
@@ -138,8 +138,8 @@
     <string name="SINGLE_ARTICLE_ID">http://www.dcsdr.qa/arabic/xml.php?id=</string>
     <string name="FEATURED_DISPUTES_RESOLUTION">مختارات فض المنازعات</string>
     <string name="FRAGMENTS_ADDRESS">qa.dcsdr.diplomaticclub.Fragments.</string>
-    <string name="SHOW_AUTHOR_ARTICLES_URL">http://www.dcsdr.qa/api/xml_en_show_post_by_writer_id.php?id=</string>
-    <string name="AUTHOR_LIST_URL">http://www.dcsdr.qa/api/xml_en_show_writer.php</string>
+    <string name="SHOW_AUTHOR_ARTICLES_URL">http://www.dcsdr.qa/api/xml_ar_show_post_by_writer_id.php?id=</string>
+    <string name="AUTHOR_LIST_URL">http://www.dcsdr.qa/api/xml_ar_show_writer.php</string>
     <string name="SHOW_PAPERS">عرض  المقالات</string>
     <string name="SHARE">مشاركة</string>
     <string name="SHARE_LC">مشاركة</string>
@@ -217,15 +217,16 @@
     <string name="title_activity_search">نتائج البحث</string>
     <string name="SEARCH">بحث</string>
     <string name="BOOKMARK_DIRECTORY">BOOKMARKS_AR</string>
-    <string name="SEARCH_URL">http://www.dcsdr.qa/api/xml_en_search.php?query=</string>
-    <string name="FEATURED_PARTIAL_URL">http://www.dcsdr.qa/api/xml_en_show_home_setting_</string>
+    <string name="SEARCH_URL">http://www.dcsdr.qa/api/xml_ar_search.php?query=</string>
+    <string name="FEATURED_PARTIAL_URL">http://www.dcsdr.qa/api/xml_ar_show_home_setting_</string>
     <string name="OPENING_BOOKMARK">تم تحميل المستند المحفوظ</string>
     <string name="CLOSE">أغلق</string>
     <string name="search_hint_authors">بحث المؤلفين</string>
-    <string name="SEARCH_URL_AUTHORS">http://www.dcsdr.qa/api/xml_en_search_writer.php?query=</string>
+    <string name="SEARCH_URL_AUTHORS">http://www.dcsdr.qa/api/xml_ar_search_writer.php?query=</string>
     <string name="NO_AUTHORS_FOUND">لم نتمكن من العثور على أي نتيجة.</string>
     <string name="ERROR_CONTACT_US">خطأ: يرجى إعادة المحاولة لاحقا.</string>
     <string name="MESSAGE_SUCCESS_CONTACT_US">تم إرسال الرسالة.</string>
-    <string name="CONTACT_US_FORM_URL">http://www.dcsdr.qa/api/xml_en_contact_us.php</string>
+    <string name="CONTACT_US_FORM_URL">http://www.dcsdr.qa/api/xml_ar_contact_us.php</string>
+    <string name="DEVELOPED_BY">تصميم Host.qa، خدمات ويب في قطر</string>
 
 </resources>

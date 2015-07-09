@@ -164,7 +164,7 @@ Le centre offre les recherches, études, évaluations et les conseils spécialis
     <string name="QUESTIONS_COMMENTS">Vous avez des questions ou des commentaires? Contactez-nous ci-dessous.</string>
     <string name="FORM_NAME">Votre Nom</string>
     <string name="FORM_EMAIL">Ton E-Mail</string>
-    <string name="YOUR_MESSAGE">Votre message</string>
+    <string name="YOUR_MESSAGE">Votre Message</string>
     <string name="FORM_MESSAGE">Objet Du Message</string>
     <string name="FORM_SUBMIT">Soumettre</string>
     <string name="PLEASE_ENTER_NAME">S\'il vous plaît entrez votre nom.</string>
@@ -236,5 +236,6 @@ Le centre offre les recherches, études, évaluations et les conseils spécialis
     <string name="ERROR_CONTACT_US">Erreur: S\'il vous plaît réessayer plus tard.</string>
     <string name="MESSAGE_SUCCESS_CONTACT_US">Message envoyé.</string>
     <string name="CONTACT_US_FORM_URL">http://www.dcsdr.qa/api/xml_fr_contact_us.php</string>
+   <string name="DEVELOPED_BY">Développé par Host.qa, Web Services Qatar</string>
 
 </resources>

@@ -79,8 +79,6 @@
                     tools:context=".MapsActivity" />
 
 
-
-
                 <TextView
                     android:id="@+id/details"
                     android:layout_width="wrap_content"
@@ -104,9 +102,9 @@
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="30dp"
                     android:layout_marginTop="30dp"
+                    android:baselineAligned="false"
                     android:orientation="horizontal"
-                    android:weightSum="8"
-                    android:baselineAligned="false">
+                    android:weightSum="8">
 
 
                     <LinearLayout
@@ -147,32 +145,32 @@
                             android:layout_marginStart="15dp"
                             android:layout_marginTop="5dp"
                             android:fontFamily="sans-serif"
-                            android:textColor="#00000000"
                             android:text="@string/PHONE_NUMBER_TITLE"
-                            android:textSize="15sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="5dp"
-                            android:layout_marginEnd="15dp"
-                            android:layout_marginStart="15dp"
-                            android:layout_marginTop="5dp"
-                            android:fontFamily="sans-serif"
-                            android:textColor="@color/colorPrimary"
-                            android:text="@string/LOCATION"
-                            android:textSize="15sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="5dp"
-                            android:layout_marginEnd="15dp"
-                            android:layout_marginStart="15dp"
-                            android:layout_marginTop="5dp"
-                            android:fontFamily="sans-serif"
                             android:textColor="#00000000"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginEnd="15dp"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="sans-serif"
                             android:text="@string/LOCATION"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginEnd="15dp"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="sans-serif"
+                            android:text="@string/LOCATION"
+                            android:textColor="#00000000"
                             android:textSize="15sp" />
 
 
@@ -184,8 +182,8 @@
                             android:layout_marginStart="15dp"
                             android:layout_marginTop="5dp"
                             android:fontFamily="sans-serif"
-                            android:textColor="@color/colorPrimary"
                             android:text="@string/PO_BOX"
+                            android:textColor="@color/colorPrimary"
                             android:textSize="15sp" />
 
 
@@ -197,8 +195,8 @@
                             android:layout_marginStart="15dp"
                             android:layout_marginTop="5dp"
                             android:fontFamily="sans-serif"
-                            android:textColor="@color/colorPrimary"
                             android:text="@string/E_MAIL"
+                            android:textColor="@color/colorPrimary"
                             android:textSize="15sp" />
 
 
@@ -219,7 +217,7 @@
                             android:layout_marginEnd="15dp"
                             android:layout_marginStart="15dp"
                             android:fontFamily="sans-serif-light"
-                        android:text="@string/FAX_NUMBER"
+                            android:text="@string/FAX_NUMBER"
                             android:textSize="15sp" />
 
                         <TextView
@@ -229,11 +227,11 @@
                             android:layout_marginEnd="15dp"
                             android:layout_marginStart="15dp"
                             android:layout_marginTop="5dp"
-                            android:clickable="true"
                             android:autoLink="phone"
-                            android:textIsSelectable="true"
+                            android:clickable="true"
                             android:fontFamily="sans-serif-light"
                             android:text="@string/PHONE_NUMBER_1"
+                            android:textIsSelectable="true"
                             android:textSize="15sp" />
 
                         <TextView
@@ -243,11 +241,11 @@
                             android:layout_marginEnd="15dp"
                             android:layout_marginStart="15dp"
                             android:layout_marginTop="5dp"
-                            android:clickable="true"
                             android:autoLink="phone"
-                            android:textIsSelectable="true"
+                            android:clickable="true"
                             android:fontFamily="sans-serif-light"
                             android:text="@string/PHONE_NUMBER_2"
+                            android:textIsSelectable="true"
                             android:textSize="15sp" />
 
 
@@ -291,20 +289,16 @@
                             android:layout_marginEnd="15dp"
                             android:layout_marginStart="15dp"
                             android:layout_marginTop="5dp"
-                            android:fontFamily="sans-serif-light"
                             android:autoLink="email"
-                            android:text="@string/E_MAIL_ADDRESS"
+                            android:fontFamily="sans-serif-light"
                             android:linksClickable="true"
+                            android:text="@string/E_MAIL_ADDRESS"
                             android:textSize="15sp" />
 
                     </LinearLayout>
 
 
                 </LinearLayout>
-
-
-
-
 
 
                 <LinearLayout
@@ -322,55 +316,98 @@
                         android:text="@string/QUESTIONS_COMMENTS"
                         android:textSize="24sp" />
 
-                    <EditText
-                        android:id="@+id/name"
+
+                    <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
                         android:layout_marginTop="5dp"
-                        android:background="@drawable/custom_edittext"
-                        android:ems="20"
-                        android:inputType="textPersonName"
-                        android:hint="@string/FORM_NAME"
-                        android:padding="12dp"
-                        android:textCursorDrawable="@null" />
+                        android:layout_height="wrap_content">
 
-                    <EditText
-                        android:id="@+id/email"
-                        android:inputType="textEmailAddress"
+
+                        <EditText
+                            android:id="@+id/name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/custom_edittext"
+                            android:ems="20"
+                            android:hint="@string/FORM_NAME"
+                            android:inputType="textPersonName"
+                            android:paddingLeft="12dp"
+                            android:paddingStart="12dp"
+                            android:paddingEnd="12dp"
+                            android:paddingRight="12dp"
+                            android:paddingBottom="12dp"
+                            android:textCursorDrawable="@null" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
                         android:layout_marginTop="10dp"
-                        android:background="@drawable/custom_edittext"
-                        android:ems="20"
-                        android:hint="@string/FORM_EMAIL"
-                        android:padding="12dp"
-                        android:textCursorDrawable="@null" />
+                        android:layout_height="wrap_content">
 
+                        <EditText
+                            android:id="@+id/email"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/custom_edittext"
+                            android:ems="20"
+                            android:hint="@string/FORM_EMAIL"
+                            android:inputType="textEmailAddress"
+                            android:paddingLeft="12dp"
+                            android:paddingStart="12dp"
+                            android:paddingEnd="12dp"
+                            android:paddingRight="12dp"
+                            android:paddingBottom="12dp"
+                            android:textCursorDrawable="@null" />
+                    </android.support.design.widget.TextInputLayout>
 
-                    <EditText
-                        android:id="@+id/subject"
+                    <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
                         android:layout_marginTop="10dp"
-                        android:background="@drawable/custom_edittext"
-                        android:ems="20"
-                        android:hint="@string/FORM_MESSAGE"
-                        android:inputType="textEmailAddress"
-                        android:padding="12dp"
-                        android:textCursorDrawable="@null" />
+                        android:layout_height="wrap_content">
 
-                    <EditText
-                        android:id="@+id/message"
+
+                        <EditText
+                            android:id="@+id/subject"
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/custom_edittext"
+                            android:ems="20"
+                            android:hint="@string/FORM_MESSAGE"
+                            android:inputType="textEmailAddress"
+                            android:paddingLeft="12dp"
+                            android:paddingStart="12dp"
+                            android:paddingEnd="12dp"
+                            android:paddingRight="12dp"
+                            android:paddingBottom="12dp"
+                            android:textCursorDrawable="@null" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="5dp"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/custom_edittext"
-                        android:ems="20"
-                        android:hint="@string/YOUR_MESSAGE"
-                        android:inputType="textMultiLine"
-                        android:minLines="3"
-                        android:padding="12dp"
-                        android:textColor="@color/colorPrimaryDark"
-                        android:textCursorDrawable="@null" />
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/message"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/custom_edittext"
+                            android:ems="20"
+                            android:hint="@string/YOUR_MESSAGE"
+                            android:inputType="textMultiLine"
+                            android:minLines="3"
+                            android:paddingLeft="12dp"
+                            android:paddingStart="12dp"
+                            android:paddingEnd="12dp"
+                            android:paddingRight="12dp"
+                            android:paddingBottom="12dp"
+                            android:textCursorDrawable="@null" />
+                    </android.support.design.widget.TextInputLayout>
 
                     <Button
                         android:id="@+id/submitForm"

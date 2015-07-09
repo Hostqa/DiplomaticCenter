@@ -53,8 +53,19 @@
             android:entries="@array/languages"
             android:entryValues="@array/language_codes"
             android:defaultValue="@string/ENGLISH" />
+
+        <Preference
+            android:key="pref_static_field_key"
+            android:selectable="false"
+            android:title=""
+            android:layout="@layout/host"
+            android:persistent="false"
+            android:summary="@string/DEVELOPED_BY"/>
     </PreferenceCategory>
 
+
+
+    <!--android:icon="@drawable/logo"-->
 
 </PreferenceScreen>
 

@@ -3,6 +3,7 @@ package qa.dcsdr.diplomaticclub.Activities;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
@@ -102,4 +103,11 @@ public class SettingsActivity extends AppCompatActivity implements SharedPrefere
         finish();
         startActivity(intent);
     }
+
+    public void gotToHost(View view) {
+        Uri uri = Uri.parse("http://host.qa/");
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        startActivity(intent);
+    }
+
 }

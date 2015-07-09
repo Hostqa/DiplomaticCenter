@@ -466,4 +466,6 @@ public class HomePageActivity extends AppCompatActivity implements SharedPrefere
         InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
         inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
+
+
 }
