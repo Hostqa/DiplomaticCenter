@@ -39,7 +39,6 @@ public class MyApplication extends android.app.Application{
         ParseACL.setDefaultACL(defaultACL, true);
         ParsePush.subscribeInBackground("BREAKING_NEWS");
         ParsePush.subscribeInBackground("NEW_EVENTS");
-        ParsePush.subscribeInBackground("TAMIM");
 
     }
 
