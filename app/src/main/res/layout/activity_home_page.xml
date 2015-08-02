@@ -10,16 +10,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:background="@color/colorPrimary">
+        android:background="@color/colorAccent">
 
         <ImageView
-            android:layout_width="156dp"
-            android:layout_height="250dp"
+            android:layout_width="300dp"
+            android:layout_height="175dp"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:layout_gravity="center_horizontal"
-            android:scaleType="fitXY"
-            android:src="@drawable/splash" />
+            android:background="@color/colorAccent"
+            android:src="@drawable/splash_inv_hr" />
     </RelativeLayout>
 
 
@@ -152,6 +152,39 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/featuredCategory4"
+                    android:orientation="vertical">
+
+                    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginTop="12dp"
+                        android:layout_weight="1"
+                        android:background="@color/hpBars"
+                        android:fontFamily="sans-serif-light"
+                        android:paddingBottom="8dp"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp"
+                        android:paddingTop="8dp"
+                        android:text="@string/FEATURED_DISPUTES_RESOLUTION"
+                        android:textColor="@color/hpBarText"
+                        android:textSize="21sp" />
+
+                    <qa.dcsdr.diplomaticclub.Tools.HomePageViewPager xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:id="@+id/pager4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="10dp"
+                        android:paddingTop="0dp" />
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:id="@+id/featuredCategory2"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
@@ -215,37 +248,6 @@
                 </LinearLayout>
 
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/featuredCategory4"
-                    android:orientation="vertical">
-
-                    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginTop="12dp"
-                        android:layout_weight="1"
-                        android:background="@color/hpBars"
-                        android:fontFamily="sans-serif-light"
-                        android:paddingBottom="8dp"
-                        android:paddingLeft="20dp"
-                        android:paddingRight="20dp"
-                        android:paddingTop="8dp"
-                        android:text="@string/FEATURED_DISPUTES_RESOLUTION"
-                        android:textColor="@color/hpBarText"
-                        android:textSize="21sp" />
-
-                    <qa.dcsdr.diplomaticclub.Tools.HomePageViewPager xmlns:android="http://schemas.android.com/apk/res/android"
-                        android:id="@+id/pager4"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingBottom="10dp"
-                        android:paddingTop="0dp" />
-
-
-                </LinearLayout>
 
 
                 <LinearLayout

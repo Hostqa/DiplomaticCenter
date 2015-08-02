@@ -5,6 +5,12 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.preference.PreferenceManager;
 
+import com.parse.Parse;
+import com.parse.ParseACL;
+import com.parse.ParseInstallation;
+import com.parse.ParsePush;
+import com.parse.ParseUser;
+
 import java.util.Locale;
 
 /**
@@ -24,6 +30,17 @@ public class MyApplication extends android.app.Application{
         super.onCreate();
         setLocale();
         sInstance=this;
+
+        Parse.initialize(this, "XnkWkczDKDLj9Sx7Sw4moO4iW3pwa6EISLCLzMP0", "WmJ2IsBjZ1AaAEbQ3hWIbdMAkcbTBG6S5Vzot9jV");
+        ParseInstallation.getCurrentInstallation().saveInBackground();
+        ParseUser.enableAutomaticUser();
+        ParseACL defaultACL = new ParseACL();
+        defaultACL.setPublicReadAccess(true);
+        ParseACL.setDefaultACL(defaultACL, true);
+        ParsePush.subscribeInBackground("BREAKING_NEWS");
+        ParsePush.subscribeInBackground("NEW_EVENTS");
+        ParsePush.subscribeInBackground("TAMIM");
+
     }
 
     public void setLocale() {

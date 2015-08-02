@@ -18,15 +18,15 @@
             layout="@layout/app_bar" />
 
         <ScrollView
-            android:layout_below="@id/app_bar"
+            android:id="@+id/auSV"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent"
+            android:layout_below="@id/app_bar">
 
             <RelativeLayout
                 android:id="@+id/aboutUsImageLayout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-               >
+                android:layout_height="match_parent">
 
 
                 <ImageView
@@ -54,26 +54,262 @@
 
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_below="@+id/aboutUs"
+                    android:animateLayoutChanges="false"
                     android:orientation="vertical"
                     android:padding="16dp">
 
-                    <TextView
-                        android:id="@+id/about_us_p1"
-                        android:textSize="15sp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/about_us_p1" />
 
                     <TextView
-                        android:id="@+id/about_us_p2"
-                        android:textSize="15sp"
+                        android:id="@+id/overview"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:paddingTop="16dp"
-                        android:text="@string/about_us_p2" />
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="10dp"
+                        android:clickable="true"
+                        android:fontFamily="sans-serif-light"
+                        android:onClick="switchTitle"
+                        android:tag="A"
+                        android:text="@string/OVERVIEW"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="24sp" />
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:animateLayoutChanges="true">
+
+                        <TextView
+                            android:id="@+id/overview_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:tag="A"
+                            android:textSize="15sp"
+                            android:visibility="gone" />
+                    </LinearLayout>
+
+
+                    <TextView
+                        android:id="@+id/vision_and_message"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="10dp"
+                        android:clickable="true"
+                        android:fontFamily="sans-serif-light"
+                        android:onClick="switchTitle"
+                        android:paddingEnd="5dp"
+                        android:paddingRight="5dp"
+                        android:tag="B"
+                        android:text="@string/vision_and_message"
+                        android:textColor="@color/colorPrimary"
+
+                        android:textSize="24sp" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:animateLayoutChanges="true">
+
+                        <TextView
+                            android:id="@+id/vision_and_message_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="16dp"
+                            android:tag="B"
+                            android:textSize="15sp"
+                            android:visibility="gone" />
+                    </LinearLayout>
+
+
+                    <TextView
+                        android:id="@+id/objectives"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="10dp"
+                        android:clickable="true"
+                        android:fontFamily="sans-serif-light"
+                        android:onClick="switchTitle"
+                        android:tag="C"
+                        android:text="@string/objectives"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="24sp" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:animateLayoutChanges="true">
+
+
+                        <TextView
+                            android:id="@+id/objectives_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="16dp"
+                            android:tag="C"
+                            android:textSize="15sp"
+                            android:visibility="gone" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/areas_of_interest"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="10dp"
+                        android:clickable="true"
+                        android:fontFamily="sans-serif-light"
+                        android:onClick="switchTitle"
+                        android:tag="D"
+                        android:text="@string/areas_of_interest"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="24sp" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:animateLayoutChanges="true">
+
+
+                        <TextView
+                            android:id="@+id/areas_of_interest_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="16dp"
+                            android:tag="D"
+                            android:textSize="15sp"
+                            android:visibility="gone" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/chairman"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="10dp"
+                        android:clickable="true"
+                        android:fontFamily="sans-serif-light"
+                        android:onClick="switchTitle"
+                        android:tag="E"
+                        android:text="@string/chairman"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="24sp" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:animateLayoutChanges="true">
+
+
+                        <TextView
+                            android:id="@+id/chairman_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="16dp"
+                            android:tag="E"
+                            android:textSize="15sp"
+                            android:visibility="gone" />
+                    </LinearLayout>
+
+
+                    <TextView
+                        android:id="@+id/advisory_council"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="10dp"
+                        android:clickable="true"
+                        android:fontFamily="sans-serif-light"
+                        android:onClick="switchTitle"
+                        android:tag="F"
+                        android:text="@string/advisory_council"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="24sp" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:animateLayoutChanges="true">
+
+
+                        <TextView
+                            android:id="@+id/advisory_council_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="16dp"
+                            android:tag="F"
+                            android:textSize="15sp"
+                            android:visibility="gone" />
+                    </LinearLayout>
+
+
+                    <TextView
+                        android:id="@+id/center_associates"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="10dp"
+                        android:clickable="true"
+                        android:fontFamily="sans-serif-light"
+                        android:onClick="switchTitle"
+                        android:tag="G"
+                        android:text="@string/center_associates"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="24sp" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:animateLayoutChanges="true">
+
+
+                        <TextView
+                            android:id="@+id/center_associates_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="16dp"
+                            android:tag="G"
+                            android:textSize="15sp"
+                            android:visibility="gone" />
+                    </LinearLayout>
+
+
+                    <TextView
+                        android:id="@+id/services"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="10dp"
+                        android:clickable="true"
+                        android:fontFamily="sans-serif-light"
+                        android:onClick="switchTitle"
+                        android:tag="H"
+                        android:text="@string/services"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="24sp" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:animateLayoutChanges="true">
+
+                        <TextView
+                            android:id="@+id/services_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="16dp"
+                            android:tag="H"
+                            android:textSize="15sp"
+                            android:visibility="gone" />
+
+                    </LinearLayout>
+
                 </LinearLayout>
             </RelativeLayout>
 

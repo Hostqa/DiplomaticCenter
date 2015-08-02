@@ -13,9 +13,9 @@
         <item>من نحن</item>
         <item>المؤلفين</item>
         <item>الفئات</item>
+        <item>فض المنازعات</item>
         <item>بحوث ودراسات</item>
         <item>الإصدارات</item>
-        <item>فض المنازعات</item>
         <item>البرامج والمشروعات</item>
         <item>الفعاليات</item>
         <item>المستندات المفضلة</item>
@@ -228,5 +228,15 @@
     <string name="MESSAGE_SUCCESS_CONTACT_US">تم إرسال الرسالة.</string>
     <string name="CONTACT_US_FORM_URL">http://www.dcsdr.qa/api/xml_ar_contact_us.php</string>
     <string name="DEVELOPED_BY">تصميم Host.qa، خدمات ويب في قطر</string>
+    <string name="WHO_WE_ARE">Who We Are</string>
+
+    <string name="vision_and_message">الرؤية والرسالة</string>
+    <string name="objectives">أهدافنا</string>
+    <string name="areas_of_interest">مجالات الاهتمام</string>
+    <string name="chairman">رئيس المركز</string>
+    <string name="advisory_council">المجلس الاستشاري</string>
+    <string name="center_associates">شركاء المركز</string>
+    <string name="services">خدمات المركز</string>
+    <string name="OVERVIEW">نظرة عامة</string>
 
 </resources>

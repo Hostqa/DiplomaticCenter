@@ -15,6 +15,12 @@
             android:widgetLayout="@layout/custom_preference_layout" />
         <CheckBoxPreference
             android:defaultValue="true"
+            android:enabled="false"
+            android:key="FEATURED_DISPUTES_RESOLUTION_SELECTED"
+            android:title="@string/DISPUTES_RESOLUTION"
+            android:widgetLayout="@layout/custom_preference_layout" />
+        <CheckBoxPreference
+            android:defaultValue="true"
             android:key="FEATURED_RESEARCH_AND_STUDIES_SELECTED"
             android:title="@string/RESEARCH_AND_STUDIES"
             android:widgetLayout="@layout/custom_preference_layout" />
@@ -23,11 +29,7 @@
             android:key="FEATURED_PUBLICATIONS_SELECTED"
             android:title="@string/PUBLICATIONS"
             android:widgetLayout="@layout/custom_preference_layout" />
-        <CheckBoxPreference
-            android:defaultValue="true"
-            android:key="FEATURED_DISPUTES_RESOLUTION_SELECTED"
-            android:title="@string/DISPUTES_RESOLUTION"
-            android:widgetLayout="@layout/custom_preference_layout" />
+
         <CheckBoxPreference
             android:defaultValue="true"
             android:key="FEATURED_PROGRAMS_AND_PROJECTS_SELECTED"

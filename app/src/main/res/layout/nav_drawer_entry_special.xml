@@ -6,7 +6,7 @@
     android:background="@drawable/custom_bg"
     android:orientation="horizontal">
 
-     <TextView
+    <TextView
         android:id="@+id/listText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -14,6 +14,7 @@
         android:layout_gravity="center_vertical"
         android:layout_marginLeft="46dp"
         android:layout_marginStart="46dp"
+        android:textStyle="bold|italic"
         android:text="Dummy Text"
         android:fontFamily="sans-serif"
         android:textSize="14sp"

@@ -25,9 +25,9 @@
         <item>About Us</item>
         <item>Authors</item>
         <item>Categories</item>
+        <item>Disputes Resolution</item>
         <item>Research &amp; Studies</item>
         <item>Publications</item>
-        <item>Disputes Resolution</item>
         <item>Programs &amp; Projects</item>
         <item>Events</item>
         <item>Bookmarks</item>
@@ -244,5 +244,15 @@
     <string name="MESSAGE_SUCCESS_CONTACT_US">Message sent.</string>
     <string name="CONTACT_US_FORM_URL">http://www.dcsdr.qa/api/xml_en_contact_us.php</string>
     <string name="DEVELOPED_BY">Developed by Host.qa, Web Services in Qatar</string>
+    <string name="WHO_WE_ARE">Who We Are</string>
+    <string name="vision_and_message">Vision and Message</string>
+    <string name="objectives">Objectives</string>
+    <string name="areas_of_interest">Areas of Interest</string>
+    <string name="chairman">Chairman</string>
+    <string name="advisory_council">Advisory Council</string>
+    <string name="center_associates">Center Associates</string>
+    <string name="services">Services</string>
+    <string name="OVERVIEW">Overview</string>
+
 
 </resources>

@@ -34,6 +34,9 @@ public class DrawerAdapter extends RecyclerView.Adapter<DrawerAdapter.MyViewHold
         String[] categories = context.getResources().getStringArray(R.array.categories);
         ArrayList<String> al = new ArrayList<String>(Arrays.asList(categories));
         if (al.contains(data.get(position).getTitle()) || data.get(position).getTitle().equals(context.getString(R.string.NO_CATEGORIES)))
+            if (data.get(position).getTitle().equals(context.getResources().getString(R.string.DISPUTES_RESOLUTION)))
+                return 2;
+            else
             return 0;
         else return 1;
     }
@@ -46,7 +49,18 @@ public class DrawerAdapter extends RecyclerView.Adapter<DrawerAdapter.MyViewHold
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        int layout = viewType == 0 ? R.layout.nav_drawer_entry : R.layout.nav_drawer_title;
+        int layout = 0;
+        switch (viewType) {
+            case 0:
+                layout = R.layout.nav_drawer_entry;
+                break;
+            case 1:
+                layout = R.layout.nav_drawer_title;
+                break;
+            case 2:
+                layout = R.layout.nav_drawer_entry_special;
+                break;
+        }
         View view = inflater.inflate(layout, parent, false);
 //        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
         return new MyViewHolder(view);

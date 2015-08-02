@@ -18,6 +18,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -34,6 +36,10 @@ import com.android.volley.ServerError;
 import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.parse.ParseAnalytics;
+import com.parse.ParseInstallation;
+import com.parse.ParsePush;
+import com.parse.PushService;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -119,6 +125,13 @@ public class HomePageActivity extends AppCompatActivity implements SharedPrefere
                 "FEATURED_PROGRAMS_AND_PROJECTS_SELECTED",
                 "FEATURED_EVENTS_SELECTED"};
 
+        String[] subscriptions = {"FEATURED_ALL",
+                "RESEARCH_AND_STUDIES",
+                "PUBLICATIONS",
+                "DISPUTES_RESOLUTION",
+                "PROGRAMS_AND_PROJECTS",
+                "EVENTS"};
+
         String[] urls = {getFeatured(1),
                 getFeatured(2),
                 getFeatured(5),
@@ -131,9 +144,12 @@ public class HomePageActivity extends AppCompatActivity implements SharedPrefere
             if (!sp.getBoolean(keys[i], true)) {
                 hpvpM[i].setVisibility(View.GONE);
                 hpllM[i].setVisibility(View.GONE);
+                ParsePush.unsubscribeInBackground(subscriptions[i]);
                 continue;
             }
             total += 1;
+            if (i!=0)
+                ParsePush.subscribeInBackground(subscriptions[i]);
             requestQueue.add(getStringRequest(urls[i], i, hppa));
         }
     }
@@ -158,6 +174,7 @@ public class HomePageActivity extends AppCompatActivity implements SharedPrefere
                     getSupportActionBar().show();
                     if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                         getWindow().setNavigationBarColor(getResources().getColor(R.color.colorPrimaryDark));
+                        setWindowColor(getResources().getColor(R.color.colorPrimary));
                     }
                 }
                 hppa[p].setArticleList(articleList);
@@ -205,16 +222,30 @@ public class HomePageActivity extends AppCompatActivity implements SharedPrefere
         searchViewS.setIconified(false);
     }
 
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    private void setWindowColor(int darkVibrantColor) {
+        Window window = activity.getWindow();
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.setStatusBarColor(darkVibrantColor);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
         setTitle(R.string.title_activity_main);
+        activity = this;
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            getWindow().setNavigationBarColor(getResources().getColor(R.color.colorPrimary));
+            getWindow().setNavigationBarColor(getResources().getColor(R.color.colorAccent));
+            setWindowColor(getResources().getColor(R.color.colorAccent));
         }
         PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
         getSharedPreferences("LANGUAGE_CHANGE", MODE_PRIVATE).registerOnSharedPreferenceChangeListener(this);
+
+
+        ParseAnalytics.trackAppOpenedInBackground(getIntent());
+        PushService.setDefaultPushCallback(this, HomePageActivity.class);
+        ParseInstallation.getCurrentInstallation().saveInBackground();
 
         final Intent intent = getIntent();
         final String action = intent.getAction();
@@ -228,7 +259,6 @@ public class HomePageActivity extends AppCompatActivity implements SharedPrefere
             }
         }
 
-        activity = this;
         toolbar = (Toolbar) findViewById(R.id.app_bar);
         progressBar = (LinearLayout) findViewById(R.id.progressBarLayout);
         errorLayout = (LinearLayout) findViewById(R.id.errorLayoutHomePage);

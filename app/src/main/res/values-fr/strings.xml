@@ -13,9 +13,9 @@
         <item>A Propos</item>
         <item>Auteurs</item>
         <item>Catégories</item>
+        <item>Résolution Des Conflits</item>
         <item>Recherches Et Études</item>
         <item>Publications</item>
-        <item>Résolution Des Conflits</item>
         <item>Programmes Et Projets</item>
         <item>Événements</item>
         <item>Favoris</item>
@@ -237,5 +237,14 @@ Le centre offre les recherches, études, évaluations et les conseils spécialis
     <string name="MESSAGE_SUCCESS_CONTACT_US">Message envoyé.</string>
     <string name="CONTACT_US_FORM_URL">http://www.dcsdr.qa/api/xml_fr_contact_us.php</string>
    <string name="DEVELOPED_BY">Développé par Host.qa, Web Services Qatar</string>
+   <string name="WHO_WE_ARE">Who We Are</string>
+   <string name="vision_and_message">Notre Message</string>
+   <string name="objectives">Nos Objectifs</string>
+   <string name="areas_of_interest">Nos Domaines D\'interet</string>
+   <string name="chairman">President Du Centre</string>
+   <string name="advisory_council">Les Rapports</string>
+    <string name="center_associates">Les Etudes</string>
+    <string name="services">Nos Services</string>
+    <string name="OVERVIEW">Qui Sommes-nous</string>
 
 </resources>
