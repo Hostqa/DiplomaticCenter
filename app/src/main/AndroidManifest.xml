@@ -32,7 +32,7 @@
     <application
         android:name=".Tools.MyApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_dcsdr_icon"
+        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:largeHeap="true"
         android:supportsRtl="true"
