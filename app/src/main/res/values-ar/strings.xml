@@ -187,8 +187,8 @@
     <string name="NO_ARTICLES">لا توجد مقالات تم العثور عليها.</string>
     <string name="ARABIC_SUPPORT">إلا إذا لغة الهاتف الخاص بك هي اللغة العربية، نحن لا نؤيد تماما هذا الخيار. هل أنت متأكد أنك تريد أن تجعل هذا التغيير؟</string>
     <string name="CANCEL">إلغاء</string>
-    <string name="FEATURED_MESSAGE">حدد فئات المميزة التي تريدها على الصفحة الرئيسية الخاصة بك.</string>
-    <string name="HOMEPAGE">الصفحة الرئيسية</string>
+    <string name="FEATURED_MESSAGE">حدد الفئات المفضلة لديك التي تظهر على الصفحة الرئيسية الخاصة بك. بالإضافة، سوف يتم تنبيهك حول هذه الفئات عندما يكون هناك شيء جديد.</string>
+    <string name="HOMEPAGE">الاختيارات المفضلة</string>
     <string name="search_hint">ابحث DCSDR</string>
     <string name="SEARCH_RESULT_TITLE">نتائج البحث</string>
     <string name="BOOKMARK">حفظ</string>

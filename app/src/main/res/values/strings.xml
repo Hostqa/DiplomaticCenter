@@ -202,8 +202,8 @@
     <string name="NO_ARTICLES">NO ARTICLES FOUND.</string>
     <string name="ARABIC_SUPPORT">Unless your phone\'s language is Arabic, we do not fully support this option. Are you sure you want to make this change?</string>
     <string name="CANCEL">Cancel</string>
-    <string name="FEATURED_MESSAGE">Select the Featured category articles you want on your Homepage.</string>
-    <string name="HOMEPAGE">HOMEPAGE</string>
+    <string name="FEATURED_MESSAGE">Select your favorite categories that will appear on your Homepage. In addition, you\'ll be alerted about these categories when there\'s something new.</string>
+    <string name="HOMEPAGE">Favorites</string>
     <string name="search_hint">Search DCSDR</string>
     <string name="title_activity_search">Search Results</string>
     <string name="SEARCH_RESULT_TITLE">Search Results</string>
