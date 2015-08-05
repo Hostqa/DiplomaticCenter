@@ -15,6 +15,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -41,9 +42,12 @@ import com.parse.ParseInstallation;
 import com.parse.ParsePush;
 import com.parse.PushService;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 import fr.castorflex.android.circularprogressbar.CircularProgressBar;
 import qa.dcsdr.diplomaticclub.Adapters.HomePagePagerAdapter;
@@ -235,6 +239,13 @@ public class HomePageActivity extends AppCompatActivity implements SharedPrefere
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Calendar c = Calendar.getInstance();
+        SimpleDateFormat df2 = new SimpleDateFormat("h:mm a, MMMM dd", new Locale("fr"));
+        String formattedDate2 = df2.format(c.getTime());
+        Log.d("CT", "Current formattedDate => " + formattedDate2);
+
+
         setContentView(R.layout.activity_home_page);
         setTitle(R.string.title_activity_main);
         activity = this;

@@ -7,8 +7,11 @@ public class Alert {
 
     private String title;
     private int articleID;
+    private String timeStamp;
 
     public Alert(String title) {
+        this.articleID = -1;
+        this.timeStamp = "";
         this.title = title;
     }
 
@@ -26,5 +29,13 @@ public class Alert {
 
     public void setArticleID(int articleID) {
         this.articleID = articleID;
+    }
+
+    public String getTimeStamp() {
+        return timeStamp;
+    }
+
+    public void setTimeStamp(String timeStamp) {
+        this.timeStamp = timeStamp;
     }
 }

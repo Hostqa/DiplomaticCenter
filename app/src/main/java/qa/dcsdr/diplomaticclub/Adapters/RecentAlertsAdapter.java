@@ -64,6 +64,7 @@ public class RecentAlertsAdapter extends RecyclerView.Adapter<RecentAlertsAdapte
     public void onBindViewHolder(final ArticleViewHolder holder, int position) {
         final Alert currentAlert = alerts.get(position);
         holder.alertTitle.setText(currentAlert.getTitle());
+        holder.timeStamp.setText(currentAlert.getTimeStamp());
         holder.alertTitle.setOnClickListener(getAlertOnClickListener(currentAlert.getArticleID()));
     }
 
@@ -117,11 +118,13 @@ public class RecentAlertsAdapter extends RecyclerView.Adapter<RecentAlertsAdapte
     class ArticleViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView alertTitle;
+        TextView timeStamp;
         Button remove;
 
         public ArticleViewHolder(View itemView) {
             super(itemView);
             alertTitle = (TextView) itemView.findViewById(R.id.alertTitle);
+            timeStamp = (TextView) itemView.findViewById(R.id.timeStamp);
             remove = (Button) itemView.findViewById(R.id.remove);
         }
 

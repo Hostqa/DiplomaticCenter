@@ -157,16 +157,22 @@ public class RecentAlertsFragment extends Fragment implements ClickListener {
     private Alert getAlertFromObject(JSONObject jsonObject) throws JSONException {
         String s = Locale.getDefault().getDisplayLanguage();
         int articleID = jsonObject.getInt("ArticleID");
+        JSONObject timeStampObject = jsonObject.getJSONObject("TimeStamp");
         String message = "";
+        String timeStamp = "";
         if (s.equalsIgnoreCase("english")) {
             message = jsonObject.getString("EN");
+            timeStamp = timeStampObject.getString("EN");
         } else if (s.equalsIgnoreCase("العربية")) {
             message = jsonObject.getString("AR");
+            timeStamp = timeStampObject.getString("AR");
         } else if (s.equalsIgnoreCase("français")) {
             message = jsonObject.getString("FR");
+            timeStamp = timeStampObject.getString("FR");
         }
         Alert newAlert = new Alert(message);
         newAlert.setArticleID(articleID);
+        newAlert.setTimeStamp(timeStamp);
         return newAlert;
     }
 

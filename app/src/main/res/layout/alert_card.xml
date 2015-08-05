@@ -20,28 +20,62 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <TextView xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/alertTitle"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-light"
-            android:padding="15dp"
-            android:clickable="true"
-            android:text="New event going  sd ssdffsd fsd fsdf s sdf sdfon!"
-            android:textColor="@color/colorPrimary"
-            android:textSize="20sp" />
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginEnd="5dp"
+                android:src="@drawable/ic_event_note" />
+
+            <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/alertTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:fontFamily="sans-serif-light"
+                android:paddingRight="15dp"
+                android:paddingLeft="5dp"
+                android:paddingEnd="15dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:text="Test asd sad asd a saasd dasd asd  ! "
+                android:textColor="@color/colorBlack"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+            <TextView
+                android:id="@+id/timeStamp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:paddingEnd="15dp"
+                android:paddingLeft="45dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/colorSecondaryText"
+                android:paddingStart="45dp"
+                android:text="9:44 PM,  August 05"
+                android:textStyle="italic" />
+
+            <Button
+                android:id="@+id/remove"
+                style="android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/custom_bg"
+                android:text="@string/DELETE_BOOKMARK_BUTTON"
+                android:textColor="@color/colorPrimaryDark"
+                android:visibility="gone" />
 
 
-        <Button
-            android:id="@+id/remove"
-            android:visibility="gone"
-            style="android:attr/borderlessButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:background="@drawable/custom_bg"
-            android:text="@string/DELETE_BOOKMARK_BUTTON"
-            android:textColor="@color/colorPrimaryDark"
-            android:layout_gravity="center_horizontal" />
 
 
     </LinearLayout>

@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.support.v7.app.NotificationCompat;
-import android.util.Log;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -23,7 +22,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -47,8 +48,25 @@ public class NotificationHandler extends ParsePushBroadcastReceiver {
         super.onPushReceive(context, intent);
         try {
             JSONObject jsonObject = new JSONObject(intent.getExtras().get("com.parse.Data").toString());
+
+            Calendar c = Calendar.getInstance();
+            SimpleDateFormat en = new SimpleDateFormat("h:mm a, MMMM dd");
+            String formattedDateEn = en.format(c.getTime());
+
+            SimpleDateFormat fr = new SimpleDateFormat("h:mm a, MMMM dd", new Locale("fr"));
+            String formattedDateFr = fr.format(c.getTime());
+
+            SimpleDateFormat ar = new SimpleDateFormat("h:mm a, MMMM dd", new Locale("ar"));
+            String formattedDateAr = ar.format(c.getTime());
+
+            JSONObject newObject = new JSONObject();
+            newObject.put("EN", formattedDateEn);
+            newObject.put("FR", formattedDateFr);
+            newObject.put("AR", formattedDateAr);
+
+            jsonObject.put("TimeStamp", newObject);
+
             saveToDisk(context, jsonObject);
-//            JSONObject a = new JSONObject(jsonObject.toString());
             String s = Locale.getDefault().getDisplayLanguage();
             String title = context.getResources().getString(R.string.title_activity_main);
             articleID = jsonObject.getInt("ArticleID");
