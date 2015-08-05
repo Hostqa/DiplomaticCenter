@@ -201,7 +201,7 @@
     <string name="DCSDR">DCSDR</string>
     <string name="VERSION_SUMMARY">Diplomatic Center for Studies of Disputes Resolution, Version: 1.3.0</string>
     <string name="NO_ARTICLES">NO ARTICLES FOUND.</string>
-    <string name="ARABIC_SUPPORT">Unless your phone\'s language is Arabic, we do not fully support this option. Are you sure you want to make this change?</string>
+    <string name="ARABIC_SUPPORT">This change requires your phone to also be in this language. Otherwise, you will run into some issues. Are you sure you want to make this change?</string>
     <string name="CANCEL">Cancel</string>
     <string name="FEATURED_MESSAGE">Select your favorite categories that will appear on your Homepage. In addition, you\'ll be alerted about these categories when there\'s something new.</string>
     <string name="HOMEPAGE">FAVORITES</string>

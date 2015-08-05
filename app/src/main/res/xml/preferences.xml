@@ -47,6 +47,7 @@
         android:layout="@layout/language_layout_settings"
         android:summary="@string/CHANGE_LANG_SUMMARY"
         android:title="@string/LANGUAGE_SETTINGS">
+
         <qa.dcsdr.diplomaticclub.Tools.LogCleanPreference
             android:key="LANGUAGE_KEY"
             android:id="@+id/lc"
@@ -54,7 +55,8 @@
             android:dialogTitle="@string/LANGUAGE_DIALOG"
             android:entries="@array/languages"
             android:entryValues="@array/language_codes"
-            android:defaultValue="@string/ENGLISH" />
+            android:defaultValue="@string/ENGLISH"
+        android:widgetLayout="@layout/custom_language_preference_layout" />
 
         <Preference
             android:key="pref_static_field_key"
