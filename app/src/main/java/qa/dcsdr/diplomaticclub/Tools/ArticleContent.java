@@ -148,6 +148,7 @@ public class ArticleContent {
                             currentArticle.setDate(textValue);
                         else if (tag.equalsIgnoreCase("writer"))
                             currentArticle.setAuthor(textValue);
+                        // TODO: CORRECT TAG ONCE IT's READY
                         else if (tag.equalsIgnoreCase("authorID"))
                             currentArticle.setAuthorID(Integer.valueOf(textValue));
                     }
