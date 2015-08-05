@@ -55,9 +55,17 @@ public class RecentAlerts extends ActionBarActivity {
         if (id == R.id.clearAll) {
             clearAllAlerts();
         }
+        else if (id == R.id.refresh) {
+            refreshAlerts();
+        }
+
         //noinspection SimplifiableIfStatement
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void refreshAlerts() {
+        ((RecentAlertsFragment) fragment).refreshAlerts();
     }
 
     private void clearAllAlerts() {

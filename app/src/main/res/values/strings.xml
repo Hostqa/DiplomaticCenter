@@ -262,6 +262,7 @@
     <string name="CLEAR_ALL">Clear All</string>
     <string name="CLEAR_ALL_MESSAGE">Are you sure you want to clear all the recent alerts?</string>
     <string name="NO_RECENT_ALERTS">NO RECENT ALERTS</string>
+    <string name="REFRESH">Refresh</string>
 
 
 </resources>

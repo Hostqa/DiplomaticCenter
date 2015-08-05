@@ -245,5 +245,6 @@
     <string name="CLEAR_ALL">حذف الكل</string>
     <string name="CLEAR_ALL_MESSAGE">هل أنت متأكد أنك تريد مسح كل التنبيهات الأخيرة؟</string>
     <string name="NO_RECENT_ALERTS">لم يتم العثور على تنبيهات</string>
+    <string name="REFRESH">إعادة تحميل</string>
 
 </resources>

@@ -16,13 +16,13 @@
             android:id="@+id/logo_nav_drawer"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginBottom="16dp"
-            android:layout_marginTop="@dimen/drawer_margin_top"
+            android:layout_marginBottom="14dp"
+            android:layout_marginTop="14dp"
             android:src="@drawable/logo_nav_drawer" />
 
-        <LinearLayout
+        <View
             android:layout_width="match_parent"
-            android:layout_height="4dp"
+            android:layout_height="1.5dp"
             android:background="@color/colorAccent"/>
 
     </LinearLayout>

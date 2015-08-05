@@ -14,10 +14,10 @@
         android:layout_gravity="center_vertical"
         android:layout_marginLeft="46dp"
         android:layout_marginStart="46dp"
-        android:textStyle="bold|italic"
+        android:textStyle="bold"
         android:text="Dummy Text"
         android:fontFamily="sans-serif"
-        android:textSize="14sp"
+        android:textSize="15sp"
 
         android:textColor="@color/colorWhite" />
 

@@ -12,7 +12,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -551,13 +550,9 @@ public class ArticleReader extends AppCompatActivity {
 
         File f = new File(getFilesDir(), current.getTitle());
         if (f.exists()) {
-            Log.d("AA", "YYYYYYYYYYYYYY");
             Picasso.with(this).load(f).placeholder(R.drawable.loading_image).
                     error(R.drawable.default_art_image).into(articleImage);
         } else {
-            Log.d("AA", "HHHHHHH");
-            Log.d("AA", articleList.get(position).getPhoto());
-
             loadImage(articleList.get(position).
                     getPhoto(), articleList.get(position).getTitle());
         }
@@ -620,7 +615,6 @@ public class ArticleReader extends AppCompatActivity {
         intent.putExtra("CAT_TITLE", author);
         intent.putExtra("QUIT", false);
         String url = getString(R.string.SHOW_AUTHOR_ARTICLES_URL) + articleList.get(position).getAuthorID();
-        Log.d("URL", url);
         intent.putExtra("URL", url);
         startActivity(intent);
     }

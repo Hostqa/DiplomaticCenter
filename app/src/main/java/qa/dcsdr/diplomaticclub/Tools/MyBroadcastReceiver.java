@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.support.v7.app.NotificationCompat;
-import android.util.Log;
 
 import qa.dcsdr.diplomaticclub.R;
 
@@ -18,10 +17,8 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(final Context context, Intent intent) {
-        Log.d("AAAA","ASFASFFA");
         String title = "Diplomatic Center";
         String text = intent.getExtras().toString();
-        Log.d("AAAA",text);
         generateNotification(context, title, text);
 
     }

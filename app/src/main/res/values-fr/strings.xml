@@ -252,5 +252,6 @@ Le centre offre les recherches, études, évaluations et les conseils spécialis
     <string name="CLEAR_ALL">Tout Effacer</string>
     <string name="CLEAR_ALL_MESSAGE">Êtes-vous sûr de vouloir effacer toutes les alertes récente?</string>
     <string name="NO_RECENT_ALERTS">aucune alerte trouvés</string>
+    <string name="REFRESH">Rafraîchir</string>
 
 </resources>

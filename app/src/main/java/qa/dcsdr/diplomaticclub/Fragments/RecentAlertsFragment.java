@@ -10,7 +10,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -118,8 +117,6 @@ public class RecentAlertsFragment extends Fragment implements ClickListener {
                 reader = new Scanner(new FileInputStream(file), "UTF-8");
                 while (reader.hasNextLine()) {
                     String s = reader.nextLine();
-                    Log.d("READERAA", s);
-                    Log.d("READERAA", "AAA");
                     JSONObject jsonObject = new JSONObject(s);
                     Alert a = getAlertFromObject(jsonObject);
                     lines.add(a);
@@ -145,7 +142,6 @@ public class RecentAlertsFragment extends Fragment implements ClickListener {
                     .setPositiveButton(getString(R.string.YES), new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             if (!file.delete()) {
-                                Log.d("Clear All", "Cannot delete file: " + file.getName());
                                 return;
                             }
                             ArrayList<Alert> alerts = new ArrayList<>();
@@ -170,7 +166,6 @@ public class RecentAlertsFragment extends Fragment implements ClickListener {
             message = jsonObject.getString("FR");
         }
         Alert newAlert = new Alert(message);
-        Log.d("articleID", articleID + "");
         newAlert.setArticleID(articleID);
         return newAlert;
     }
@@ -181,4 +176,12 @@ public class RecentAlertsFragment extends Fragment implements ClickListener {
         final Intent intent;
     }
 
+    public void refreshAlerts() {
+        ArrayList alerts = getListOfSavedAlerts();
+        Collections.reverse(alerts);
+        adapter.setList(alerts);
+        if (alerts.size()>0)
+            hideNoAlerts();
+
+    }
 }

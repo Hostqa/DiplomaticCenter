@@ -45,17 +45,13 @@ public class NotificationHandler extends ParsePushBroadcastReceiver {
     @Override
     protected void onPushReceive(Context context, Intent intent) {
         super.onPushReceive(context, intent);
-        Log.d("EXTRAS", intent.getExtras().toString());
         try {
             JSONObject jsonObject = new JSONObject(intent.getExtras().get("com.parse.Data").toString());
             saveToDisk(context, jsonObject);
 //            JSONObject a = new JSONObject(jsonObject.toString());
             String s = Locale.getDefault().getDisplayLanguage();
             String title = context.getResources().getString(R.string.title_activity_main);
-            Log.d("AAAAA", s);
-            Log.d("ASDSADA", jsonObject.toString());
             articleID = jsonObject.getInt("ArticleID");
-            Log.d("AAAA", articleID + "");
             if (s.equalsIgnoreCase("english")) {
                 String enMessage = jsonObject.getString("EN");
                 generateNotification(context, title, enMessage);
@@ -79,7 +75,6 @@ public class NotificationHandler extends ParsePushBroadcastReceiver {
             final Scanner reader;
             try {
                 reader = new Scanner(new FileInputStream(file), "UTF-8");
-                Log.d("READERAA", reader.toString());
                 while (reader.hasNextLine())
                     lines.add(reader.nextLine());
                 reader.close();
@@ -87,8 +82,6 @@ public class NotificationHandler extends ParsePushBroadcastReceiver {
                     lines.remove(0);
                 }
                 lines.add(jsonObject.toString());
-                Log.d("READERAA", jsonObject.toString());
-                Log.d("READERAA", lines.size() + "");
                 final BufferedWriter writer = new BufferedWriter(new FileWriter(file, false));
                 for (final String line : lines) {
                     writer.write(line);
@@ -126,7 +119,6 @@ public class NotificationHandler extends ParsePushBroadcastReceiver {
                 Article c = articleContent.processXmlSingle(response, ID);
                 ArrayList<Article> list = new ArrayList<>();
                 list.add(c);
-                Log.d("N", response);
 
                 // create intent to start your activity
                 Intent intent = new Intent(context, ArticleReader.class);
@@ -159,8 +151,6 @@ public class NotificationHandler extends ParsePushBroadcastReceiver {
         VolleySingleton volleySingleton = VolleySingleton.getsInstance();
         RequestQueue requestQueue = volleySingleton.getRequestQueue();
         String url = context.getResources().getString(R.string.SINGLE_ARTICLE_ID) + articleID;
-        Log.d("N", url);
-        Log.d("N", articleID + "");
         NotificationManager notificationManager =
                 (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context);

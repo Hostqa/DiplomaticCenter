@@ -2,7 +2,6 @@ package qa.dcsdr.diplomaticclub.Tools;
 
 import android.content.Context;
 import android.text.Html;
-import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
@@ -119,14 +118,12 @@ public class ArticleContent {
             xpp.setInput(new StringReader(data));
             int eventType = xpp.getEventType();
             String item = "item";
-            Log.d("G", "h");
             while (eventType != XmlPullParser.END_DOCUMENT) {
                 String tag = xpp.getName();
                 if (eventType == XmlPullParser.START_TAG) {
                     if (tag.toLowerCase().contains(item.toLowerCase())) {
                         inEntry = true;
                         currentArticle = new Article(ID);
-                        Log.d("G", "new");
                     }
                 } else if (eventType == XmlPullParser.TEXT) {
                     textValue = xpp.getText();
@@ -159,7 +156,6 @@ public class ArticleContent {
 
         } catch (Exception e) {
             e.printStackTrace();
-            Log.d("A", e.getMessage());
             return null;
         }
     }
@@ -230,7 +226,6 @@ public class ArticleContent {
                 String content = processXml(response);
                 TextView tv = (TextView) view.findViewById(R.id.articleContents);
                 try {
-                    Log.d("C", content);
                     if (content.equals("error")) {
                         readerProgressBar.setVisibility(View.GONE);
                         errorLayoutR.setVisibility(View.VISIBLE);

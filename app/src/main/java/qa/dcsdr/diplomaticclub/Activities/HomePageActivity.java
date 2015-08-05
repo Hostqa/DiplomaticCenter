@@ -176,7 +176,7 @@ public class HomePageActivity extends AppCompatActivity implements SharedPrefere
                     getSupportActionBar().show();
                     if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                         getWindow().setNavigationBarColor(getResources().getColor(R.color.colorPrimaryDark));
-                        setWindowColor(getResources().getColor(R.color.colorPrimary));
+                        setWindowColor(getResources().getColor(R.color.colorPrimaryDark));
                     }
                 }
                 hppa[p].setArticleList(articleList);
@@ -189,6 +189,7 @@ public class HomePageActivity extends AppCompatActivity implements SharedPrefere
                 getSupportActionBar().show();
                 if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                     getWindow().setNavigationBarColor(getResources().getColor(R.color.colorPrimaryDark));
+                    setWindowColor(getResources().getColor(R.color.colorPrimaryDark));
                 }
                 progressBar.setVisibility(View.GONE);
                 errorLayout.setVisibility(View.VISIBLE);

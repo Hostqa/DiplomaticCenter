@@ -29,6 +29,11 @@ public class CategoryDictionary {
 
     @SuppressWarnings("unchecked")
     public List<CategoryEntry> getList(String category) {
+
+        // TODO: MODIFY CATEGORIES ONCE THEY ARE MODIFIED
+
+        // TODO: MODIFY PICTURES ONCE AVAILABLE
+
         List<CategoryEntry> data = new ArrayList(5);
 
         if (category.equals(s(R.string.RESEARCH_AND_STUDIES))) {
@@ -191,6 +196,7 @@ public class CategoryDictionary {
                 list2.add(s(R.string.ALL_RESEARCH_FILES));
             resFiles.setSubCategories(list2);
 
+            /*
             CategoryEntry leadBuild = new CategoryEntry();
             leadBuild.setCategoryImageId(R.drawable.programs_projects_cat_compressed);
             leadBuild.setCategoryTitle(s(R.string.LEADERSHIP_BUILDING_PROJECTS));
@@ -206,12 +212,16 @@ public class CategoryDictionary {
             if (list4.size()==0)
                 list4.add(s(R.string.ALL_FEASABILITY_STUDIES));
             feasStud.setSubCategories(list4);
+            */
 
             data.add(all);
             data.add(resProj);
             data.add(resFiles);
+
+            /*
             data.add(leadBuild);
             data.add(feasStud);
+            */
 
         } else if (category.equals(s(R.string.EVENTS))) {
 
