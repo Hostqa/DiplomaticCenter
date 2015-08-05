@@ -46,7 +46,7 @@
                 android:paddingEnd="15dp"
                 android:paddingTop="15dp"
                 android:paddingBottom="15dp"
-                android:text="Test asd sad asd a saasd dasd asd  ! "
+                android:text="Test!"
                 android:textColor="@color/colorBlack"
                 android:textSize="20sp" />
         </LinearLayout>

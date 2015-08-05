@@ -137,7 +137,6 @@ public class NotificationHandler extends ParsePushBroadcastReceiver {
                 Article c = articleContent.processXmlSingle(response, ID);
                 ArrayList<Article> list = new ArrayList<>();
                 list.add(c);
-
                 // create intent to start your activity
                 Intent intent = new Intent(context, ArticleReader.class);
                 intent.putExtra("ARTICLE_LIST", list);
