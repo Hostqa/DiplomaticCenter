@@ -30,6 +30,7 @@ import qa.dcsdr.diplomaticclub.Activities.CategoryListActivity;
 import qa.dcsdr.diplomaticclub.Activities.ContactUsActivity;
 import qa.dcsdr.diplomaticclub.Activities.DisplayArticleListActivity;
 import qa.dcsdr.diplomaticclub.Activities.HomePageActivity;
+import qa.dcsdr.diplomaticclub.Activities.RecentAlerts;
 import qa.dcsdr.diplomaticclub.Activities.SettingsActivity;
 import qa.dcsdr.diplomaticclub.Adapters.DrawerAdapter;
 import qa.dcsdr.diplomaticclub.Items.ClickListener;
@@ -68,6 +69,7 @@ public class NavigationDrawerFragment extends Fragment implements ClickListener 
     private String DISP_RESOL;
     private String PROG_AND_PROJ;
     private String EVENTS;
+    private String RECENT_ALERTS;
     private String BOOKMARKS;
     private String CONTACT_US;
     private String SETTINGS;
@@ -95,6 +97,7 @@ public class NavigationDrawerFragment extends Fragment implements ClickListener 
         DISP_RESOL = getActivity().getResources().getString(R.string.DISPUTES_RESOLUTION);
         PROG_AND_PROJ = getActivity().getResources().getString(R.string.PROGRAMS_AND_PROJECTS);
         EVENTS = getActivity().getResources().getString(R.string.EVENTS);
+        RECENT_ALERTS = getActivity().getResources().getString(R.string.RECENT_ALERTS);
         BOOKMARKS = getActivity().getResources().getString(R.string.BOOKMARKS);
         CONTACT_US = getActivity().getResources().getString(R.string.CONTACT_US);
         SETTINGS = getActivity().getResources().getString(R.string.SETTINGS);
@@ -253,6 +256,8 @@ public class NavigationDrawerFragment extends Fragment implements ClickListener 
                         intent.putExtra(getActivity().getString(R.string.CAT_TITLE_TAG),
                                 PROG_AND_PROJ);
                     } else return;
+                } else if (title.equals(RECENT_ALERTS)) {
+                    intent = new Intent(getActivity(), RecentAlerts.class);
                 } else if (title.equals(EVENTS)) {
                     if (!getActivity().getTitle().toString().equals(EVENTS)) {
 

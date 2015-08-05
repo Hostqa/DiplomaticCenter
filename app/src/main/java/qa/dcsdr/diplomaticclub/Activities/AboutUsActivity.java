@@ -30,32 +30,14 @@ public class AboutUsActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
 
-
-    private TextView whoWeAre;
-    private TextView aboutUsP1;
-    private TextView aboutUsP2;
-
     private TextView overviewText;
 
-    private TextView visionAndMessage;
     private TextView visionAndMessageText;
-
-    private TextView objectives;
     private TextView objectives_text;
-
-    private TextView areas_of_interest;
     private TextView areas_of_interest_text;
-
-    private TextView chairman;
     private TextView chairman_text;
-
-    private TextView advisory_council;
     private TextView advisory_council_text;
-
-    private TextView center_associates;
     private TextView center_associates_text;
-
-    private TextView services;
     private TextView services_text;
 
     private ScrollView auSV;
@@ -121,25 +103,18 @@ public class AboutUsActivity extends AppCompatActivity {
         overviewText = (TextView) findViewById(R.id.overview_text);
 
 
-        visionAndMessage = (TextView) findViewById(R.id.vision_and_message);
         visionAndMessageText = (TextView) findViewById(R.id.vision_and_message_text);
 
-        objectives = (TextView) findViewById(R.id.objectives);
         objectives_text = (TextView) findViewById(R.id.objectives_text);
 
-        areas_of_interest = (TextView) findViewById(R.id.areas_of_interest);
         areas_of_interest_text = (TextView) findViewById(R.id.areas_of_interest_text);
 
-        chairman = (TextView) findViewById(R.id.chairman);
         chairman_text = (TextView) findViewById(R.id.chairman_text);
 
-        advisory_council = (TextView) findViewById(R.id.advisory_council);
         advisory_council_text = (TextView) findViewById(R.id.advisory_council_text);
 
-        center_associates = (TextView) findViewById(R.id.center_associates);
         center_associates_text = (TextView) findViewById(R.id.center_associates_text);
 
-        services = (TextView) findViewById(R.id.services);
         services_text = (TextView) findViewById(R.id.services_text);
     }
 

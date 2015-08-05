@@ -144,6 +144,7 @@ public class DisplayArticleListFragment extends Fragment implements ClickListene
             public void onHide() {
                 hideViews();
             }
+
             @Override
             public void onShow() {
                 showViews();
@@ -211,7 +212,7 @@ public class DisplayArticleListFragment extends Fragment implements ClickListene
             }
         };
 
-        Arrays.sort(f,comparator);
+        Arrays.sort(f, comparator);
 
         for (int i = 0; i < f.length; i++) {
             try {
@@ -263,28 +264,27 @@ public class DisplayArticleListFragment extends Fragment implements ClickListene
         });
         StringRequest stringRequest = new StringRequest(getRequestUrl(),
                 new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                linlaHeaderProgress.setVisibility(View.GONE);
-                volleyError.setVisibility(View.GONE);
-                if (getRequestUrl().contains("search")) {
-                    parseSearch = new ParsingFactory(response, 1);
-                    parseSearch.processSearchOrFeaturedXml(false);
-                    articleList = parseSearch.getArticles();
-                }
-                else {
-                    parseApp = new ParsingFactory(response, 1);
-                    parseApp.processXml();
-                    articleList = parseApp.getArticles();
-                }
-                if (articleList.size() == 0) {
-                    linlaHeaderProgress.setVisibility(View.GONE);
-                    linearLayout.setVisibility(View.VISIBLE);
-                    noArticles.setVisibility(View.VISIBLE);
-                }
-                rPubAdapter.setArticleList(articleList);
-            }
-        }, new Response.ErrorListener() {
+                    @Override
+                    public void onResponse(String response) {
+                        linlaHeaderProgress.setVisibility(View.GONE);
+                        volleyError.setVisibility(View.GONE);
+                        if (getRequestUrl().contains("search")) {
+                            parseSearch = new ParsingFactory(response, 1);
+                            parseSearch.processSearchOrFeaturedXml(false);
+                            articleList = parseSearch.getArticles();
+                        } else {
+                            parseApp = new ParsingFactory(response, 1);
+                            parseApp.processXml();
+                            articleList = parseApp.getArticles();
+                        }
+                        if (articleList.size() == 0) {
+                            linlaHeaderProgress.setVisibility(View.GONE);
+                            linearLayout.setVisibility(View.VISIBLE);
+                            noArticles.setVisibility(View.VISIBLE);
+                        }
+                        rPubAdapter.setArticleList(articleList);
+                    }
+                }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 linlaHeaderProgress.setVisibility(View.GONE);
@@ -319,8 +319,9 @@ public class DisplayArticleListFragment extends Fragment implements ClickListene
     @Override
     public void itemClicked(View view, int position) {
         final Intent intent;
-        if (ArticleReader.getA() != null)
-            ArticleReader.getA().finish();
+        if (!this.getActivity().getIntent().getExtras().containsKey("QUIT"))
+            if (ArticleReader.getA() != null)
+                ArticleReader.getA().finish();
         intent = new Intent(getActivity(), ArticleReader.class);
         intent.putExtra("ARTICLE_LIST", articleList);
         intent.putExtra("POSITION", position);

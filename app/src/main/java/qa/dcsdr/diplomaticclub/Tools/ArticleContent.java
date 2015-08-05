@@ -107,6 +107,62 @@ public class ArticleContent {
         }
     }
 
+
+    public Article processXmlSingle(String data, int ID) {
+        Article currentArticle = null;
+        boolean inEntry = false;
+        String textValue = "";
+        try {
+            XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
+            factory.setNamespaceAware(true);
+            XmlPullParser xpp = factory.newPullParser();
+            xpp.setInput(new StringReader(data));
+            int eventType = xpp.getEventType();
+            String item = "item";
+            Log.d("G", "h");
+            while (eventType != XmlPullParser.END_DOCUMENT) {
+                String tag = xpp.getName();
+                if (eventType == XmlPullParser.START_TAG) {
+                    if (tag.toLowerCase().contains(item.toLowerCase())) {
+                        inEntry = true;
+                        currentArticle = new Article(ID);
+                        Log.d("G", "new");
+                    }
+                } else if (eventType == XmlPullParser.TEXT) {
+                    textValue = xpp.getText();
+
+                } else if (eventType == XmlPullParser.END_TAG) {
+                    if (inEntry) {
+                        if (tag.toLowerCase().contains(item.toLowerCase())) {
+                            inEntry = false;
+                        }
+                        if (tag.equalsIgnoreCase("title"))
+                            currentArticle.setTitle(textValue);
+                        else if (tag.equalsIgnoreCase("link"))
+                            currentArticle.setLink(textValue);
+                        else if (tag.equalsIgnoreCase("photo"))
+                            currentArticle.setPhoto(textValue);
+                        else if (tag.equalsIgnoreCase("description"))
+                            currentArticle.setDescription(textValue);
+                        else if (tag.equalsIgnoreCase("date"))
+                            currentArticle.setDate(textValue);
+                        else if (tag.equalsIgnoreCase("writer"))
+                            currentArticle.setAuthor(textValue);
+                        else if (tag.equalsIgnoreCase("authorID"))
+                            currentArticle.setAuthorID(Integer.valueOf(textValue));
+                    }
+                }
+                eventType = xpp.next();
+            }
+            return currentArticle;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            Log.d("A", e.getMessage());
+            return null;
+        }
+    }
+
     private Article processBookmark(String data) {
         boolean inEntry = false;
         String textValue = "";

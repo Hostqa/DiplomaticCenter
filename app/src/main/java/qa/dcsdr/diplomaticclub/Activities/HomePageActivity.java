@@ -51,6 +51,7 @@ import qa.dcsdr.diplomaticclub.Fragments.NavigationDrawerFragment;
 import qa.dcsdr.diplomaticclub.Items.Article;
 import qa.dcsdr.diplomaticclub.Items.VolleySingleton;
 import qa.dcsdr.diplomaticclub.R;
+import qa.dcsdr.diplomaticclub.Tools.Analytics;
 import qa.dcsdr.diplomaticclub.Tools.HomePageViewPager;
 import qa.dcsdr.diplomaticclub.Tools.MyApplication;
 import qa.dcsdr.diplomaticclub.Tools.ParsingFactory;
@@ -114,6 +115,7 @@ public class HomePageActivity extends AppCompatActivity implements SharedPrefere
     private int total = 0;
     private int totalPrime = 0;
     private SearchView searchView;
+    private Analytics analytics;
 
     private void sendXmlRequest(HomePagePagerAdapter[] hppa) {
 
@@ -246,6 +248,9 @@ public class HomePageActivity extends AppCompatActivity implements SharedPrefere
         ParseAnalytics.trackAppOpenedInBackground(getIntent());
         PushService.setDefaultPushCallback(this, HomePageActivity.class);
         ParseInstallation.getCurrentInstallation().saveInBackground();
+
+        analytics = new Analytics(this);
+        analytics.send("Homepage", "Click");
 
         final Intent intent = getIntent();
         final String action = intent.getAction();

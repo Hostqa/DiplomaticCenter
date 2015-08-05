@@ -19,6 +19,7 @@
         <item>البرامج والمشروعات</item>
         <item>الفعاليات</item>
         <item>المستندات المفضلة</item>
+        <item>آخر التحديثات</item>
         <item>تواصل معنا</item>
         <item>الإعدادات</item>
     </array>
@@ -238,5 +239,11 @@
     <string name="center_associates">شركاء المركز</string>
     <string name="services">خدمات المركز</string>
     <string name="OVERVIEW">نظرة عامة</string>
+    <string name="FAVORITES"></string>
+    <string name="RECENT_ALERTS">آخر التحديثات</string>
+    <string name="LOADING">جاري تحميل...</string>
+    <string name="CLEAR_ALL">حذف الكل</string>
+    <string name="CLEAR_ALL_MESSAGE">هل أنت متأكد أنك تريد مسح كل التنبيهات الأخيرة؟</string>
+    <string name="NO_RECENT_ALERTS">لم يتم العثور على تنبيهات</string>
 
 </resources>

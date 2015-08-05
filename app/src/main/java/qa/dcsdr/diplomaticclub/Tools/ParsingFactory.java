@@ -243,6 +243,8 @@ public class ParsingFactory {
                             currentArticle.setDate(textValue);
                         else if (tag.equalsIgnoreCase("writer"))
                             currentArticle.setAuthor(textValue);
+                        else if (tag.equalsIgnoreCase("authorID"))
+                            currentArticle.setAuthorID(Integer.valueOf(textValue));
                     }
                 }
                 eventType = xpp.next();

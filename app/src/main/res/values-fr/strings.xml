@@ -19,6 +19,7 @@
         <item>Programmes Et Projets</item>
         <item>Événements</item>
         <item>Favoris</item>
+        <item>Alertes Récents</item>
         <item>Contactez Nous</item>
         <item>Paramètres</item>
     </array>
@@ -246,5 +247,10 @@ Le centre offre les recherches, études, évaluations et les conseils spécialis
     <string name="services">Nos Services</string>
     <string name="OVERVIEW">Qui Sommes-nous</string>
     <string name="FEATURED_MESSAGE">Sélectionnez vos catégories favorites qui apparaîtront sur votre page d\'accueil. En outre, vous serez alerté sur ces catégories quand il ya quelque chose de nouveau.</string>
+    <string name="RECENT_ALERTS">Alertes Récents</string>
+    <string name="LOADING">Chargement...</string>
+    <string name="CLEAR_ALL">Tout Effacer</string>
+    <string name="CLEAR_ALL_MESSAGE">Êtes-vous sûr de vouloir effacer toutes les alertes récente?</string>
+    <string name="NO_RECENT_ALERTS">aucune alerte trouvés</string>
 
 </resources>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="15dp"
+    android:layout_marginEnd="30dp"
+    android:layout_marginLeft="30dp"
+    android:layout_marginRight="30dp"
+    android:layout_marginStart="30dp"
+    android:layout_marginTop="15dp"
+    android:paddingBottom="10dp"
+    card_view:cardBackgroundColor="#FFFFFF"
+    card_view:cardCornerRadius="2dp"
+    card_view:cardElevation="3dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/alertTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:padding="15dp"
+            android:clickable="true"
+            android:text="New event going  sd ssdffsd fsd fsdf s sdf sdfon!"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp" />
+
+
+        <Button
+            android:id="@+id/remove"
+            android:visibility="gone"
+            style="android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/custom_bg"
+            android:text="@string/DELETE_BOOKMARK_BUTTON"
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_gravity="center_horizontal" />
+
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

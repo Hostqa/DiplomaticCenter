@@ -19,6 +19,7 @@ public class Article implements Parcelable {
     private String date;
     private String author;
     private String content;
+    private int authorID;
     private int length;
 
     public static final Parcelable.Creator<Article> CREATOR
@@ -69,6 +70,7 @@ public class Article implements Parcelable {
         date = in.readString();
         author = in.readString();
         length = in.readInt();
+        authorID = in.readInt();
     }
 
     public Article(int id) {
@@ -80,6 +82,7 @@ public class Article implements Parcelable {
         this.date = "N/A";
         this.author = "N/A";
         this.length = 0;
+        this.authorID = 1;
     }
 
     public String getTitle() {
@@ -130,6 +133,14 @@ public class Article implements Parcelable {
         return Ellipsizer.ellipsize(description, 60);
     }
 
+    public int getAuthorID() {
+        return authorID;
+    }
+
+    public void setAuthorID(int authorID) {
+        this.authorID = authorID;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -145,6 +156,7 @@ public class Article implements Parcelable {
         dest.writeString(date);
         dest.writeString(author);
         dest.writeInt(length);
+        dest.writeInt(authorID);
     }
 
     public String toStringWithoutContent() {

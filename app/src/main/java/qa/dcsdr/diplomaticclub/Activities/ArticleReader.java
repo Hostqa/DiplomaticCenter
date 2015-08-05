@@ -12,6 +12,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -42,6 +43,7 @@ import qa.dcsdr.diplomaticclub.Fragments.NavigationDrawerFragment;
 import qa.dcsdr.diplomaticclub.Items.Article;
 import qa.dcsdr.diplomaticclub.Items.VolleySingleton;
 import qa.dcsdr.diplomaticclub.R;
+import qa.dcsdr.diplomaticclub.Tools.Analytics;
 import qa.dcsdr.diplomaticclub.Tools.ArticleContent;
 import qa.dcsdr.diplomaticclub.Tools.ContentDecrypter;
 
@@ -74,6 +76,7 @@ public class ArticleReader extends AppCompatActivity {
     private ImageLoader imageLoader;
 
     private static Activity a = null;
+    private Analytics analytics;
 
     public static Activity getA() {
         return a;
@@ -86,6 +89,8 @@ public class ArticleReader extends AppCompatActivity {
             getWindow().setNavigationBarColor(getResources().getColor(R.color.colorPrimaryDark));
         }
         a = this;
+
+
         setContentView(R.layout.activity_article_reader);
         setTitle(getResources().getString(R.string.title_activity_article_reader));
 
@@ -111,6 +116,9 @@ public class ArticleReader extends AppCompatActivity {
         position = (int) extras.get("POSITION");
         url = (String) extras.get("URL");
         Article current = articleList.get(position);
+
+        analytics = new Analytics(this);
+        analytics.send("Reader", articleList.get(position).getTitle());
 
         ac = new ArticleContent(current.getId(), getResources().getString(R.string.SINGLE_ARTICLE_ID), this);
 
@@ -181,7 +189,9 @@ public class ArticleReader extends AppCompatActivity {
             Picasso.with(this).load(f).placeholder(R.drawable.loading_image).
                     error(R.drawable.default_art_image).into(articleImage);
         } else {
-            Picasso.with(this).load(R.drawable.default_art_image);
+            Picasso.with(this).load(articleList.get(position).
+                    getPhoto()).placeholder(R.drawable.loading_image).
+                    error(R.drawable.default_art_image).into(articleImage);
         }
 
         final boolean virtual = articleList.get(0).getTitle().equals("N/A");
@@ -541,9 +551,13 @@ public class ArticleReader extends AppCompatActivity {
 
         File f = new File(getFilesDir(), current.getTitle());
         if (f.exists()) {
+            Log.d("AA", "YYYYYYYYYYYYYY");
             Picasso.with(this).load(f).placeholder(R.drawable.loading_image).
                     error(R.drawable.default_art_image).into(articleImage);
         } else {
+            Log.d("AA", "HHHHHHH");
+            Log.d("AA", articleList.get(position).getPhoto());
+
             loadImage(articleList.get(position).
                     getPhoto(), articleList.get(position).getTitle());
         }
@@ -568,9 +582,9 @@ public class ArticleReader extends AppCompatActivity {
                         FileOutputStream fo = openFileOutput(title, Context.MODE_PRIVATE);
                         fo.write(bytes.toByteArray());
                         fo.close();
-                        File f = new File(getFilesDir(), title);
-                        Picasso.with(a).load(f).placeholder(R.drawable.loading_image).
-                                error(R.drawable.default_art_image).into(articleImage);
+//                        File f = new File(getFilesDir(), title);
+//                        Picasso.with(a).load(f).placeholder(R.drawable.loading_image).
+//                                error(R.drawable.default_art_image).into(articleImage);
                     } catch (Exception e) {
                     }
                 }
@@ -599,6 +613,17 @@ public class ArticleReader extends AppCompatActivity {
         return "";
     }
 
+    public void openAuthorPapers(View view) {
+        String author = articleList.get(position).getAuthor();
+        Intent intent = new Intent(this, DisplayArticleListActivity.class);
+        intent.putExtra(getString(R.string.PARENT_CLASS_TAG), getString(R.string.DISPLAY_FRAGMENT_PARENT_TAG));
+        intent.putExtra("CAT_TITLE", author);
+        intent.putExtra("QUIT", false);
+        String url = getString(R.string.SHOW_AUTHOR_ARTICLES_URL) + articleList.get(position).getAuthorID();
+        Log.d("URL", url);
+        intent.putExtra("URL", url);
+        startActivity(intent);
+    }
 
     @Override
     public void onBackPressed() {
