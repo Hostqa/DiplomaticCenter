@@ -58,11 +58,11 @@
                 android:layout_height="wrap_content"
                 android:paddingBottom="15dp"
                 android:paddingEnd="15dp"
-                android:paddingLeft="50dp"
+                android:paddingLeft="53dp"
                 android:paddingRight="15dp"
                 android:textColor="@color/colorSecondaryText"
                 android:textSize="15sp"
-                android:paddingStart="50dp"
+                android:paddingStart="53dp"
                 android:text="9:44 PM,  August 05"
                 android:textStyle="italic" />
 

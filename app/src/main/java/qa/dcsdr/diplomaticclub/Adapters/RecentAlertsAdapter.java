@@ -76,7 +76,7 @@ public class RecentAlertsAdapter extends RecyclerView.Adapter<RecentAlertsAdapte
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (articleID != -1) {
+                if (articleID > 0) {
                     Toast.makeText(context, context.getResources().
                             getString(R.string.LOADING), Toast.LENGTH_SHORT).show();
                     String url = context.getResources().getString(R.string.SINGLE_ARTICLE_ID) + articleID;
