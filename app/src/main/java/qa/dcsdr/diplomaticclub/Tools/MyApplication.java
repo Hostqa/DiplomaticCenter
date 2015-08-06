@@ -39,7 +39,7 @@ public class MyApplication extends android.app.Application{
         ParseACL.setDefaultACL(defaultACL, true);
         ParsePush.subscribeInBackground("BREAKING_NEWS");
         ParsePush.subscribeInBackground("NEW_EVENTS");
-        // TODO: UN-SUBSCRIBE TO MY CHANNEL
+        // TODO: UN-SUBSCRIBE TO MY CHANNEL (T)
     }
 
     public void setLocale() {

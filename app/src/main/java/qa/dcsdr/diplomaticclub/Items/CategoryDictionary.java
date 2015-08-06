@@ -30,7 +30,7 @@ public class CategoryDictionary {
     @SuppressWarnings("unchecked")
     public List<CategoryEntry> getList(String category) {
 
-        // TODO: MODIFY CATEGORIES ONCE THEY ARE MODIFIED
+        // TODO: MODIFY CATEGORIES ONCE THEY ARE CHANGED
 
         // TODO: MODIFY PICTURES ONCE AVAILABLE
 

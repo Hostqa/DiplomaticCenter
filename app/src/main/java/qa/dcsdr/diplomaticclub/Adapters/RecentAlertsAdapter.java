@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,6 +16,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -66,6 +68,8 @@ public class RecentAlertsAdapter extends RecyclerView.Adapter<RecentAlertsAdapte
         holder.alertTitle.setText(currentAlert.getTitle());
         holder.timeStamp.setText(currentAlert.getTimeStamp());
         holder.alertTitle.setOnClickListener(getAlertOnClickListener(currentAlert.getArticleID()));
+        if (currentAlert.getArticleID()<0)
+            Picasso.with(context).load(R.drawable.ic_notifications).into(holder.alertIcon);
     }
 
     private View.OnClickListener getAlertOnClickListener(final int articleID) {
@@ -119,12 +123,14 @@ public class RecentAlertsAdapter extends RecyclerView.Adapter<RecentAlertsAdapte
 
         TextView alertTitle;
         TextView timeStamp;
+        ImageView alertIcon;
         Button remove;
 
         public ArticleViewHolder(View itemView) {
             super(itemView);
             alertTitle = (TextView) itemView.findViewById(R.id.alertTitle);
             timeStamp = (TextView) itemView.findViewById(R.id.timeStamp);
+            alertIcon = (ImageView) itemView.findViewById(R.id.alertIcon);
             remove = (Button) itemView.findViewById(R.id.remove);
         }
 
