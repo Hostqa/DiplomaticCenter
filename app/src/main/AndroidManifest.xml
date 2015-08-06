@@ -84,6 +84,7 @@
         <activity
             android:name=".Activities.DisplayArticleListActivity"
             android:configChanges="orientation"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_display_articles"
             android:launchMode="singleTop"
             android:parentActivityName=".Activities.CategoryListActivity" >
