@@ -99,7 +99,7 @@ public class RecentAlertsAdapter extends RecyclerView.Adapter<RecentAlertsAdapte
                 Intent intent = new Intent(context, ArticleReader.class);
                 intent.putExtra("ARTICLE_LIST", list);
                 intent.putExtra("POSITION", 0);
-                intent.putExtra("CAT_TITLE", c.getTitle());
+                intent.putExtra("CAT_TITLE", context.getResources().getString(R.string.APP_TITLE));
                 intent.putExtra(context.getResources().getString(R.string.PARENT_CLASS_TAG),
                         context.getResources().getString(R.string.DISPLAY_FRAGMENT_TAG));
                 intent.putExtra("URL", url);

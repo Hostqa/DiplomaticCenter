@@ -67,7 +67,7 @@ public class ArticleReader extends AppCompatActivity {
     private String category;
     private ArrayList<Article> articleList;
     private int position;
-    private Handler mHandler = new Handler();
+    private Handler mHandler;
     private ArticleContent ac;
     private String url;
     private Menu menu;
@@ -88,7 +88,7 @@ public class ArticleReader extends AppCompatActivity {
             getWindow().setNavigationBarColor(getResources().getColor(R.color.colorPrimaryDark));
         }
         a = this;
-
+        mHandler = new Handler();
 
         setContentView(R.layout.activity_article_reader);
         setTitle(getResources().getString(R.string.title_activity_article_reader));

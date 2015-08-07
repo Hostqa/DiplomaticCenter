@@ -1,5 +1,6 @@
 <resources>
 
+    <integer name="max_cat_chars">25</integer>
     <array name="categories">
         <item>Research &amp; Studies</item>
         <item>Publications</item>
