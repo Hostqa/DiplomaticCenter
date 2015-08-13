@@ -87,6 +87,8 @@ public class ParsingFactory {
                                 currentArticle.setDate(textValue);
                             else if (tag.equalsIgnoreCase("writer"))
                                 currentArticle.setAuthor(textValue);
+                            else if (tag.equalsIgnoreCase("writerID"))
+                                currentArticle.setAuthorID(Integer.valueOf(textValue));
                         }
                     }
                 }
@@ -243,7 +245,7 @@ public class ParsingFactory {
                             currentArticle.setDate(textValue);
                         else if (tag.equalsIgnoreCase("writer"))
                             currentArticle.setAuthor(textValue);
-                        else if (tag.equalsIgnoreCase("authorID"))
+                        else if (tag.equalsIgnoreCase("writerID"))
                             currentArticle.setAuthorID(Integer.valueOf(textValue));
                     }
                 }

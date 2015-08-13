@@ -609,11 +609,15 @@ public class ArticleReader extends AppCompatActivity {
     }
 
     public void openAuthorPapers(View view) {
+        if (getIntent().getExtras().containsKey("OPEN_AUTHORS_PAPERS"))
+            if (getIntent().getExtras().getBoolean("OPEN_AUTHORS_PAPERS"))
+                return;
         String author = articleList.get(position).getAuthor();
         Intent intent = new Intent(this, DisplayArticleListActivity.class);
         intent.putExtra(getString(R.string.PARENT_CLASS_TAG), getString(R.string.DISPLAY_FRAGMENT_PARENT_TAG));
         intent.putExtra("CAT_TITLE", author);
         intent.putExtra("QUIT", false);
+        intent.putExtra("OPEN_AUTHORS_PAPERS", true);
         String url = getString(R.string.SHOW_AUTHOR_ARTICLES_URL) + articleList.get(position).getAuthorID();
         intent.putExtra("URL", url);
         startActivity(intent);

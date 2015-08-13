@@ -156,7 +156,7 @@
     <string name="READ_MORE">READ MORE</string>
     <string name="SHOW_AUTHOR_ARTICLES_URL">http://www.dcsdr.qa/api/xml_en_show_post_by_writer_id.php?id=</string>
     <string name="AUTHOR_LIST_URL">http://www.dcsdr.qa/api/xml_en_show_writer.php</string>
-    <string name="SINGLE_ARTICLE_ID">http://www.dcsdr.qa/english/xml.php?id=</string>
+    <string name="SINGLE_ARTICLE_ID">http://www.dcsdr.qa/api/xml_en_show_post_id.php?id=</string>
     <string name="SHOW_PAPERS">SHOW PAPERS</string>
     <string name="SHARE">SHARE</string>
     <string name="SHARE_LC">Share</string>

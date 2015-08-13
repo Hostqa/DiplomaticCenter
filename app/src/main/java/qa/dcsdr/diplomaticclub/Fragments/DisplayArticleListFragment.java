@@ -73,6 +73,7 @@ public class DisplayArticleListFragment extends Fragment implements ClickListene
     private AppCompatActivity activity;
     private String url;
     private String title;
+    private boolean isFromOAP;
 
     private String getRequestUrl() {
         if (url != null)
@@ -104,6 +105,10 @@ public class DisplayArticleListFragment extends Fragment implements ClickListene
             category = getArguments().getString("CAT_TITLE");
             title = getArguments().getString("CAT_TITLE");
             url = getArguments().getString("URL");
+            if (getArguments().containsKey("OPEN_AUTHORS_PAPERS"))
+                isFromOAP = true;
+            else
+                isFromOAP = false;
         }
         volleySingleton = VolleySingleton.getsInstance();
         requestQueue = volleySingleton.getRequestQueue();
@@ -330,6 +335,7 @@ public class DisplayArticleListFragment extends Fragment implements ClickListene
         else
             intent.putExtra("CAT_TITLE", getTitle());
         intent.putExtra(getString(R.string.PARENT_CLASS_TAG), getString(R.string.DISPLAY_FRAGMENT_TAG));
+        intent.putExtra("OPEN_AUTHORS_PAPERS", isFromOAP);
         intent.putExtra("URL", getRequestUrl());
         startActivity(intent);
     }

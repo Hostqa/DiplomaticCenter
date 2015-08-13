@@ -38,14 +38,14 @@ public class CategoryDictionary {
 
         if (category.equals(s(R.string.RESEARCH_AND_STUDIES))) {
             CategoryEntry all = new CategoryEntry();
-            all.setCategoryImageId(R.drawable.research_studies_cat_compressed);
+            all.setCategoryImageId(R.drawable.research_and_studies);
             all.setCategoryTitle(s(R.string.ALL_RESEARCH_AND_STUDIES));
             List list0 = new ArrayList<String>();
             list0.add(s(R.string.ALL_RESEARCH_AND_STUDIES));
             all.setSubCategories(list0);
 
             CategoryEntry studies = new CategoryEntry();
-            studies.setCategoryImageId(R.drawable.research_studies_cat_compressed);
+            studies.setCategoryImageId(R.drawable.studies);
             studies.setCategoryTitle(s(R.string.STUDIES));
             List list1 = new ArrayList<String>();
             list1.add(s(R.string.POLITICAL_STUDIES));
@@ -55,7 +55,7 @@ public class CategoryDictionary {
             studies.setSubCategories(list1);
 
             CategoryEntry polAn = new CategoryEntry();
-            polAn.setCategoryImageId(R.drawable.research_studies_cat_compressed);
+            polAn.setCategoryImageId(R.drawable.politicies_analysis);
             polAn.setCategoryTitle(s(R.string.POLICIES_ANALYSIS));
             List list2 = new ArrayList<String>();
             list2.add(s(R.string.INTERNAL_POLICY));
@@ -64,7 +64,7 @@ public class CategoryDictionary {
             polAn.setSubCategories(list2);
 
             CategoryEntry posPap = new CategoryEntry();
-            posPap.setCategoryImageId(R.drawable.research_studies_cat_compressed);
+            posPap.setCategoryImageId(R.drawable.position_papers);
             posPap.setCategoryTitle(s(R.string.POSITION_PAPERS));
             List list3 = new ArrayList<String>();
             list3.add(s(R.string.POLITICAL_ESTIMATES));
@@ -80,14 +80,14 @@ public class CategoryDictionary {
         } else if (category.equals(s(R.string.PUBLICATIONS))) {
 
             CategoryEntry all = new CategoryEntry();
-            all.setCategoryImageId(R.drawable.publications_cat_compressed);
+            all.setCategoryImageId(R.drawable.reports_and_periodicals);
             all.setCategoryTitle(s(R.string.ALL_PUBLICATIONS));
             List list0 = new ArrayList<String>();
             list0.add(s(R.string.ALL_PUBLICATIONS));
             all.setSubCategories(list0);
 
             CategoryEntry resAndStud = new CategoryEntry();
-            resAndStud.setCategoryImageId(R.drawable.publications_cat_compressed);
+            resAndStud.setCategoryImageId(R.drawable.research_and_studies);
             resAndStud.setCategoryTitle(s(R.string.RESEARCH_AND_STUDIES_PUBLICATIONS));
             List list1 = new ArrayList<String>();
             list1.add(s(R.string.ARBITRATION_STUDIES));
@@ -96,7 +96,7 @@ public class CategoryDictionary {
             resAndStud.setSubCategories(list1);
 
             CategoryEntry books = new CategoryEntry();
-            books.setCategoryImageId(R.drawable.publications_cat_compressed);
+            books.setCategoryImageId(R.drawable.books);
             books.setCategoryTitle(s(R.string.BOOKS));
             List list2 = new ArrayList<String>();
             list2.add(s(R.string.LITERATURE_BOOKS));
@@ -105,7 +105,7 @@ public class CategoryDictionary {
             books.setSubCategories(list2);
 
             CategoryEntry repAndPer = new CategoryEntry();
-            repAndPer.setCategoryImageId(R.drawable.publications_cat_compressed);
+            repAndPer.setCategoryImageId(R.drawable.reports_and_periodicals);
             repAndPer.setCategoryTitle(s(R.string.REPORTS_AND_PERIODICALS));
             List list3 = new ArrayList<String>();
             list3.add(s(R.string.MEDIA_REPORTS));
@@ -119,14 +119,14 @@ public class CategoryDictionary {
             data.add(repAndPer);
         } else if (category.equals(s(R.string.DISPUTES_RESOLUTION))) {
             CategoryEntry all = new CategoryEntry();
-            all.setCategoryImageId(R.drawable.disputes_resolution_cat_compressed);
+            all.setCategoryImageId(R.drawable.risk_register);
             all.setCategoryTitle(s(R.string.ALL_DISPUTES_RESOLUTION));
             List list0 = new ArrayList<String>();
             list0.add(s(R.string.ALL_DISPUTES_RESOLUTION));
             all.setSubCategories(list0);
 
             CategoryEntry intNeg = new CategoryEntry();
-            intNeg.setCategoryImageId(R.drawable.disputes_resolution_cat_compressed);
+            intNeg.setCategoryImageId(R.drawable.international_negotiations);
             intNeg.setCategoryTitle(s(R.string.INTERNATIONAL_NEGOTIATIONS));
             List list1 = new ArrayList<String>();
             list1.add(s(R.string.PRINCIPLES_OF_NEGOTIATIONS));
@@ -136,7 +136,7 @@ public class CategoryDictionary {
             intNeg.setSubCategories(list1);
 
             CategoryEntry conAn = new CategoryEntry();
-            conAn.setCategoryImageId(R.drawable.disputes_resolution_cat_compressed);
+            conAn.setCategoryImageId(R.drawable.conflict_analysis);
             conAn.setCategoryTitle(s(R.string.CONFLICT_ANALYSIS));
             List list2 = new ArrayList<String>();
             list2.add(s(R.string.ETHNIC_CONFLICTS));
@@ -146,7 +146,7 @@ public class CategoryDictionary {
             conAn.setSubCategories(list2);
 
             CategoryEntry riskReg = new CategoryEntry();
-            riskReg.setCategoryImageId(R.drawable.disputes_resolution_cat_compressed);
+            riskReg.setCategoryImageId(R.drawable.risk_register);
             riskReg.setCategoryTitle(s(R.string.RISK_REGISTER));
             List list3 = new ArrayList<String>();
             list3.add(s(R.string.SECURITY_RISKS));
@@ -156,7 +156,7 @@ public class CategoryDictionary {
             riskReg.setSubCategories(list3);
 
             CategoryEntry peaceK = new CategoryEntry();
-            peaceK.setCategoryImageId(R.drawable.disputes_resolution_cat_compressed);
+            peaceK.setCategoryImageId(R.drawable.peacekeeping_and_building);
             peaceK.setCategoryTitle(s(R.string.PEACE_BUILDING_AND_KEEPING));
             List list4 = new ArrayList<String>();
             list4.add(s(R.string.PEACE_KEEPING_CHARTERS));
@@ -174,14 +174,14 @@ public class CategoryDictionary {
         } else if (category.equals(s(R.string.PROGRAMS_AND_PROJECTS))) {
 
             CategoryEntry all = new CategoryEntry();
-            all.setCategoryImageId(R.drawable.programs_projects_cat_compressed);
+            all.setCategoryImageId(R.drawable.research_files);
             all.setCategoryTitle(s(R.string.ALL_PROGRAMS_AND_PROJECTS));
             List list0 = new ArrayList<String>();
             list0.add(s(R.string.ALL_PROGRAMS_AND_PROJECTS));
             all.setSubCategories(list0);
 
             CategoryEntry resProj = new CategoryEntry();
-            resProj.setCategoryImageId(R.drawable.programs_projects_cat_compressed);
+            resProj.setCategoryImageId(R.drawable.research_projects);
             resProj.setCategoryTitle(s(R.string.RESEARCH_PROJECTS));
             List list1 = new ArrayList<String>();
             if (list1.size()==0)
@@ -189,7 +189,7 @@ public class CategoryDictionary {
             resProj.setSubCategories(list1);
 
             CategoryEntry resFiles = new CategoryEntry();
-            resFiles.setCategoryImageId(R.drawable.programs_projects_cat_compressed);
+            resFiles.setCategoryImageId(R.drawable.research_files);
             resFiles.setCategoryTitle(s(R.string.RESEARCH_FILES));
             List list2 = new ArrayList<String>();
             if (list2.size()==0)
@@ -226,14 +226,14 @@ public class CategoryDictionary {
         } else if (category.equals(s(R.string.EVENTS))) {
 
             CategoryEntry all = new CategoryEntry();
-            all.setCategoryImageId(R.drawable.events_cat_compressed);
+            all.setCategoryImageId(R.drawable.conferences);
             all.setCategoryTitle(s(R.string.ALL_EVENTS));
             List list0 = new ArrayList<String>();
             list0.add(s(R.string.ALL_EVENTS));
             all.setSubCategories(list0);
 
             CategoryEntry cultSal = new CategoryEntry();
-            cultSal.setCategoryImageId(R.drawable.events_cat_compressed);
+            cultSal.setCategoryImageId(R.drawable.cultural_salon);
             cultSal.setCategoryTitle(s(R.string.THE_CULTURAL_SALON));
             List list1 = new ArrayList<String>();
             if (list1.size()==0)
@@ -241,7 +241,7 @@ public class CategoryDictionary {
             cultSal.setSubCategories(list1);
 
             CategoryEntry dcssNews = new CategoryEntry();
-            dcssNews.setCategoryImageId(R.drawable.events_cat_compressed);
+            dcssNews.setCategoryImageId(R.drawable.news);
             dcssNews.setCategoryTitle(s(R.string.DCSS_NEWS));
             List list2 = new ArrayList<String>();
             if (list2.size()==0)
@@ -249,7 +249,7 @@ public class CategoryDictionary {
             dcssNews.setSubCategories(list2);
 
             CategoryEntry symposiums = new CategoryEntry();
-            symposiums.setCategoryImageId(R.drawable.events_cat_compressed);
+            symposiums.setCategoryImageId(R.drawable.symposiums);
             symposiums.setCategoryTitle(s(R.string.SYMPOSIUMS));
             List list3 = new ArrayList<String>();
             if (list3.size() == 0)
@@ -257,7 +257,7 @@ public class CategoryDictionary {
             symposiums.setSubCategories(list3);
 
             CategoryEntry conferences = new CategoryEntry();
-            conferences.setCategoryImageId(R.drawable.events_cat_compressed);
+            conferences.setCategoryImageId(R.drawable.conferences);
             conferences.setCategoryTitle(s(R.string.CONFERENCES));
             List list4 = new ArrayList<String>();
             list4.add(s(R.string.ALL_CONFERENCES));

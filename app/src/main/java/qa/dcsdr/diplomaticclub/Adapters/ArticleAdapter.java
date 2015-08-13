@@ -158,6 +158,8 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
         return articleList.size();
     }
 
+
+
     class ArticleViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         NetworkImageView listIconViewU;

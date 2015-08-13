@@ -48,6 +48,8 @@ public class DisplayArticleListActivity extends AppCompatActivity {
             fragment = new DisplayArticleListFragment();
             Bundle args = new Bundle();
             args.putString("CAT_TITLE", title);
+            if (myIntent.getExtras().containsKey("OPEN_AUTHORS_PAPERS"))
+                args.putBoolean("OPEN_AUTHORS_PAPERS", true);
             fragment.setArguments(args);
             ft.replace(android.R.id.content, fragment, "myFragmentTag");
             ft.commit();

@@ -49,8 +49,8 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
     @Override
     public void onBindViewHolder(ViewHolderCategories holder, final int position) {
         final CategoryEntry current = data.get(position);
-        Picasso.with(context).load(current.getCategoryImageId()).placeholder(R.drawable.loading_image).
-                error(R.drawable.default_art_image).into(holder.getCategoryImage());
+        Picasso.with(context).load(current.getCategoryImageId()).placeholder(R.drawable.loading_image_cat).
+                error(R.drawable.default_art_image_cat).into(holder.getCategoryImage());
         holder.getCategoryTitle().setText(current.getCategoryTitle());
         LinearLayout ln = holder.getSubCategoryList();
         if (ln.getChildCount() == current.getSubCategories().size())
