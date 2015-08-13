@@ -31,7 +31,7 @@ public class CategoryDictionary {
     public List<CategoryEntry> getList(String category) {
 
         // TODO: MODIFY CATEGORIES ONCE THEY ARE CHANGED
-        
+
         List<CategoryEntry> data = new ArrayList(5);
 
         if (category.equals(s(R.string.RESEARCH_AND_STUDIES))) {

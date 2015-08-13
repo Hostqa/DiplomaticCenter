@@ -38,8 +38,10 @@ public class MyApplication extends android.app.Application{
         defaultACL.setPublicReadAccess(true);
         ParseACL.setDefaultACL(defaultACL, true);
         ParsePush.subscribeInBackground("BREAKING_NEWS");
-        ParsePush.subscribeInBackground("NEW_EVENTS");
-        // TODO: UN-SUBSCRIBE TO MY CHANNEL (T)
+        ParsePush.subscribeInBackground("NEW_DCSDR_EVENTS");
+        // TODO: REMOVE THE FOLLOWING LINES IN THE NEXT UPDATE:
+        ParsePush.unsubscribeInBackground("NEW_EVENTS");
+        ParsePush.unsubscribeInBackground("Events");
     }
 
     public void setLocale() {
