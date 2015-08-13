@@ -261,7 +261,7 @@
 
         <activity
             android:name=".Activities.RecentAlerts"
-            android:label="@string/title_activity_recent_alerts"
+            android:label="@string/RECENT_ALERTS"
             android:launchMode="singleTask"
             android:parentActivityName=".Activities.HomePageActivity"
             android:windowSoftInputMode="adjustPan">

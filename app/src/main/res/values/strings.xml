@@ -255,9 +255,6 @@
     <string name="center_associates">Center Associates</string>
     <string name="services">Services</string>
     <string name="OVERVIEW">Overview</string>
-    <string name="title_activity_recent_alerts">RecentAlerts</string>
-
-    <string name="hello_world">Hello world!</string>
     <string name="RECENT_ALERTS">Recent Alerts</string>
     <string name="LOADING">Loading...</string>
     <string name="CLEAR_ALL">Clear All</string>
